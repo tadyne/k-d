@@ -211,6 +211,7 @@ while running:          #základní loop
         if button.draw() == True:
             game_over = False
             score = reset_game()
+            print ("pico")
             
 
         #vypnutí pomocí x
