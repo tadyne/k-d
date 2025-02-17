@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../dino game"
+		},
+		{
+			"path": "../../kod/Nová složka/pacman-python"
+		},
+		{
+			"path": "../../kod/vebovky"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "vebovky"
+	}
+}
