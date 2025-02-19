@@ -25,8 +25,8 @@ ground_scroll = 0
 scroll_speed = 8                              #rychlost dinosaura
 kaktus_freg = 2000
 last_kak = pygame.time.get_ticks() - kaktus_freg
-kurent_time = 0
-start_time = 0
+kurent_time = pygame.time.get_ticks()
+start_time = pygame.time.get_ticks()
 
 
 def reset_game():
@@ -185,9 +185,11 @@ while running:          #základní loop
             koral_group.add(korl)
             last_kak = time_now
         
-        skore = start_time - kurent_time
 
-        start_time = pygame.time.get_ticks() 
+        
+        skore = start_time
+
+       
     
         score_text = font.render(f"Skóre: {int (skore/100)}", True, (0,0,0))
 
@@ -210,6 +212,8 @@ while running:          #základní loop
     if game_over == True:
         if button.draw() == True:
             game_over = False
+            start_time = kurent_time - pygame.time.get_ticks()
+        
             score = reset_game()
          
             
