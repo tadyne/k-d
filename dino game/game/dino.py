@@ -28,7 +28,6 @@ last_kak = pygame.time.get_ticks() - kaktus_freg
 kurent_time = pygame.time.get_ticks()
 start_time = pygame.time.get_ticks()
 
-
 def reset_game():
     koral_group.empty()
     dino.rect.x = 150
@@ -186,8 +185,9 @@ while running:          #základní loop
             last_kak = time_now
         
 
+        kurent_time = pygame.time.get_ticks()
         
-        skore = start_time
+        skore = abs(start_time - kurent_time)
 
        
     
@@ -212,7 +212,7 @@ while running:          #základní loop
     if game_over == True:
         if button.draw() == True:
             game_over = False
-            start_time = kurent_time - pygame.time.get_ticks()
+            start_time = pygame.time.get_ticks()
         
             score = reset_game()
          
