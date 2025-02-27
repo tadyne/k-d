@@ -22,7 +22,7 @@ font = pygame.font.Font(None, 30)               #styl a velikost písma
 clock = pygame.time.Clock()                     #přidává čas
 
 ground_scroll = 0
-scroll_speed = 8                              #rychlost dinosaura
+scroll_speed = 8                            #rychlost dinosaura
 kaktus_freg = 2000
 last_kak = pygame.time.get_ticks() - kaktus_freg
 kurent_time = pygame.time.get_ticks()
@@ -72,9 +72,9 @@ class Fred(pygame.sprite.Sprite):
         #celá funkce skákání     
         if self.isjump : 
              # výpočet síly a rychlosti 
-            F =(2 / 3 )*self.m*(self.v**2) 
+            F =(2 / 6 )*self.m*(self.v**2)
             self.rect.y -= F 
-            self.v = self.v -1
+            self.v = self.v -0.5
             if self.v<0: 
                 self.m =-1
 
@@ -188,16 +188,16 @@ while running:          #základní loop
         kurent_time = pygame.time.get_ticks()
         
         skore = abs(start_time - kurent_time)
-
+        if skore/100 % 20 == 0:
+            scroll_speed = scroll_speed +10
+        
        
     
         score_text = font.render(f"Skóre: {int (skore/100)}", True, (0,0,0))
 
 
 
-        if skore >= 100:
-            scroll_speed = 8
-        
+
         
         # posun podlahy
        
@@ -213,7 +213,7 @@ while running:          #základní loop
         if button.draw() == True:
             game_over = False
             start_time = pygame.time.get_ticks()
-        
+            scroll_speed = 8 
             score = reset_game()
          
             
