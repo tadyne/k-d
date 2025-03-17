@@ -72,7 +72,7 @@ class Fred(pygame.sprite.Sprite):
         #celá funkce skákání     
         if self.isjump : 
              # výpočet síly a rychlosti 
-            F =(2 / 6 )*self.m*(self.v**2)
+            F =(2 / 8 )*self.m*(self.v**2)
             self.rect.y -= F 
             self.v = self.v -0.5
             if self.v<0: 
@@ -188,8 +188,14 @@ while running:          #základní loop
         kurent_time = pygame.time.get_ticks()
         
         skore = abs(start_time - kurent_time)
-        if skore/100 % 20 == 0:
-            scroll_speed = scroll_speed +10
+        last_speed_increase = 0  # Přidáme proměnnou pro kontrolu zvyšování rychlosti
+
+        # Ve while loopu nahradíme podmínku:
+        current_score = skore // 100  # Celočíselné skóre
+        if current_score % 100 == 0 and current_score != last_speed_increase:
+            scroll_speed += 1
+            kaktus_freg =kaktus_freg - 10
+            last_speed_increase = current_score
         
        
     
