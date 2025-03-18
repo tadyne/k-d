@@ -28,6 +28,10 @@ last_kak = pygame.time.get_ticks() - kaktus_freg
 kurent_time = pygame.time.get_ticks()
 start_time = pygame.time.get_ticks()
 
+def save_score(score):
+    with open("skore.txt", "a") as file:  # Otevře soubor v režimu přidání (append)
+        file.write(f"{score}\n")
+
 def reset_game():
     koral_group.empty()
     dino.rect.x = 150
@@ -220,6 +224,7 @@ while running:          #základní loop
             game_over = False
             start_time = pygame.time.get_ticks()
             scroll_speed = 8 
+            save_score(int(current_score))
             score = reset_game()
          
             
