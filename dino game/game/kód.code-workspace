@@ -1,14 +1,7 @@
-
 {
-	"folders": [
-		{
-			"path": "../.."
-		},
-		{
-			"path": "../../../kod/vebovky"
-		}
-	],
-	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "vebovky"
-	}
+    "folders": [
+        {
+            "path": ".."
+        }
+    ]
 }

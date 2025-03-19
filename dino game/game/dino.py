@@ -1,9 +1,31 @@
 import pygame
 import sys
 import random
+import sqlite3
 from pygame.locals import *
 pygame.init()
 
+def create_db():
+    conn = sqlite3.connect("skore.db")  # Připojí se nebo vytvoří databázi
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS skore (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    score INTEGER
+                )''')  # Ověří, že tabulka existuje
+    conn.commit()
+    conn.close()
+
+# Zavoláme funkci pro vytvoření tabulky
+create_db()
+
+
+def get_high_score():
+    conn = sqlite3.connect("skore.db")
+    c = conn.cursor()
+    c.execute("SELECT MAX(score) FROM skore")
+    high_score = c.fetchone()[0]  # Získá nejvyšší skóre
+    conn.close()
+    return high_score if high_score is not None else 0
 
 surface = pygame.display.set_mode((700,500))    #setup okna
 pygame.display.set_caption("dinosaurus")        #název okna
@@ -29,14 +51,18 @@ kurent_time = pygame.time.get_ticks()
 start_time = pygame.time.get_ticks()
 
 def save_score(score):
-    with open("skore.txt", "a") as file:  # Otevře soubor v režimu přidání (append)
-        file.write(f"{score}\n")
+    conn = sqlite3.connect("skore.db")
+    c = conn.cursor()
+    c.execute("INSERT INTO skore (score) VALUES (?)", (score,))
+    conn.commit()
+    conn.close()
 
 def reset_game():
     koral_group.empty()
     dino.rect.x = 150
     dino.rect.y = 300
     score = 0
+    start_time = pygame.time.get_ticks()
     return score
 
 
@@ -174,7 +200,6 @@ while running:          #základní loop
     if pygame.sprite.groupcollide(Fred_group, koral_group, False, False):
         game_over = True
 
-    skore = int(pygame.time.get_ticks() / 100)
 
 
 
@@ -205,6 +230,8 @@ while running:          #základní loop
     
         score_text = font.render(f"Skóre: {int (skore/100)}", True, (0,0,0))
 
+        high_score = get_high_score()
+        high_score_text = font.render(f"Nejlepší skóre: {high_score}", True, (0,0,0))
 
 
 
@@ -235,6 +262,7 @@ while running:          #základní loop
         if event.type == pygame.QUIT: 
  
             running = False
+    surface.blit(high_score_text, (500, 40))
     surface.blit(score_text, (570, 10))
     pygame.display.update()
       
