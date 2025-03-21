@@ -33,10 +33,12 @@ img = pygame.image.load("dino game/game/Fred1.png")       #načítam Freda
 pygame.display.set_icon(img)                    #dávam freda jako ikonu
 
 
-imp = pygame.image.load("dino game/game/background.png").convert()    #dávám pozadí
+imp = pygame.image.load("dino game/game/background2.png").convert()    #dávám pozadí
 
 ground_img = pygame.image.load('dino game/game/ground.png')          #nahrávám podlahu
 button_img = pygame.image.load('dino game/game/restart.png') 
+button_img2 = pygame.image.load('dino game/game/button skore.png')
+button_img3 = pygame.image.load('dino game/game/button3.png')
 
 surface.blit(imp, (0, 0))                       #nahrávam vizual obrazovky
 
@@ -45,7 +47,7 @@ clock = pygame.time.Clock()                     #přidává čas
 
 ground_scroll = 0
 scroll_speed = 8                            #rychlost dinosaura
-kaktus_freg = 2000
+kaktus_freg = random.randint(1000, 2000)
 last_kak = pygame.time.get_ticks() - kaktus_freg
 kurent_time = pygame.time.get_ticks()
 start_time = pygame.time.get_ticks()
@@ -56,6 +58,14 @@ def save_score(score):
     c.execute("INSERT INTO skore (score) VALUES (?)", (score,))
     conn.commit()
     conn.close()
+    
+def get_all_scores():
+    conn = sqlite3.connect("skore.db")
+    c = conn.cursor()
+    c.execute("SELECT score FROM skore ORDER BY score DESC")  # Seřazení od nejvyššího
+    scores = c.fetchall()
+    conn.close()
+    return [s[0] for s in scores]
 
 def reset_game():
     koral_group.empty()
@@ -81,6 +91,7 @@ class Fred(pygame.sprite.Sprite):
         self.image = self.images[self.index]
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
+        self.mask = pygame.mask.from_surface(self.image)
         self.v = 10
         self.m = 1
         self.isjump = False
@@ -102,7 +113,7 @@ class Fred(pygame.sprite.Sprite):
         #celá funkce skákání     
         if self.isjump : 
              # výpočet síly a rychlosti 
-            F =(2 / 8 )*self.m*(self.v**2)
+            F =(2 / 9 )*self.m*(self.v**2)
             self.rect.y -= F 
             self.v = self.v -0.5
             if self.v<0: 
@@ -136,6 +147,7 @@ class Koral(pygame.sprite.Sprite):
         self.image = pygame.image.load("dino game/game/koral.png")
         self.rect = self.image.get_rect()
         self.rect.topleft = [x, y]
+        self.mask = pygame.mask.from_surface(self.image)
 
     def update(self):
         self.rect.x -= scroll_speed
@@ -163,6 +175,46 @@ class button():
         return action
 
 
+class button2():
+    def __init__(self, x, y, image):
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+        
+    def draw(self):
+        pos = pygame.mouse.get_pos()
+        action = False
+        
+        
+        if self.rect.collidepoint(pos):
+            if pygame.mouse.get_pressed()[0] == 1:
+                action = True
+        
+        surface.blit(self.image, (self.rect.x, self.rect.y))
+        return action
+
+class button3():
+    def __init__(self, x, y, image):
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+        
+    def draw(self):
+        pos = pygame.mouse.get_pos()
+        action = False
+        
+        
+        if self.rect.collidepoint(pos):
+            if pygame.mouse.get_pressed()[0] == 1:
+                action = True
+        
+        surface.blit(self.image, (self.rect.x, self.rect.y))
+        return action
+
+
+
+
+
 Fred_group = pygame.sprite.Group()              #donastavuji funkci
 koral_group = pygame.sprite.Group()   
 
@@ -170,10 +222,13 @@ dino = Fred(150, 350)                           #pozice Freda
 
 Fred_group.add(dino)                            #zadávání skupiny dino
 
-button = button(300, 200, button_img)
+button = button(300, 150, button_img)
+button2 = button2(300,250,button_img2)
+button3 = button3(625,25,button_img3)
+show_white_screen = False
 
 
-
+mouse_released = False
 game_over = False
 running = True
 while running:          #základní loop
@@ -196,9 +251,9 @@ while running:          #základní loop
     fps_text = font.render(f"FPS: {int(clock.get_fps())}", True, (0,0,0))
     surface.blit(fps_text, (10, 10))
     
-
-    if pygame.sprite.groupcollide(Fred_group, koral_group, False, False):
-        game_over = True
+    for koral in koral_group:
+        if pygame.sprite.collide_mask(dino, koral):  
+            game_over = True
 
 
 
@@ -212,6 +267,9 @@ while running:          #základní loop
             korl = Koral(700, 340)
             koral_group.add(korl)
             last_kak = time_now
+            
+            
+            kaktus_freg = random.randint(1000, 2000)
         
 
         kurent_time = pygame.time.get_ticks()
@@ -246,14 +304,21 @@ while running:          #základní loop
             
             
             
-    if game_over == True:
+    if game_over and not show_white_screen:
         if button.draw() == True:
             game_over = False
             start_time = pygame.time.get_ticks()
             scroll_speed = 8 
             save_score(int(current_score))
             score = reset_game()
-         
+        elif button2.draw() == True:
+            show_white_screen = True 
+            mouse_released = False
+            
+
+ 
+    surface.blit(high_score_text, (500, 40))
+    surface.blit(score_text, (570, 10))        
             
 
         #vypnutí pomocí x
@@ -262,8 +327,29 @@ while running:          #základní loop
         if event.type == pygame.QUIT: 
  
             running = False
-    surface.blit(high_score_text, (500, 40))
-    surface.blit(score_text, (570, 10))
+        if event.type == pygame.MOUSEBUTTONUP:
+            mouse_released = True
+    if show_white_screen:
+        surface.fill((255, 255, 255))  # Bílé pozadí
+        all_scores = get_all_scores()
+        font = pygame.font.Font(None, 30)
+
+        col_width = 200
+        start_x = 100
+        start_y = 50
+        row_spacing = 30
+
+        for index, score in enumerate(all_scores):
+            col = index % 3
+            row = index // 3
+            x_pos = start_x + col * col_width
+            y_pos = start_y + row * row_spacing
+            score_text = font.render(f"{score}", True, (0, 0, 0))
+            surface.blit(score_text, (x_pos, y_pos))
+
+        # Vykreslení tlačítka zpět
+        if button3.draw():
+            show_white_screen = False  # Návrat na End Screen
     pygame.display.update()
       
 
