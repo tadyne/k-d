@@ -4,14 +4,19 @@ import random
 import sqlite3
 from pygame.locals import *
 pygame.init()
+import os
+import getpass
+
+username = os.getlogin()
 
 def create_db():
-    conn = sqlite3.connect("skore.db")              # Připojí se nebo vytvoří databázi
+    conn = sqlite3.connect("skore.db")
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS skore (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    score INTEGER
-                )''')               # Ověří, že tabulka existuje
+                    score INTEGER,
+                    username TEXT
+                )''')
     conn.commit()
     conn.close()
 
@@ -52,20 +57,21 @@ last_kak = pygame.time.get_ticks() - kaktus_freg
 kurent_time = pygame.time.get_ticks()
 start_time = pygame.time.get_ticks()
 
-def save_score(score):                         #ukládá skore
+def save_score(score):
+    username = os.getlogin()  # Získáme uživatelské jméno
     conn = sqlite3.connect("skore.db")
     c = conn.cursor()
-    c.execute("INSERT INTO skore (score) VALUES (?)", (score,))
+    c.execute("INSERT INTO skore (score, username) VALUES (?, ?)", (score, username))
     conn.commit()
     conn.close()
     
-def get_all_scores():                           #získává všechna skore v tabujce
+def get_all_scores():
     conn = sqlite3.connect("skore.db")
     c = conn.cursor()
-    c.execute("SELECT score FROM skore ORDER BY score DESC")  # Seřazení od nejvyššího
+    c.execute("SELECT score, username FROM skore ORDER BY score DESC")  # Seřazení od nejvyššího skóre
     scores = c.fetchall()
     conn.close()
-    return [s[0] for s in scores]
+    return scores  # Vrací seznam (skóre, username)
 
 def reset_game():                       #funkce na restart hry a všech k tomu potřebných hodnot
     koral_group.empty()
@@ -288,10 +294,21 @@ while running:          #základní loop
         
        
     
-        score_text = font.render(f"Skóre: {int (skore/100)}", True, (0,0,0))        #text skore
+       #text skore
 
-        high_score = get_high_score()                                                   #text nejlepsiho skore
-        high_score_text = font.render(f"Nejlepší skóre: {high_score}", True, (0,0,0))
+        high_score = get_high_score()
+        dynamic_high_score = high_score  # Proměnná, která se bude aktualizovat
+
+        if current_score > high_score:
+            dynamic_high_score = current_score  # Pokud hráč překonal rekord, high score se aktualizuje
+
+        # Vykreslení aktuálního skóre
+        score_text = font.render(f"Skóre: {int(current_score)}", True, (0, 0, 0))
+        surface.blit(score_text, (570, 10))
+
+        # Vykreslení dynamického nejlepšího skóre
+        high_score_text = font.render(f"Nejlepší skóre: {dynamic_high_score}", True, (0, 0, 0))  # Červená pro zvýraznění
+        surface.blit(high_score_text, (500, 40))
 
 
 
@@ -302,21 +319,28 @@ while running:          #základní loop
             ground_scroll = 0
             kurent_time = 10
             
-            
+        score_saved = False
             
         #konec hry a 2 tlacitka
     konechry_text = font.render(f"konec hry", True, (255,0,0))
     if game_over and not show_white_screen:
         surface.blit(konechry_text,(300,130))
-        if button.draw() == True:
+        if not score_saved:  # Uložíme skóre jen pokud ještě nebylo uloženo
+            save_score(int(current_score))
+            score_saved = True  # Proměnná pro kontrolu uložení skóre
+
+        if button.draw():
             game_over = False
             start_time = pygame.time.get_ticks()
-            scroll_speed = 8 
-            save_score(int(current_score))
+            scroll_speed = 8
             score = reset_game()
-        elif button2.draw() == True:
-            show_white_screen = True 
+
+
+        elif button2.draw():
+            show_white_screen = True
             mouse_released = False
+
+
             
 
     #zobrazuji oba texty
@@ -340,17 +364,28 @@ while running:          #základní loop
         font = pygame.font.Font(None, 30)
 
         col_width = 200
-        start_x = 100
+        start_x = 50
         start_y = 50
         row_spacing = 30
 
-        for index, score in enumerate(all_scores):
-            col = index % 3
-            row = index // 3
-            x_pos = start_x + col * col_width
-            y_pos = start_y + row * row_spacing
-            score_text = font.render(f"{score}", True, (0, 0, 0))
-            surface.blit(score_text, (x_pos, y_pos))
+        for index, (score, username) in enumerate(all_scores, start=1):  # Načítáme skóre i jméno
+                col = (index - 1) % 3  # Rozdělení do sloupců
+                row = (index - 1) // 3
+                x_pos = start_x + col * col_width
+                y_pos = start_y + row * row_spacing
+
+                # Číslo pořadí černě
+                index_text = font.render(f"{index}.", True, (0, 0, 0))  
+                surface.blit(index_text, (x_pos, y_pos))
+
+                # Skóre zlatě
+                score_text = font.render(f"{score}", True, (255, 150, 0))  
+                surface.blit(score_text, (x_pos + 30, y_pos))
+
+                # Uživatelské jméno modře
+                username_text = font.render(f"{username}", True, (0, 255, 255))  
+                surface.blit(username_text, (x_pos + 80, y_pos))
+
 
         # Vykreslení tlačítka zpět
         if button3.draw():
