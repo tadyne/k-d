@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-10-keyboard" />
+<meta name="description" content="Keyboard handling with Python and Pygame.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (10): Keyboard</span></h2>
+	</div>
+
+<p>Thanks to the Pygame library we installed in the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-9-pygame/">previous post</a>, we can draw 2D graphics. In this post, I propose to introduce controls with the keyboard as well as some improvements like window centering and frame rate handling.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>Keyboard events</h2>
+<p>Pygame events allow the capture of keyboard presses:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> pygame
+
+pygame.init()
+window = pygame.display.set_mode((<span class="hljs-number">640</span>,<span class="hljs-number">480</span>))
+
+x = <span class="hljs-number">120</span>
+y = <span class="hljs-number">120</span>
+running = <span class="hljs-literal">True</span>
+<span class="hljs-keyword">while</span> running:
+
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+        <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+            running = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">elif</span> event.type == pygame.KEYDOWN:
+            <span class="hljs-keyword">if</span> event.key == pygame.K_ESCAPE:
+                running = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT:
+                x += <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT:
+                x -= <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN:
+                y += <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_UP:
+                y -= <span class="hljs-number">8</span>
+
+    window.fill((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+    pygame.draw.rect(window,(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>),(x,y,<span class="hljs-number">400</span>,<span class="hljs-number">240</span>))
+    pygame.display.update()
+
+pygame.quit()</code></pre>
+<p>This program draws a blue rectangle at coordinates (x,y) with a with of 400 pixels and a height of 240 pixels. You can move it using the arrows. You can quit the game using the Espace key or closing the window.</p>
+<p>In lines 15-26, there is the handling of the keyboard. It manages key pressing: it is when a key goes from unpressed to pressed. It is different from holding or releasing a key.</p>
+<p>Once we know that it is a <code>pygame.KEYDOWN</code> event (line 15), the <code>key</code> attribute of the event contains the value of the pressed key. These values are always something like <code>pygame.K_XXX</code>. In Spyder, if you type <code>pygame.K_</code>, and then hit Ctrl+Space, you will see the list of all key names.</p>
+<p>The Espace key quit the game (like the <code>pygame.QUIT</code> event). The arrow keys change the x and y coordinates of the rectangle.</p>
+<p>Line 28 calls the function <code>window.fill()</code> with a black color <code>(0,0,0)</code>. It fills all the window client area with a color. You can try with a different color, for instance, red <code>(255,0,0)</code>, green <code>(0,255,0)</code> or blue <code>(0,0,255)</code>.</p>
+<p>Exercise: Move with WASD. Update the previous program to move the rectangle with the arrows and the W, A, S, and D keys.</p>
+<h2>Window centering</h2>
+<p>When the previous program starts, the window can appear at different locations on the screen. We can force the centering by adding the following commands at the beginning of the program:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> os
+os.environ[<span class="hljs-string">'SDL_VIDEO_CENTERED'</span>] = <span class="hljs-string">'1'</span></code></pre>
+<p>The first line imports the standard package <code>os</code>. It contains many functions related to the operating system.</p>
+<p>The second line sets the environment variable <code>SDL_VIDEO_CENTERED</code> to "1" (NB: the character "1" not the number). Pygame is based on the SDL library, and this one uses environment variables to define some options like window centering. You can do more hacks like this one, see the SDL document at <a href="https://www.libsdl.org">https://www.libsdl.org</a>.</p>
+<h2>Clock and frame rate</h2>
+<p>If you have a look at the CPU usage when the program runs, you can see that it uses 100% of a core. It is because the program renders as many frames as possible, and certainly much more than what a screen can display.</p>
+<p>To save computations, we can use a <code>pygame.tick.Clock</code> to limit the frame rate. First of all, we need to create such an object at the beginning of the program:</p>
+<pre class="hljs"><code>clock = pygame.time.Clock()</code></pre>
+<p>Note that <code>pygame.tick.Clock()</code> looks like a function call, and the line above puts the return value of this function into the variable <code>clock</code>. It is not exactly a function call: it is the creation of an instance of the <code>pygame.time.Clock</code> class. Class instances are advanced objects; for example, they can have several sub-variables called attributes. I introduce them in the next post.</p>
+<p>Then, at the end of the <code>while</code> loop, add the following line:</p>
+<pre class="hljs"><code>clock.tick(<span class="hljs-number">60</span>)</code></pre>
+<p>It limits the frame rate to 60 per second. More specifically, it releases the CPU such that the frame rate is 60 per second. For instance, if the beginning of the <code>while</code> took five milliseconds, then it releases the CPU for 11 milliseconds (at 60 frames per second, we have 16 milliseconds per frame).</p>
+<p>Considering the function call, it should look strange to you: <code>clock</code> is a variable, not a package like <code>random</code> or <code>pygame</code>. It works because <code>clock</code> refers to a class instance. These objects can contain functions called methods. So, <code>tick()</code> is a method of the <code>pygame.time.Clock</code> class. It has two arguments: <code>clock</code> and 60. The first argument is the class instance, and all the others are in the parentheses.</p>
+<h2>Window caption and icon</h2>
+<p>To finish with improvements, I propose to set a window caption (or title) and an icon. For the first one, if we want to see "My game" in the window title, we have to call <code>pygame.display.set_caption()</code> after the creation of the window:</p>
+<pre class="hljs"><code>pygame.display.set_caption(<span class="hljs-string">"My game"</span>)</code></pre>
+<p>For the window icon, we first need an image. We can load one using the <code>pygame.image.load()</code> function:</p>
+<pre class="hljs"><code>iconImage = pygame.image.load(<span class="hljs-string">"icon.png"</span>)</code></pre>
+<p>It assumes that the file "icon.png" is in the folder where our program is running. You can download this one <a href="https://www.patternsgameprog.com/?smd_process_download=1&amp;download_id=464">here</a> (it is a tank, we'll program a small tank game in the next posts).</p>
+<p>Then, the window icon is set using the <code>pygame.display.set_icon()</code> function:</p>
+<pre class="hljs"><code>pygame.display.set_icon(iconImage)</code></pre>
+<p>Note that we can pack both lines into a single one (the use of a variable is not mandatory):</p>
+<pre class="hljs"><code>pygame.display.set_icon(pygame.image.load(<span class="hljs-string">"icon.png"</span>))</code></pre>
+<h2>Final program</h2>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> pygame
+
+os.environ[<span class="hljs-string">'SDL_VIDEO_CENTERED'</span>] = <span class="hljs-string">'1'</span>
+
+pygame.init()
+window = pygame.display.set_mode((<span class="hljs-number">640</span>,<span class="hljs-number">480</span>))
+pygame.display.set_caption(<span class="hljs-string">"Discover Python &amp; Patterns - https://www.patternsgameprog.com"</span>)
+pygame.display.set_icon(pygame.image.load(<span class="hljs-string">"icon.png"</span>))
+clock = pygame.time.Clock()
+
+x = <span class="hljs-number">120</span>
+y = <span class="hljs-number">120</span>
+running = <span class="hljs-literal">True</span>
+<span class="hljs-keyword">while</span> running:
+
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+        <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+            running = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">elif</span> event.type == pygame.KEYDOWN:
+            <span class="hljs-keyword">if</span> event.key == pygame.K_ESCAPE:
+                running = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT:
+                x += <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT:
+                x -= <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN:
+                y += <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_UP:
+                y -= <span class="hljs-number">8</span>
+
+    window.fill((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+    pygame.draw.rect(window,(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>),(x,y,<span class="hljs-number">400</span>,<span class="hljs-number">240</span>))
+    pygame.display.update()    
+
+    clock.tick(<span class="hljs-number">60</span>)
+
+pygame.quit()</code></pre>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-11-class/">next post</a>, I will introduce classes, and we will use them to implement the Game Loop pattern.</p>
+<h2>Solution: Move with WASD</h2>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> pygame
+
+pygame.init()
+window = pygame.display.set_mode((<span class="hljs-number">640</span>,<span class="hljs-number">480</span>))
+
+x = <span class="hljs-number">120</span>
+y = <span class="hljs-number">120</span>
+running = <span class="hljs-literal">True</span>
+<span class="hljs-keyword">while</span> running:
+
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+        <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+            running = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">elif</span> event.type == pygame.KEYDOWN:
+            <span class="hljs-keyword">if</span> event.key == pygame.K_ESCAPE:
+                running = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT <span class="hljs-keyword">or</span> event.key == pygame.K_d:
+                x += <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT <span class="hljs-keyword">or</span> event.key == pygame.K_a:
+                x -= <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN <span class="hljs-keyword">or</span> event.key == pygame.K_s:
+                y += <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_UP <span class="hljs-keyword">or</span> event.key == pygame.K_w:
+                y -= <span class="hljs-number">8</span>
+
+    window.fill((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+    pygame.draw.rect(window,(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>),(x,y,<span class="hljs-number">400</span>,<span class="hljs-number">240</span>))
+    pygame.display.update()
+
+pygame.quit()</code></pre>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

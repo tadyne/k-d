@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-23-create-levels" />
+<meta name="description" content="Create game levels with Tiled Map Editor.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (23): Create Levels</span></h2>
+	</div>
+
+<p>In this post, I want to show you how to load a level created by Tiled, a free level editor.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em></p>
+<h2>Assets</h2>
+<p>To follow this post, you need the image files that contain the tilesets of our game. You can download them here:</p>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-23-create-levels/discover_python_and_patterns_23_create_levels.zip">Download images and example</a></p>
+<h2>Tiled Map Editor</h2>
+<p>Tiled is free software you can download here: <a href="https://thorbjorn.itch.io/tiled">thorbjorn.itch.io/tiled</a></p>
+<p>It allows for creating maps based on tiles:</p>
+<figure><img alt="Tiled map editor" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-23-create-levels/b564e6c813-1621710645/23_tiled-1024x529.png" width="855"></figure>
+<p>Its interface is organized in the following way:</p>
+<ul>
+<li>The top bar, below the menu, shows all the current maps. In this screenshot, there is a single map "level2.tmx";</li>
+<li>To the left, you can see the properties of an item. In this screenshot, we see the properties of the ground layer;</li>
+<li>In the center, you can see the map;</li>
+<li>Top right, there is a list of layers. In this screenshot, you can see the five layers we use in the program;</li>
+<li>Bottom right, there are all the available tilesets. In this screenshot, you can see the layers we use in the program.</li>
+</ul>
+<h2>Create a new level</h2>
+<p>In the menu, select <strong>File</strong> / <strong>New</strong> / <strong>New Map...</strong>. The following dialog appears:</p>
+<figure><img alt="Tiled new map" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-23-create-levels/b8f4be880c-1621710645/23_tiled_new.png" width="301"></figure>
+<p>In the "Map" box:</p>
+<ul>
+<li>Orientation: select <strong>Orthogonal</strong></li>
+<li>Tile layer format: choose any</li>
+<li>The render order: choose any</li>
+</ul>
+<p>In the "Map size" box:</p>
+<ul>
+<li>Select <strong>Fixed</strong></li>
+<li>Width: choose the width of your level (in tiles, not pixels!)</li>
+<li>Height: same for the height</li>
+</ul>
+<p>In the "Tile size" box:</p>
+<ul>
+<li>Width: type 64</li>
+<li>Height type 64</li>
+</ul>
+<p>Click <strong>Save as...</strong>, and select the location and name of your level (.tmx file).</p>
+<h2>Create the layers</h2>
+<p>Top right of Tiled interface, there is a list of layers. If it is not the case, select the layers tab:</p>
+<figure><img alt="Tiled select layers" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-23-create-levels/b57703f952-1621710645/23_tiled_select_layers-1024x529.png" width="833"></figure>
+<p>I propose to create the following layers:</p>
+<ul>
+<li>Ground layer: decorative items we can walk on</li>
+<li>Walls layer: impassable decorative items</li>
+<li>Tanks layer: location of tanks</li>
+<li>Towers layer: location of towers</li>
+<li>Explosions layer: top animations</li>
+</ul>
+<p>Ground and walls layers correspond to the two first layers in our game (items of index 0 and 1 in the <code>layers</code> attribute of the <code>UserInterface</code>).</p>
+<p>Tanks and towers layers contain the locations of all units and correspond to the third layer in our game (the item of index 2 in the <code>layers</code> attribute of the <code>UserInterface</code>). I use two layers in Tiled so I can know who is playable and who is an enemy. Otherwise, we would have to detect it using the coordinates in a tileset. I don't recommend it since it creates a dependency between tilesets layout and the game. In other words, if you (or a player mod) update a tileset, you will also have to update the code. With two layers in Tiled, whatever the tilesets, player and non-player units are always correctly identified.</p>
+<p>The explosions layer contains the top animation. I use it to define the tileset for the bullets and the explosions and correspond to the two last layers in our game. We could also create two layers: one for the bullets and one for the explosions, in the case where we want to use different tilesets.</p>
+<p>Let's now create these layers in Tiled. First, rename the first layer to "Ground": double click on the current name ("Tile layer 1") and type "Ground". Note that naming the layers is not mandatory, but it helps during the edition of the map.</p>
+<p>Add a new layer using the first icon in the layers toolbar:</p>
+<figure><img alt="Tiled create new layer" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-23-create-levels/de4fbdec09-1621710645/23_tiled_new_layer-1024x529.png" width="838"></figure>
+<p>A menu appears: select <strong>Tile Layer</strong>. Rename this second layer to "Walls".</p>
+<p>Note that this second layer appears on top of the first. It means that, during rendering, Tiled first draws the bottom layer ("Ground"), and then the top layer ("Walls"), as in our game. If you don't set the right order, one layer can hide all the others.</p>
+<p>Repeat for all the remaining layers: "Tanks", "Towers" and "Explosions".</p>
+<h2>Create the tilesets</h2>
+<p>Bottom right, you can create a new tileset using the first icon:</p>
+<figure><img alt="Tiled create new tileset" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-23-create-levels/0df5af2b6e-1621710645/23_tiled_new_tileset-1024x529.png" width="835"></figure>
+<p>The following dialog appears:</p>
+<figure><img class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-23-create-levels/e73a4662cc-1621710968/23_tiled_tileset_dialog.png" width="549"></figure>
+<p>Click <strong>Browse...</strong> and select the "gound.png" image file that contains the tileset for the background (you can download this file and the other at the beginning of this post).</p>
+<p>Make sure that <strong>Embed in map</strong> is checked, and click <strong>OK</strong>.</p>
+<p>Repeat for "walls.png", "units.png" and "explosions.png".</p>
+<h2>Edit the level</h2>
+<p>You can edit the level in the center part of the Tiled interface.</p>
+<p>First, select the layer you want to work on by left-clicking on its name. For instance, if the ground layer is selected:</p>
+<figure><img alt="Tiled tileset properties" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-23-create-levels/e73a4662cc-1621710968/23_tiled_tileset_dialog.png" width="549"></figure>
+<p>Then, select one of the tilesets in the bottom right part. In the example above, we selected the ground tileset.</p>
+<p>Finally, choose one tile and start drawing the map. If you can't draw, make sure that the "Stamp Brush" is selected in the top bar. If you need to remove a tile, choose the "Eraser" in the top bar.</p>
+<p>Note that Tiled allows you to use tiles from any tileset for any layer. It is not the case for our game, where a layer can only use tiles from a single tileset. When creating the level, pay attention to this; otherwise, we won't be able to load it.</p>
+<p>You can now create the level. For the tanks layer, put a single tank tile to define the starting position of the player. Note that we could put several tanks, but our program can't handle several players or several tanks controlled by one player for now (it is not difficult to implement thanks to our design, you can try it as an exercise).</p>
+<p>For the explosions layer, put a single tile from the explosions tileset. It is to define which tileset is used by the explosions layer in our program.</p>
+<p>Once editing is complete, you can save the level. In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-24-load-levels">next post</a>, I'll show you how to load it with Python.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

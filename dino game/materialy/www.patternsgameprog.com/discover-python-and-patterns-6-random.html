@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-6-random" />
+<meta name="description" content="Random numbers with the Python language.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (6): Random</span></h2>
+	</div>
+
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-5-integers/">previous post</a>, the magic number is always the same. I propose now to introduce random numbers to change the magic number every time we launch the game. I also present imports and more on integers.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>Library import</h2>
+<p>In the previous programs, I used <code>print()</code> and <code>input()</code> functions. They are part of the Python language, so nothing is required to use them. For other functions, like the ones for random number generation, we have to tell Python we want to use them.</p>
+<p>For instance, to use random number functions, we need to import the <code>random</code> package at the beginning of our program:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> random</code></pre>
+<p>Note that if you type this in Spyder, you see a warning telling that you don't use the <code>random</code> package. It is as expected, and it disappears once you use any function of this package.</p>
+<p>The <code>random</code> package is part of the Python standard library, so it is always available when we ask for it. For other libraries, we have to install them in the current Python environment. The default Anaconda setup we installed in the first post already includes a lot of useful libraries. For more specific ones, like PyGame, I'll show you later how to proceed.</p>
+<h2>Generate a random integer</h2>
+<p>We can generate a random integer in the following way:</p>
+<pre class="hljs"><code>magicNumber = random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)</code></pre>
+<p>We use the <code>randint()</code> function inside the <code>random</code> package. To tell that this function is in the <code>random</code> package, we have to type the name of the package before it, followed by a dot.</p>
+<p>This line generates a random integer between 1 and 10 and puts it in <code>magicNumber</code>. If you replace the initialization in the program in the previous post with this one, the game now runs with a different magic number every time.</p>
+<h2>Import a specific function</h2>
+<p>If you don't want to type the package name before the function, you can use the following syntax:</p>
+<pre class="hljs"><code><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> randint
+magicNumber = randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)</code></pre>
+<p>The first line indicates that we want to use the <code>randint()</code> function from the <code>random</code> package. Then, if the <code>randint()</code> function is found in the following lines (of the same file), Python assumes that it is the one of the <code>random</code> package. You can replace the <code>import random</code> with <code>from random import randint</code> at the beginning of the program if <code>randint()</code> is the only function you need.</p>
+<h2>Import all symbols</h2>
+<p>Python also offers the following syntax to import all symbols from a package:</p>
+<pre class="hljs"><code><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> *</code></pre>
+<p>All functions including <code>randint()</code> are then available without the need to type the package name before. <strong>Do not use this syntax</strong>, it is very dangerous since no one knows all the symbols of a package. You can have conflicts if two packages use equal symbols. And trust me, if it happens in a large application, I wish you good luck to find it :)</p>
+<h2>Clues for the player</h2>
+<p>It is not easy for the player to find the magic number. I propose to give some clues to help him/her. More specifically, I suggest telling if the number entered by the player is higher or lower:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> random
+
+magicNumber = random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    word = input(<span class="hljs-string">"What is the magic number? "</span>)
+    <span class="hljs-keyword">if</span> word == <span class="hljs-string">"quit"</span>:
+        <span class="hljs-keyword">break</span>
+
+    <span class="hljs-keyword">try</span>:
+        playerNumber = int(word)
+    <span class="hljs-keyword">except</span> ValueError:
+        print(<span class="hljs-string">"Please type a number without decimals!"</span>)
+        <span class="hljs-keyword">continue</span>
+
+    <span class="hljs-comment"># Cases</span>
+    <span class="hljs-keyword">if</span> playerNumber == magicNumber:
+        print(<span class="hljs-string">"This is correct! You win!"</span>)
+        <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">elif</span> magicNumber &lt; playerNumber:
+        print(<span class="hljs-string">"The magic number is lower"</span>)
+    <span class="hljs-keyword">elif</span> magicNumber &gt; playerNumber:
+        print(<span class="hljs-string">"The magic number is higher"</span>)
+
+    print(<span class="hljs-string">"This is not the magic number. Try again!"</span>)</code></pre>
+<p>I added two more cases in lines 19-22. In lines 19-20 we test if the magic number is lower than the entered number. If it is the case, we print the message "The magic number is lower". Similarly in lines 21-22 for the other case. Note the <code>elif</code> statement I presented before: you must use it after an <code>if</code> statement, and you can add as much as you need. Python executes the block of the first condition evaluated as <code>True</code>, and ignores the other ones.</p>
+<h2>Count the guesses</h2>
+<p>At last, I propose to count the guesses as a score, to see if the player was good or not. We need an integer variable to store this count. We initialize it at the beginning of the program:</p>
+<pre class="hljs"><code>guessCount = <span class="hljs-number">0</span></code></pre>
+<p>Then, after every player input, we increase this counter by one:</p>
+<pre class="hljs"><code>guessCount = guessCount + <span class="hljs-number">1</span></code></pre>
+<p>Python understands most arithmetics expression, here the addition between two numbers: <code>guessCount + 1</code>.</p>
+<p>There is a more compact syntax to increment a number:</p>
+<pre class="hljs"><code>guessCount += <span class="hljs-number">1</span></code></pre>
+<p>At the end of the game, we display a message with the number of guesses:</p>
+<pre class="hljs"><code>print(<span class="hljs-string">"You guessed the magic number in {} guesses."</span>.format(guessCount))</code></pre>
+<p>Python replaces the braces <code>{}</code> with the argument of the <code>format()</code> function following the message. Don't forget the dot between the string literal (everything between the quotes) and the function call <code>format(guessCount)</code>.</p>
+<h2>Final program</h2>
+<pre class="hljs"><code><span class="hljs-comment"># Import the random package</span>
+<span class="hljs-keyword">import</span> random
+
+<span class="hljs-comment"># Generate a random Magic number</span>
+magicNumber = random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+<span class="hljs-comment"># An integer to count the guesses</span>
+guessCount = <span class="hljs-number">0</span>
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    <span class="hljs-comment"># Player input</span>
+    word = input(<span class="hljs-string">"What is the magic number? "</span>)
+    <span class="hljs-comment"># Quit if the player types "quit"</span>
+    <span class="hljs-keyword">if</span> word == <span class="hljs-string">"quit"</span>:
+        <span class="hljs-keyword">break</span>
+
+    <span class="hljs-comment"># Int casting with exception handling</span>
+    <span class="hljs-keyword">try</span>:
+        playerNumber = int(word)
+    <span class="hljs-keyword">except</span> ValueError:
+        print(<span class="hljs-string">"Please type a number without decimals!"</span>)
+        <span class="hljs-keyword">continue</span>
+
+    <span class="hljs-comment"># Increase the number of guesses</span>
+    guessCount += <span class="hljs-number">1</span>    
+
+    <span class="hljs-comment"># Cases</span>
+    <span class="hljs-keyword">if</span> playerNumber == magicNumber:
+        print(<span class="hljs-string">"This is correct! You win!"</span>)
+        print(<span class="hljs-string">"You guessed the magic number in {} guesses."</span>.format(guessCount))
+        <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">elif</span> magicNumber &lt; playerNumber:
+        print(<span class="hljs-string">"The magic number is lower"</span>)
+    <span class="hljs-keyword">elif</span> magicNumber &gt; playerNumber:
+        print(<span class="hljs-string">"The magic number is higher"</span>)
+
+    <span class="hljs-comment"># Wrong number, continue </span>
+    print(<span class="hljs-string">"This is not the magic number. Try again!"</span>)
+
+</code></pre>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-7-functions/">next post</a>, I'll show you how to better organize your program using functions.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.16 in css mode. -->
+<html>
+  <head>
+    <title>jogo.py</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #000000;
+        background-color: #ffffff;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #b22222;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #0000ff;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #a020f0;
+      }
+      .py-builtins {
+        /* py-builtins-face */
+        color: #a020f0;
+      }
+      .py-pseudo-keyword {
+        /* py-pseudo-keyword-face */
+        color: #a020f0;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #bc8f8f;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #228b22;
+      }
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">#!/usr/bin/env python2.3
+# -*- coding: utf-8 -*-
+</span>
+
+<span class="keyword">import</span> os, sys
+<span class="keyword">import</span> getopt
+
+<span class="comment"># E importaremos o pygame tambem para esse exemplo
+</span><span class="keyword">import</span> pygame
+<span class="keyword">from</span> pygame.locals <span class="keyword">import</span> *
+
+images_dir = os.path.join( <span class="string">".."</span>, <span class="string">"imagens"</span> )
+
+
+<span class="keyword">class</span> <span class="type">Background</span>:
+    <span class="string">"""
+    Esta classe representa o ator "</span>Fundo<span class="string">" do jogo.
+    """</span>
+    image = <span class="py-pseudo-keyword">None</span>
+    
+    <span class="keyword">def</span> <span class="function-name">__init__</span>( <span class="py-pseudo-keyword">self</span> ):
+        screen = pygame.display.get_surface()
+        back   = pygame.Surface( screen.get_size() ).convert()
+        back.fill( ( 0, 0, 0 ) )
+        <span class="py-pseudo-keyword">self</span>.image = back
+    <span class="comment"># __init__()
+</span>
+
+
+    <span class="keyword">def</span> <span class="function-name">update</span>( <span class="py-pseudo-keyword">self</span>, dt ):
+        <span class="keyword">pass</span> <span class="comment"># Ainda n&#227;o faz nada
+</span>    <span class="comment"># update()
+</span>
+
+
+    <span class="keyword">def</span> <span class="function-name">draw</span>( <span class="py-pseudo-keyword">self</span>, screen ):
+        screen.blit( <span class="py-pseudo-keyword">self</span>.image, ( 0, 0 ) )
+    <span class="comment"># draw()
+# Background
+</span>
+
+
+
+<span class="keyword">class</span> <span class="type">Game</span>:
+    screen      = <span class="py-pseudo-keyword">None</span>
+    screen_size = <span class="py-pseudo-keyword">None</span>
+    run         = <span class="py-pseudo-keyword">True</span>
+    background  = <span class="py-pseudo-keyword">None</span>    
+    
+    <span class="keyword">def</span> <span class="function-name">__init__</span>( <span class="py-pseudo-keyword">self</span>, size, fullscreen ):
+        <span class="string">"""
+        Esta &#233; a fun&#231;&#227;o que inicializa o pygame, define a resolu&#231;&#227;o da tela,
+        caption, e disabilitamos o mouse dentro desta.
+        """</span>
+        actors = {}
+        pygame.init()
+        flags = DOUBLEBUF
+        <span class="keyword">if</span> fullscreen:
+            flags |= FULLSCREEN
+        <span class="py-pseudo-keyword">self</span>.screen       = pygame.display.set_mode( size, flags )
+        <span class="py-pseudo-keyword">self</span>.screen_size = <span class="py-pseudo-keyword">self</span>.screen.get_size()
+
+        pygame.mouse.set_visible( 0 )
+        pygame.display.set_caption( <span class="string">'T&#237;tulo da Janela'</span> )
+    <span class="comment"># init()
+</span>
+
+
+    <span class="keyword">def</span> <span class="function-name">handle_events</span>( <span class="py-pseudo-keyword">self</span> ):
+        <span class="string">"""
+        Trata o evento e toma a a&#231;&#227;o necess&#225;ria.
+        """</span>
+        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():
+            t = event.type
+            <span class="keyword">if</span> t <span class="keyword">in</span> ( KEYDOWN, KEYUP ):
+                k = event.key
+        
+            <span class="keyword">if</span> t == QUIT:
+                <span class="py-pseudo-keyword">self</span>.run = <span class="py-pseudo-keyword">False</span>
+
+            <span class="keyword">elif</span> t == KEYDOWN:
+                <span class="keyword">if</span>   k == K_ESCAPE:
+                    <span class="py-pseudo-keyword">self</span>.run = <span class="py-pseudo-keyword">False</span>
+    <span class="comment"># handle_events()
+</span>
+
+
+
+    <span class="keyword">def</span> <span class="function-name">actors_update</span>( <span class="py-pseudo-keyword">self</span>, dt ):        
+        <span class="py-pseudo-keyword">self</span>.background.update( dt )
+    <span class="comment"># actors_update()
+</span>
+
+
+    <span class="keyword">def</span> <span class="function-name">actors_draw</span>( <span class="py-pseudo-keyword">self</span> ):
+        <span class="py-pseudo-keyword">self</span>.background.draw( <span class="py-pseudo-keyword">self</span>.screen )
+    <span class="comment"># actors_draw()
+</span>
+
+    
+    <span class="keyword">def</span> <span class="function-name">loop</span>( <span class="py-pseudo-keyword">self</span> ):
+        <span class="string">"""
+        La&#231;o principal
+        """</span>
+        <span class="comment"># Criamos o fundo
+</span>        <span class="py-pseudo-keyword">self</span>.background = Background()
+
+        <span class="comment"># Inicializamos o relogio e o dt que vai limitar o valor de
+</span>        <span class="comment"># frames por segundo do jogo
+</span>        clock         = pygame.time.Clock()
+        dt            = 16
+
+
+        <span class="comment"># assim iniciamos o loop principal do programa
+</span>        <span class="keyword">while</span> <span class="py-pseudo-keyword">self</span>.run:
+            clock.tick( 1000 / dt )
+
+            <span class="comment"># Handle Input Events
+</span>            <span class="py-pseudo-keyword">self</span>.handle_events()
+
+            <span class="comment"># Atualiza Elementos
+</span>            <span class="py-pseudo-keyword">self</span>.actors_update( dt )
+
+            <span class="comment"># Desenhe para o back buffer
+</span>            <span class="py-pseudo-keyword">self</span>.actors_draw()
+            
+            <span class="comment"># ao fim do desenho temos que trocar o front buffer e o back buffer
+</span>            pygame.display.flip()
+
+            <span class="keyword">print</span> <span class="string">"FPS: %0.2f"</span> % clock.get_fps()
+        <span class="comment"># while self.run
+</span>    <span class="comment"># loop()
+# Game
+</span>
+
+<span class="keyword">def</span> <span class="function-name">usage</span>():
+    <span class="string">"""
+    Imprime informa&#231;&#245;es de uso deste programa.
+    """</span>
+    prog = sys.argv[ 0 ]
+    <span class="keyword">print</span> <span class="string">"Usage:"</span>
+    <span class="keyword">print</span> <span class="string">"\t%s [-f|--fullscreen] [-r &lt;XxY&gt;|--resolution=&lt;XxY&gt;]"</span> % prog
+    <span class="keyword">print</span>
+<span class="comment"># usage()
+</span>
+
+
+<span class="keyword">def</span> <span class="function-name">parse_opts</span>( argv ):
+    <span class="string">"""
+    Pega as informa&#231;&#245;es da linha de comando e retorna 
+    """</span>
+    <span class="comment"># Analise a linha de commando usando 'getopt'
+</span>    <span class="keyword">try:</span>
+        opts, args = getopt.gnu_getopt( argv[ 1 : ],
+                                        <span class="string">"hfr:"</span>,
+                                        [ <span class="string">"help"</span>,
+                                          <span class="string">"fullscreen"</span>,
+                                          <span class="string">"resolution="</span> ] )
+    <span class="keyword">except</span> getopt.GetoptError:
+        <span class="comment"># imprime informacao e sai
+</span>        usage()
+        sys.exit( 2 )
+
+    options = {
+        <span class="string">"fullscreen"</span>:  <span class="py-pseudo-keyword">False</span>,
+        <span class="string">"resolution"</span>: ( 640, 480 ),
+        }
+
+    <span class="keyword">for</span> o, a <span class="keyword">in</span> opts:
+        <span class="keyword">if</span> o <span class="keyword">in</span> ( <span class="string">"-f"</span>, <span class="string">"--fullscreen"</span> ):
+            options[ <span class="string">"fullscreen"</span> ] = <span class="py-pseudo-keyword">True</span>
+        <span class="keyword">elif</span> o <span class="keyword">in</span> ( <span class="string">"-h"</span>, <span class="string">"--help"</span> ):
+            usage()
+            sys.exit( 0 )
+        <span class="keyword">elif</span> o <span class="keyword">in</span> ( <span class="string">"-r"</span>, <span class="string">"--resolution"</span> ):
+            a = a.lower()
+            r = a.split( <span class="string">"x"</span> )
+            <span class="keyword">if</span> <span class="py-builtins">len</span>( r ) == 2:
+                options[ <span class="string">"resolution"</span> ] = r
+                <span class="keyword">continue</span>
+
+            r = a.split( <span class="string">","</span> )
+            <span class="keyword">if</span> <span class="py-builtins">len</span>( r ) == 2:
+                options[ <span class="string">"resolution"</span> ] = r
+                <span class="keyword">continue</span>
+
+            r = a.split( <span class="string">":"</span> )
+            <span class="keyword">if</span> <span class="py-builtins">len</span>( r ) == 2:
+                options[ <span class="string">"resolution"</span> ] = r
+                <span class="keyword">continue</span>
+    <span class="comment"># for o, a in opts
+</span>    r = options[ <span class="string">"resolution"</span> ]
+    options[ <span class="string">"resolution"</span> ] = [ <span class="py-builtins">int</span>( r[ 0 ] ), <span class="py-builtins">int</span>( r[ 1 ] ) ]
+    <span class="keyword">return</span> options
+<span class="comment"># parse_opts()
+</span>
+
+
+<span class="keyword">def</span> <span class="function-name">main</span>( argv ):
+    <span class="comment">#primeiro vamos verificar que estamos no diretorio certo para conseguir
+</span>    <span class="comment">#encontrar as imagens e outros recursos, e inicializar o pygame com as
+</span>    <span class="comment">#opcoes passadas pela linha de comando
+</span>    fullpath = os.path.abspath( argv[ 0 ] )
+    <span class="py-builtins">dir</span> = os.path.dirname( fullpath )
+    os.chdir( <span class="py-builtins">dir</span> )
+
+    options = parse_opts( argv )
+    game = Game( options[ <span class="string">"resolution"</span> ], options[ <span class="string">"fullscreen"</span> ] )
+    game.loop()
+<span class="comment"># main()
+</span>        
+<span class="comment"># este comando fala para o python chamar o main se estao executando o script
+</span><span class="keyword">if</span> <span class="py-builtins">__name__</span> == <span class="string">'__main__'</span>:
+    main( sys.argv )
+</pre>
+  </body>
+</html>

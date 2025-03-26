@@ -1,0 +1,3 @@
+Sitemap: http://psychwikipart2.wikidot.com/sitemap.xml
+User-agent: voltron
+Disallow: /

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-17-2d-arrays" />
+<meta name="description" content="2D arrays with the Python language.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (17): 2D arrays</span></h2>
+	</div>
+
+<p>We still have no background in our game: I add one in this post using 2D arrays.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>2D arrays</h2>
+<p>We have already seen lists in Python, for instance, the creation of a list of three numbers:</p>
+<pre class="hljs"><code>list = [ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span> ]</code></pre>
+<p>If you remember well, an item of a list can be anything, including a list:</p>
+<pre class="hljs"><code>array2d = [ [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>] ]</code></pre>
+<p>Using this syntax, I created a 2D array with two rows of three items:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>You can access each row of the array with one pair of brackets:</p>
+<pre class="hljs"><code>print(array2d[<span class="hljs-number">0</span>]) <span class="hljs-comment"># [1,2,3]</span>
+print(array2d[<span class="hljs-number">1</span>]) <span class="hljs-comment"># [4,5,6]</span></code></pre>
+<p>You can use a second pair of brackets to access of the numbers of the 2D array:</p>
+<pre class="hljs"><code>print(array2d[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]) <span class="hljs-comment"># 2</span>
+print(array2d[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]) <span class="hljs-comment"># 5</span></code></pre>
+<p>More generally, you can access (or change) any item with the syntax <code>array2d[y][x]</code>, where <code>x</code> and <code>y</code> are the coordinates in the array.</p>
+<p>Resizing a 2D array is not a simple task; most of the time, we don't need to change the size of 2D arrays. For dynamic 2D arrays, we need to create or use a dedicated Python library, but this is another story.</p>
+<p>You can iterate through 2D arrays using a double <code>for</code>statement:</p>
+<pre class="hljs"><code><span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):
+        print(array2d[y][x],<span class="hljs-string">" "</span>,end=<span class="hljs-string">''</span>)
+    print()</code></pre>
+<p>The <code>end=''</code> argument in the <code>print()</code> call means that we don't want the printing of a line return. It leads to the following result:</p>
+<pre class="hljs"><code> <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  
+ <span class="hljs-number">4</span>  <span class="hljs-number">5</span>  <span class="hljs-number">6</span></code></pre>
+<h2>Add a background</h2>
+<p>Using a 2D array, I wish to add a background to our game:</p>
+<figure><img alt="Tank game with a background" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-17-2d-arrays/d455aa031b-1621709657/17_background-1024x671.png" width="613"></figure>
+<p>I also created a tileset using the sprites found here: <a href="https://zintoki.itch.io/ground-shaker">zintoki.itch.io/ground-shaker</a>, created by <a href="https://itch.io/profile/zintoki">zintoki</a>.</p>
+<figure><img alt="Ground tileset" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-17-2d-arrays/ba8d593cd4-1621709657/17_ground_tileset-1024x1024.png" width="501"></figure>
+<h2>Create the 2D array</h2>
+<p>In the constructor of the <code>GameState</code> class, I create a new attribute <code>ground</code> with the coordinates of tiles in the tileset. For instance, <code>Vector2(5,1)</code> are the coordinates of the green grass tile:</p>
+<pre class="hljs"><code>self.ground = [ 
+    [ Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>)],
+    [ Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">4</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>)],
+    [ Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>)],
+    [ Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">1</span>)],
+    [ Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">5</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">8</span>,<span class="hljs-number">5</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>)],
+    [ Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">1</span>)],
+    [ Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>)],
+    [ Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">4</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">8</span>,<span class="hljs-number">4</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>)],
+    [ Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">4</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>)],
+    [ Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>), Vector2(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>)]
+]</code></pre>
+<p>Creating such a 2D array directly with Python code is not handy; I'll show later how to create them with software like Tiled.</p>
+<h2>Render the tiles in the 2D array</h2>
+<p>I first create a new method <code>renderGround()</code> in the <code>UserInterface</code> class dedicated to the rendering of a single tile. It works as before (like in the <code>renderUnit()</code> method):</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">renderGround</span><span class="hljs-params">(self,position,tile)</span>:</span>
+    <span class="hljs-comment"># Location on screen</span>
+    spritePoint = position.elementwise()*self.cellSize
+
+    <span class="hljs-comment"># Texture</span>
+    texturePoint = tile.elementwise()*self.cellSize
+    textureRect = Rect(int(texturePoint.x), int(texturePoint.y), int(self.cellSize.x),int(self.cellSize.y))
+    self.window.blit(self.groundTexture,spritePoint,textureRect)</code></pre>
+<p>In the <code>render()</code> method of the <code>UserInterface</code> class, I add the rendering of all tiles of the 2D array using a double <code>for</code>statement (before the rendering of the unit!):</p>
+<pre class="hljs"><code><span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(int(self.gameState.worldSize.y)):
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(int(self.gameState.worldSize.x)):
+        self.renderGround(Vector2(x,y),self.gameState.ground[y][x])```</code></pre>
+<h2>Python properties</h2>
+<p>In several locations in the program, there are expressions a little long. I want to show you here a feature of the Python language to reduce them a bit, and thus get a program easier to read.</p>
+<p>For example, the expression to get the integer value of the width of the world is the following one:</p>
+<pre class="hljs"><code>int(self.gameState.worldSize.x)</code></pre>
+<p>We can shorter it in the following way:</p>
+<pre class="hljs"><code>self.gameState.worldWidth</code></pre>
+<p>A first solution to get this result is to create a new attribute <code>worldWidth</code> in the <code>GameState</code> class. We can initialize it with the int value of the <code>x</code> member of the <code>worldSize</code>attribute. If the world's width never changes, everything is fine.</p>
+<p>However, this first solution is dangerous. After several months or years of improvements in our game, we could forget this trick, and forget to update <code>worldWidth</code> when <code>worldSize</code> changes (and vice-versa). It will lead to unexpected behavior and a difficult bug to solve.</p>
+<p>The Python language offers a second solution: the properties. In a class, you can create a method that works as an attribute:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GameState</span><span class="hljs-params">()</span>:</span>
+
+    ...
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">worldWidth</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> int(self.worldSize.x)
+
+    ...</code></pre>
+<p>The <code>worldWidth()</code> method returns the value of the <code>x</code> member of the <code>worldSize</code> attribute converted to an <code>int</code>.</p>
+<p>Pay attention to the line above: there is a <code>@property</code>. This kind of line is called an <em>annotation</em>. It tells that the following method is an "accessor" or a "getter". It should have no arguments except <code>self</code>, and must return a value. Then, we can use it as if it was an attribute (to get the value, to change it, it is another syntax).</p>
+<p>The advantage of this solution compared to the first one is that, if we update the <code>worldSize</code> attribute, then the <code>worldWidth</code> property (e.g., like a "fake attribute") is also updated.</p>
+<p>Using this syntax, I add two new properties <code>worldWidth</code> and <code>worldHeight</code> in the <code>GameState</code> class:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GameState</span><span class="hljs-params">()</span>:</span>
+
+    ...
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">worldWidth</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> int(self.worldSize.x)
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">worldHeight</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> int(self.worldSize.y)
+
+    ...</code></pre>
+<p>Similarly, I add two properties in the <code>UserInterface</code> class for the cell width and height:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserInterface</span> <span class="hljs-params">()</span>:</span>
+
+    ...
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cellWidth</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> int(self.cellSize.x)
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cellHeight</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> int(self.cellSize.y)
+
+    ...</code></pre>
+<p>These properties increase the readability in several locations in the program; for instance, the computation of the tile coordinates in the texture goes from:</p>
+<pre class="hljs"><code>textureRect = Rect(int(texturePoint.x), int(texturePoint.y), int(self.cellSize.x),int(self.cellSize.y))</code></pre>
+<p>to:</p>
+<pre class="hljs"><code>textureRect = Rect(int(texturePoint.x), int(texturePoint.y), self.cellWidth, self.cellHeight)</code></pre>
+<h2>Final program</h2>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-17-2d-arrays/discover_python_and_patterns_17_2d_arrays.zip">Download code and assets</a></p>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-18-layers/">next post</a>, I'll show how to create layers in a more efficient way.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

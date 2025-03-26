@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-9-pygame" />
+<meta name="description" content="Introduction to Pygame.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (9): Pygame</span></h2>
+	</div>
+
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-8-game-loop-pattern/">previous posts</a>, I introduced enough of Python and patterns to start creating games with graphics using the Pygame library.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em>   </p>
+<h2>Install Pygame</h2>
+<p><a href="https://www.pygame.org">Pygame</a> is a popular library for creating 2D games. Like the random library we used before, the import statement allows us to get access to all its features. However, the Anaconda environment we installed in the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-1/">first post</a> does not embed Pygame, and we have to install it.</p>
+<p>To install a new python package, we need an Anaconda prompt. In Windows, type "Anaconda" in the start menu, and click "Anaconda Prompt". Then type the following command:</p>
+<pre class="hljs"><code>pip install pygame</code></pre>
+<p>You will get something similar to:</p>
+<figure><img alt="Install Pygame" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-9-pygame/b1bb909ed7-1621709003/09_install_pygame.png" width="90%"></figure>
+<h2>First Pygame program</h2>
+<p>Here is a basic Pygame program that displays a window, and exits if we close it:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> pygame
+
+pygame.init()
+window = pygame.display.set_mode((<span class="hljs-number">640</span>,<span class="hljs-number">480</span>))
+
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    event = pygame.event.poll()
+    <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+        <span class="hljs-keyword">break</span>
+    pygame.display.update()      
+
+pygame.quit()</code></pre>
+<p>The first line imports the Pygame library. It gives access to all functions in the library. We can call all these functions preceding their name with <code>pygame.</code>. For example, line 3 calls the <code>init()</code> function that initializes the Pygame library. As for the <code>random</code> library, we could also use the following syntax:</p>
+<pre class="hljs"><code><span class="hljs-keyword">from</span> pygame <span class="hljs-keyword">import</span> init
+init()</code></pre>
+<p>With the <code>from ... import</code> syntax, we don't need to type <code>pygame.</code> before the name of a function. However, we must be sure that <code>init()</code> is the only function with that name. In most cases, I prefer the long syntax, because there is no doubt about which function I call.</p>
+<p>Line 4 creates a window with a size of 640 per 480 pixels. This size does not include the window decorations. It is the size of the area where we draw our game.</p>
+<p>Lines 6-10 is the main loop. Since we saw the Game Loop pattern in the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-8-game-loop-pattern/">previous post</a>, this loop should look familiar. Lines 7-9 is the processing of inputs, and line 10 is the rendering. To handle inputs, Pygame stores all events (mouse moves, keyboard presses, etc.) in a queue. Then, we can read this queue using the function <code>pygame.event.poll()</code>. Note that each time we get an event, Pygame removes it from the queue (which is the normal behavior of a queue, but it is another story!).</p>
+<p>The only event we process in this example is the one that asks for the end of the game. We read the <code>type</code> attribute of the event returned by <code>pygame.event.poll()</code>. These types are always values like <code>pygame.XXX</code>(or only XXX if you did a <code>from pygame import XXX</code>). I'll show several examples throughout this series.</p>
+<p>Line 12 destroys the window.</p>
+<h2>The for statement</h2>
+<p>With the previous program, we can only process one event per update, which can lead to latencies. We can also ask for all the currently available events using the function <code>pygame.event.get()</code>:</p>
+<pre class="hljs"><code>running = <span class="hljs-literal">True</span>
+<span class="hljs-keyword">while</span> running:
+
+    eventList = pygame.event.get()
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> eventList:
+        <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+            running = <span class="hljs-literal">False</span>
+
+    pygame.display.update()    
+
+pygame.quit()</code></pre>
+<p>In the program above, we store the list of events into the variable <code>eventList</code>. Note that <code>pygame.event.get()</code> removes all current events, so next time we'll get new ones.</p>
+<p>To read all the elements of a list, we can use the <code>for</code> statement. The syntax is very simple:</p>
+<pre class="hljs"><code><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> list:
+    ...block...</code></pre>
+<p><code>item</code> is the name of the variable that contains one element in <code>list</code> (a copy or a reference). The name of this variable is free, as long as it is not already used. For instance, if we run the following program:</p>
+<pre class="hljs"><code>list = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> list:
+    print(item)</code></pre>
+<p>It displays:</p>
+<pre class="hljs"><code><span class="hljs-number">1</span>
+<span class="hljs-number">2</span>
+<span class="hljs-number">3</span></code></pre>
+<p>For each value in the list, Python repeats the <code>for</code> block, where <code>item</code> has a different value. Note that <code>item</code> does not contain a value of the list. You can change the value of <code>item</code>, but it does not change the values in the list.</p>
+<p>In the case of the Pygame event list, for each event in the list, if the event type is <code>pygame.QUIT</code>, we set the variable <code>running</code> to <code>False</code> to stop the main loop:</p>
+<pre><code>    for event in eventList:
+        if event.type == pygame.QUIT:
+            running = False</code></pre>
+<p>Note that we can't use the <code>break</code> statement to stop the main loop in the <code>for</code> loop. If we use the <code>break</code> statement in the <code>for</code> loop, it stops the <code>for</code> loop, but not the main loop that includes it. So, I used a variable as I did before in the "guess the number" game.</p>
+<h2>Drawing</h2>
+<p>Pygame offers many functions for drawing, for instance, you can draw rectangles using the <code>pygame.draw.rect()</code> function:</p>
+<pre class="hljs"><code>pygrame.draw.rect(surface, color, rect)</code></pre>
+<p>The arguments are:</p>
+<ul>
+<li><code>surface</code>: a Pygame object where we can draw. The window we created in the previous program is such a surface.</li>
+<li><code>color</code>: a tuple with three integer values: amount of red, green, and blue. Values are between 0 (no color) and 255 (maximum). For instance <code>(255,0,0)</code> is the red color, and <code>(0,255,255)</code> is the purple color.</li>
+<li><code>rect</code>: a tuple with four integer values: the top left x,y coordinates, the width, and the height of the rectangle. For instance <code>(10,20,200,100)</code> is a rectangle with x=10, y=20, width=200 and height=100.</li>
+</ul>
+<p>We can use this function in our program to draw a blue rectangle in the center of the window. The function call is between the processing of inputs (the for events loop) and the update of the display:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> pygame
+
+pygame.init()
+window = pygame.display.set_mode((<span class="hljs-number">640</span>,<span class="hljs-number">480</span>))
+
+running = <span class="hljs-literal">True</span>
+<span class="hljs-keyword">while</span> running:
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+        <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+            running = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">break</span>
+
+    pygame.draw.rect(window,(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>),(<span class="hljs-number">120</span>,<span class="hljs-number">120</span>,<span class="hljs-number">400</span>,<span class="hljs-number">240</span>))
+    pygame.display.update()    
+
+pygame.quit()</code></pre>
+<p>It leads to the following result:</p>
+<figure><img alt="Draw a rectangle with Pygame" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-9-pygame/a54ec2fc89-1621709003/09_rectangle.png" width="569"></figure>
+<p>Pygame documentation describes similar functions <a href="https://www.pygame.org/docs/ref/draw.html">here</a>. You should try some of these, for instance, draw a line or a circle, it will help you better understand the mechanics.</p>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-10-keyboard/">next post</a>, I'll show you how to add user interaction with the keyboard.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

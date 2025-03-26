@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer" />
+<meta name="description" content="Create a stand alone executable and an installer for Python programs.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (28): Installer</span></h2>
+	</div>
+
+<p>We got a complete game, but we need a specific Python environment to run it. In this post, I show how to create a standalone executable and an installer!</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em></p>
+<h2>Standalone executable</h2>
+<p>We can embed the Python environment and our source code in a single executable file, thanks to PyInstaller. I show here for Windows, but it works the same for Linux and macOS.</p>
+<h3>Python environment</h3>
+<p>First of all, it is better to create a specific python environment for our game. Even if PyInstaller claims to only embed the required packages in the executable, in my experiments, it was never the case. With my base environment (with a lot of packages), the executable was 200 MB, and with a specific one for our tank game, 8 MB!</p>
+<p>Launch an Anaconda prompt (If you didn't install Anaconda, please see the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-1/">first post</a> on how to install it). Assuming that the current directory is <code>C:\dev</code>, you will see the following prompt:</p>
+<pre><code>(base) C:\dev&gt;</code></pre>
+<p>The first item <code>(base)</code> is the name of the current environment. The default one is <code>base</code>. The second item is the current directory, and the last symbol <code>&gt;</code> is the command prompt.</p>
+<p>If you type the following command, you will see all the packages in the <code>base</code> environment:</p>
+<pre><code>(base) C:\dev&gt;conda list</code></pre>
+<p>In the default Anaconda installation, there is a lot of them!</p>
+<h3>Create a new environment:</h3>
+<p>Type the following to create a new environment named <code>tankgame</code> with Python 3.6.10:</p>
+<pre><code>(base) C:\dev&gt;conda create --name tankgame python=3.6.10</code></pre>
+<p>Note that I specify the exact version of Python. You should do the same for all packages. Packages are regularly updated, and sometimes they are no more compatible with the other packages you need. In most cases, you solve it with newer versions of other packages. In some cases, other package updates are not ready yet, and it is impossible to build a working combination.</p>
+<p>Anyway, don't try to use newer versions if you don't need it. Select a specific version for each package and keep them until the day an update is required. It will save you from unnecessary issues!!</p>
+<p>For instance, let's imagine that your game needs an urgent patch. You patch your code and run the packaging procedure. And, bad luck, one of the packages is updated and is no more compatible with the others. You're good for an update of all the other packages, and maybe your code because some features are deprecated. And trust me, you don't need that when your users wait for a patch!!</p>
+<h3>Activate the new environment</h3>
+<p>We can activate the <code>tankgame</code> environment with the following command:</p>
+<pre><code>(base) C:\dev&gt; conda activate tankgame</code></pre>
+<p>The prompt becomes:</p>
+<pre><code>(tankgame) C:\dev&gt;</code></pre>
+<p>If you type the following command, you will see the current packages in this environment:</p>
+<pre><code>(tankgame) C:\dev&gt;conda list</code></pre>
+<p>In my case, I got the following:</p>
+<pre><code># packages in environment at C:\dev\Anaconda3\envs\tankgame:
+#
+# Name                    Version                   Build  Channel
+certifi                   2020.4.5.1               py36_0
+pip                       20.0.2                   py36_3
+python                    3.6.10               h9f7ef89_2
+setuptools                46.2.0                   py36_0
+sqlite                    3.31.1               h2a8f88b_1
+vc                        14.1                 h0510ff6_4
+vs2015_runtime            14.16.27012          hf0eaf9b_1
+wheel                     0.34.2                   py36_0
+wincertstore              0.2              py36h7fe50ca_0
+zlib                      1.2.11               h62dcd97_4</code></pre>
+<p>As you can see, there are far fewer packages than in the base one.</p>
+<p>You should be paranoid about package versions. When you select a specific version for Python, Anaconda should always choose the same dependencies or any fully compatible combination. But I won't bet on it. To be safe, you should save this output in some safe place, just in case.</p>
+<p>If you have any issue in the following sections, come back here and correct versions using this command:</p>
+<pre><code>(tankgame) C:\dev&gt;conda install pip==20.0.2</code></pre>
+<p>The argument <code>pip==20.0.2</code> means that we want to install or update the <code>pip</code> package to version <code>20.0.2</code>.</p>
+<h3>Install packages</h3>
+<p>We can install our game dependencies using the following command:</p>
+<pre><code>(tankgame) C:\dev&gt; pip install pygame==1.9.6 tmx==1.10 six==1.14.0</code></pre>
+<p>Note that I specify the exact version for each package for the same reasons as before.</p>
+<p>Pygame is the library for graphics, tmx is the one for reading Tiled files, and six is a dependency of tmx (I guess that the authors forgot to add it in their dependencies list, so we have to add it manually).</p>
+<p>For those who ask why I use <code>pip</code> rather than <code>conda</code> to install these packages, I don't have a short answer! I'll need more than a post to explain it, and it is not the topic of this one. In general, try to install packages with <code>pip</code>, and if it does not work, use <code>conda</code>.</p>
+<p>We also need to install Pyinstaller to create the executable:</p>
+<pre><code>(tankgame) C:\dev&gt; pip install pyinstaller==3.6 setuptools==44.0.0</code></pre>
+<p>I downgrade setuptools to 44.0.0 because Pyinstaller 3.6 is not compatible with higher versions of setuptools. Welcome to the wonderful world of packages version management :)</p>
+<h3>Build the executable</h3>
+<p>First, go to the folder that contains the Python code and the assets. In this example, it is <code>C:\dev\TankGame</code>:</p>
+<pre><code>(tankgame) C:\dev&gt;cd C:\dev\TankGame</code></pre>
+<p>The prompt becomes:</p>
+<pre><code>(tankgame) C:\dev\TankGame&gt;</code></pre>
+<p>Run the following command to create the executable:</p>
+<pre><code>(tankgame) C:\dev\TankGame&gt; pyinstaller -F --icon=tankgame.ico tankgame.py</code></pre>
+<p>The <code>-F</code> argument means that we want a single executable that embeds everything. Without this argument, there is a lot of files, which are not easy to manage. The first drawback of a single executable is that you must update all the content for each patch. It is not a problem for our tank game and its 8 MB. For bigger cases, it can lead to large patches. The second drawback is that it is more difficult for your player to correct or mod your game.</p>
+<p>The <code>--icon=tankgame.ico</code> defines an icon for the executable (and the one shown in the Windows menu and desktop). It is not mandatory. You can find many ICO files creators and converters on the Internet.</p>
+<p>Pyinstaller creates a <code>tankgame.spec</code> that contains all the options you selected, to repeat the building with precisely the same setup. It also makes a <code>build</code> directory with temporary data and a <code>dist</code> directory that contains the executable.</p>
+<p>Copy or move the executable in the directory that contains the assets, double-click on it, and it should work!</p>
+<h2>Create the installer</h2>
+<p>I selected <code>Inno Setup</code> to create the Windows installer. It is free software you can use to donate or sell your game. You can download it here: <a href="https://jrsoftware.org/isdl.php#stable">https://jrsoftware.org/isdl.php#stable</a>.</p>
+<h3>Create the script file</h3>
+<p>Create a new script file using the Script Wizard (you can also open it with the <strong>File / New</strong> menu):</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/36c444f3c3-1621710974/28_inno_wizard_0.png" width="494"></figure>
+<p>The wizard starts, click <strong>Next</strong>:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/dc5741fa72-1621710974/28_inno_wizard_1.png" width="494"></figure>
+<p>Enter your application name, version, publisher, and website:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/ee390e2139-1621710974/28_inno_wizard_2.png" width="499"></figure>
+<p>Change the installation folder if you want:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/4842e0d16c-1621710974/28_inno_wizard_3.png" width="494"></figure>
+<p>Select the game executable, and add the assets:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/5b1ddb1964-1621710974/28_inno_wizard_4.png" width="495"></figure>
+<p>Choose the shortcuts to create:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/d8feacb3bb-1621710975/28_inno_wizard_5.png" width="494"></figure>
+<p>Select at least a license file:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/542e2c3187-1621710975/28_inno_wizard_6.png" width="488"></figure>
+<p>Always choose a license to protect your IP. If you don't plan to make money with your game, choose the MIT or BSD license.</p>
+<p>Select install mode:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/ed99ab32a1-1621710975/28_inno_wizard_7.png" width="482"></figure>
+<p>Select the languages:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/4b8f076696-1621710975/28_inno_wizard_8.png" width="479"></figure>
+<p>In this step, you can choose the folder and the name of the installer. You can also choose an icon and a password for the installer (NB: not for the game). All these parameters are optional:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/7314884cb4-1621710975/28_inno_wizard_9.png" width="478"></figure>
+<p>Preprocessor: leave the default values:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/ec8fda8bc4-1621710975/28_inno_wizard_10.png" width="479"></figure>
+<p>Click <strong>Finish</strong>:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/ef33fc4b92-1621710975/28_inno_wizard_11.png" width="484"></figure>
+<h3>Test the compiler script</h3>
+<p>Once we finish the wizard, the script appears in the main Inno Setup window. You should save it so that you can rebuild the installer later.</p>
+<p>Click on the <strong>Run</strong> icon:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/a0808c69f7-1621710975/28_inno_run.png" width="250"></figure>
+<p>It compiles and runs the installer. Follow the installer, and check that the game is well installed. Run the game, and hopefully, everything is fine. Otherwise, you have to correct the script.</p>
+<p>Maybe you forgot an asset, in which case you should fix the [Files] section of the script. Later, if there are new assets, you can add a line in this section. Copy and paste one existing line and change the file name.</p>
+<p>If you need to test a new installer, you must first uninstall the current game. You can run the installer in an "uninstall" mode by clicking the <strong>Target Uninstall</strong> icon:</p>
+<figure><img alt="Inno Setup Wizard Tank Game" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/turn-a-python-pygame-program-to-a-standalone-executable-and-create-an-installer/5196aa5e50-1621710975/28_inno_uninstall.png" width="250"></figure>
+<p>Click on the <strong>Run</strong> icon, as before, follow the installer to delete the game.</p>
+<p>Don't forget to switch back to "install" mode by clicking the <strong>Target Setup</strong> icon.</p>
+<h3>Get the installer</h3>
+<p>Click on the <strong>Build / Open Output Folder</strong> to open the directory that contains the installer.</p>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-29-software-architecture">next post</a>, I will conclude this series.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

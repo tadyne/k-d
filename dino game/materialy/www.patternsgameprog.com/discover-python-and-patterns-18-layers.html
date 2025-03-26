@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-18-layers" />
+<meta name="description" content="Render 2D games with layers using Pygame.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (18): Layers</span></h2>
+	</div>
+
+<p>We got a background now, but we can get a better one with layers! Now that we saw the class inheritance, I can show you how to create and add new layers of different kinds easily.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>Layers</h2>
+<p>I wish to get the following visual result, where I add walls on top of the background:</p>
+<figure><img alt="Tank game with 3 layers: background, walls and units" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-18-layers/a7eb8fcf78-1621709658/18_objective-1024x671.png" width="512"></figure>
+<p>I use three layers:</p>
+<figure><img alt="Tank game with three layers: background, walls and units" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-18-layers/6b2be20a63-1621709658/18_layers.png" width="512"></figure>
+<p>We could get such a result with a copy and paste of the code that renders the background. As usual, I prefer to show you how to do that in a more compact and extensible way.</p>
+<h2>Layer class hierarchy</h2>
+<p>I propose to create three classes:</p>
+<figure><img alt="Layer class hierarchy" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-18-layers/4f16f6c9b9-1621709658/18_layers_hierarchy-1024x491.png" width="557"></figure>
+<p>The <code>Layer</code> class is the base class that contains common attributes and functionalities:</p>
+<ul>
+<li>A <code>ui</code> reference to the <code>UserInterface</code> to access data like the size of cells;</li>
+<li>A <code>texture</code> Pygame surface that contains the image tileset;</li>
+<li>A <code>renderTile()</code> method that can draw a tile from the texture anywhere on a surface;</li>
+<li>A <code>render()</code> method that we can call to render the layer in a surface. Child classes must implement this method.</li>
+</ul>
+<p>The <code>ArrayLayer</code> child class renders layers based on a 2D array, like the background we added in the previous post. It contains the following members:</p>
+<ul>
+<li>A <code>gameState</code> reference to a <code>GameState</code> to access data like the size of the world. Note that it is not in the base class because we could create layers that need no access to a game state;</li>
+<li>A <code>array</code> reference to a 2D array of Pygame Vector2, like the one we created in the <code>GameState</code> class for the background;</li>
+<li>A <code>render()</code> method that renders the layer using the 2D array.</li>
+</ul>
+<p>The <code>UnitsLayer</code> child class is similar to the <code>ArrayLayer</code> class, except that it references a list of instances of the <code>Unit</code> class.</p>
+<h2>The Layer class</h2>
+<p>I propose the following implementation for the <code>Layer</code> class:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Layer</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,ui,imageFile)</span>:</span>
+        self.ui = ui
+        self.texture = pygame.image.load(imageFile)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">renderTile</span><span class="hljs-params">(self,surface,position,tile)</span>:</span>
+        <span class="hljs-comment"># Location on screen</span>
+        spritePoint = position.elementwise()*self.ui.cellSize
+
+        <span class="hljs-comment"># Texture</span>
+        texturePoint = tile.elementwise()*self.ui.cellSize
+        textureRect = Rect(int(texturePoint.x), int(texturePoint.y), self.ui.cellWidth, self.ui.cellHeight)
+
+        <span class="hljs-comment"># Draw</span>
+        surface.blit(self.texture,spritePoint,textureRect)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self,surface)</span>:</span>
+        <span class="hljs-keyword">raise</span> NotImplementedError()</code></pre>
+<p>The constructor (e.g. the <code>__init__()</code> method) creates the two attributes. We load an image file into the <code>texture</code> attribute: when using this constructor, we only need to give the name of the image file.</p>
+<p>The <code>renderTile()</code> method is like we did many times in previous posts to render a tile from a tileset. This time, it will be the only location in the program where you see such a code!</p>
+<p>The <code>render()</code> method raises an exception: child classes must implement it.</p>
+<h2>The ArrayLayer class</h2>
+<p>This class is easy to implement:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArrayLayer</span><span class="hljs-params">(Layer)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,ui,imageFile,gameState,array)</span>:</span>
+        super().__init__(ui,imageFile)
+        self.gameState = gameState
+        self.array = array
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self,surface)</span>:</span>
+        <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(self.gameState.worldHeight):
+            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(self.gameState.worldWidth):
+                tile = self.array[y][x]
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> tile <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+                    self.renderTile(surface,Vector2(x,y),tile)</code></pre>
+<p>The constructor expects four arguments: the two arguments from the base class constructor (<code>ui</code> and <code>imageFile</code>) and the two arguments for the specific attributes of this class (<code>gameState</code> and <code>array</code>).</p>
+<p>Note the first line of the constructor:</p>
+<pre class="hljs"><code>super().__init__(ui,imageFile)</code></pre>
+<p>It is the syntax to call a method from the base class (or "super" class). You can do the same for any other base method, for instance, if you want to call the <code>render()</code> method of the base class:</p>
+<pre class="hljs"><code>super().render(surface)</code></pre>
+<p>The <code>render()</code> method is similar to the block in the previous <code>render()</code> method of the <code>UserInterface</code> class. The main differences are:</p>
+<ul>
+<li>It is no more limited to the <code>ground</code> 2D array of the game state, now layer of this type can render any 2D array;</li>
+<li>It handles empty cells in the array: if there is a <code>None</code> value, which means "nothing" or "empty" in Python, then nothing is rendered.</li>
+</ul>
+<h2>The UnitsLayer class</h2>
+<p>The implementation is this class is almost the as <code>ArrayLayer</code>, except that we are working with a list of <code>Unit</code> instances instead of a 2D array of <code>Vector2</code>:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UnitsLayer</span><span class="hljs-params">(Layer)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,ui,imageFile,gameState,units)</span>:</span>
+        super().__init__(ui,imageFile)
+        self.gameState = gameState
+        self.units = units
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self,surface)</span>:</span>
+        <span class="hljs-keyword">for</span> unit <span class="hljs-keyword">in</span> self.units:
+            self.renderTile(surface,unit.position,unit.tile)
+            self.renderTile(surface,unit.position,Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>))</code></pre>
+<p>Note that we call the <code>renderTile()</code> method twice: the first time for the unit base and the second time for the weapon.</p>
+<h2>The GameState class</h2>
+<p>In the <code>GameState</code> class, I only add a new 2D array for the walls:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+    self.worldSize = Vector2(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>)
+    self.ground = ...
+    self.units = ...
+    self.walls = [
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)],
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>],
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">3</span>), <span class="hljs-literal">None</span>],
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>), <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>],
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>],
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">3</span>), <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>],
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>],
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>), <span class="hljs-literal">None</span>],
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>), <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>],
+        [ <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)]
+    ]       </code></pre>
+<p>The improvement made with the <code>Layer</code> class hierarchy has no impact on the <code>GameState</code> class. We can improve this class and the initialization of the arrays loading levels from a file: I'll show that in the next posts.</p>
+<h2>The UserInterface class</h2>
+<p>In the constructor of the <code>UserInterface</code> class, we can add a list of layers:</p>
+<pre class="hljs"><code>self.layers = [
+    ArrayLayer(self,<span class="hljs-string">"ground.png"</span>,self.gameState,self.gameState.ground),
+    ArrayLayer(self,<span class="hljs-string">"walls.png"</span>,self.gameState,self.gameState.walls),
+    UnitsLayer(self,<span class="hljs-string">"units.png"</span>,self.gameState,self.gameState.units)
+]</code></pre>
+<p>It is like we did for the <code>units</code> in the <code>GameState</code> class: we can create a list of any size, and then the chosen class of each item defines its behavior.</p>
+<p>For the rendering, we no more need the <code>renderGround()</code> and <code>renderUnit()</code> methods. To render everything, we only need the following <code>render()</code> method:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self)</span>:</span>
+    self.window.fill((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+
+    <span class="hljs-keyword">for</span> layer <span class="hljs-keyword">in</span> self.layers:
+        layer.render(self.window)
+
+    pygame.display.update()    </code></pre>
+<p>Pay attention to the <code>for</code> statement: it is the same idea as with the update of units in the <code>GameState</code> class. For each layer in our layers list, we ask for rendering in the window's surface. At this point, we don't need to worry about the type of layers in the list. We could change them, create or delete new layer classes; these lines still work.</p>
+<h2>Final program</h2>
+<p>You can see the final code and try it here:</p>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-18-layers/discover_python_and_patterns_18_layers.zip">Download code and assets</a></p>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-19-mouse/">next post</a>, I propose to use the mouse to orient the weapon of our tank.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

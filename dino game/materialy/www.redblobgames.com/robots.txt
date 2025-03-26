@@ -1,0 +1,9 @@
+# Allow everything! Created this file to stop getting 404s in my logs ;(
+# the .bxml files are xhtml versions of the .html files, and for indexing I want the html not the xhtml
+User-agent: *
+Disallow: 
+Disallow: /*.bxml$
+Disallow: /grids/hexagons-v2/
+Disallow: /maps/mapgen2-2024/
+
+Sitemap: https://www.redblobgames.com/sitemap.xml

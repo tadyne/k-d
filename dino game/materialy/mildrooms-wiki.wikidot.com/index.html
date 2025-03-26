@@ -1,0 +1,1426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cn" lang="cn">
+
+<head>
+    <title>主页 - The Mildrooms</title>
+    
+    
+    
+    <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--javascript/init.combined.js"></script>
+    <script  type="text/javascript">
+        var URL_HOST = 'www.wikidot.com';
+        var URL_DOMAIN = 'wikidot.com';
+        var USE_SSL =  true ;
+        var URL_STATIC = 'http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327';
+        // global request information
+        
+        var WIKIREQUEST = {};
+        WIKIREQUEST.info = {};
+        
+        WIKIREQUEST.info.domain = "mildrooms-wiki.wikidot.com";
+        WIKIREQUEST.info.siteId = 4921983;
+        WIKIREQUEST.info.siteUnixName = "mildrooms-wiki";
+        WIKIREQUEST.info.categoryId = 42804205;
+        WIKIREQUEST.info.themeId = 7820656;
+        WIKIREQUEST.info.requestPageName = "start";
+        OZONE.request.timestamp = 1743018016;
+        OZONE.request.date = new Date();
+        WIKIREQUEST.info.lang = 'cn';
+                WIKIREQUEST.info.pageUnixName = "start";
+        WIKIREQUEST.info.pageId = 1449861513;
+                        WIKIREQUEST.info.lang = "cn";
+        OZONE.lang = "cn";
+        var isUAMobile = !!/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    </script>
+    
+    
+
+
+    
+        <script  type="text/javascript">
+    
+        require.config({
+            baseUrl: URL_STATIC + '/common--javascript',
+            paths: {
+                'jquery.ui': 'jquery-ui.min',
+                'jquery.form': 'jquery.form'
+            }
+        });
+    
+    </script>
+    
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+                            <meta name="description" content="温和与适宜 - 基于 Wikidot.com"/>
+                                <meta name="og:locale" content="zh-cn"/>
+                                <meta name="theme-color" content="#ff6b61"/>
+                                <meta name="og:image" content="http://backrooms-wiki.wikidot.com/local--files/component:theme/logo.svg"/>
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0, maxium-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
+                            
+    
+    
+    
+    
+    <meta http-equiv="content-language" content="cn"/>
+    <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--javascript/WIKIDOT.combined.js"></script>
+        
+    
+    <style type="text/css" id="internal-style">
+        
+        /* modules */
+        
+                
+        /* theme */
+                    @import url(http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--theme/base/css/style.css);
+                    @import url(http://mildrooms-wiki.wdfiles.com/local--theme/ewff/style.css);
+            </style>
+    
+        
+        
+        
+    <link rel="shortcut icon" href="/local--favicon/favicon.gif"/>
+    <link rel="icon" type="image/gif" href="/local--favicon/favicon.gif"/>
+    
+            <link rel="apple-touch-icon" href="/local--iosicon/iosicon_57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/local--iosicon/iosicon_72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/local--iosicon/iosicon.png" />    
+        
+            <meta name="msapplication-TileImage" content="/local--wp8icon/wp8icon.png"/>
+                
+            <link rel="alternate" type="application/wiki" title="Edit this page" href="javascript:WIKIDOT.page.listeners.editClick()"/>
+    
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-18234656-1']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        _gaq.push(['old._setAccount', 'UA-68540-5']);
+        _gaq.push(['old._setDomainName', 'none']);
+        _gaq.push(['old._setAllowLinker', true]);
+        _gaq.push(['old._trackPageview']);
+
+            </script>
+    
+    <script type="text/javascript">
+        window.google_analytics_uacct = 'UA-18234656-1';
+        window.google_analytics_domain_name = 'none';
+    </script>
+    
+        <link rel="manifest" href="/onesignal/manifest.json" />
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" acync=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+          OneSignal.init({
+            appId: null,
+          });
+        });
+    </script>
+        
+<style>
+/*
+    Backrooms CN Main Page CSS
+    by hoah2333 &amp; Eltrac
+*/
+
+#page-title {
+    display: none;
+}
+
+/* 欢迎栏 */
+#page-content .bannerContainer {
+    display: grid;
+    grid-template-areas:
+        "welcome welcome welcome"
+        "discord faq join";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 3%;
+}
+#page-content .bannerContainer .welcome {
+    grid-area: welcome;
+    background-color: rgb(var(--gray-monochrome));
+    color: rgb(var(--white-monochrome));
+    font-style: italic;
+    padding: 1rem;
+}
+#page-content .bannerContainer .navigator {
+    display: flex;
+    background-color: rgb(var(--gray-monochrome));
+    border-radius: 0 0 1rem 1rem;
+    height: min-content;
+    margin: 0 0 4rem 0;
+    transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+#page-content .bannerContainer .navigator:is(:hover, :active) {
+    margin: 0 0 1rem 0;
+}
+#page-content .bannerContainer .navigator a {
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+    color: rgb(var(--white-monochrome));
+    font-size: 1.25rem;
+    transition: padding 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: bold;
+}
+#page-content .bannerContainer .navigator a:is(:hover, :active) {
+    text-decoration: none;
+    text-decoration-color: transparent;
+    padding: 2rem 0;
+}
+#page-content .bannerContainer .discord {
+    grid-area: discord;
+}
+#page-content .bannerContainer .faq {
+    grid-area: faq;
+}
+#page-content .bannerContainer .join {
+    grid-area: join;
+}
+@media (max-width: 767px) {
+    #page-content .bannerContainer .navigator a {
+        font-size: 1.1rem;
+    }
+    #page-content .bannerContainer .navigator a:is(:hover, :active) {
+        padding: 1.5rem 0;
+    }
+    #page-content .bannerContainer .navigator {
+        margin: 0 0 2rem 0
+    }
+    #page-content .bannerContainer .navigator:hover {
+        margin: 0;
+    }
+    #page-content .announceContainer .welcome {
+        font-size: 1.2rem;
+    }
+}
+
+/* 公告栏 */
+#page-content .announceContainer {
+    display: flex;
+    flex-wrap: wrap;
+    border: 4px solid rgb(var(--gray-monochrome));
+    align-content: space-between;
+}
+#page-content .announceContainer .welcome {
+    background-color: rgb(var(--gray-monochrome));
+    color: rgb(var(--white-monochrome));
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0 0.75rem;
+}
+#page-content .announceContainer :is(.announcement, .more) {
+    background-color: rgb(var(--pale-gray-monochrome));
+    width: 100%;
+    padding: 0.75rem;
+    border-top: 4px solid rgb(var(--gray-monochrome));
+}
+#page-content .announceContainer .more {
+    padding: 0;
+}
+#page-content .announceContainer .more :is(.collapsible-block-folded, .collapsible-block-unfolded .collapsible-block-unfolded-link) {
+    display: flex;
+}
+#page-content .announceContainer .more :is(.collapsible-block-folded[style*="block"], .collapsible-block-unfolded[style*="block"] .collapsible-block-unfolded-link) {
+    display: flex !important;
+}
+#page-content .announceContainer .more :is(.collapsible-block-folded, .collapsible-block-unfolded .collapsible-block-unfolded-link) a.collapsible-block-link {
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    background: rgba(var(--gray-monochrome), 0.2);
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+#page-content .announceContainer .more :is(.collapsible-block-folded, .collapsible-block-unfolded .collapsible-block-unfolded-link) a.collapsible-block-link:hover {
+    text-decoration: none;
+    text-decoration-color: transparent;
+    background: rgba(var(--gray-monochrome), 0.4);
+}
+#page-content .announceContainer .more .collapsible-block-unfolded .collapsible-block-unfolded-link a.collapsible-block-link {
+    border-bottom: 4px solid rgb(var(--gray-monochrome));
+}
+#page-content .announceContainer .more .collapsible-block-unfolded .collapsible-block-content {
+    background: rgb(var(--gray-monochrome));
+    color: rgb(var(--white-monochrome));
+    text-align: center;
+}
+#page-content .announceContainer .more .collapsible-block-unfolded .collapsible-block-content p,
+#page-content .recentPages .pageContainer p {
+    margin: 0;
+}
+#page-content .announceContainer .archive {
+    background: rgb(var(--gray-monochrome));
+    color: rgb(var(--white-monochrome));
+    text-align: right;
+    width: 100%;
+}
+#page-content .announceContainer .archive a {
+    padding: 0 1rem;
+    color: rgb(var(--white-monochrome));
+}
+
+/* 最近新增 */
+#page-content .recentPages {
+    display: grid;
+    grid-template-areas:
+        "translation original"
+        "featureLevelO featureTaleO"
+        "featureLevelT featureTaleT";
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 1rem;
+}
+#page-content .recentPages .pageContainer {
+    display: grid;
+    grid-template-areas: "title"
+        "page"
+        "recently";
+    grid-template-rows: 1.5rem minmax(auto, 11.81rem) 1.5rem;
+}
+#page-content .recentPages .translation {
+    grid-area: translation;
+}
+#page-content .recentPages .original {
+    grid-area: original;
+}
+#page-content .recentPages .featureLevelO {
+    grid-area: featureLevelO;
+}
+#page-content .recentPages .featureTaleO {
+    grid-area: featureTaleO;
+}
+#page-content .recentPages .featureLevelT {
+    grid-area: featureLevelT;
+}
+#page-content .recentPages .featureTaleT {
+    grid-area: featureTaleT;
+}
+#page-content .recentPages .featurePrize {
+    grid-area: featurePrize;
+    grid-template-rows: 1.5rem minmax(auto, 7.68rem) 1.5rem;
+}
+#page-content .recentPages .pageContainer .title {
+    grid-area: title;
+    background: rgb(var(--gray-monochrome));
+    color: rgb(var(--white-monochrome));
+    font-weight: bold;
+    padding: 0 1rem;
+}
+#page-content .recentPages .pageContainer .page {
+    grid-area: page;
+    border: solid rgb(var(--gray-monochrome));
+    border-width: 0 3px 0 4px;
+    padding: 0.5em calc(1rem - 4px);
+    max-height: 12rem;
+    background-color: rgb(var(--pale-gray-monochrome));
+    overflow-y: hidden;
+}
+#page-content .recentPages .pageContainer .page .list-pages-box p {
+    /* max-height: 12rem; */
+    overflow-y: hidden;
+}
+#page-content .recentPages .pageContainer .recently {
+    grid-area: recently;
+    background: rgb(var(--gray-monochrome));
+    text-align: right;
+    padding: 0 1rem;
+}
+#page-content .recentPages .pageContainer .recently a {
+    color: rgb(var(--white-monochrome));
+}
+#page-content .recentPages :is(.featureLevelO, .featureTaleO, .featureLevelT, .featureTaleT, .featurePrize) .page p {
+    font-size: 0.8rem;
+}
+#page-content .recentPages :is(.featureLevelO, .featureTaleO, .featureLevelT, .featureTaleT, .featurePrize) .page p:nth-of-type(1) {
+    font-size: 1rem;
+}
+#page-content .recentPages :is(.featureLevelO, .featureTaleO, .featureLevelT, .featureTaleT, .featurePrize) .page p:nth-of-type(2) {
+    font-size: 0.5rem;
+}
+@media (max-width: 550px) {
+    #page-content .recentPages {
+        grid-template-areas: "translation" "original"
+            "featureLevelO" "featureTaleO"
+            "featureLevelT" "featureTaleT";
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-row-gap: 1rem;
+    }
+    #page-content .recentPages .featurePrize {
+        grid-template-rows: 1.5rem minmax(auto, 11.81rem) 1.5rem;
+    }
+}
+/* By Eltrac */
+#page-content .recentPages .list-pages-box p br {
+    display: none;
+}
+
+#page-content .recentPages .list-pages-box p a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Tools */
+#page-content .toolsContainer {
+    display: grid;
+    color: rgb(var(--white-monochrome));
+    grid-gap: 0.5rem;
+}
+#page-content .toolsContainer .tools {
+    display: grid;
+    grid-template-areas: "image text"
+        "link text";
+    grid-template-columns: 5rem auto;
+    justify-items: center;
+    grid-gap: 0.5rem;
+    background-color: rgb(var(--gray-monochrome));
+    padding: 0.75rem;
+}
+#page-content .toolsContainer .tools:nth-of-type(2n) {
+    direction: rtl;
+}
+#page-content .toolsContainer .tools:nth-of-type(2n) * {
+    direction: ltr;
+}
+#page-content .toolsContainer .tools img {
+    grid-area: image;
+}
+#page-content .toolsContainer .tools a {
+    grid-area: link;
+    color: rgb(var(--white-monochrome));
+}
+#page-content .toolsContainer .tools .description {
+    grid-area: text;
+    justify-self: left;
+    pointer-events: none;
+}
+#page-content .toolsContainer .tools br {
+    display: none;
+}
+
+/* International */
+#page-content .international .announcement {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+#page-content .international .announcement img {
+    width: 50px;
+    filter: drop-shadow(0 0 1px rgba(var(--gray-monochrome), 0.8));
+}
+#page-content .international .announcement:is(.es, .jp) img {
+    align-self: center;
+}
+#page-content .international .announcement h3 {
+    margin: 0 0 0 1rem;
+    line-height: 50px;
+}
+#page-content .international .announcement a {
+    font-size: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+#page-content .international .announcement a:hover {
+    background-color: rgba(var(--gray-monochrome), 0.2);
+}
+</style>
+<style>
+/**
+ * 在这里添加特殊 CSS
+ * 请在对应的公告/新闻撤下后将此处清空
+**/
+</style>
+<style>
+/**
+ * 在这里添加特殊 CSS
+ * 请在对应的公告/新闻撤下后将此处清空
+**/
+</style>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/misc/NewPageHelperModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/list/ListPagesModule.js"></script>
+</head>
+<body id="html-body">
+<div id="skrollr-body">
+<a name="page-top"></a>
+
+
+
+
+
+<div id="container-wrap-wrap">
+    <div id="container-wrap">
+        <div id="container">
+            <div id="header">
+              <h1><a href="/"><span>The Mildrooms</span></a></h1>
+                
+                    <h2><span>温和与适宜</span></h2>
+                
+                
+                <!-- google_ad_section_start(weight=ignore) -->
+                
+                <div id="search-top-box" class="form-search">
+    <form id="search-top-box-form" action="dummy" class="input-append">
+        <input id="search-top-box-input" class="text empty search-query" type="text" size="15" name="query" value="搜索网站" onfocus="if(YAHOO.util.Dom.hasClass(this, 'empty')){YAHOO.util.Dom.removeClass(this,'empty'); this.value='';}"/><input class="button btn" type="submit" name="search" value="搜索"/>
+    </form>
+</div>
+                
+                
+                    <div id="top-bar">
+                        
+
+<div class="top-bar">
+<ul>
+<li>网站
+<ul>
+<li><a href="/top-rated-pages">最高评分的页面</a></li>
+<li><a href="/most-recently-created">最近创建的页面</a></li>
+<li><a href="/top-rated-pages-this-month">本月最高评分的页面</a></li>
+<li><a href="/lowest-rated-pages">最低评分的页面</a></li>
+<li><a href="/random:random-level">随机层级</a></li>
+</ul>
+</li>
+<li>图书馆
+<ul>
+<li><a href="/normal-levels">层级</a></li>
+<li><a href="/sub-layers">子区集</a></li>
+<li><a href="/enigmatic-levels">隐秘层级</a></li>
+<li><a href="/entities-and-phenomena">实体与现象</a></li>
+<li><a href="/objects">物品</a></li>
+<li><a href="/groups">团体</a></li>
+<li><a href="/tales">故事</a></li>
+<li><a href="/poi-s">相关人士</a></li>
+<li><a href="/canons">设定</a></li>
+<li><a href="/joke-entries">搞笑条目</a></li>
+<li><a href="/artwork-hub">艺术作品</a></li>
+<li><a href="/themes">版式</a></li>
+</ul>
+</li>
+<li>温和化图书馆
+<ul>
+<li><a href="/normal-levels-mild">温和化层级</a></li>
+<li><a href="/sub-layers-mild">温和化子区集</a></li>
+<li><a href="/enigmatic-levels-mild">温和化隐秘层级</a></li>
+<li><a href="/objects-mild">温和化物品</a></li>
+</ul>
+</li>
+<li>社群
+<ul>
+<li><a href="/forum:start">讨论区</a></li>
+<li><a href="/featured-archive">精品归档</a></li>
+<li><a href="/contest-archive">竞赛归档</a></li>
+<li><a href="/authors-pages">作者页</a></li>
+<li><a href="/meet-the-staff">会见职员</a></li>
+<li><a href="/site-rules">站规</a></li>
+<li><a href="/system:join">加入网站</a></li>
+</ul>
+</li>
+<li>指导
+<ul>
+<li><a href="/guide-hub">指导中心</a></li>
+<li><a href="/anti-harassment-policy">反骚扰政策</a></li>
+<li><a href="/tag-guide">标签指导</a></li>
+<li><a class="newpage" href="/how-to-write-an-article">如何撰写一篇文档</a></li>
+<li><a href="https://backrooms-wiki-cn.wikidot.com/wikidot-syntax">Wikidot语法指南</a></li>
+<li><a href="/licensing-guide">授权指导</a></li>
+<li><a href="/deletions-policy">删除政策</a></li>
+<li><a href="/anti-plagiarism-policy">反抄袭政策</a></li>
+<li><a href="/page-formatting-and-layout-guide">页面格式与排版指南</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="mobile-top-bar">
+<div class="open-menu">
+<p><a href="#side-bar">≡</a></p>
+</div>
+<ul>
+<li>图书馆
+<ul>
+<li><a href="/normal-levels">层级</a></li>
+<li><a href="/sub-layers">子区集</a></li>
+<li><a href="/enigmatic-levels">隐秘层级</a></li>
+<li><a href="/entities-and-phenomena">实体与现象</a></li>
+<li><a href="/objects">物品</a></li>
+<li><a href="/groups">团体</a></li>
+<li><a href="/tales">故事</a></li>
+<li><a href="/poi-s">相关人士</a></li>
+<li><a href="/canons">设定</a></li>
+<li><a href="/joke-entries">搞笑条目</a></li>
+<li><a href="/artwork-hub">艺术作品</a></li>
+<li><a href="/themes">版式</a></li>
+</ul>
+</li>
+<li>温和化图书馆
+<ul>
+<li><a href="/normal-levels-mild">温和化层级</a></li>
+<li><a href="/sub-layers-mild">温和化子区集</a></li>
+<li><a href="/enigmatic-levels-mild">温和化隐秘层级</a></li>
+<li><a href="/objects-mild">温和化物品</a></li>
+</ul>
+</li>
+<li>指导
+<ul>
+<li><a href="/guide-hub">指导中心</a></li>
+<li><a href="/site-rules">站规</a></li>
+<li><a href="/anti-harassment-policy">反骚扰政策</a></li>
+<li><a href="/tag-guide">标签指导</a></li>
+<li><a href="https://backrooms-wiki-cn.wikidot.com/wikidot-syntax">Wikidot语法指南</a></li>
+<li><a class="newpage" href="/how-to-write-an-article">如何撰写一篇文档</a></li>
+<li><a href="/licensing-guide">授权指导</a></li>
+<li><a href="/deletions-policy">删除政策</a></li>
+<li><a href="/anti-plagiarism-policy">反抄袭政策</a></li>
+<li><a href="/page-formatting-and-layout-guide">格式指导</a></li>
+<li><a href="/meet-the-staff">会见职员</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+                    </div>
+                
+                <div id="login-status"><a href="javascript:;" onclick="WIKIDOT.page.listeners.createAccount(event)" class="login-status-create-account btn">建立账户</a> <span>或</span> <a href="javascript:;" onclick="WIKIDOT.page.listeners.loginClick(event)" class="login-status-sign-in btn btn-primary">登入</a> </div>
+                <div id="header-extra-div-1"><span></span></div><div id="header-extra-div-2"><span></span></div><div id="header-extra-div-3"><span></span></div>
+            </div>
+            
+            <div id="content-wrap">
+                
+                    <div id="side-bar">
+                        
+
+
+                        
+
+<div class="side-block">
+<div class="heading">
+<p>站点导航</p>
+</div>
+<div class="menu-item">
+<p><a href="http://mildrooms-wiki.wikidot.com/start/">主页</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/draft:start">草稿区</a></p>
+</div>
+<div class="menu-item">
+<p><a href="https://mildrooms-oversight.wikidot.com/">职员站</a></p>
+</div>
+</div>
+<div class="side-block">
+<div class="heading">
+<p>创作资源</p>
+</div>
+<div class="menu-item">
+<p><a href="/guide-hub">指导中心</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/themes">主题版式</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/mildrooms-components">组件中心</a></p>
+</div>
+</div>
+<div class="side-block">
+<div class="heading">
+<p>图书馆</p>
+</div>
+<div class="menu-item">
+<p><a href="/normal-levels">层级　</a> | <a href="/sub-layers">子区集</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/enigmatic-levels">隐秘层级</a> | <a href="/objects">物品　　</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/groups">团体</a> | <a href="/tales">故事</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/canons">设定　　</a> | <a href="/poi-s">相关人士</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/artwork-hub">艺术作品</a> | <a href="/joke-entries">搞笑条目</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/entities-and-phenomena">实体与现象</a></p>
+</div>
+</div>
+<div class="side-block">
+<div class="heading">
+<p>温和化图书馆</p>
+</div>
+<div class="menu-item">
+<p><a href="/normal-levels-mild">温和化层级</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/sub-layers-mild">温和化子区集</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/enigmatic-levels-mild">温和化隐秘层级</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/objects-mild">温和化物品</a></p>
+</div>
+</div>
+<div class="side-block">
+<div class="heading">
+<p>社群</p>
+</div>
+<div class="menu-item">
+<p><a href="/forum:start">讨论区　　</a> | <a href="/forum:recent-posts">最近的帖子</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/featured-archive">精品归档</a> | <a href="/contest-archive">竞赛归档</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/authors-pages">作者页　</a> | <a href="/meet-the-staff">会见职员</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/system:join">加入网站</a></p>
+</div>
+</div>
+<div class="side-block">
+<div class="heading">
+<p>网站</p>
+</div>
+<div class="menu-item">
+<p><a href="/system:recent-changes">最近的更新</a> | <a href="/most-recently-edited">最近的编辑</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/random:random-level">随机层级</a> | <a href="/random:random-page">随机页面</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/old-pages">旧页面中心</a> | <a href="/archived-pages">归档页中心</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/most-recently-created">最近创建的页面</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/top-rated-pages-this-month">本月最高评分页面</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/top-rated-pages">历史最高评分页面</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/lowest-rated-pages">最低评分的页面</a></p>
+</div>
+</div>
+<div class="side-block">
+<div class="heading">
+<p>管理专用</p>
+</div>
+<div class="menu-item">
+<p><a href="http://mildrooms-wiki.wikidot.com/_admin">后台管理</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/system:list-all-categories">所有页面</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/system:members">会员一览</a></p>
+</div>
+<div class="menu-item">
+<p><a href="/nav:side">侧栏</a> | <a href="/nav:top">顶栏</a></p>
+</div>
+</div>
+<div style="clear:both; height: 0px; font-size: 1px"></div>
+<p><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /></p>
+<div style="clear:both; height: 0px; font-size: 1px"></div>
+<a class="close-menu" href="###"><br />
+<img src="https://scp-wiki.wdfiles.com/local--files/nav%3Aside/black.png" style="z-index=-1; opacity: 0.3;" alt="black.png" class="image" /><br /></a>
+                        
+
+
+                    </div>
+                
+                
+                <!-- google_ad_section_end -->
+                
+                <div id="main-content">
+                    <div id="action-area-top"></div>
+                    
+                    
+                        <div id="page-title">
+                            主页
+                        </div>
+                    
+
+                    
+
+                    
+
+
+
+                    <div id="page-content">
+                        
+
+<div style="display: none;">
+
+<div class="code">
+<div class="hl-main">
+<pre><span class="hl-code">/</span><span class="hl-identifier">*</span><span class="hl-code">
+    </span><span class="hl-identifier">Backrooms</span><span class="hl-code"> </span><span class="hl-identifier">CN</span><span class="hl-code"> </span><span class="hl-identifier">Main</span><span class="hl-code"> </span><span class="hl-identifier">Page</span><span class="hl-code"> </span><span class="hl-identifier">CSS</span><span class="hl-code">
+    </span><span class="hl-identifier">by</span><span class="hl-code"> </span><span class="hl-identifier">hoah2333</span><span class="hl-code"> &amp; </span><span class="hl-identifier">Eltrac</span><span class="hl-code">
+</span><span class="hl-identifier">*</span><span class="hl-code">/
+ 
+</span><span class="hl-identifier">#page-title</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+/</span><span class="hl-identifier">*</span><span class="hl-code"> 欢迎栏 </span><span class="hl-identifier">*</span><span class="hl-code">/
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> grid</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-areas:</span><span class="hl-code">
+        &quot;welcome welcome welcome&quot;
+        &quot;discord faq join&quot;</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-columns:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-column-gap:</span><span class="hl-code"> </span><span class="hl-number">3</span><span class="hl-string">%</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.welcome</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> welcome</span><span class="hl-code">;
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">font-style:</span><span class="hl-code"> </span><span class="hl-string">italic</span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.navigator</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> flex</span><span class="hl-code">;
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">border-radius:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem </span><span class="hl-number">1</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-reserved">height:</span><span class="hl-code"> min-content</span><span class="hl-code">;
+    </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">4</span><span class="hl-code">rem </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">transition:</span><span class="hl-code"> margin </span><span class="hl-number">150</span><span class="hl-code">ms cubic-bezier(</span><span class="hl-number">0.4</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0.2</span><span class="hl-code">, </span><span class="hl-number">1</span><span class="hl-code">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.navigator</span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-special">:hover</span><span class="hl-code">, </span><span class="hl-special">:active</span><span class="hl-code">) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem </span><span class="hl-number">0</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.navigator</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0.5</span><span class="hl-code">rem </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-code">;
+    </span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">font-size:</span><span class="hl-code"> </span><span class="hl-number">1.25</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-reserved">transition:</span><span class="hl-code"> padding </span><span class="hl-number">150</span><span class="hl-code">ms cubic-bezier(</span><span class="hl-number">0.4</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0.2</span><span class="hl-code">, </span><span class="hl-number">1</span><span class="hl-code">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">font-weight:</span><span class="hl-code"> </span><span class="hl-string">bold</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.navigator</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-special">:hover</span><span class="hl-code">, </span><span class="hl-special">:active</span><span class="hl-code">) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">text-decoration:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-code">;
+    </span><span class="hl-reserved">text-decoration-color:</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">rem </span><span class="hl-number">0</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.discord</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> discord</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.faq</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> faq</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.join</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> join</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">@media</span><span class="hl-code"> (max-width: 767</span><span class="hl-identifier">px</span><span class="hl-code">) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.navigator</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        </span><span class="hl-reserved">font-size:</span><span class="hl-code"> </span><span class="hl-number">1.1</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+    </span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.navigator</span><span class="hl-code"> </span><span class="hl-reserved">a:</span><span class="hl-code">is(:hover, :active) {
+        padding: </span><span class="hl-number">1.5</span><span class="hl-code">rem </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+    </span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.navigator</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">2</span><span class="hl-code">rem </span><span class="hl-number">0</span><span class="hl-code">
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+    </span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.bannerContainer</span><span class="hl-code"> </span><span class="hl-identifier">.navigator</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+    </span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.welcome</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        </span><span class="hl-reserved">font-size:</span><span class="hl-code"> </span><span class="hl-number">1.2</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+}
+ 
+/</span><span class="hl-identifier">*</span><span class="hl-code"> 公告栏 </span><span class="hl-identifier">*</span><span class="hl-code">/
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> flex</span><span class="hl-code">;
+    </span><span class="hl-reserved">flex-wrap:</span><span class="hl-code"> wrap</span><span class="hl-code">;
+    </span><span class="hl-reserved">border:</span><span class="hl-code"> </span><span class="hl-number">4</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">align-content:</span><span class="hl-code"> space-between</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.welcome</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">font-weight:</span><span class="hl-code"> </span><span class="hl-string">bold</span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-code">;
+    </span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-code">;
+    </span><span class="hl-reserved">font-size:</span><span class="hl-code"> </span><span class="hl-number">1.5</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">0.75</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-identifier">.announcement</span><span class="hl-code">, </span><span class="hl-identifier">.more</span><span class="hl-code">) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> rgb(var(--pale-gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0.75</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-reserved">border-top:</span><span class="hl-code"> </span><span class="hl-number">4</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.more</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.more</span><span class="hl-code"> </span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-identifier">.collapsible-block-folded</span><span class="hl-code">, </span><span class="hl-identifier">.collapsible-block-unfolded</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-unfolded-link</span><span class="hl-code">) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> flex</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.more</span><span class="hl-code"> </span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-identifier">.collapsible-block-folded</span><span class="hl-brackets">[</span><span class="hl-var">style</span><span class="hl-code">*=</span><span class="hl-quotes">&quot;</span><span class="hl-string">block</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">]</span><span class="hl-code">, </span><span class="hl-identifier">.collapsible-block-unfolded</span><span class="hl-brackets">[</span><span class="hl-var">style</span><span class="hl-code">*=</span><span class="hl-quotes">&quot;</span><span class="hl-string">block</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-unfolded-link</span><span class="hl-code">) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> flex !important</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.more</span><span class="hl-code"> </span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-identifier">.collapsible-block-folded</span><span class="hl-code">, </span><span class="hl-identifier">.collapsible-block-unfolded</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-unfolded-link</span><span class="hl-code">) </span><span class="hl-identifier">a.collapsible-block-link</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-code">;
+    </span><span class="hl-reserved">background:</span><span class="hl-code"> rgba(var(--gray-monochrome), </span><span class="hl-number">0.2</span><span class="hl-code">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">transition:</span><span class="hl-code"> background-color </span><span class="hl-number">150</span><span class="hl-code">ms cubic-bezier(</span><span class="hl-number">0.4</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0.2</span><span class="hl-code">, </span><span class="hl-number">1</span><span class="hl-code">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.more</span><span class="hl-code"> </span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-identifier">.collapsible-block-folded</span><span class="hl-code">, </span><span class="hl-identifier">.collapsible-block-unfolded</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-unfolded-link</span><span class="hl-code">) </span><span class="hl-identifier">a.collapsible-block-link</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">text-decoration:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-code">;
+    </span><span class="hl-reserved">text-decoration-color:</span><span class="hl-code"> </span><span class="hl-string">transparent</span><span class="hl-code">;
+    </span><span class="hl-reserved">background:</span><span class="hl-code"> rgba(var(--gray-monochrome), </span><span class="hl-number">0.4</span><span class="hl-code">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.more</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-unfolded</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-unfolded-link</span><span class="hl-code"> </span><span class="hl-identifier">a.collapsible-block-link</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">border-bottom:</span><span class="hl-code"> </span><span class="hl-number">4</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.more</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-unfolded</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-content</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">background:</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.more</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-unfolded</span><span class="hl-code"> </span><span class="hl-identifier">.collapsible-block-content</span><span class="hl-code"> </span><span class="hl-identifier">p</span><span class="hl-code">,
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.pageContainer</span><span class="hl-code"> </span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.archive</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">background:</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">right</span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.announceContainer</span><span class="hl-code"> </span><span class="hl-identifier">.archive</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+/</span><span class="hl-identifier">*</span><span class="hl-code"> 最近新增 </span><span class="hl-identifier">*</span><span class="hl-code">/
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> grid</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-areas:</span><span class="hl-code">
+        &quot;translation original&quot;
+        &quot;featureLevelO featureTaleO&quot;
+        &quot;featureLevelT featureTaleT&quot;</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-rows:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-columns:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-row-gap:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.pageContainer</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> grid</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-areas:</span><span class="hl-code"> &quot;title&quot;
+        &quot;page&quot;
+        &quot;recently&quot;</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-rows:</span><span class="hl-code"> </span><span class="hl-number">1.5</span><span class="hl-code">rem minmax(</span><span class="hl-string">auto</span><span class="hl-code">, </span><span class="hl-number">11.81</span><span class="hl-code">rem) </span><span class="hl-number">1.5</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.translation</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> translation</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.original</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> original</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.featureLevelO</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> featureLevelO</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.featureTaleO</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> featureTaleO</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.featureLevelT</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> featureLevelT</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.featureTaleT</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> featureTaleT</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.featurePrize</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> featurePrize</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-rows:</span><span class="hl-code"> </span><span class="hl-number">1.5</span><span class="hl-code">rem minmax(</span><span class="hl-string">auto</span><span class="hl-code">, </span><span class="hl-number">7.68</span><span class="hl-code">rem) </span><span class="hl-number">1.5</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.pageContainer</span><span class="hl-code"> </span><span class="hl-identifier">.title</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> title</span><span class="hl-code">;
+    </span><span class="hl-reserved">background:</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">font-weight:</span><span class="hl-code"> </span><span class="hl-string">bold</span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.pageContainer</span><span class="hl-code"> </span><span class="hl-identifier">.page</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> page</span><span class="hl-code">;
+    </span><span class="hl-reserved">border:</span><span class="hl-code"> </span><span class="hl-string">solid</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">border-width:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">3</span><span class="hl-string">px</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">4</span><span class="hl-string">px</span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0.5</span><span class="hl-string">em</span><span class="hl-code"> calc(</span><span class="hl-number">1</span><span class="hl-code">rem - </span><span class="hl-number">4</span><span class="hl-string">px</span><span class="hl-code">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">max-height:</span><span class="hl-code"> </span><span class="hl-number">12</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> rgb(var(--pale-gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">overflow-y:</span><span class="hl-code"> </span><span class="hl-string">hidden</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.pageContainer</span><span class="hl-code"> </span><span class="hl-identifier">.page</span><span class="hl-code"> </span><span class="hl-identifier">.list-pages-box</span><span class="hl-code"> </span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    /</span><span class="hl-identifier">*</span><span class="hl-code"> </span><span class="hl-reserved">max-height:</span><span class="hl-code"> </span><span class="hl-number">12</span><span class="hl-code">rem</span><span class="hl-code">; </span><span class="hl-identifier">*</span><span class="hl-code">/
+    </span><span class="hl-reserved">overflow-y:</span><span class="hl-code"> </span><span class="hl-string">hidden</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.pageContainer</span><span class="hl-code"> </span><span class="hl-identifier">.recently</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> recently</span><span class="hl-code">;
+    </span><span class="hl-reserved">background:</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">text-align:</span><span class="hl-code"> </span><span class="hl-string">right</span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.pageContainer</span><span class="hl-code"> </span><span class="hl-identifier">.recently</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-identifier">.featureLevelO</span><span class="hl-code">, </span><span class="hl-identifier">.featureTaleO</span><span class="hl-code">, </span><span class="hl-identifier">.featureLevelT</span><span class="hl-code">, </span><span class="hl-identifier">.featureTaleT</span><span class="hl-code">, </span><span class="hl-identifier">.featurePrize</span><span class="hl-code">) </span><span class="hl-identifier">.page</span><span class="hl-code"> </span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">font-size:</span><span class="hl-code"> </span><span class="hl-number">0.8</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-identifier">.featureLevelO</span><span class="hl-code">, </span><span class="hl-identifier">.featureTaleO</span><span class="hl-code">, </span><span class="hl-identifier">.featureLevelT</span><span class="hl-code">, </span><span class="hl-identifier">.featureTaleT</span><span class="hl-code">, </span><span class="hl-identifier">.featurePrize</span><span class="hl-code">) </span><span class="hl-identifier">.page</span><span class="hl-code"> </span><span class="hl-identifier">p</span><span class="hl-special">:nth-of-type</span><span class="hl-code">(1) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">font-size:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-identifier">.featureLevelO</span><span class="hl-code">, </span><span class="hl-identifier">.featureTaleO</span><span class="hl-code">, </span><span class="hl-identifier">.featureLevelT</span><span class="hl-code">, </span><span class="hl-identifier">.featureTaleT</span><span class="hl-code">, </span><span class="hl-identifier">.featurePrize</span><span class="hl-code">) </span><span class="hl-identifier">.page</span><span class="hl-code"> </span><span class="hl-identifier">p</span><span class="hl-special">:nth-of-type</span><span class="hl-code">(2) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">font-size:</span><span class="hl-code"> </span><span class="hl-number">0.5</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-var">@media</span><span class="hl-code"> (max-width: 550</span><span class="hl-identifier">px</span><span class="hl-code">) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        </span><span class="hl-reserved">grid-template-areas:</span><span class="hl-code"> &quot;translation&quot; &quot;original&quot;
+            &quot;featureLevelO&quot; &quot;featureTaleO&quot;
+            &quot;featureLevelT&quot; &quot;featureTaleT&quot;</span><span class="hl-code">;
+        </span><span class="hl-reserved">grid-template-columns:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">fr</span><span class="hl-code">;
+        </span><span class="hl-reserved">grid-template-rows:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr </span><span class="hl-number">1</span><span class="hl-code">fr</span><span class="hl-code">;
+        </span><span class="hl-reserved">grid-row-gap:</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+    </span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.featurePrize</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        </span><span class="hl-reserved">grid-template-rows:</span><span class="hl-code"> </span><span class="hl-number">1.5</span><span class="hl-code">rem minmax(</span><span class="hl-string">auto</span><span class="hl-code">, </span><span class="hl-number">11.81</span><span class="hl-code">rem) </span><span class="hl-number">1.5</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-brackets">}</span><span class="hl-code">
+/</span><span class="hl-identifier">*</span><span class="hl-code"> </span><span class="hl-identifier">By</span><span class="hl-code"> </span><span class="hl-identifier">Eltrac</span><span class="hl-code"> </span><span class="hl-identifier">*</span><span class="hl-code">/
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.list-pages-box</span><span class="hl-code"> </span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-identifier">br</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.recentPages</span><span class="hl-code"> </span><span class="hl-identifier">.list-pages-box</span><span class="hl-code"> </span><span class="hl-identifier">p</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> </span><span class="hl-string">block</span><span class="hl-code">;
+    </span><span class="hl-reserved">white-space:</span><span class="hl-code"> </span><span class="hl-string">nowrap</span><span class="hl-code">;
+    </span><span class="hl-reserved">overflow:</span><span class="hl-code"> </span><span class="hl-string">hidden</span><span class="hl-code">;
+    </span><span class="hl-reserved">text-overflow:</span><span class="hl-code"> ellipsis</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+/</span><span class="hl-identifier">*</span><span class="hl-code"> </span><span class="hl-identifier">Tools</span><span class="hl-code"> </span><span class="hl-identifier">*</span><span class="hl-code">/
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.toolsContainer</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> grid</span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-gap:</span><span class="hl-code"> </span><span class="hl-number">0.5</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.toolsContainer</span><span class="hl-code"> </span><span class="hl-identifier">.tools</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> grid</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-areas:</span><span class="hl-code"> &quot;image </span><span class="hl-string">text</span><span class="hl-code">&quot;
+        &quot;link </span><span class="hl-string">text</span><span class="hl-code">&quot;</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-template-columns:</span><span class="hl-code"> </span><span class="hl-number">5</span><span class="hl-code">rem </span><span class="hl-string">auto</span><span class="hl-code">;
+    </span><span class="hl-reserved">justify-items:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-code">;
+    </span><span class="hl-reserved">grid-gap:</span><span class="hl-code"> </span><span class="hl-number">0.5</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> rgb(var(--gray-monochrome))</span><span class="hl-code">;
+    </span><span class="hl-reserved">padding:</span><span class="hl-code"> </span><span class="hl-number">0.75</span><span class="hl-code">rem</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.toolsContainer</span><span class="hl-code"> </span><span class="hl-identifier">.tools</span><span class="hl-special">:nth-of-type</span><span class="hl-code">(2</span><span class="hl-identifier">n</span><span class="hl-code">) </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">direction:</span><span class="hl-code"> </span><span class="hl-string">rtl</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.toolsContainer</span><span class="hl-code"> </span><span class="hl-identifier">.tools</span><span class="hl-special">:nth-of-type</span><span class="hl-code">(2</span><span class="hl-identifier">n</span><span class="hl-code">) </span><span class="hl-identifier">*</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">direction:</span><span class="hl-code"> </span><span class="hl-string">ltr</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.toolsContainer</span><span class="hl-code"> </span><span class="hl-identifier">.tools</span><span class="hl-code"> </span><span class="hl-identifier">img</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> image</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.toolsContainer</span><span class="hl-code"> </span><span class="hl-identifier">.tools</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> link</span><span class="hl-code">;
+    </span><span class="hl-reserved">color:</span><span class="hl-code"> rgb(var(--white-monochrome))</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.toolsContainer</span><span class="hl-code"> </span><span class="hl-identifier">.tools</span><span class="hl-code"> </span><span class="hl-identifier">.description</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">grid-area:</span><span class="hl-code"> </span><span class="hl-string">text</span><span class="hl-code">;
+    </span><span class="hl-reserved">justify-self:</span><span class="hl-code"> </span><span class="hl-string">left</span><span class="hl-code">;
+    </span><span class="hl-reserved">pointer-events:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.toolsContainer</span><span class="hl-code"> </span><span class="hl-identifier">.tools</span><span class="hl-code"> </span><span class="hl-identifier">br</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> </span><span class="hl-string">none</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+ 
+/</span><span class="hl-identifier">*</span><span class="hl-code"> </span><span class="hl-identifier">International</span><span class="hl-code"> </span><span class="hl-identifier">*</span><span class="hl-code">/
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.international</span><span class="hl-code"> </span><span class="hl-identifier">.announcement</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">display:</span><span class="hl-code"> flex</span><span class="hl-code">;
+    </span><span class="hl-reserved">align-items:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-code">;
+    </span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">relative</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.international</span><span class="hl-code"> </span><span class="hl-identifier">.announcement</span><span class="hl-code"> </span><span class="hl-identifier">img</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">50</span><span class="hl-string">px</span><span class="hl-code">;
+    </span><span class="hl-reserved">filter:</span><span class="hl-code"> drop-shadow(</span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-string">px</span><span class="hl-code"> rgba(var(--gray-monochrome), </span><span class="hl-number">0.8</span><span class="hl-code">))</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.international</span><span class="hl-code"> </span><span class="hl-identifier">.announcement</span><span class="hl-special">:is</span><span class="hl-code">(</span><span class="hl-identifier">.es</span><span class="hl-code">, </span><span class="hl-identifier">.jp</span><span class="hl-code">) </span><span class="hl-identifier">img</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">align-self:</span><span class="hl-code"> </span><span class="hl-string">center</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.international</span><span class="hl-code"> </span><span class="hl-identifier">.announcement</span><span class="hl-code"> </span><span class="hl-identifier">h3</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">margin:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code"> </span><span class="hl-number">1</span><span class="hl-code">rem</span><span class="hl-code">;
+    </span><span class="hl-reserved">line-height:</span><span class="hl-code"> </span><span class="hl-number">50</span><span class="hl-string">px</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.international</span><span class="hl-code"> </span><span class="hl-identifier">.announcement</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">font-size:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">position:</span><span class="hl-code"> </span><span class="hl-string">absolute</span><span class="hl-code">;
+    </span><span class="hl-reserved">width:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-code">;
+    </span><span class="hl-reserved">height:</span><span class="hl-code"> </span><span class="hl-number">100</span><span class="hl-string">%</span><span class="hl-code">;
+    </span><span class="hl-reserved">left:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">top:</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code">;
+    </span><span class="hl-reserved">transition:</span><span class="hl-code"> background-color </span><span class="hl-number">150</span><span class="hl-code">ms cubic-bezier(</span><span class="hl-number">0.4</span><span class="hl-code">, </span><span class="hl-number">0</span><span class="hl-code">, </span><span class="hl-number">0.2</span><span class="hl-code">, </span><span class="hl-number">1</span><span class="hl-code">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-identifier">#page-content</span><span class="hl-code"> </span><span class="hl-identifier">.international</span><span class="hl-code"> </span><span class="hl-identifier">.announcement</span><span class="hl-code"> </span><span class="hl-identifier">a</span><span class="hl-special">:hover</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">background-color:</span><span class="hl-code"> rgba(var(--gray-monochrome), </span><span class="hl-number">0.2</span><span class="hl-code">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span></pre></div>
+</div>
+</div>
+<div class="bannerContainer">
+<div class="welcome">“当你幸运地从后室中切出，你将最终来到温室的宁静之境。这里充满了温暖和宜人的气氛，仿佛是一个隐秘的天堂。在温室中，你将发现无穷无尽的资源和多种多样的建筑，仿佛是前厅的华美延续。<br />
+温室就像一个秘密的庇护所，为你提供温暖和满足，让你尽情享受它所提供的一切。这里是一个神秘而充满希望的地方，让你在舒适的环境中尽情探索和放松，无需担忧。无论何时何地，你都可以信赖温室，因为它将是你的安全港。”</div>
+<div class="navigator discord"><a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&amp;k=p1jaFOQ4TOlLOxFImAr-YK-wPQ0Pw5va&amp;authKey=GyYi1Ls%2FfMZkShwb%2FOubN%2Fd7flRDbGnO0u%2F4i3J%2B0ZBo6Dg37qEYjQQpqqriwTK0&amp;noverify=0&amp;group_code=702723631">QQ群</a></div>
+<div class="navigator faq"><a href="https://backrooms-split-library.wikidot.com/mildroom">世界观</a></div>
+<div class="navigator join"><a href="/system:join">加入网站</a></div>
+</div>
+<hr />
+<div class="announceContainer">
+<div class="welcome">欢迎来到后室同人前AF版温室维基！</div>
+<div class="announcement">后室同人前AF版温室维基站务组恭祝大家新年快乐！</div>
+<div class="announcement"><a href="/2024-wordle-contest">2024年终Wordle竞赛</a>现已结束，恭喜<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/afulai2333" onclick="WIKIDOT.page.listeners.userInfo(8395268); return false;"><img class="small" src="http://www.wikidot.com/avatar.php?userid=8395268&amp;amp;size=small&amp;amp;timestamp=1740803821" alt="Afulai2333" style="background-image:url(http://www.wikidot.com/userkarma.php?u=8395268)" /></a><a href="http://www.wikidot.com/user:info/afulai2333" onclick="WIKIDOT.page.listeners.userInfo(8395268); return false;">Afulai2333</a></span>的<a href="/object-mild-9">Object Mild-9 - “情残”</a>获得冠军！</div>
+<div class="announcement">本站删除线回调至-2。</div>
+
+
+
+<div class="more">
+<div class="collapsible-block">
+<div class="collapsible-block-folded"><a class="collapsible-block-link" href="javascript:;">想要发布新作品？</a></div>
+<div class="collapsible-block-unfolded" style="display:none">
+<div class="collapsible-block-unfolded-link"><a class="collapsible-block-link" href="javascript:;">找这里就对了！</a></div>
+<div class="collapsible-block-content">
+<p>你可以用这一栏来创建通用页面：</p>
+
+<div class="new-page-box" style="text-align: center; margin: 1em 0;">
+	<form action="dummy.html" method="get" onsubmit="WIKIDOT.modules.NewPageHelperModule.listeners.create(event);">
+		<input class="text" name="pageName" type="text" size="30" maxlength="128" style="margin: 1px"/>
+				<input type="submit" class="button" value="创建页面" style="margin: 1px;"/>
+																
+	</form>
+</div>
+
+<p><strong>注意：</strong>在此栏中输入的页面名称必须为英文或拼音，所有中文字符都会被忽略。</p>
+<p>还没有完成您的作品？前往<a style="color:rgb(var(--light-color-2));" href="/draft:hub">草稿区</a>！</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<div class="recentPages">
+<div class="pageContainer translation">
+<div class="title">最近新增的搬运页面</div>
+<div class="page"><div class="list-pages-box">    
+
+<p><a href="/component:canon-grid-item">设定页展示组件</a><br />
+<a href="/rewrite-policy">重写政策</a><br />
+<a href="/deletions-policy">删除政策</a><br />
+<a href="/search:site">搜索网站</a><br />
+<a href="/theme:split-library">版式：割裂图书馆</a><br />
+<a href="/anti-harassment-policy">反骚扰政策</a><br />
+<a href="/level-14-m">Level 14-M</a><br />
+<a href="/component:loading-screen">加载页面</a></p>
+
+    
+    
+    
+    </div></div>
+<div class="recently"><a href="/most-recently-created-reproduced">最近新增的搬运页面一览</a></div>
+</div>
+<div class="pageContainer original">
+<div class="title">最近新增的原创页面</div>
+<div class="page"><div class="list-pages-box">    
+
+<p><a href="/random:random-page">随机页面</a><br />
+<a href="/level-mild-227">Level Mild-227</a><br />
+<a href="/theme:snake-2025">版式：乙巳蛇年</a><br />
+<a href="/level-mild-12">Level Mild-12</a><br />
+<a href="/level-mild-8">Level Mild-8</a><br />
+<a href="/theme:neo-m-e-a">版式：新阈限下的M.E.A.</a><br />
+<a href="/level-mild-9">Level Mild-9</a><br />
+<a href="/object-mild-9">Object Mild-9</a></p>
+
+    
+    
+    
+    </div></div>
+<div class="recently"><a href="/most-recently-created-original">最近新增的原创页面一览</a></div>
+</div>
+<div class="pageContainer featureLevelO">
+<div class="title">精品原创层级</div>
+<div class="page">
+<p><a href="/level-mild-3">Level Mild-3 - “纸飞机，飞啊飞”</a></p>
+<p><span class="printuser"><a href="http://www.wikidot.com/user:info/sonasonasona" onclick="WIKIDOT.page.listeners.userInfo(8968839); return false;">SonaSonaSona</a></span> 著</p>
+<p><em>童年的纸飞机，现在终于飞回我手里……</em></p>
+</div>
+<div class="recently"><a href="/featured-archive">往期精品归档</a></div>
+</div>
+<div class="pageContainer featureTaleO">
+<div class="title">精品原创层级</div>
+<div class="page">
+<p><a href="/level-mild-100">Level Mild-100 - “橙光幻野”</a></p>
+<p><span class="printuser"><a href="http://www.wikidot.com/user:info/fnfzzz" onclick="WIKIDOT.page.listeners.userInfo(8457298); return false;">FNFzzz</a></span> 著</p>
+<p><em>光芒如同琥珀色的丝绸，轻柔地覆盖在一片寂静的原野上，勾勒出树木的轮廓，使橙色的树在夕阳下显得尤为神秘。</em></p>
+</div>
+<div class="recently"><a href="/featured-archive">往期精品归档</a></div>
+</div>
+<div class="pageContainer featureLevelT">
+<div class="title">精品原创层级</div>
+<div class="page">
+<p><a href="/level-mild-10">Level Mild-10 - “梦澜遗迹”</a></p>
+<p><span class="printuser"><a href="http://www.wikidot.com/user:info/afulai2333" onclick="WIKIDOT.page.listeners.userInfo(8395268); return false;">Afulai2333</a></span> 著</p>
+<p><em>鱼群在废墟中游弋，仿佛在诉说着远古的故事，而沉寂的海底轻柔地掩盖了这一切繁华的最后回声。</em></p>
+</div>
+<div class="recently"><a href="/featured-archive">往期精品归档</a></div>
+</div>
+<div class="pageContainer featureTaleT">
+<div class="title">奖励精品</div>
+<div class="page">
+<p><a href="/the-m-e-a">M.E.A.</a></p>
+<p><span class="printuser"><a href="http://www.wikidot.com/user:info/123qingfeng" onclick="WIKIDOT.page.listeners.userInfo(8958963); return false;">123qingfeng</a></span> 著 &amp; <span class="printuser"><a href="http://www.wikidot.com/user:info/afulai2333" onclick="WIKIDOT.page.listeners.userInfo(8395268); return false;">Afulai2333</a></span> 版式制作</p>
+<p><em>我们目前正在致力于对温室的探索与记录，并积极地建设基地来保护更多在各个层级中的流浪者。</em></p>
+</div>
+<div class="recently"><a href="/featured-archive">往期精品归档</a></div>
+</div>
+</div>
+<hr />
+<div class="toolsContainer">
+<div class="tools"><img src="https://backrooms-wiki.wikidot.com/local--files/start/folder_open.png" alt="folder_open.png" class="image" /><br />
+<a href="/guide-hub">指导中心</a><br />
+<span class="description">指导中心能为你提供创作一篇你自己的“温室”文章的全部工具！</span></div>
+<div class="tools"><img src="https://backrooms-wiki.wikidot.com/local--files/start/sandbox-bucket.png" alt="sandbox-bucket.png" class="image" /><br />
+<a href="/draft:hub">草稿区</a><br />
+<span class="description">你可以在草稿区尽情调试你的文章和代码，当你创作完毕后，你可以在正式发布前将你文章的草稿链接发布到草稿评判区供其他成员进行批评和建议。</span></div>
+</div>
+<hr />
+<div class="announceContainer">
+<div class="welcome">公告</div>
+<div class="announcement"><strong>2025年1月29日</strong><br />
+后室同人前AF版温室维基站务组恭祝大家新年快乐！</div>
+<div class="announcement"><strong>2025年1月3日</strong><br />
+<a href="/2024-wordle-contest">2024年终Wordle竞赛</a>现已结束，恭喜<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/afulai2333" onclick="WIKIDOT.page.listeners.userInfo(8395268); return false;"><img class="small" src="http://www.wikidot.com/avatar.php?userid=8395268&amp;amp;size=small&amp;amp;timestamp=1740803821" alt="Afulai2333" style="background-image:url(http://www.wikidot.com/userkarma.php?u=8395268)" /></a><a href="http://www.wikidot.com/user:info/afulai2333" onclick="WIKIDOT.page.listeners.userInfo(8395268); return false;">Afulai2333</a></span>的<a href="/object-mild-9">Object Mild-9 - “情残”</a>获得冠军！</div>
+<div class="announcement"><strong>2024年12月8日</strong><br />
+本站删除线回调至-2。</div>
+
+
+
+<div class="archive"><a href="/archived-news">旧新闻归档</a></div>
+</div>
+<hr />
+<div class="announceContainer international">
+<div class="welcome">友谊站点</div>
+<div class="announcement split"><img src="https://s21.ax1x.com/2024/11/10/pA6X3En.png" alt="pA6X3En.png" class="image" />
+<h3 id="toc0"><span>WE-割裂室联合站点</span></h3>
+<a href="https://backrooms-split-library.wikidot.com/">https://backrooms-split-library.wikidot.com/</a></div>
+<div class="announcement yt"><img src="https://backroom-yt.wdfiles.com/local--files/start/Logo" alt="Logo" class="image" />
+<h3 id="toc1"><span>后室YT层群</span></h3>
+<a href="http://backroom-yt.wikidot.com/">http://backroom-yt.wikidot.com/</a></div>
+<div class="announcement s"><img src="https://mildrooms-wiki.wikidot.com/local--files/start/new-s-logo-cropped.png" alt="new-s-logo-cropped.png" class="image" />
+<h3 id="toc2"><span>后室S层群</span></h3>
+<a href="https://backroomss.wikidot.com/">https://backroomss.wikidot.com/</a></div>
+<div class="announcement dn"><img src="https://i.postimg.cc/NMgx8xX4/1728468380691-removebg-preview.png" alt="1728468380691-removebg-preview.png" class="image" />
+<h3 id="toc3"><span>后室DN层群</span></h3>
+<a href="https://backrooms-dn.wikidot.com/">https://backrooms-dn.wikidot.com/</a></div>
+</div>
+<hr />
+<div class="image-container aligncenter"><img src="https://mildrooms-wiki.wikidot.com/local--files/start/logo-cropped.png" style="width:200px;" alt="logo-cropped.png" class="image" /></div>
+<div style="text-align: center;">
+<p>后室同人前AF版温室维基logo由原AF层群的logo设计修改而来，适用知识共享-版权归属-相同方式共享3.0授权协议（<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.zh">CC-BY-SA</a>）。</p>
+</div>
+<hr />
+<div class="blockquote">
+<div style="height:10px;"></div>
+<p><iframe src="/start/html/14b9fba6eb157df29d7a1b5e7d15365c842b8ade-1723076178906428874" allowtransparency="true" frameborder="0" class="html-block-iframe"></iframe><br /></p>
+<div style="text-align: center;">
+<p><tt>Copyright <span style="white-space: pre-wrap;">©</span> 2023 - 2025</tt><br />
+<tt>后室同人前AF版温室维基</tt></p>
+<p><strong>保留所有权利</strong></p>
+</div>
+<div style="height:10px;"></div>
+</div>
+
+                    </div>
+
+                    
+
+
+                    
+
+
+                    
+
+
+
+                    
+                        <div class="page-tags">
+                            <span>
+                                <a href="/system:page-tags/tag/%E5%8E%9F%E5%88%9B#pages">原创</a><a href="/system:page-tags/tag/%E6%80%BB%E8%A7%88#pages">总览</a><a href="/system:page-tags/tag/%E7%AE%A1%E7%90%86#pages">管理</a>
+                            </span>
+                        </div>
+                    
+
+                    <div id="page-info-break"></div>
+                    
+                        <div id="page-options-container">
+                            <div id="page-info">页面版本: 96, 最后编辑于: <span class="odate time_1738911261 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%20%28%25O%20%E5%89%8D%29">07 Feb 2025 06:54</span></div>
+            <div id="page-options-bottom"  class="page-options-bottom">
+            <a href="javascript:;" class="btn btn-default" id="edit-button">编辑</a>
+<a href="javascript:;" class="btn btn-default" id="pagerate-button">评分 (<span id="prw54355">+9</span>)</a>
+<a href="javascript:;" class="btn btn-default" id="tags-button">标签</a>
+<a href="/forum/t-16474440/start" class="btn btn-default" id="discuss-button">讨论 (14)</a>
+<a href="javascript:;" class="btn btn-default" id="history-button">历史记录</a>
+<a href="javascript:;" class="btn btn-default" id="files-button">附件</a>
+<a href="javascript:;" class="btn btn-default" id="print-button">打印</a>
+<a href="javascript:;" class="btn btn-default" id="site-tools-button">网站工具</a>
+<a href="javascript:;" class="btn btn-default" id="more-options-button">+&nbsp;选项</a> 
+</div>
+<div id="page-options-bottom-2" class="page-options-bottom form-actions" style="display:none">
+    <a href="javascript:;" class="btn btn-default" id="edit-sections-button">编辑段落</a>
+    <a href="javascript:;" class="btn btn-default" id="edit-append-button">附加</a>
+    <a href="javascript:;" class="btn btn-default" id="edit-meta-button">编辑元信息</a>
+    <a href="javascript:;" class="btn btn-default" id="watchers-button">关注者</a> 
+    <a href="javascript:;" class="btn btn-default" id="backlinks-button">反向链接</a> 
+    <a href="javascript:;" class="btn btn-default" id="view-source-button">页面源代码</a> 
+    <a href="javascript:;" class="btn btn-default" id="parent-page-button">父页面</a> 
+    <a href="javascript:;" class="btn btn-default" id="page-block-button">锁定页面</a>    
+    <a href="javascript:;" class="btn btn-default" id="rename-move-button">重新命名</a> 
+    <a href="javascript:;" class="btn btn-default" id="delete-button">删除</a> 
+</div>
+<div id="page-options-area-bottom">
+</div>
+
+                        </div>
+                    
+                    <div id="action-area" style="display: none;"></div>
+                </div>
+            </div>
+            
+            
+            
+            <div id="footer" style="display: block; visibility: visible;">
+                <div class="options" style="display: block; visibility: visible;">
+    <a href="http://www.wikidot.com/doc" id="wikidot-help-button">说明</a>
+    &nbsp;|
+    <a href="http://www.wikidot.com/legal:terms-of-service" id="wikidot-tos-button">服务条款</a>
+    &nbsp;|
+    <a href="http://www.wikidot.com/legal:privacy-policy" id="wikidot-privacy-button">隐私</a>
+    &nbsp;|
+    <a href="javascript:;" id="bug-report-button" onclick="WIKIDOT.page.listeners.pageBugReport(event)">报告错误</a>
+    &nbsp;|
+    <a href="javascript:;" id="abuse-report-button" onclick="WIKIDOT.page.listeners.flagPageObjectionable(event)">标记为令人反感的</a>
+</div>
+基于 <a href="http://www.wikidot.com">Wikidot.com</a> 
+            </div>
+            
+                <div id="license-area" class="license-area">
+                    除非特别注明，本页内容采用以下授权方式： <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 License</a>
+                </div>
+            
+            
+            
+
+
+
+            <div id="extrac-div-1"><span></span></div><div id="extrac-div-2"><span></span></div><div id="extrac-div-3"><span></span></div>
+            
+            
+            
+            
+                
+            
+        </div>
+        
+    </div>
+<!-- These extra divs/spans may be used as catch-alls to add extra imagery. -->
+<div id="extra-div-1"><span></span></div><div id="extra-div-2"><span></span></div><div id="extra-div-3"><span></span></div>
+<div id="extra-div-4"><span></span></div><div id="extra-div-5"><span></span></div><div id="extra-div-6"><span></span></div>
+</div>
+
+
+
+
+</div>
+<div id="dummy-ondomready-block" style="display: none;" ></div>
+    <!-- Google Analytics load -->
+    <script type="text/javascript">
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+
+
+
+<div id="page-options-bottom-tips" style="display: none;">
+    <div id="edit-button-hovertip">
+        点击编辑本页内容。    </div>
+</div>
+<div id="page-options-bottom-2-tips"  style="display: none;">
+    <div id="edit-sections-button-hovertip">
+        点击显示页面各部分的编辑按钮（如果可能）。 在标题边会出现“编辑”按钮。    </div>
+    <div id="edit-append-button-hovertip">
+        在不编辑全部页面源代码的情况下添加内容。    </div>
+    <div id="history-button-hovertip">
+        查看本页过去是如何沿革的。    </div>
+    <div id="discuss-button-hovertip">
+        若您想要讨论本页内容，这是最简单的方法。    </div>
+    <div id="files-button-hovertip">
+        检视并管理本页附件。    </div>
+    <div id="site-tools-button-hovertip">
+        管理网站的实用工具。    </div>
+    <div id="backlinks-button-hovertip">
+        检视链接至本页或引用本页的页面。    </div>
+    <div id="rename-move-button-hovertip">
+        变更页面名称（及 URL 地址，或许会影响分类）。    </div>
+    <div id="view-source-button-hovertip">
+        在不编辑的情形下检视维基源代码。    </div>
+    <div id="parent-page-button-hovertip">  
+        检视 / 设定父页面（用以建立浏览足迹与结构化​​配置）。    </div>
+            <div id="abuse-report-button-hovertip">
+            向管理员举报本页有令人反感的内容。        </div>
+        <div id="bug-report-button-hovertip">
+            事情不如预期？看看您可以做些什么。        </div>
+        <div id="wikidot-help-button-hovertip">
+            通用的 Wikidot.com 文件与说明。        </div>
+        <div id="wikidot-tos-button-hovertip">
+            Wikidot.com 服务条款 — 您可以做的事，您不该做的事之类的。        </div>
+        <div id="wikidot-privacy-button-hovertip">
+            Wikidot.com 隐私政策。          
+        </div>
+    </div>
+</body>
+</html>

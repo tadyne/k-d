@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-15-lists" />
+<meta name="description" content="Lists with the Python language.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (15): Lists</span></h2>
+	</div>
+
+<p>I introduce in this post Python lists: with them, we can store and process any number of items, for instance, all the canon towers in our game.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>Lists</h2>
+<p>Create a list in Python is very easy, for instance, to create an empty list:</p>
+<pre class="hljs"><code>mylist = []</code></pre>
+<p>You can also create a list with an initial content:</p>
+<pre class="hljs"><code>mylist = [<span class="hljs-number">12</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>]</code></pre>
+<p>Lists can contain any objects, and you can mix them:</p>
+<pre class="hljs"><code>mylist = [<span class="hljs-string">"Apple"</span>,<span class="hljs-number">23</span>,<span class="hljs-literal">True</span>]</code></pre>
+<h2>Access</h2>
+<p>Items in a Python list are always indexed with a number from 0 to the size of the list minus 1:</p>
+<pre class="hljs"><code>mylist = [<span class="hljs-number">12</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>]
+print(mylist[<span class="hljs-number">0</span>])      <span class="hljs-comment"># print 12</span>
+print(mylist[<span class="hljs-number">1</span>])      <span class="hljs-comment"># print 25</span>
+print(mylist[<span class="hljs-number">2</span>])      <span class="hljs-comment"># print 7</span></code></pre>
+<p>You can see the corresponding value for each index of this list in the following table:</p>
+<figure class="wp-block-table"><table class=""><thead><tr><th>index</th><th>0</th><th>1</th><th>2</th></tr></thead><tbody><tr><td>value</td><td>12</td><td>25</td><td>7</td></tr></tbody></table></figure>
+If you try to use an index higher or equal to the size of the list, then Python raises an exception:
+<pre class="hljs"><code>mylist = [<span class="hljs-number">12</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>]
+print(mylist[<span class="hljs-number">3</span>])      <span class="hljs-comment"># raises an IndexError exception</span></code></pre>
+<p>You can also use negative indexes, in which cases you access from the last item to the first one. As for too high indexes, if the index is too small (lower than the opposite of the size), then an exception is also raised:</p>
+<pre class="hljs"><code>mylist = [<span class="hljs-number">12</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>]
+print(mylist[<span class="hljs-number">-1</span>])      <span class="hljs-comment"># print 7</span>
+print(mylist[<span class="hljs-number">-2</span>])      <span class="hljs-comment"># print 25</span>
+print(mylist[<span class="hljs-number">-3</span>])      <span class="hljs-comment"># print 12</span>
+print(mylist[<span class="hljs-number">-4</span>])      <span class="hljs-comment"># raises an IndexError exception</span></code></pre>
+<h2>Modification</h2>
+<p>You can modify any item in the list using the brackets:</p>
+<pre class="hljs"><code>mylist = [<span class="hljs-number">12</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>]
+mylist[<span class="hljs-number">1</span>] = <span class="hljs-number">3</span>
+print(mylist)       <span class="hljs-comment"># print [12, 3, 7]</span></code></pre>
+<p>As for access, you can't use invalid indexes, e.g. values outside [-size,size-1].</p>
+<p>You can add an item using the <code>append()</code> method:</p>
+<pre class="hljs"><code>mylist = [<span class="hljs-number">12</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>]
+mylist.append(<span class="hljs-number">3</span>)
+print(mylist)       <span class="hljs-comment"># print [12, 25, 7, 3]</span></code></pre>
+<p>To remove an item, you can use the <code>del</code> statement:</p>
+<pre class="hljs"><code>mylist = [<span class="hljs-number">12</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>]
+<span class="hljs-keyword">del</span> mylist[<span class="hljs-number">1</span>]
+print(mylist)       <span class="hljs-comment"># print [12, 7]</span></code></pre>
+<h2>Iterate through a list</h2>
+<p>Like we saw in the previous posts, you can access all items of a list using the <code>for</code> statement:</p>
+<pre class="hljs"><code>mylist = [<span class="hljs-number">12</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>]
+<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> mylist:
+    print(item)</code></pre>
+<p>These lines print the following messages:</p>
+<pre><code>12
+25
+7</code></pre>
+<p>Note that the iteration is always from index 0 to the last one.</p>
+<p>If you need to know the index of each item, you can use the <code>enumerate()</code> function:</p>
+<pre class="hljs"><code>mylist = [<span class="hljs-number">12</span>,<span class="hljs-number">25</span>,<span class="hljs-number">7</span>]
+<span class="hljs-keyword">for</span> index,item <span class="hljs-keyword">in</span> enumerate(mylist):
+    print(index,<span class="hljs-string">":"</span>,item)</code></pre>
+<p>These lines print the following messages:</p>
+<pre><code>0: 12
+1: 25
+2: 7</code></pre>
+<p>The iteration through a list is thanks to the Iterator pattern. Once we have seen the class inheritance in another post, I'll show you how to create your iterators.</p>
+<p>There are many other features around Python lists, and I'll show them throughout the posts. For now, we have enough knowledge to improve our game.</p>
+<h2>Store the towers in a list</h2>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-14-collisions/">previous program</a>, we store each tower position in a variable (constructor of the <code>GameState</code> class):</p>
+<pre class="hljs"><code>self.tower1Pos = Vector2(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>)
+self.tower2Pos = Vector2(<span class="hljs-number">10</span>,<span class="hljs-number">5</span>)</code></pre>
+<p>We can store the same locations using a list:</p>
+<pre class="hljs"><code>self.towersPos = [
+    Vector2(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>),
+    Vector2(<span class="hljs-number">10</span>,<span class="hljs-number">5</span>)
+]</code></pre>
+<p>If you want to add another tower, you only need to add another item to this list, for instance using the <code>append()</code>method:</p>
+<pre class="hljs"><code>self.towersPos.append(Vector2(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>))</code></pre>
+<p>This addition can be in the constructor or any other method of the <code>GameState</code> class. For instance, you can add one if you press a key.</p>
+<p>All the following no more depends on the number of towers in your game.</p>
+<h2>Handle collisions</h2>
+<p>In the <code>update()</code> method of the <code>GameState</code> class, we were using a long <code>if</code> statement to validate the new tank positions:</p>
+<pre class="hljs"><code><span class="hljs-comment"># Update position only if there is no collisions</span>
+<span class="hljs-keyword">if</span>  newTankPos.x &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newTankPos.x &lt; self.worldSize.x \
+<span class="hljs-keyword">and</span> newTankPos.y &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newTankPos.y &lt; self.worldSize.y \
+<span class="hljs-keyword">and</span> newTankPos != self.tower1Pos <span class="hljs-keyword">and</span> newTankPos != self.tower2Pos:
+    self.tankPos = newTankPos</code></pre>
+<p>For the locations outside the world, we still use a <code>if</code>statement. Note that the following lines use the <code>return</code>statement. This statement immediately leaves the current function. It means that if any condition is met (like <code>newTankPos.x &lt; 0</code>), then the function execution stops and Python ignores all the following lines:</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> newTankPos.x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> newTankPos.x &gt;= self.worldSize.x \
+<span class="hljs-keyword">or</span> newTankPos.y &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> newTankPos.y &gt;= self.worldSize.y:
+    <span class="hljs-keyword">return</span></code></pre>
+<p>If the new tank position is inside the world, the function continues, and we iterate through the tower positions:</p>
+<pre class="hljs"><code><span class="hljs-keyword">for</span> position <span class="hljs-keyword">in</span> self.towersPos:
+    <span class="hljs-keyword">if</span> newTankPos == position:
+        <span class="hljs-keyword">return</span></code></pre>
+<p>For each tower position, if the new tank position is one of a tower, then we also leave the function using the <code>return</code> statement.</p>
+<p>The final line of the <code>update()</code> method is the update of the tank position, which can happen if the position checks all passed:</p>
+<pre class="hljs"><code>self.tankPos = newTankPos</code></pre>
+<h2>Render towers</h2>
+<p>The rendering of towers is the same as before, except that we have a single block for rendering a tower (cf. <code>render()</code> method of the <code>UserInterface</code> class). This block is run as many times as there are tower positions in the list:</p>
+<pre class="hljs"><code><span class="hljs-keyword">for</span> position <span class="hljs-keyword">in</span> self.gameState.towersPos:
+    spritePoint = position.elementwise()*self.cellSize
+    texturePoint = Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>).elementwise()*self.cellSize
+    textureRect = Rect(int(texturePoint.x), int(texturePoint.y), int(self.cellSize.x),int(self.cellSize.y))
+    self.window.blit(self.unitsTexture,spritePoint,textureRect)
+    texturePoint = Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>).elementwise()*self.cellSize
+    textureRect = Rect(int(texturePoint.x), int(texturePoint.y), int(self.cellSize.x),int(self.cellSize.y))
+    self.window.blit(self.unitsTexture,spritePoint,textureRect)</code></pre>
+<h2>Final program</h2>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-15-lists/discover_python_patterns_15_lists.zip">Download code &amp; assets</a></p>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-16-inheritance/">next post</a>, I'll better organize the program thanks to class inheritance.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

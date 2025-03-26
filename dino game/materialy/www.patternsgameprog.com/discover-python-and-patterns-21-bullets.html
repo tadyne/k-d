@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-21-bullets" />
+<meta name="description" content="Fire bullets with Python and Pygame.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (21): Bullets</span></h2>
+	</div>
+
+<p>It is time to shoot with our tank and destroy the towers! We have all we need: a state to represent bullets, commands to update them, layers for the rendering, and a UI to manage all of these.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>Objective</h2>
+<p>At the end of this post, the tank and the towers can shoot bullets. If a bullet hits a unit, it loses its weapon:</p>
+<!-- Video Player -->
+<figure><video controls="controls" height="90%" poster="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-21-bullets/74ece1da1e-1622751188/21_bullets-1.mp4.jpg" preload="preload" width="90%"><source src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-21-bullets/1602dfaafe-1621710606/21_bullets-1.mp4" type="video/mp4"><a href="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-21-bullets/1602dfaafe-1621710606/21_bullets-1.mp4"><img src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-21-bullets/74ece1da1e-1622751188/21_bullets-1.mp4.jpg"></a></source></video></figure>
+<h2>Current architecture</h2>
+<p>Before adding this new feature to our program, let's have a look at its current structure.</p>
+<h3>The game state</h3>
+<p>The game state represents all the items in our game:</p>
+<figure><img class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-21-bullets/ac63a961f5-1621710606/20_state.png" width="494"></figure>
+<p>The <code>GameState</code> class defines the size of the world (<code>worldSize</code>), stores the items in the background (<code>ground</code>), the items in the foreground (<code>walls</code>), and all the units (<code>units</code>).</p>
+<p>The <code>Unit</code> class allows us to represent the two types of units in our game: tanks and towers. Each of them has a current location in the world (<code>position</code>), tile coordinates in the tileset (<code>tile</code>), a view angle (<code>orientation</code>), and the coordinates of a cell their weapon currently targets (<code>weaponTarget</code>).</p>
+<p>Note that the purpose of these classes is to store game data, and not to update it in any way. As a result, we currently have no method in these classes. We could add some, but only for convenience, for instance, to search for something in the game state. Behind this design, there is still the idea of dividing the problems into sub-problems: game state stores data and commands update it.</p>
+<h3>Commands</h3>
+<p>Commands store the elements required for updating the game state, and are also able to execute these updates:</p>
+<figure><img class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-21-bullets/d0e976f478-1621710606/20_commands-1.png" width="425"></figure>
+<p>The <code>MoveCommand</code> class stores a move for one unit, and apply it (if possible). The <code>TargetCommand</code> class stores an update of the cell targetted by one unit, and apply it.</p>
+<p>We can compare commands to a cooker in a one-person restaurant. The cooker comes to your table and asks what you want to eat. He writes it down on some piece of paper and goes back to the kitchen. Once the meals are ready, he serves them. Obviously, the service would be better if there are waiters; this is a typical improvement in Command patterns implementations. It is not our case in our current design; I'll present it in a future post.</p>
+<h3>Rendering</h3>
+<p>A hierarchy of layer classes renders the game state:</p>
+<figure><img class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-21-bullets/81ed4d41dc-1621710606/20_layers-1024x491.png" width="534"></figure>
+<p>The <code>Layer</code> base class contains the shared data and functionalities required by all child classes: the size of cells in pixels (<code>cellSize</code>), the tileset image (<code>texture</code>), and a method to render a tile (<code>renderTile</code>). Child classes must implement the <code>render()</code> method.</p>
+<p>The <code>ArrayLayer</code> renders a 2D array of tiles and the <code>UnitsLayer</code> a list of units.</p>
+<h3>User interface</h3>
+<p>Last but not least, the user interface manages all these items. Remind that it implements the Game Loop pattern:</p>
+<figure><img class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-21-bullets/7d3ebcd6ca-1621710606/20_ui.png" width="218"></figure>
+<p>The <code>processInput()</code> method parses of Pygame events (keyboard, mouse) and creates commands accordingly. It also creates commands to update non-playing items.</p>
+<p>The <code>update()</code> method executes all the commands and clears the commands list.</p>
+<p>The <code>render()</code> method renders all layers and tells Pygame that the rendering is done.</p>
+<p>The <code>run()</code> contains the main game loop and regulates the frame rate.</p>
+<h2>Bullets</h2>
+<p>Introduce the bullets features requires the update of all parts of the program: the game state to represent them, the commands to update them, the layers to render them, and the UI to manage them.</p>
+<h3>Game state with bullets</h3>
+<p>Bullets are too different from the units, and I need to (re)introduce a class hierarchy, with a child class for units and a child class for bullets:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GameItem</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,position,tile)</span>:</span>
+        self.state = state
+        self.status = <span class="hljs-string">"alive"</span>
+        self.position = position
+        self.tile = tile
+        self.orientation = <span class="hljs-number">0</span>    
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Unit</span><span class="hljs-params">(GameItem)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,position,tile)</span>:</span>
+        super().__init__(state,position,tile)
+        self.weaponTarget = Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
+        self.lastBulletEpoch = <span class="hljs-number">-100</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bullet</span><span class="hljs-params">(GameItem)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,unit)</span>:</span>
+        super().__init__(state,unit.position,Vector2(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>))
+        self.unit = unit
+        self.startPosition = unit.position
+        self.endPosition = unit.weaponTarget</code></pre>
+<p>The <code>GameItem</code> base class contains the shared attributes: a reference to the game state, the current status of the item ("alive" or "destroyed"), its cell position, its tile coordinates, and its orientation.</p>
+<p>The <code>Unit</code> child class contains the coordinates of the cell targeted by its weapon.</p>
+<p>The <code>Bullet</code> child class contains all that we need to manage a bullet:</p>
+<ul>
+<li>A reference to the unit that shot it (<code>unit</code>);</li>
+<li>The starting cell coordinates (<code>startPosition</code>). It is initialized at the current unit position;</li>
+<li>The final cell coordinates (<code>endPosition</code>). It is initialized at the current unit target.</li>
+</ul>
+<h3>GameState class and game epochs</h3>
+<p>In the <code>GameState</code> class I add the following new attributes:</p>
+<ul>
+<li><code>bullets</code>: a list of current bullets;</li>
+<li><code>bulletSpeed</code>: a float number that defines the speed of bullets;</li>
+<li><code>bulletRange</code>: a float number that defines the range of bullets;</li>
+<li><code>bulletDelay</code>: a float number that defines the minimum number of game epochs between two shots;</li>
+<li><code>epochs</code>: current game epoch.</li>
+</ul>
+<p>To handle game time, I don't consider real time (in seconds or minutes for instance). Since each computer can run at a different speed, depending on its power, the game may not run at the same speed on every device. A usual and highly advised approach is to consider game time, where the minimal time slot is a single update of the game state. It can have many names, I use to call them "game epochs".</p>
+<p>If your computer is able to run the game at maximum speed, for instance 60 game updates per seconds, then you can get a perfect synchronization between game epochs and real time. In this case, a game epoch always lasts about 16 milliseconds.</p>
+<p>However, there is no garanties that every computer can run updates 60 times per seconds. There is high chance that your computer does not updates at this rate, mainly because we are using Pygame in a simple way, and the rendering is very slow (I'll show how to correct that in the next post).</p>
+<p>Whatever the number of game or frames updates, the gameplay must be always the same. In order to get such a result, reasonning in game time (or epochs) is one of the best way to achieve it. Considering our bullet delay, we only allow another shot by the same unit after <code>bulletDelay</code> epochs. It means that, slow or fast computer, every game items (units or bullets) moved at least by <code>bulletDelay</code> steps. No one will be able to shoot more bullets because he has a faster computer!</p>
+<h3>Bullets commands</h3>
+<p>To update bullets, I create three commands:</p>
+<ul>
+<li><code>ShootCommand</code> to create a new bullet;</li>
+<li><code>MoveBulletCommand</code> to move a bullet and act accordingly;</li>
+<li><code>DeleteDestroyedCommand</code> to delete game items in a list with a "destroyed" status.</li>
+</ul>
+<h4>ShootCommand</h4>
+<p>The <code>ShootCommnand</code> class stores a reference to the game state and to a unit that shoots:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShootCommand</span><span class="hljs-params">(Command)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,unit)</span>:</span>
+        self.state = state
+        self.unit = unit
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">if</span> self.unit.status != <span class="hljs-string">"alive"</span>:
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">if</span> self.state.epoch-self.unit.lastBulletEpoch &lt; self.state.bulletDelay:
+            <span class="hljs-keyword">return</span>
+        self.unit.lastBulletEpoch = self.state.epoch
+        self.state.bullets.append(Bullet(self.state,self.unit))</code></pre>
+<p>A command may not always lead to a game update. In this case, if the unit is not "alive" (lines 7-8), then nothing happens. It is the same if the unit already shot recently (lines 9-10). If everything is fine, we record the last game time (a.k.a. epoch) the unit shot (line 11), and we add a new bullet to the list of bullets (line 12).</p>
+<h4>MoveBulletCommand</h4>
+<p>The <code>MoveBulletCommand</code> class handles the movement of a bullet:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MoveBulletCommand</span><span class="hljs-params">(Command)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,bullet)</span>:</span>
+        self.state = state
+        self.bullet = bullet
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        direction = (self.bullet.endPosition - self.bullet.startPosition).normalize()
+        newPos = self.bullet.position + self.state.bulletSpeed * direction
+        newCenterPos = newPos + Vector2(<span class="hljs-number">0.5</span>,<span class="hljs-number">0.5</span>)
+        <span class="hljs-comment"># If the bullet goes outside the world, destroy it</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.state.isInside(newPos):
+            self.bullet.status = <span class="hljs-string">"destroyed"</span>
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-comment"># If the bullet goes towards the target cell, destroy it</span>
+        <span class="hljs-keyword">if</span> ((direction.x &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newPos.x &gt;= self.bullet.endPosition.x) \
+        <span class="hljs-keyword">or</span> (direction.x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newPos.x &lt;= self.bullet.endPosition.x)) \
+        <span class="hljs-keyword">and</span> ((direction.y &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newPos.y &gt;= self.bullet.endPosition.y) \
+        <span class="hljs-keyword">or</span> (direction.y &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newPos.y &lt;= self.bullet.endPosition.y)):
+            self.bullet.status = <span class="hljs-string">"destroyed"</span>
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-comment"># If the bullet is outside the allowed range, destroy it</span>
+        <span class="hljs-keyword">if</span> newPos.distance_to(self.bullet.startPosition) &gt;= self.state.bulletRange:  
+            self.bullet.status = <span class="hljs-string">"destroyed"</span>
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-comment"># If the bullet hits a unit, destroy the bullet and the unit </span>
+        unit = self.state.findLiveUnit(newCenterPos)
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> unit <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> unit != self.bullet.unit:
+            self.bullet.status = <span class="hljs-string">"destroyed"</span>
+            unit.status = <span class="hljs-string">"destroyed"</span>
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-comment"># Nothing happends, continue bullet trajectory</span>
+        self.bullet.position = newPos</code></pre>
+<p>We first compute the direction in which the bullet goes to (line 7):</p>
+<pre class="hljs"><code>direction = (self.bullet.endPosition -self.bullet.startPosition).normalize()</code></pre>
+<p>The direction is the difference between the end and the start positions of the bullet. This direction is normalized (e.g., the norm of the vector is 1), so the distance between the end and the start does not change the speed of the bullet.</p>
+<p>Then, we compute the next position of bullet sprite and the position of the center of this sprite (lines 8-9):</p>
+<pre class="hljs"><code>newPos = self.bullet.position + self.state.bulletSpeed * direction
+newCenterPos = newPos + Vector2(<span class="hljs-number">0.5</span>,<span class="hljs-number">0.5</span>)</code></pre>
+<p>The next position of the bullet is the current one plus the direction multiplied by the speed of bullets. This position is the top left corner of the bullet tile, with the bullet drawn at its center. We compute this centered position to compute collisions because the player sees it at this specific location.</p>
+<p>Lines 11-13 check that the next bullet position is still inside the world. If it not the case, the bullet status becomes "destroyed" and we leave the method. I added the <code>isInside()</code> method in the <code>GameState</code> class to test if a position is inside the world. I am used to creating such convenience methods to write clear code:</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.state.isInside(newPos):
+    self.bullet.status = <span class="hljs-string">"destroyed"</span>
+    <span class="hljs-keyword">return</span></code></pre>
+<p>Lines 15-20 test if the bullet reaches its final destination. It is a bit tricky because it depends on the direction of the bullet. For instance, if it goes to the right (<code>direction.x &gt;= 0</code>), then the trajectory is over if the x coordinate goes beyond the x coordinates of the end position(<code>newPos.x &gt;= self.bullet.endPosition.x</code>):</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> ((direction.x &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newPos.x &gt;= self.bullet.endPosition.x) \
+<span class="hljs-keyword">or</span> (direction.x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newPos.x &lt;= self.bullet.endPosition.x)) \
+<span class="hljs-keyword">and</span> ((direction.y &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newPos.y &gt;= self.bullet.endPosition.y) \
+<span class="hljs-keyword">or</span> (direction.y &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> newPos.y &lt;= self.bullet.endPosition.y)):
+    self.bullet.status = <span class="hljs-string">"destroyed"</span>
+    <span class="hljs-keyword">return</span> </code></pre>
+<p>Lines 22-24 check that the next bullet position is not out of range. If it is not the case, the bullet becomes "destroyed":</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> newPos.distance_to(self.bullet.startPosition) &gt; self.state.bulletRange:  
+    self.bullet.status = <span class="hljs-string">"destroyed"</span>
+    <span class="hljs-keyword">return</span></code></pre>
+<p>Lines 26-31 test if a unit collides with the bullet. This test is performed by a new <code>findLiveUnit()</code> in the <code>GameState</code> class that looks for the first unit at some position with an "alive" status. If we find a unit, and if this unit is not the one that created this bullet, then the unit and the bullet becomes "destroyed":</p>
+<pre class="hljs"><code>unit = self.state.findLiveUnit(newCenterPos)
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> unit <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> unit != self.bullet.unit:
+    self.bullet.status = <span class="hljs-string">"destroyed"</span>
+    unit.status = <span class="hljs-string">"destroyed"</span>
+    <span class="hljs-keyword">return</span></code></pre>
+<p>Finally, if all tests passed, we can update the position of the bullet (line 32):</p>
+<pre class="hljs"><code>self.bullet.position = newPos</code></pre>
+<h4>DeleteDestroyedCommand</h4>
+<p>The <code>DeleteDestroyedCommand</code> deletes all game items in a list with a status different from "alive":</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DeleteDestroyedCommand</span><span class="hljs-params">(Command)</span>       :</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,itemList)</span>:</span>
+        self.itemList = itemList
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        newList = [ item <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> self.itemList <span class="hljs-keyword">if</span> item.status == <span class="hljs-string">"alive"</span> ]
+        self.itemList[:] = newList  </code></pre>
+<p>We use this command to delete all bullets with a "destroyed" status in the <code>bullets</code> list of the <code>GameState</code> class.</p>
+<p>I create this command because I don't want to change the bullets list in other commands. Removing elements in a list is always risky because it changes the index of items. It can also lead to unexpected behavior when you iterate through it. And last but not least, it is a nightmare when you do multi-threading. Once again, for this simple program, we could remove destroyed bullets in the move bullet command. As for all previous cases, I am here to show the best practices, and to save you hours or even days of bug searching!</p>
+<p>About the implementation of this removal, you can see that I first create a new list of items where the <code>status</code> attribute is "alive":</p>
+<pre class="hljs"><code>newList = [ item <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> self.itemList <span class="hljs-keyword">if</span> item.status == <span class="hljs-string">"alive"</span> ]</code></pre>
+<p>This syntax is very compact and equivalent to the following one:</p>
+<pre class="hljs"><code>newList = []
+<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> self.itemList:
+    <span class="hljs-keyword">if</span> item.status == <span class="hljs-string">"alive"</span>:
+        newList.append(item)</code></pre>
+<p>Line 7 also introduces a new syntax with the two dots in brackets <code>[:]</code>:</p>
+<pre class="hljs"><code>self.itemList[:] = newList</code></pre>
+<p>To update the <code>itemList</code> attribute, you could think about the following syntax:</p>
+<pre class="hljs"><code>self.itemList = newList</code></pre>
+<p>Using this second syntax, it updates the content of the <code>itemList</code> attribute. However, this attribute contains a <em>reference</em> to a list; it is not a list. So, without the <code>[:]</code>, the <code>itemList</code> attribute references a new list, and the one it was previously referring to is not changed.</p>
+<p>With the <code>[:]</code>, we ask for a copy of all items in the list referenced by <code>newList</code> into the list referenced by <code>self.itemList</code>.</p>
+<p>If these references are not clear, don't worry. It is a difficult topic for many new programmers (and actually many programmers still don't understand them and sometimes don't even know that they exist...)</p>
+<h3>Bullets layers</h3>
+<p>We need a new <code>Layer</code> child class to render the bullets:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BulletsLayer</span><span class="hljs-params">(Layer)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,ui,imageFile,gameState,bullets)</span>:</span>
+        super().__init__(ui,imageFile)
+        self.gameState = gameState
+        self.bullets = bullets
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self,surface)</span>:</span>
+        <span class="hljs-keyword">for</span> bullet <span class="hljs-keyword">in</span> self.bullets:
+            <span class="hljs-keyword">if</span> bullet.status == <span class="hljs-string">"alive"</span>:
+                self.renderTile(surface,bullet.position,bullet.tile,bullet.orientation)</code></pre>
+<p>This layer is similar to the <code>UnitsLayer</code>, except that we only render one tile.</p>
+<p>About the <code>UnitsLayer</code> class, I updated it to render only units with an "alive" status.</p>
+<h3>User Interface</h3>
+<p>The main change in the <code>UserInterface</code> is in the <code>processInput()</code> method, where we create the commands:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">processInput</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-comment"># Pygame events (close, keyboard and mouse click)</span>
+    ...
+
+    <span class="hljs-comment"># Keyboard controls the moves of the player's unit</span>
+    ...
+
+    <span class="hljs-comment"># Mouse controls the target of the player's unit</span>
+    ...
+
+    <span class="hljs-comment"># Other units always target the player's unit and shoot if close enough</span>
+    <span class="hljs-keyword">for</span> unit <span class="hljs-keyword">in</span> self.gameState.units:
+        <span class="hljs-keyword">if</span> unit != self.playerUnit:
+            command = TargetCommand(self.gameState,unit,self.playerUnit.position)
+            self.commands.append(command)
+            distance = unit.position.distance_to(self.playerUnit.position)
+            <span class="hljs-keyword">if</span> distance &lt;= self.gameState.bulletRange:
+                self.commands.append(ShootCommand(self.gameState,unit))
+
+    <span class="hljs-comment"># Shoot if left mouse was clicked</span>
+    <span class="hljs-keyword">if</span> mouseClicked:
+        self.commands.append(
+            ShootCommand(self.gameState,self.playerUnit)
+        )
+
+    <span class="hljs-comment"># Bullets automatic movement</span>
+    <span class="hljs-keyword">for</span> bullet <span class="hljs-keyword">in</span> self.gameState.bullets:
+        self.commands.append(
+            MoveBulletCommand(self.gameState,bullet)
+        )
+
+    <span class="hljs-comment"># Delete any destroyed bullet</span>
+    self.commands.append(
+        DeleteDestroyedCommand(self.gameState.bullets)
+    )</code></pre>
+<h4>Non-playing unit shoots</h4>
+<p>Lines 12-18 updates non-playing units. Their weapon always targets the player (lines 14-15), as before. The new lines 16-18 add a new shoot command if the player is in the range:</p>
+<pre class="hljs"><code>distance = unit.position.distance_to(self.playerUnit.position)
+<span class="hljs-keyword">if</span> distance &lt;= self.gameState.bulletRange:
+    self.commands.append(ShootCommand(self.gameState,unit))</code></pre>
+<p>The <code>distance</code> variable contains the distance between the position of the non-playing unit and the one of the player. <code>unit.position</code> is an instance of the Pygame <code>Vector2</code> class. This class has a <code>distance_to</code> method that computes a Euclidean distance between the instance and the vector in the method argument.</p>
+<h4>Player shoots</h4>
+<p>Lines 21-24 adds a new shoot command for the player if he clicks the left mouse button. Remind that a command does not necessarily lead to update. For instance, if the player is dead or if he shot recently, no bullet is created:</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> mouseClicked:
+    self.commands.append(
+        ShootCommand(self.gameState,self.playerUnit)
+    )</code></pre>
+<h4>Bullets movement</h4>
+<p>Lines 27-30 add one move command for each bullet in the list:</p>
+<pre class="hljs"><code><span class="hljs-keyword">for</span> bullet <span class="hljs-keyword">in</span> self.gameState.bullets:
+    self.commands.append(
+        MoveBulletCommand(self.gameState,bullet)
+    )</code></pre>
+<p>Note that I add the command in the order of the list. We could change this, for instance, first move the player bullets before the others. You can see here the benefits of this pattern: execution order and implementation are entirely separated. We can change one without worrying about the other.</p>
+<h4>Delete bullets</h4>
+<p>Lines 33-35 add the command that removes all bullets with a "destroyed" status in the <code>bullets</code> list of the game state:</p>
+<pre class="hljs"><code>self.commands.append(
+    DeleteDestroyedCommand(self.gameState.bullets)
+)</code></pre>
+<p>This command is the last one to be executed (it is the last one in the list of commands) when every update of the current epoch has been executed. As a result, we take no risk, and no unexpected behavior can happen.</p>
+<h2>Final program</h2>
+<p>I also did other changes I don't describe. They are minor changes (like adding a bullet layer in the layers list), and I think you can easily understand them if you have a look at the code.</p>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-21-bullets/discover_python_and_patterns_21_bullets.zip">Download code and assets</a></p>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-22-animations">next post</a>, we'll add explosions. I also show how to speed up the rendering to get 60 frames per second.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-24-load-levels" />
+<meta name="description" content="Load a game level created with Tiled Map Editor using Python.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (24): Load levels</span></h2>
+	</div>
+
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-23-create-levels/">previous post</a>, we created a new level using Tiled. I show you how to load it in our game.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em></p>
+<h2>Level 2 in action</h2>
+<p>You can see the game with the level in the "level2.tmx" file:</p>
+<!-- Video Player -->
+<figure><video controls="controls" height="90%" poster="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-24-load-levels/28c3be6a8e-1622751194/24_level2.mp4.jpg" preload="preload" width="90%"><source src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-24-load-levels/e713b6cfd2-1621710969/24_level2.mp4" type="video/mp4"><a href="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-24-load-levels/e713b6cfd2-1621710969/24_level2.mp4"><img src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-24-load-levels/28c3be6a8e-1622751194/24_level2.mp4.jpg"></a></source></video></figure>
+<h2>Requirement</h2>
+<p>To parse the <code>.tmx</code> file created by Tiled, I use a free library called <em>tmx</em>. You can install it using <code>pip</code>: open an Anaconda prompt (as we did for Pygame), and run:</p>
+<pre><code>pip install tmx</code></pre>
+<p>At the beginning of our program, add the following line to import it:</p>
+<pre><code>import tmx</code></pre>
+<h2>Load level command</h2>
+<p>We could load the level thanks to a new method in the <code>GameState</code> class or a new independent function. Instead, I propose to create a new command <code>LoadLevelCommand</code>, child of the <code>Command</code> base class:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoadLevelCommand</span><span class="hljs-params">(Command)</span>       :</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,ui,fileName)</span>:</span>
+        self.ui = ui
+        self.fileName = fileName
+    ...</code></pre>
+<p>It works as other commands: you add it to the command list, and the next game state update will execute it.</p>
+<p>The first benefit of this approach is that we create a separate process for loading a level, and don't add another feature to the game state. It is still the same idea we saw many times in this series: divide and conquer!</p>
+<p>The second benefit is that we can take advantage of the Command pattern features. We can better control the execution flow thanks to this pattern. For instance, an event in the game could trigger the loading of a new level. Thanks to this approach, it can be executed at the right moment, avoiding unexpected behaviors.</p>
+<p>In the constructor below, we define two attributes:</p>
+<ul>
+<li><code>ui</code>: a reference to the user interface, to get access to all data (controls, display and game state);</li>
+<li><code>fileName</code>: the name of the file to load</li>
+</ul>
+<h2>Load the level file</h2>
+<p>The <code>run()</code> method of the <code>LoadLevelCommand</code> class starts the loading of the level:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(self.fileName):
+        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"No file {}"</span>.format(self.fileName))
+    tileMap = tmx.TileMap.load(self.fileName)
+    ...</code></pre>
+<p>Lines 2 checks that the file exists. If it is not the case, we raise an exception (line 3), telling that the file does not exist. The <code>exists()</code> function of the <code>os.path</code> standard library returns <code>True</code> if the file exists, <code>False</code> otherwise. Don't forget to import <code>os</code> to get access to this function.</p>
+<p>In the exception message, you can recognize the string formatting syntax, where the braces <code>{}</code> are replaced by the content of the argument in the following <code>format()</code> method. Now we saw the class syntax, we can see the method call of the instance <code>"No file{}"</code> of the Python string class. It is easier to understand if we introduce intermediate variables:</p>
+<pre class="hljs"><code>formatString = <span class="hljs-string">"No file{}"</span>
+msg = formatString.format(self.fileName)
+<span class="hljs-keyword">raise</span> RuntimeError(msg)</code></pre>
+<p>Line 3 calls the <code>load()</code> static method of the <code>tmx.TileMap</code> class:</p>
+<pre class="hljs"><code>tileMap = tmx.TileMap.load(self.fileName)</code></pre>
+<p>You can call static methods without an instance, like functions. Note that you need to use the name of the class in place of the instance. In this example, the class is <code>tmx.TileMap</code>. If it were <code>MyClass</code>, a call to a static method <code>myMethod()</code> would be <code>MyClass.myMethod()</code>.</p>
+<p>The returned value is an instance of the <code>tmx.TileMap</code> class. You can find a detailed description of this class here: <a href="http://python-tmx.nongnu.org/doc/">http://python-tmx.nongnu.org/doc/</a>.</p>
+<h2>Check, check, check!</h2>
+<p>Before starting the description of the loading procedure, I want to emphasize an essential aspect: the need for checks!</p>
+<p>Loading an external file is always risky. Even if you are loading a file that you created with the software you own, there is still a risk that something happens. For instance, if your software updates itself, and introduce changes in the file format, you could have to face unexpected issues. It is even more problematic when other members of your team create these files. And finally, if you allow players to create their levels, many cases can happen.</p>
+<p>It is the reason why you should add as many checks as you can, including checks that seem obvious. If something wrong happens, it will warn the player that the file format is not supported. Maybe the cause can be understandable for the player, and (s)he will be able to correct the level. For instance, if the format expects five layers, and the player creates a level with six layers, (s)he can correct it. For all other warnings, it will help you and members of your team in a better way than a crash or unexpected behavior. For the latter case, I have experimented with these cases, and you can trust me: loading a malformed file that silently leads to errors later in the application is a nightmare! If only I got some messages that tell me that some values of my file are incorrect!</p>
+<h2>Decode the tmx TiledMap instance</h2>
+<p>I continue the description of the <code>run()</code> method. The next lines check that the orientation of the map is orthogonal:</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> tileMap.orientation != <span class="hljs-string">"orthogonal"</span>:
+    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: invalid orientation"</span>.format(self.fileName))</code></pre>
+<p>We can read most map properties using attributes of the <code>tmx.TiledMap</code> class, like <code>orientation</code>.</p>
+<p>As described in the last post, we need maps with five layers:</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> len(tileMap.layers) != <span class="hljs-number">5</span>:
+    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: 5 layers are expected"</span>.format(self.fileName))</code></pre>
+<p>The <code>layers</code> attribute of the <code>tmx.TiledMap</code> class is a list of <code>tmx.Layer</code> class instances.</p>
+<p>We create a <code>state</code> variable that refers to the game state (to reduce the length of following lines) and set the world size:</p>
+<pre class="hljs"><code>state = self.ui.gameState
+state.worldSize = Vector2(tileMap.width,tileMap.height)    </code></pre>
+<p>The next lines decode the first layer in the map (<code>tileMap.layers[0]</code>) and set the corresponding items in the game state and the UI accordingly:</p>
+<pre class="hljs"><code>tileset, array = self.decodeArrayLayer(tileMap,tileMap.layers[<span class="hljs-number">0</span>])
+cellSize = Vector2(tileset.tilewidth,tileset.tileheight)
+state.ground[:] = array
+imageFile = tileset.image.source
+self.ui.layers[<span class="hljs-number">0</span>].setTileset(cellSize,imageFile)</code></pre>
+<p>The <code>decodeArrayLayer()</code> is a method of the <code>LoadLevelCommand</code> class that returns the corresponding <code>tmx.Tileset</code> and the array of tile coordinates (as used in the game state).</p>
+<p>I created the <code>decodeArrayLayer()</code> method because I don't want to type twice the same procedure. If you wonder when to create methods, here are two golden rules:</p>
+<ul>
+<li>You should split a new method when it becomes is too large (over 100 lines);</li>
+<li>You should create new methods to avoid the duplication of the same procedures (batch of 10-12 lines). In other words, don't type twice the same code blocks!</li>
+</ul>
+<p>The following lines work the same, except that we decode the second layers:</p>
+<pre class="hljs"><code>tileset, array = self.decodeArrayLayer(tileMap,tileMap.layers[<span class="hljs-number">1</span>])
+<span class="hljs-keyword">if</span> tileset.tilewidth != cellSize.x <span class="hljs-keyword">or</span> tileset.tileheight != cellSize.y:
+    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: tile sizes must be the same in all layers"</span>.format(self.fileName))
+state.walls[:] = array
+imageFile = tileset.image.source
+self.ui.layers[<span class="hljs-number">1</span>].setTileset(cellSize,imageFile)</code></pre>
+<p>For the units layers, as described in the previous post, we use two layers: one for the tanks and another for the towers. They use another method <code>decodeUnitsLayer()</code> that returns a tileset and a list (instead of an array):</p>
+<pre class="hljs"><code>tanksTileset, tanks = self.decodeUnitsLayer(state,tileMap,tileMap.layers[<span class="hljs-number">2</span>])
+towersTileset, towers = self.decodeUnitsLayer(state,tileMap,tileMap.layers[<span class="hljs-number">3</span>])
+<span class="hljs-keyword">if</span> tanksTileset != towersTileset:
+    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: tanks and towers tilesets must be the same"</span>.format(self.fileName))
+<span class="hljs-keyword">if</span> tanksTileset.tilewidth != cellSize.x <span class="hljs-keyword">or</span> tanksTileset.tileheight != cellSize.y:
+    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: tile sizes must be the same in all layers"</span>.format(self.fileName))
+state.units[:] = tanks + towers
+cellSize = Vector2(tanksTileset.tilewidth,tanksTileset.tileheight)
+imageFile = tanksTileset.image.source
+self.ui.layers[<span class="hljs-number">2</span>].setTileset(cellSize,imageFile)</code></pre>
+<p>All the code above doesn't exploit the splitting in two layers, we need it after, to know which units are the tanks:</p>
+<pre class="hljs"><code>self.ui.playerUnit = tanks[<span class="hljs-number">0</span>]      </code></pre>
+<p>For now, our program only handles one player.</p>
+<p>We use the last layer to know the tileset for bullets and explosions (we ignore the tile coordinates):</p>
+<pre class="hljs"><code>tileset, array = self.decodeArrayLayer(tileMap,tileMap.layers[<span class="hljs-number">4</span>])
+<span class="hljs-keyword">if</span> tileset.tilewidth != cellSize.x <span class="hljs-keyword">or</span> tileset.tileheight != cellSize.y:
+    <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: tile sizes must be the same in all layers"</span>.format(self.fileName))
+state.bullets.clear()
+imageFile = tileset.image.source
+self.ui.layers[<span class="hljs-number">3</span>].setTileset(cellSize,imageFile)</code></pre>
+<p>Finally, the window size is updated:</p>
+<pre class="hljs"><code>windowSize = state.worldSize.elementwise() * cellSize
+self.ui.window = pygame.display.set_mode((int(windowSize.x),int(windowSize.y))) </code></pre>
+<p>At this point, we loaded the level, and the game can run.</p>
+<h2>The decodeArrayLayer() method</h2>
+<p>This method decodes a <code>tmx.Layer</code> instance, and returns the corresponding tileset and array of tile coordinates:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decodeArrayLayer</span><span class="hljs-params">(self,tileMap,layer)</span>:</span>
+    tileset = self.decodeLayer(tileMap,layer)
+
+    array = [ <span class="hljs-literal">None</span> ] * tileMap.height
+    <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(tileMap.height):
+        array[y] = [ <span class="hljs-literal">None</span> ] * tileMap.width
+        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(tileMap.width):
+            tile = layer.tiles[x + y*tileMap.width]
+            <span class="hljs-keyword">if</span> tile.gid == <span class="hljs-number">0</span>:
+                <span class="hljs-keyword">continue</span>
+            lid = tile.gid - tileset.firstgid
+            <span class="hljs-keyword">if</span> lid &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> lid &gt;= tileset.tilecount:
+                <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: invalid tile id"</span>.format(self.fileName))
+            tileX = lid % tileset.columns
+            tileY = lid // tileset.columns
+            array[y][x] = Vector2(tileX,tileY)
+
+    <span class="hljs-keyword">return</span> tileset, array</code></pre>
+<p>Line 2 calls the <code>decodeLayer()</code> method. I created this method since both <code>decodeArrayLayer()</code> and <code>decodeUnitsLayer()</code> methods starts with the same procedure. I follow the golden rule and try not to repeat the same lines of code.</p>
+<p>The rest of the method parses the list of tiles in the layer. A list is a one dimension array, and the output array has two dimensions. We have to convert from one to another (which is a common computation in games):</p>
+<ul>
+<li>Convert 2D coordinates (x,y) into 1D: <code>x + y*width</code>. In this example, the width is the one of the map: <code>tileMap.width</code>;</li>
+<li>Convert 1D coordinates <code>index</code> into 2D: <code>x = index % width</code> and <code>y = index // width</code> (<code>//</code> is the integer divide). In this example, we convert the 1D tile identifier (<code>lid</code>) into 2D tile coordinates <code>tileX</code> and <code>tileY</code>.</li>
+</ul>
+<h2>The decodeLayer() method</h2>
+<p>This last one checks the layer properties, and looks for the tileset corresponding to the layer:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decodeLayer</span><span class="hljs-params">(self,tileMap,layer)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> isinstance(layer,tmx.Layer):
+        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: invalid layer type"</span>.format(self.fileName))
+    <span class="hljs-keyword">if</span> len(layer.tiles) != tileMap.width * tileMap.height:
+        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: invalid tiles count"</span>.format(self.fileName))
+
+    <span class="hljs-comment"># Guess which tileset is used by this layer</span>
+    gid = <span class="hljs-literal">None</span>
+    <span class="hljs-keyword">for</span> tile <span class="hljs-keyword">in</span> layer.tiles:
+        <span class="hljs-keyword">if</span> tile.gid != <span class="hljs-number">0</span>:
+            gid = tile.gid
+            <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">if</span> gid <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+        <span class="hljs-keyword">if</span> len(tileMap.tilesets) == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: no tilesets"</span>.format(self.fileName))
+        tileset = tileMap.tilesets[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">else</span>:
+        tileset = <span class="hljs-literal">None</span>
+        <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> tileMap.tilesets:
+            <span class="hljs-keyword">if</span> gid &gt;= t.firstgid <span class="hljs-keyword">and</span> gid &lt; t.firstgid+t.tilecount:
+                tileset = t
+                <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">if</span> tileset <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+            <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: no corresponding tileset"</span>.format(self.fileName))
+
+    <span class="hljs-comment"># Check the tileset</span>
+    <span class="hljs-keyword">if</span> tileset.columns &lt;= <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: invalid columns count"</span>.format(self.fileName))
+    <span class="hljs-keyword">if</span> tileset.image.data <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"Error in {}: embedded tileset image is not supported"</span>.format(self.fileName))
+
+    <span class="hljs-keyword">return</span> tileset</code></pre>
+<p>The part that tries to guess the corresponding tileset (lines 8-24) is a bit tricky. If you don't understand, it is not an issue. It is because our game uses a specific tileset for each layer, but Tiled layers can use any tileset. So, we first found the first non-zero tile global id (lines 8-12). If we found no one (line 13), then we select the first tileset (if it exists). If we found one, we search the corresponding tileset (lines 18-24).</p>
+<h2>Final program</h2>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-24-load-levels/discover_python_and_patterns_24_load_levels.zip">Download code and assets</a></p>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-25-menu/">next post</a>, I'll start the creation of a game menu.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

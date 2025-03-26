@@ -1,0 +1,20 @@
+#registerAgreements {
+    max-height: 620px;
+}
+
+.register-card>.panel:hover {
+    border-color: #337ab7;
+}
+
+.register-card>.panel>.panel-front {
+    min-height: 415px;
+}
+
+.icon-circle {
+    width: 140px;
+    height: 140px;
+}
+
+a:not(.text-decoration-none) {
+    color: #3c9cdf !important;
+}

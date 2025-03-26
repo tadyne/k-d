@@ -1,0 +1,5 @@
+User-agent: googlebot
+Allow: /js/ld/ld.js
+
+User-agent: *
+Disallow: /

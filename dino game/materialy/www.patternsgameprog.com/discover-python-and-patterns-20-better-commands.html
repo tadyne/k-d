@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-20-better-commands" />
+<meta name="description" content="The Command pattern with the Python language.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (20): Better commands</span></h2>
+	</div>
+
+<p>Since we saw the class inheritance, I can show you how to get a better implementation of the Command pattern. It eases a lot the management of commands and introduces exciting features.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>The Command pattern</h2>
+<p>The Command pattern proposes to store the information required for updating data and execute these updates at a later time, eventually in a different order.</p>
+<p>In the previous posts, we simply implement this recipe, using a variable to store our command. For instance, the <code>moveTankCommand</code> attribute of the <code>UserInterface</code>class memorizes the direction in which the tank should move. Then, during the game update, this attribute is used to move the tank.</p>
+<p>Storing in a single attribute is limited, and we can do much better if we store the commands data in a class instance. Furthermore, we can also embed the update process in this class, rather than putting it somewhere in the main game state class.</p>
+<figure><img alt="Command pattern: commands hierarchy" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-20-better-commands/702de4d2b5-1621710549/20_commands.png" width="474"></figure>
+<p>Using these ideas, we can implement the Command pattern for our two current commands (move the tank and target a unit) using the following class hierarchy: </p>
+<p>The <code>Command</code> is the base class. It only contains a <code>run()</code> method that executes the tasks described by the command instance. Considering methods, we don't need more. Considering attributes, we could add data used by all child classes like a reference to the game state, but I don't know yet if all child classes will require it.</p>
+<p>The <code>MoveCommand</code> is a child class of <code>Command</code> and stores all the information we need to move a unit. Note that I extended the command to control any unit (tanks or towers), which leads to funny gameplay for free, like controlling several tanks or towers.</p>
+<p>The <code>TargetCommand</code> is also a child class of <code>Command</code> and handles the orientation of a weapon towards a unit.</p>
+<h2>Changes to the <code>Unit</code> class hierarchy</h2>
+<p>In the previous posts, we created a <code>Unit</code> class hierarchy (the <code>Tank</code> and <code>Tower</code> classes) to represent all units and handles the update of their data.</p>
+<p>It is a simple approach I selected to ease the understanding. Many software architectures use this recipe because it is easy to use and understand. However, it has several flaws and fewer features than the one I propose to use in this post. The main issue is that all updates in centered around a single object. For instance, we implemented the move of the tank in the <code>Tank</code> class. It is okay because the changes only concern the tank.</p>
+<p>As the game grows in complexity, this case is less likely to happen. When we have to implement the update of several game items resulting from one command, we must choose one of the classes involved. For instance, when one unit destroy one another, which class should implement this? The destroying or the destroyed class? It is a simple case; some commands can update the data of many items or parts of the world.</p>
+<p>With the approach I propose to follow, there are no such flaws. The game state classes store data on one side, and the command classes update data on the other side. It follows the most important rule of software design: divide problems into sub-problems!</p>
+<p>Considering our <code>Unit</code> class hierarchy, we no more need it. A single <code>Unit</code> class can store the data of any unit:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Unit</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,position,tile)</span>:</span>
+        self.state = state
+        self.position = position
+        self.tile = tile
+        self.orientation = <span class="hljs-number">0</span>
+        self.weaponTarget = Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)</code></pre>
+<p>Note that you can still use a class hierarchy for the beauty of the design. For instance, you can add the two following classes:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tank</span><span class="hljs-params">(Unit)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,position,tile)</span>:</span>
+        super().__init(state,position,tile)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tower</span><span class="hljs-params">(Unit)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,position,tile)</span>:</span>
+        super().__init(state,position,tile)   </code></pre>
+<h2>Implementation of Command</h2>
+<p>The implementation of the base class is straightforward. The <code>run()</code> method only raises an exception, in case we forgot to implement this method in a child class:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Command</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">raise</span> NotImplementedError()</code></pre>
+<h2>Implementation of MoveCommand</h2>
+<p>The implementation of the <code>MoveCommand</code> class is a refactoring of what we did previously:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MoveCommand</span><span class="hljs-params">(Command)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,unit,moveVector)</span>:</span>
+        self.state = state
+        self.unit = unit
+        self.moveVector = moveVector
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># Update unit orientation</span>
+        <span class="hljs-keyword">if</span> self.moveVector.x &lt; <span class="hljs-number">0</span>: 
+            self.unit.orientation = <span class="hljs-number">90</span>
+        <span class="hljs-keyword">elif</span> self.moveVector.x &gt; <span class="hljs-number">0</span>: 
+            self.unit.orientation = <span class="hljs-number">-90</span>
+        <span class="hljs-keyword">if</span> self.moveVector.y &lt; <span class="hljs-number">0</span>: 
+            self.unit.orientation = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">elif</span> self.moveVector.y &gt; <span class="hljs-number">0</span>: 
+            self.unit.orientation = <span class="hljs-number">180</span>
+
+        <span class="hljs-comment"># Compute new tank position</span>
+        newPos = self.unit.position + self.moveVector
+
+        <span class="hljs-comment"># Don't allow positions outside the world</span>
+        <span class="hljs-keyword">if</span> newPos.x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> newPos.x &gt;= self.state.worldWidth \
+        <span class="hljs-keyword">or</span> newPos.y &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> newPos.y &gt;= self.state.worldHeight:
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># Don't allow wall positions</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.state.walls[int(newPos.y)][int(newPos.x)] <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># Don't allow other unit positions </span>
+        <span class="hljs-keyword">for</span> otherUnit <span class="hljs-keyword">in</span> self.state.units:
+            <span class="hljs-keyword">if</span> newPos == otherUnit.position:
+                <span class="hljs-keyword">return</span>
+
+        self.unit.position = newPos</code></pre>
+<p>The constructor copies its arguments to the attributes.</p>
+<p>The <code>run()</code> method is very similar to what we did in the <code>move()</code> method of the previous <code>Tank</code> class. Everything is the same except that we update a <code>self.unit</code> unit instead of the <code>self</code> instance.</p>
+<h2>Implementation of TargetCommand</h2>
+<p>This class is easy to implement; we only update the <code>weaponTarget</code> of the <code>unit</code> attribute:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TargetCommand</span><span class="hljs-params">(Command)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,unit,target)</span>:</span>
+        self.state = state
+        self.unit = unit
+        self.target = target
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        self.unit.weaponTarget = self.target</code></pre>
+<p>It is similar to what we did in the <code>orientWeapon()</code> methods of the previous <code>Tank</code> and <code>Unit</code> classes. Note that this time, there is no more binding to the first unit of the unit lists. It is then more straightforward and safer to set what the player can control.</p>
+<h2>Store the commands</h2>
+<p>We need a place to store all the commands we create. We could create an attribute for each case, but I propose a more interesting approach. I propose to stores all the commands in a list. That way, we can have any number of commands. I create this list as a new <code>commands</code> attribute of the <code>UserInterface</code> class:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserInterface</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        ...
+
+        <span class="hljs-comment"># Controls</span>
+        self.commands = []
+        self.playerUnit = self.gameState.units[<span class="hljs-number">0</span>]</code></pre>
+<p>Note that I also created a new <code>playerUnit</code> attribute. It references the unit controlled by the player. You can try to change its value and control any other unit with no more changes.</p>
+<h2>Create the commands</h2>
+<p>The creation of the commands is still in the <code>processInput()</code> method of the <code>UserInterface</code> class. This time, we create child classes of <code>Command</code> rather than setting a single attribute:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">processInput</span><span class="hljs-params">(self)</span>:</span>
+
+    <span class="hljs-comment"># Pygame events (close &amp; keyboard)</span>
+    moveVector = Vector2()
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+        <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+            self.running = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">elif</span> event.type == pygame.KEYDOWN:
+            <span class="hljs-keyword">if</span> event.key == pygame.K_ESCAPE:
+                self.running = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT:
+                moveVector.x = <span class="hljs-number">1</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT:
+                moveVector.x = <span class="hljs-number">-1</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN:
+                moveVector.y = <span class="hljs-number">1</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_UP:
+                moveVector.y = <span class="hljs-number">-1</span>
+
+    <span class="hljs-comment"># Keyboard controls the moves of the player's unit</span>
+    <span class="hljs-keyword">if</span> moveVector.x != <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> moveVector.y != <span class="hljs-number">0</span>:
+        command = MoveCommand(self.gameState,self.playerUnit,moveVector)
+        self.commands.append(command)
+
+    <span class="hljs-comment"># Mouse controls the target of the player's unit</span>
+    mousePos = pygame.mouse.get_pos()                    
+    targetCell = Vector2()
+    targetCell.x = mousePos[<span class="hljs-number">0</span>] / self.cellWidth - <span class="hljs-number">0.5</span>
+    targetCell.y = mousePos[<span class="hljs-number">1</span>] / self.cellHeight - <span class="hljs-number">0.5</span>
+    command = TargetCommand(self.gameState,self.playerUnit,targetCell)
+    self.commands.append(command)
+
+    <span class="hljs-comment"># Other units always target the player's unit</span>
+    <span class="hljs-keyword">for</span>  unit <span class="hljs-keyword">in</span> self.gameState.units:
+        <span class="hljs-keyword">if</span> unit != self.playerUnit:
+            command = TargetCommand(self.gameState,unit,self.playerUnit.position)
+            self.commands.append(command)</code></pre>
+<p>Lines 4-20 computes the move vector using the Pygame keyboard events, and store it in the <code>moveVector</code> variable. Lines 23-25 create an instance of the <code>MoveCommand</code> class and add it to the list of commands.</p>
+<p>Lines 28-33 computes the cell targeted by the mouse cursor as before. Then, it creates an instance of the <code>TargetCommand</code> class and adds it to the list of commands. The controlled unit is also the one referenced by the <code>playerUnit</code> attribute.</p>
+<p>Lines 36-39 are certainly the most strange. They create a target command for all units except the one controlled by the player. It is to get the same behavior as in the previous post, where all towers target the tank.</p>
+<p>A legitimate question is the following one: why update the non-playing game items with commands? It looks much more natural to update the towers in their respective classes directly. A quick answer is: what if I want to control another unit? With the proposed scheme, I only need to change the <code>playerUnit</code>attribute, and the player can control a tower, and all other units, including the tank, will point this tower.</p>
+<p>Using commands to control any update of the game state is even more powerful. Following this approach, we have full control of the game updates. Thanks to the commands list, we know the order of command execution. We can also change this order afterward. For instance, it can be interesting always to move the tank firstly, even if it not controlled by the player. We can print these commands and better understand why we get one behavior instead of another. Admittedly, for a small game like the one we are creating, it is not mandatory. But think about a more complex game, like a MMORPG where 10,000 of players send dozen of commands each second. If there is a problem, it is infinitely easier to find it when the execution flow is under full control.</p>
+<p>If the motivation behind the use of this pattern is not clear, don't worry. Please trust the experimented developers as I did many years ago, and it will save you valuable time!</p>
+<h2>Update the game state</h2>
+<p>Update the game state is easy: we only have to run all the commands. This task is in the <code>update()</code> method of the <code>UserInterface</code> class, and replace the call to the previous <code>update()</code> method of the <code>GameState</code> class (which is no more required):</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserInterface</span><span class="hljs-params">()</span>:</span>
+    ...
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">for</span> command <span class="hljs-keyword">in</span> self.commands:
+            command.run()
+        self.commands.clear()</code></pre>
+<p>Once we have executed these commands (lines 4-5), we must clear the commands list (line 6). Otherwise, they will repeat endlessly!</p>
+<h2>Final program</h2>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-20-better-commands/discover_python_and_patterns_20_better_commands.zip">Download code and assets</a></p>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-21-bullets/">next post</a>, I'll use this new implementation of the Command pattern to handle weapon bullets!</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

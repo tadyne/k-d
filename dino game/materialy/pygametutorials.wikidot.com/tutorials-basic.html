@@ -1,0 +1,2161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>Tutorials Basic - PyGame Tutorials</title>
+    
+    
+    
+    <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--javascript/init.combined.js"></script>
+    <script  type="text/javascript">
+        var URL_HOST = 'www.wikidot.com';
+        var URL_DOMAIN = 'wikidot.com';
+        var USE_SSL =  true ;
+        var URL_STATIC = 'http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327';
+        // global request information
+        
+        var WIKIREQUEST = {};
+        WIKIREQUEST.info = {};
+        
+        WIKIREQUEST.info.domain = "pygametutorials.wikidot.com";
+        WIKIREQUEST.info.siteId = 107183;
+        WIKIREQUEST.info.siteUnixName = "pygametutorials";
+        WIKIREQUEST.info.categoryId = 592142;
+        WIKIREQUEST.info.themeId = 1;
+        WIKIREQUEST.info.requestPageName = "tutorials-basic";
+        OZONE.request.timestamp = 1743015816;
+        OZONE.request.date = new Date();
+        WIKIREQUEST.info.lang = 'en';
+                WIKIREQUEST.info.pageUnixName = "tutorials-basic";
+        WIKIREQUEST.info.pageId = 3341439;
+                        WIKIREQUEST.info.lang = "en";
+        OZONE.lang = "en";
+        var isUAMobile = !!/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    </script>
+    
+    
+
+
+    
+        <script  type="text/javascript">
+    
+        require.config({
+            baseUrl: URL_STATIC + '/common--javascript',
+            paths: {
+                'jquery.ui': 'jquery-ui.min',
+                'jquery.form': 'jquery.form'
+            }
+        });
+    
+    </script>
+    
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+            
+    
+    
+    
+    
+    <meta http-equiv="content-language" content="en"/>
+    <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--javascript/WIKIDOT.combined.js"></script>
+        
+    
+    <style type="text/css">
+body {
+  background-position: center 24px;
+}
+</style>
+<style type="text/css" id="internal-style">
+        
+        /* modules */
+@import url(http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/css/wiki/pagestagcloud/PagesTagCloudModule.css);
+
+
+        
+                
+        /* theme */
+                    @import url(http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--theme/base/css/style.css);
+                    @import url(http://themes.wdfiles.com/local--code/maple);
+            </style>
+    
+        
+        
+        
+    <link rel="shortcut icon" href="/local--favicon/favicon.gif"/>
+    <link rel="icon" type="image/gif" href="/local--favicon/favicon.gif"/>
+    
+            <link rel="apple-touch-icon" href="/common--images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/common--images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/common--images/apple-touch-icon-114x114.png" />
+        
+        
+            <link rel="alternate" type="application/wiki" title="Edit this page" href="javascript:WIKIDOT.page.listeners.editClick()"/>
+    
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-18234656-1']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        _gaq.push(['old._setAccount', 'UA-68540-5']);
+        _gaq.push(['old._setDomainName', 'none']);
+        _gaq.push(['old._setAllowLinker', true]);
+        _gaq.push(['old._trackPageview']);
+
+                _gaq.push(['userTracker._setAccount', 'UA-8410953-1']);
+        _gaq.push(['userTracker._trackPageview']);
+            </script>
+    
+    <script type="text/javascript">
+        window.google_analytics_uacct = 'UA-18234656-1';
+        window.google_analytics_domain_name = 'none';
+    </script>
+    
+        <link rel="manifest" href="/onesignal/manifest.json" />
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" acync=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+          OneSignal.init({
+            appId: null,
+          });
+        });
+    </script>
+        
+<script data-cfasync="false">window.nitroAds=window.nitroAds||{createAd:function(){return new Promise(e=>{window.nitroAds.queue.push(["createAd",arguments,e])})},addUserToken:function(){window.nitroAds.queue.push(["addUserToken",arguments])},queue:[]};</script>
+<script data-cfasync="false" async src="https://s.nitropay.com/ads-143.js"></script>
+<link rel="alternate" type="application/rss+xml" title="Comments for the page &quot;Tutorials Basic&quot;" href="/feed/page/comments-3341439.xml"/><script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/misc/NewPageHelperModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/forum/ForumCommentsModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/forum/ForumViewThreadModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/forum/ForumViewThreadPostsModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/forum/sub/ForumNewPostFormModule.js"></script>
+</head>
+<body id="html-body">
+<div id="skrollr-body">
+<a name="page-top"></a>
+<div id="navi-bar">
+  <a class="logo" href="http://www.wikidot.com">
+    <span>Wikidot.com</span>
+  </a>
+  
+  <div class="new-site">
+    <form method="get" action="http://www.wikidot.com/new-site">
+      <input class="text empty" type="text" name="address" value="site-name"/>.wikidot.com
+    </form>
+  </div>
+  
+    <div class="share">
+    <span>Share on</span>
+    <a class="twitter" target="_blank" rel="nofollow" href="http://twitter.com/home?status=TITLE+URI"
+      title="Share on Twitter"
+    ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/twitter.png" alt="twitter"/></a>  
+    <a class="facebook" target="_blank" rel="nofollow" href="http://www.facebook.com/share.php?u=URI&amp;t=TITLE"
+      title="Share on Facebook"><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/facebook.gif" alt="Facebook"
+      /></a>  
+    <a class="delicious" target="_blank" rel="nofollow" href="http://delicious.com/save"
+      title="Share on Delicious"
+      ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/delicious.png" alt="Delicious"/></a>
+    <a class="digg" target="_blank" rel="nofollow" href="http://digg.com/submit?url=URI&amp;title=TITLE"
+      title="Post to Digg"
+      ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/digg.png" alt="Digg"/></a>
+    <a class="reddit" href="http://www.reddit.com/submit?url=URI" rel="nofollow" target="_blank"
+      title="Post to Reddit"
+      ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/reddit.png" alt="Reddit" border="0" /></a>
+    <a class="stumbleupon" href="http://www.stumbleupon.com/submit?url=URI" rel="nofollow" target="_blank"
+      title="Post to StumbleUpon"
+      ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/stumble.png" alt="Reddit" border="0" /></a>
+  </div>
+    
+      <a class="join" href="javascript:;" onclick="WIKIDOT.page.listeners.join(event, 'unified')">Join this site</a>
+    
+      <div class="action-buttons">
+      <a href="javascript:;" onclick="WIKIDOT.page.listeners.editClick(event)"
+      title="Click here to edit contents of this page.">Edit</a>
+      <a href="javascript:;" onclick="WIKIDOT.page.listeners.historyClick(event)"
+      title="Check out how this page has evolved in the past.">History</a>
+      <a href="javascript:;" onclick="WIKIDOT.page.listeners.editTags(event)"
+      title="Edit tags for this page.">Tags</a>
+      <a href="javascript:;" onclick="WIKIDOT.page.listeners.viewSourceClick(event)"
+      title="View wiki source for this page without editing.">Source</a>
+    </div>
+    
+  <a class="random-site" href="/random-site.php"
+  title="Go to a random Wikidot site.">Explore &raquo;</a>
+  </div>
+<div id="navi-bar-shadow">&nbsp;</div>
+
+
+<script type="text/javascript">
+  //<![CDATA[
+  $j(function(){
+    var uri = window.location.href;
+    var title = document.title
+    
+    $j('#navi-bar .share a').each(function(){
+      $t = $j(this);
+      var u = $t.attr('href');
+      u = u.replace(/TITLE/, encodeURIComponent(title)).replace(/URI/, encodeURIComponent(uri));
+      $t.attr('href', u);
+    });
+    
+    $j('#navi-bar .share .facebook').click(function(e){
+      window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(uri)+'&t='+encodeURIComponent(title),'sharer','toolbar=0,status=0,width=626,height=436');
+      e.preventDefault();
+    });
+    $j('#navi-bar .share .delicious').click(function(e){
+      window.open('http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550');
+      e.preventDefault();
+    });
+  });
+  
+	$j('#navi-bar .new-site form').submit(function(e){
+	  e.preventDefault();
+	  var $i = $j('#navi-bar .new-site form input.text');
+	  if($i.hasClass('empty')){
+	    	var w = new OZONE.dialogs.ErrorDialog();
+  			w.content = "You need to enter a valid web address for your new wiki.";
+  			w.show();
+  			return;
+    }
+    var siteName = $i.attr('value');
+    siteName = siteName.replace(/^\s+/, '').replace(/\s+$/,'');
+		var p = {};
+		p.action = 'wiki/special/NewWikiWidgetAction';
+		p.event = 'newWiki';
+		p.siteName = siteName;
+		OZONE.ajax.requestModule(null, p, function(r){
+		  if(r.status == 'site_exists'){
+		    window.location.href = 'http://' + siteName + '.' + URL_DOMAIN;
+		    return;
+		  }
+		  if(!WIKIDOT.utils.handleError(r)) {return;}
+  		// seems fine.
+  		window.location.href='http://'+URL_HOST+'/new-site/address/'+r.unixName;
+		});
+	});
+	$j('#navi-bar .new-site form input.text').focus(function(){
+	  var $t = $j(this);
+	  if($t.hasClass('empty')){
+	    $t.removeClass('empty');
+	    $t.attr('value', '');
+	  }
+	});
+	//]]>
+</script>
+
+
+        
+            <!-- side slide skyscraper -->
+<div id="wad-tier3-side-slide" class="wd-adunit wd-ad-np wd-adunit-side_slide"></div>
+<script>
+$j( function(){
+var $c = $j('#container');
+var s = $j(window).width() - ($c.width()+$c.offset().left);
+var ri = s - 180;
+var $o = $j('#wad-tier3-side-slide');
+if( s > 200 ) {
+    $o.css('right', ri + 'px');
+    window['nitroAds'].createAd('wad-tier3-side-slide', {
+      "refreshLimit": 10,
+      "refreshTime": 85,
+      "renderVisibleOnly": false,
+      "refreshVisibleOnly": true,
+      "sizes": [ [ 160, 600 ] ],
+      "report": {
+        "enabled": true,
+        "wording": "Report Ad",
+        "position": "bottom-right"
+      }
+          });
+} else {
+    $o.remove();
+}
+});
+</script>
+        
+    
+
+
+<div id="container-wrap-wrap">
+    <div id="container-wrap">
+        <div id="container">
+            <div id="header">
+              <h1><a href="/"><span>PyGame Tutorials</span></a></h1>
+                
+                    <h2><span>Simple introduction to game programming</span></h2>
+                
+                
+                <!-- google_ad_section_start(weight=ignore) -->
+                
+                <div id="search-top-box" class="form-search">
+    <form id="search-top-box-form" action="dummy" class="input-append">
+        <input id="search-top-box-input" class="text empty search-query" type="text" size="15" name="query" value="Search this site" onfocus="if(YAHOO.util.Dom.hasClass(this, 'empty')){YAHOO.util.Dom.removeClass(this,'empty'); this.value='';}"/><input class="button btn" type="submit" name="search" value="Search"/>
+    </form>
+</div>
+                
+                
+                    <div id="top-bar">
+                        
+
+<ul>
+<li><a href="/start">Home</a></li>
+<li><a href="/news">News</a></li>
+<li><a href="/tutorials">Tutorials</a>
+<ul>
+<li><a href="/tutorials-basic">PyGame basics</a></li>
+<li><a href="/tutorials-two">PyGame drawing</a></li>
+<li><a href="/tutorials-three">PyGame events</a></li>
+<li><a href="/tutorials-four">More on drawing</a></li>
+<li><a href="http://bitbucket.org/przemoli/pygametutorial/overview" target="_blank">Source Code</a></li>
+</ul>
+</li>
+<li><a href="/forum:start">Forum</a></li>
+<li><a href="/contact">Contact</a></li>
+<li><a href="/license">License</a></li>
+<li><a href="/links">Links</a></li>
+<li>Admin
+<ul>
+<li><a href="/admin:manage">Site Manager</a></li>
+</ul>
+</li>
+</ul>
+
+                    </div>
+                
+                <div id="login-status"><a href="javascript:;" onclick="WIKIDOT.page.listeners.createAccount(event)" class="login-status-create-account btn">Create account</a> <span>or</span> <a href="javascript:;" onclick="WIKIDOT.page.listeners.loginClick(event)" class="login-status-sign-in btn btn-primary">Sign in</a> </div>
+                <div id="header-extra-div-1"><span></span></div><div id="header-extra-div-2"><span></span></div><div id="header-extra-div-3"><span></span></div>
+            </div>
+            
+            <div id="content-wrap">
+                
+                    <div id="side-bar">
+                        
+
+
+                        
+
+<h2 ><span>Page tags</span></h2>
+	<div class="pages-tag-cloud-box">
+									<a class="tag" href="/system:page-tags/tag/basic"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>basic</a>
+							<a class="tag" href="/system:page-tags/tag/book"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>book</a>
+							<a class="tag" href="/system:page-tags/tag/cloak"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>cloak</a>
+							<a class="tag" href="/system:page-tags/tag/collision"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>collision</a>
+							<a class="tag" href="/system:page-tags/tag/detection"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>detection</a>
+							<a class="tag" href="/system:page-tags/tag/display"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>display</a>
+							<a class="tag" href="/system:page-tags/tag/draw"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>draw</a>
+							<a class="tag" href="/system:page-tags/tag/errors"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>errors</a>
+							<a class="tag" href="/system:page-tags/tag/event"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>event</a>
+							<a class="tag" href="/system:page-tags/tag/forum"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>forum</a>
+							<a class="tag" href="/system:page-tags/tag/game"
+					style="font-size: 209%; color: rgb(93, 93, 157);"
+					>game</a>
+							<a class="tag" href="/system:page-tags/tag/games"
+					style="font-size: 209%; color: rgb(93, 93, 157);"
+					>games</a>
+							<a class="tag" href="/system:page-tags/tag/handling"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>handling</a>
+							<a class="tag" href="/system:page-tags/tag/image"
+					style="font-size: 136%; color: rgb(116, 116, 180);"
+					>image</a>
+							<a class="tag" href="/system:page-tags/tag/initialization"
+					style="font-size: 136%; color: rgb(116, 116, 180);"
+					>initialization</a>
+							<a class="tag" href="/system:page-tags/tag/instalation"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>instalation</a>
+							<a class="tag" href="/system:page-tags/tag/linux"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>linux</a>
+							<a class="tag" href="/system:page-tags/tag/loading"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>loading</a>
+							<a class="tag" href="/system:page-tags/tag/loop"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>loop</a>
+							<a class="tag" href="/system:page-tags/tag/news"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>news</a>
+							<a class="tag" href="/system:page-tags/tag/opengl"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>opengl</a>
+							<a class="tag" href="/system:page-tags/tag/painting"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>painting</a>
+							<a class="tag" href="/system:page-tags/tag/programming"
+					style="font-size: 264%; color: rgb(76, 76, 140);"
+					>programming</a>
+							<a class="tag" href="/system:page-tags/tag/pygame"
+					style="font-size: 300%; color: rgb(64, 64, 128);"
+					>pygame</a>
+							<a class="tag" href="/system:page-tags/tag/python"
+					style="font-size: 173%; color: rgb(105, 105, 169);"
+					>python</a>
+							<a class="tag" href="/system:page-tags/tag/queue"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>queue</a>
+							<a class="tag" href="/system:page-tags/tag/rect"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>rect</a>
+							<a class="tag" href="/system:page-tags/tag/saving"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>saving</a>
+							<a class="tag" href="/system:page-tags/tag/screen"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>screen</a>
+							<a class="tag" href="/system:page-tags/tag/setting"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>setting</a>
+							<a class="tag" href="/system:page-tags/tag/sprite"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>sprite</a>
+							<a class="tag" href="/system:page-tags/tag/surf"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>surf</a>
+							<a class="tag" href="/system:page-tags/tag/surface"
+					style="font-size: 136%; color: rgb(116, 116, 180);"
+					>surface</a>
+							<a class="tag" href="/system:page-tags/tag/time"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>time</a>
+							<a class="tag" href="/system:page-tags/tag/timer"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>timer</a>
+							<a class="tag" href="/system:page-tags/tag/transform"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>transform</a>
+							<a class="tag" href="/system:page-tags/tag/tutorial"
+					style="font-size: 173%; color: rgb(105, 105, 169);"
+					>tutorial</a>
+							<a class="tag" href="/system:page-tags/tag/tutorials"
+					style="font-size: 155%; color: rgb(111, 111, 175);"
+					>tutorials</a>
+							<a class="tag" href="/system:page-tags/tag/up"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>up</a>
+							<a class="tag" href="/system:page-tags/tag/window"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>window</a>
+						</div>
+	
+
+<h2 ><span>Recent pages</span></h2>
+<ul>
+<li><a href="/system:recent-changes">Recent changes</a></li>
+<li><a href="/system:list-all-pages">List all pages</a></li>
+<li><a href="/system:page-tags-list">Page Tags</a></li>
+</ul>
+<h2 ><span>Add a new page</span></h2>
+
+<div class="new-page-box" style="text-align: center; margin: 1em 0;">
+	<form action="dummy.html" method="get" onsubmit="WIKIDOT.modules.NewPageHelperModule.listeners.create(event);">
+		<input class="text" name="pageName" type="text" size="15" maxlength="128" style="margin: 1px"/>
+				<input type="submit" class="button" value="new page" style="margin: 1px;"/>
+																
+	</form>
+</div>
+
+<p style="text-align: center;"><span style="font-size:80%;"><a href="/nav:side">edit this panel</a></span></p>
+
+                        
+
+
+                    </div>
+                
+                
+                <!-- google_ad_section_end -->
+                
+                <div id="main-content">
+                    <div id="action-area-top"></div>
+                    
+                    
+                        <div id="page-title">
+                            Tutorials Basic
+                        </div>
+                    
+
+                    
+
+                            
+            <!-- wikidot_top_728x90 -->
+<div id="wad-tier3-above-content" class="wd-adunit wd-ad-np wd-adunit-above_content"></div>
+<script>
+window['nitroAds'].createAd('wad-tier3-above-content', {
+  "refreshLimit": 10,
+  "refreshTime": 94,
+  "renderVisibleOnly": false,
+  "refreshVisibleOnly": true,
+  "sizes": [ [ 728, 90 ] ],
+  "report": {
+    "enabled": true,
+    "wording": "Report Ad",
+    "position": "bottom-right"
+  }
+  });
+</script>
+        
+    
+
+
+                    <div id="page-content">
+                        
+
+<p>Here you can find tutorial guiding you through process of making simple game with Python and PyGame. Starting from scratch we will make simple yet useful game engine (backbone of every game), and few games showing by example how complete games look like.<br />
+Hope you will enjoy it!</p>
+<h2 id="toc0"><span>Python</span></h2>
+<p>Probably best programming language out there! Chosen because of its simplicity and small learning curve.</p>
+<h2 id="toc1"><span>PyGame</span></h2>
+<p>PyGame can handle time, video (both still images and vids), music, fonts, different image formats, cursors, mouse, keyboard, Joysticks and much much more. And all of that is <strong>very</strong> simple.</p>
+<h2 id="toc2"><span>SDL</span></h2>
+<p>PyGame is based on SDL. A C library that is cross platform and also very simple. PyGame however is not just simple wrapper for it, but also add its own features, so writing games is even simpler.</p>
+<h2 id="toc3"><span>Versions used during this tutorial:</span></h2>
+<ul>
+<li>Python 2.7</li>
+<li>PyGame 1.9.1</li>
+</ul>
+<p>If you can not run tutorial examples in Python 3, pleas report it as bugs. However there are many out there who still use Python 2, so it will be used as primary version.</p>
+<h2 id="toc4"><span>Source code</span></h2>
+<p>Last thing before we start our codding.<br />
+Source code for this tutorial is hosted at <a href="https://bitbucket.org/przemoli/pygametutorial/overview" target="_blank">bitbucket.com</a><br />
+If you want to you can clone whole repo. Each tutorial have its own tag or multiple tags if there are more then one version of code discussed during tutorial.<br />
+If you do not know what I'm talking about, then do not worry! I will provide links to downloads of source code for and at the bottom of each tutorial.</p>
+<h1 id="toc5"><span>Game loop</span></h1>
+<p>Before writing first lines of code I will mention about how game loop is designed in PyGame. Game loop is the place where events, game logic and rendering onto screen is performed. It should look similar to:</p>
+<div class="code">
+<div class="hl-main">
+<pre><span class="hl-reserved">while</span><span class="hl-code"> </span><span class="hl-reserved">True</span><span class="hl-code">:
+    </span><span class="hl-identifier">events</span><span class="hl-brackets">()</span><span class="hl-code">
+    </span><span class="hl-identifier">loop</span><span class="hl-brackets">()</span><span class="hl-code">
+    </span><span class="hl-identifier">render</span><span class="hl-brackets">()</span></pre></div>
+</div>
+<p>Where event() proceeds events like pressed keys, mouse motion etc. loop() compute changes in the game world like NPC's moves, player moves, AI, game score. And render() just print out on the screen graphic. That separation of tasks makes your game design easier and allow to easy changes in code when new ideas rise in you head.</p>
+<h2 id="toc6"><span>First code</span></h2>
+<p>Its time for more code:</p>
+<div class="code">
+<div class="hl-main">
+<pre><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">pygame</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">locals</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> *
+ 
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">App</span><span class="hl-code">:
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_execute</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+ 
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">__name__</span><span class="hl-code"> == </span><span class="hl-quotes">&quot;</span><span class="hl-string">__main__</span><span class="hl-quotes">&quot;</span><span class="hl-code"> :
+    </span><span class="hl-identifier">theApp</span><span class="hl-code"> = </span><span class="hl-identifier">App</span><span class="hl-brackets">()</span><span class="hl-code">
+    </span><span class="hl-identifier">theApp</span><span class="hl-code">.</span><span class="hl-identifier">on_execute</span><span class="hl-brackets">()</span></pre></div>
+</div>
+<p>As you can see I prefer classes than functions. That is because OOP is getting more and more fans in game programming due to it correlation with game design. Simply in game we have objects, theirs tasks etc. even when programing without classes.</p>
+<p>App will be our main class. To run game we will only need call on_execute() function. Yes this function will contain our Game Loop.</p>
+<h2 id="toc7"><span>Creating simple window</span></h2>
+<p>Lets add some more code:</p>
+<div class="code">
+<div class="hl-main">
+<pre><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">pygame</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">locals</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> *
+ 
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">App</span><span class="hl-code">:
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">__init__</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">_running</span><span class="hl-code"> = </span><span class="hl-reserved">True</span><span class="hl-code">
+        </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">_display_surf</span><span class="hl-code"> = </span><span class="hl-reserved">None</span><span class="hl-code">
+        </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">size</span><span class="hl-code"> = </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">weight</span><span class="hl-code">, </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">height</span><span class="hl-code"> = </span><span class="hl-number">640</span><span class="hl-code">, </span><span class="hl-number">400</span><span class="hl-code">
+ 
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_init</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">init</span><span class="hl-brackets">()</span><span class="hl-code">
+        </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">_display_surf</span><span class="hl-code"> = </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">display</span><span class="hl-code">.</span><span class="hl-identifier">set_mode</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">size</span><span class="hl-code">, </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">HWSURFACE</span><span class="hl-code"> | </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">DOUBLEBUF</span><span class="hl-brackets">)</span><span class="hl-code">
+        </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">_running</span><span class="hl-code"> = </span><span class="hl-reserved">True</span><span class="hl-code">
+ 
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_event</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">QUIT</span><span class="hl-code">:
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">_running</span><span class="hl-code"> = </span><span class="hl-reserved">False</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_loop</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_render</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_cleanup</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">quit</span><span class="hl-brackets">()</span><span class="hl-code">
+ 
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_execute</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_init</span><span class="hl-brackets">()</span><span class="hl-code"> == </span><span class="hl-reserved">False</span><span class="hl-code">:
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">_running</span><span class="hl-code"> = </span><span class="hl-reserved">False</span><span class="hl-code">
+ 
+        </span><span class="hl-identifier">while</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">_running</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">:
+            </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">get</span><span class="hl-brackets">()</span><span class="hl-code">:
+                </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_event</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_loop</span><span class="hl-brackets">()</span><span class="hl-code">
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_render</span><span class="hl-brackets">()</span><span class="hl-code">
+        </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_cleanup</span><span class="hl-brackets">()</span><span class="hl-code">
+ 
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">__name__</span><span class="hl-code"> == </span><span class="hl-quotes">&quot;</span><span class="hl-string">__main__</span><span class="hl-quotes">&quot;</span><span class="hl-code"> :
+    </span><span class="hl-identifier">theApp</span><span class="hl-code"> = </span><span class="hl-identifier">App</span><span class="hl-brackets">()</span><span class="hl-code">
+    </span><span class="hl-identifier">theApp</span><span class="hl-code">.</span><span class="hl-identifier">on_execute</span><span class="hl-brackets">()</span></pre></div>
+</div>
+<h3 id="toc8"><span>Test</span></h3>
+<p>You should see black window. If window don't wont to quit use 'xkill' under linux or task manager under windows.</p>
+<h3 id="toc9"><span>on_init on_event on_loop on_render on_cleanup</span></h3>
+<p>on_init calls pygame.init() that initialize all PyGame modules. Then it create main display - 640x400 window and try to use hardware acceleration. At the end this routine sets _running to True.<br />
+on_event check if Quit event happened if so sets _running to False wich will break game loop.<br />
+on_loop and OnRender do nothing.<br />
+on_cleanup call pygame.quit() that quits all PyGame modules. Anything else will be cleaned up by Python.</p>
+<h3 id="toc10"><span>on_execute</span></h3>
+<p>on_execute initialize pygame than enter main loop in which check events and then compute and render everything till _running is &quot;True&quot; and only Quit event will set it to &quot;False&quot;.<br />
+Before quitting it will cleanup.</p>
+<p>If you will run this file as program it will create instance of App and call its on_execute(). (3 last lines)</p>
+<h2 id="toc11"><span>Big thx to people who helped me to improve this tutorial by woicing their ideas in comments (which are now deleted):</span></h2>
+<ul>
+<li>Sin</li>
+<li>fidget</li>
+<li>Alan</li>
+<li>aanund</li>
+<li>Kwright</li>
+</ul>
+<h3 id="toc12"><span>Zipped source code:</span></h3>
+<p><a href="https://bitbucket.org/przemoli/pygametutorial/get/basic0.5.zip" target="_blank">Small example.</a><br />
+<a href="https://bitbucket.org/przemoli/pygametutorial/get/basic1.0.zip" target="_blank">Big example</a></p>
+<div class="comments-box">
+		
+	<div class="options" id="comments-options-hidden" style="display: none">
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumCommentsModule.listeners.showComments(event)">Show Comments</a> 
+	</div>
+		
+	<div id="thread-container" class="thread-container" style="margin-top: 1em">
+					
+
+
+<script type="text/javascript">
+	WIKIDOT.forumThreadId = 153282;
+</script>
+
+
+	<div class="options" id="comments-options-shown">
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumCommentsModule.listeners.hideComments(event)" class="btn btn-default btn-small btn-sm">Hide All Comments</a> 
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.unfoldAll(event)" class="btn btn-default btn-small btn-sm">Unfold All</a> 
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.foldAll(event)" class="btn btn-default btn-small btn-sm">Fold All</a>
+	</div>
+
+<div id="thread-container-posts" style="display: none">
+    
+
+<div class="pager"><span class="pager-no">page 1 of 2</span><span class="current">1</span><span class="target"><a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadPostsModule.listeners.updateList(2)">2</a></span><span class="target"><a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadPostsModule.listeners.updateList(2)">next &raquo;</a></span></div>
+
+	
+					
+      
+    <div class="post-container" id="fpc-493376">
+                      
+		<div class="post" id="post-493376">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,493376)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-493376">
+																		thanks
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a rel="nofollow" href="http://thesiliconjungle.wordpr" ><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=bdd1d957b87d6100e89d5416451eba45&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a><a rel="nofollow" href="http://thesiliconjungle.wordpr" >fipi</a> (guest)</span> <span class="odate time_1243560006 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">29 May 2009 01:20</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-493376">
+									
+
+<p>Thanks, this is a good tutorial. Short and simple, good for people just starting out like me.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,493376)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,493376)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-493376" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,493376)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,493376)">thanks</a> by <span class="printuser avatarhover"><a rel="nofollow" href="http://thesiliconjungle.wordpr" ><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=bdd1d957b87d6100e89d5416451eba45&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a><a rel="nofollow" href="http://thesiliconjungle.wordpr" >fipi</a> (guest)</span>, <span class="odate time_1243560006 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">29 May 2009 01:20</span>
+		</div>
+	</div>
+ 
+                
+                	
+
+
+        
+                      
+    <div class="post-container" id="fpc-5310990">
+                      
+		<div class="post" id="post-5310990">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,5310990)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-5310990">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=db8588aa55f701d1266bb38785f131e1&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>billy (guest)</span> <span class="odate time_1652362125 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">12 May 2022 13:28</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-5310990">
+									
+
+<p>how good are you now?</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,5310990)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,5310990)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-5310990" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,5310990)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,5310990)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=db8588aa55f701d1266bb38785f131e1&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>billy (guest)</span>, <span class="odate time_1652362125 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">12 May 2022 13:28</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-5590683">
+                      
+		<div class="post" id="post-5590683">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,5590683)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-5590683">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=c2690f13b9b0577715e281e6197380fe&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>bruhMoment (guest)</span> <span class="odate time_1663685952 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">20 Sep 2022 14:59</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-5590683">
+									
+
+<p>Bro replied 13 years later 💀</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+																					<a href="javascript:;" onclick="togglePostOptions(event,5590683)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-5590683" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,5590683)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,5590683)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=c2690f13b9b0577715e281e6197380fe&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>bruhMoment (guest)</span>, <span class="odate time_1663685952 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">20 Sep 2022 14:59</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+                      
+    <div class="post-container" id="fpc-5744717">
+                      
+		<div class="post" id="post-5744717">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,5744717)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-5744717">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=2f1ad4334e6a3c2b8d01ca3bbcb305d4&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>jlsomg (guest)</span> <span class="odate time_1670105963 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">03 Dec 2022 22:19</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-5744717">
+									
+
+<p>jajaj</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,5744717)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,5744717)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-5744717" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,5744717)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,5744717)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=2f1ad4334e6a3c2b8d01ca3bbcb305d4&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>jlsomg (guest)</span>, <span class="odate time_1670105963 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">03 Dec 2022 22:19</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+                      
+    <div class="post-container" id="fpc-6047698">
+                      
+		<div class="post" id="post-6047698">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,6047698)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-6047698">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=49ec56eaa943958d28ac96be81daa4dc&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>china (guest)</span> <span class="odate time_1680660004 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">05 Apr 2023 02:00</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-6047698">
+									
+
+<p>I am china</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,6047698)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,6047698)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-6047698" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,6047698)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,6047698)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=49ec56eaa943958d28ac96be81daa4dc&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>china (guest)</span>, <span class="odate time_1680660004 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">05 Apr 2023 02:00</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-6100184">
+                      
+		<div class="post" id="post-6100184">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,6100184)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-6100184">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=a5460ffbd7d7859650bdf20e4038aa34&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Tomas Turbando (guest)</span> <span class="odate time_1685228963 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">27 May 2023 23:09</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-6100184">
+									
+
+<p>And I'm Thomas turbando</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+																					<a href="javascript:;" onclick="togglePostOptions(event,6100184)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-6100184" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,6100184)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,6100184)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=a5460ffbd7d7859650bdf20e4038aa34&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Tomas Turbando (guest)</span>, <span class="odate time_1685228963 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">27 May 2023 23:09</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+                      
+    <div class="post-container" id="fpc-6258997">
+                      
+		<div class="post" id="post-6258997">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,6258997)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-6258997">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=ec14ddedffcecbd74d30e38e5be8779d&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>my-axe (guest)</span> <span class="odate time_1701361984 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">30 Nov 2023 16:33</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-6258997">
+									
+
+<p>And my axe!</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+																					<a href="javascript:;" onclick="togglePostOptions(event,6258997)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-6258997" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,6258997)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,6258997)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=ec14ddedffcecbd74d30e38e5be8779d&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>my-axe (guest)</span>, <span class="odate time_1701361984 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">30 Nov 2023 16:33</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+                      
+    <div class="post-container" id="fpc-6812229">
+                      
+		<div class="post" id="post-6812229">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,6812229)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-6812229">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=389363024af1d6b3942a966d17d6da99&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>is-my-buddy (guest)</span> <span class="odate time_1739438997 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">13 Feb 2025 09:29</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-6812229">
+									
+
+<p>and is my buddy!</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+																					<a href="javascript:;" onclick="togglePostOptions(event,6812229)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-6812229" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,6812229)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,6812229)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=389363024af1d6b3942a966d17d6da99&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>is-my-buddy (guest)</span>, <span class="odate time_1739438997 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">13 Feb 2025 09:29</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+                      
+    <div class="post-container" id="fpc-6883679">
+                      
+		<div class="post" id="post-6883679">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,6883679)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-6883679">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=5d60d4e28066df254d5452f92c910092&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Dad (guest)</span> <span class="odate time_1742167747 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">16 Mar 2025 23:29</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-6883679">
+									
+
+<p>Hi, China. I'm dad!</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,6883679)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,6883679)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-6883679" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,6883679)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,6883679)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=5d60d4e28066df254d5452f92c910092&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Dad (guest)</span>, <span class="odate time_1742167747 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">16 Mar 2025 23:29</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-809172">
+                      
+		<div class="post" id="post-809172">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,809172)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-809172">
+																		Hey
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a rel="nofollow" href="http://lameness-prevails.com/" ><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=278b7b479720b6e7e08f9e49d0223523&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a><a rel="nofollow" href="http://lameness-prevails.com/" >Karanveer</a> (guest)</span> <span class="odate time_1276620306 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">15 Jun 2010 16:45</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-809172">
+									
+
+<p>Very nicely done .. I like these tutorials. Python is an awesome language to program in, and pygame is very good to beginners. I've started my own set of tutorials on my site : <a href="http://lameness-prevails.com/">http://lameness-prevails.com/</a><br />
+Check it out and let me know if you like it!</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,809172)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,809172)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-809172" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,809172)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,809172)">Hey</a> by <span class="printuser avatarhover"><a rel="nofollow" href="http://lameness-prevails.com/" ><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=278b7b479720b6e7e08f9e49d0223523&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a><a rel="nofollow" href="http://lameness-prevails.com/" >Karanveer</a> (guest)</span>, <span class="odate time_1276620306 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">15 Jun 2010 16:45</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-6563471">
+                      
+		<div class="post" id="post-6563471">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,6563471)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-6563471">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=ab216517b36a049e8355695033a4cee0&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>DZONI VERNI PROGRAMER (guest)</span> <span class="odate time_1720821696 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">12 Jul 2024 22:01</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-6563471">
+									
+
+<p>Me too</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,6563471)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,6563471)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-6563471" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,6563471)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,6563471)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=ab216517b36a049e8355695033a4cee0&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>DZONI VERNI PROGRAMER (guest)</span>, <span class="odate time_1720821696 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">12 Jul 2024 22:01</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-961905">
+                      
+		<div class="post" id="post-961905">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,961905)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-961905">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a rel="nofollow" href="http://vivaolinux.com.br/~enki" ><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=899acb91ffa7ad963d47e552c353dfa1&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a><a rel="nofollow" href="http://vivaolinux.com.br/~enki" >Enki</a> (guest)</span> <span class="odate time_1293835342 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">31 Dec 2010 22:42</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-961905">
+									
+
+<p>Very nice introduction tutorial you got here pal. I like how you managed to talk about game logic in a generic way, as fun as python. I also liked the way you put O.O. concepts into your example so that it could be more readable for beginners. Congratz.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,961905)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,961905)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-961905" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,961905)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,961905)"></a> by <span class="printuser avatarhover"><a rel="nofollow" href="http://vivaolinux.com.br/~enki" ><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=899acb91ffa7ad963d47e552c353dfa1&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a><a rel="nofollow" href="http://vivaolinux.com.br/~enki" >Enki</a> (guest)</span>, <span class="odate time_1293835342 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">31 Dec 2010 22:42</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-965019">
+                      
+		<div class="post" id="post-965019">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,965019)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-965019">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=da35ad6cba2e87d6dac7d5fddc81e393&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>repe (guest)</span> <span class="odate time_1294231766 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">05 Jan 2011 12:49</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-965019">
+									
+
+<p>Excellent tutorial. I always follow this structure to get a clean code.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,965019)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,965019)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-965019" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,965019)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,965019)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=da35ad6cba2e87d6dac7d5fddc81e393&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>repe (guest)</span>, <span class="odate time_1294231766 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">05 Jan 2011 12:49</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-1048049">
+                      
+		<div class="post" id="post-1048049">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1048049)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1048049">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a rel="nofollow" href="http://rytisb.com" ><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=9eecea850e3042ff95e01656df4de4ab&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a><a rel="nofollow" href="http://rytisb.com" >livelite</a> (guest)</span> <span class="odate time_1299982665 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">13 Mar 2011 02:17</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1048049">
+									
+
+<p>Great tutorial, it's nice to keep it OO.</p>
+<p>One thing: self._surf_display and self._display_surf should probably be the same.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1048049)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1048049)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1048049" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1048049)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1048049)"></a> by <span class="printuser avatarhover"><a rel="nofollow" href="http://rytisb.com" ><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=9eecea850e3042ff95e01656df4de4ab&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a><a rel="nofollow" href="http://rytisb.com" >livelite</a> (guest)</span>, <span class="odate time_1299982665 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">13 Mar 2011 02:17</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-1120219">
+                      
+		<div class="post" id="post-1120219">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1120219)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1120219">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=93a48683eadba8f8d2cd750b90198f5f&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Frede (guest)</span> <span class="odate time_1302353945 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">09 Apr 2011 12:59</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1120219">
+									
+
+<p>Nice tuto, thx.</p>
+<p>I like your structure. As a fact with this I can start the program with a launcher, which I have not managed to do my work previously. I have tried to locate an answer in varies forums with out any lock.</p>
+<p>Is et the &quot;class App&quot;-thing that does the trick ?</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1120219)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1120219)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1120219" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1120219)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1120219)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=93a48683eadba8f8d2cd750b90198f5f&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Frede (guest)</span>, <span class="odate time_1302353945 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">09 Apr 2011 12:59</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-1392437">
+                      
+		<div class="post" id="post-1392437">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1392437)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1392437">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/przemo-li" onclick="WIKIDOT.page.listeners.userInfo(8650); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=8650&amp;amp;size=small&amp;amp;timestamp=1743015816" alt="przemo_li" style="background-image:url(http://www.wikidot.com/userkarma.php?u=8650)"/></a><a href="http://www.wikidot.com/user:info/przemo-li" onclick="WIKIDOT.page.listeners.userInfo(8650); return false;" >przemo_li</a></span> <span class="odate time_1331468011 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">11 Mar 2012 12:13</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1392437">
+									
+
+<p>If you need &quot;Launcher&quot; as &quot;stand alone app&quot; that after setting setting, checking for updates, etc. start your main aplication, then I can not help you :| Never needed it myself.</p>
+<p>However if I had to make one I would look for ways to execute other apps, because you need separete launcher when you can not build required functionality into game (app) itself.<br />
+Eg. if you want to add autoupdate functionality to game (app), its hard to do if game (app) is trying to applay patch on itself. (OS will complain that you want to change files that are used by running app, I suppose).<br />
+General solution is to provide separate app, that applay patch, and then lunch game (app).</p>
+<p>Look for execfile or other such python techniques.</p>
+<p>PS If you meant something different by &quot;launcher&quot; then replay with more details so we can help you.</p>
+
+							</div>
+
+								
+							<div class="changes">
+					Last edited on <span class="odate time_1331471022 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">11 Mar 2012 13:03</span>
+					by <span class="printuser"><a href="http://www.wikidot.com/user:info/przemo-li" onclick="WIKIDOT.page.listeners.userInfo(8650); return false;" >przemo_li</a></span>
+					<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.showHistory(event,1392437)"><i class="icon-plus"></i> Show more</a>
+				</div>
+				<div class="revisions" style="display: none"></div>
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1392437)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1392437)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1392437" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1392437)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1392437)"></a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/przemo-li" onclick="WIKIDOT.page.listeners.userInfo(8650); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=8650&amp;amp;size=small&amp;amp;timestamp=1743015816" alt="przemo_li" style="background-image:url(http://www.wikidot.com/userkarma.php?u=8650)"/></a><a href="http://www.wikidot.com/user:info/przemo-li" onclick="WIKIDOT.page.listeners.userInfo(8650); return false;" >przemo_li</a></span>, <span class="odate time_1331468011 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">11 Mar 2012 12:13</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-1271172">
+                      
+		<div class="post" id="post-1271172">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1271172)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1271172">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=8477f6eacea80689a5667ff145748c65&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Thomas (guest)</span> <span class="odate time_1317465296 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">01 Oct 2011 10:34</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1271172">
+									
+
+<p>Congratulations on having the courage and good will to write this tutorial (and others!).</p>
+<p>While your English /could/ use some improvement&#8230; I suspect that it isn't your mother tongue, so in knowing this, you're doing really well - the reader can see that you know what you're talking about.</p>
+<p>So:<br />
+1) Either be the &quot;life-long student&quot; and take the (sometimes too harsh) criticisms with an open mind, and do the corrections<br />
+2) To play it safe, maybe give a little fore-warning at the beginning of the tutorial that English isn't your mother tongue but that you're doing your best! That'll keep the ruthless critics at bay&#8230;<br />
+3) Keep writing the tutorials!!! Trust that what you're conveying is relatively understandable, and trust that if ever there's anything that doesn't make sense, someone, somewhere, will leave a comment-question for you<br />
+4) You Rule! Bravo, and thanks for the tutorials - I'm having a great time with them!</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1271172)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1271172)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1271172" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1271172)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1271172)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=8477f6eacea80689a5667ff145748c65&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Thomas (guest)</span>, <span class="odate time_1317465296 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">01 Oct 2011 10:34</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-1696325">
+                      
+		<div class="post" id="post-1696325">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1696325)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1696325">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=fb8d24604711add36556bec5b8c4bd28&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Zenger (guest)</span> <span class="odate time_1359296874 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">27 Jan 2013 14:27</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1696325">
+									
+
+<p>Shouldn't it be width instead of weight?</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1696325)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1696325)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1696325" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1696325)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1696325)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=fb8d24604711add36556bec5b8c4bd28&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Zenger (guest)</span>, <span class="odate time_1359296874 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">27 Jan 2013 14:27</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-1859041">
+                      
+		<div class="post" id="post-1859041">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1859041)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1859041">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=0ca52abaa9fce14c44a351fccd1b9fc5&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>bob (guest)</span> <span class="odate time_1380211855 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">26 Sep 2013 16:10</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1859041">
+									
+
+<p>hi that was great</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1859041)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1859041)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1859041" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1859041)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1859041)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=0ca52abaa9fce14c44a351fccd1b9fc5&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>bob (guest)</span>, <span class="odate time_1380211855 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">26 Sep 2013 16:10</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-1947890">
+                      
+		<div class="post" id="post-1947890">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1947890)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1947890">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=2b9c4982b46c6d23e4526b1941149e90&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>arun (guest)</span> <span class="odate time_1390791754 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">27 Jan 2014 03:02</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1947890">
+									
+
+<p>Hey,<br />
+i have a question&#8230;<br />
+on_init() does not have any return statement to return a value, so what value is being checked in<br />
+def on_execute(self):<br />
+if self.on_init() == False: ? Thanks for the tutorial too!</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1947890)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1947890)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1947890" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1947890)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1947890)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=2b9c4982b46c6d23e4526b1941149e90&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>arun (guest)</span>, <span class="odate time_1390791754 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">27 Jan 2014 03:02</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-1999242">
+                      
+		<div class="post" id="post-1999242">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1999242)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1999242">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=d70886b2e8381f32849f533e7aaefd47&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Dave (guest)</span> <span class="odate time_1395856860 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">26 Mar 2014 18:01</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1999242">
+									
+
+<p>I was thinking that myself, also why have on_init and <span style="text-decoration: underline;">init</span>? Why not just put everything in <span style="text-decoration: underline;">init</span> and return false if the display cannot be created.</p>
+<p>Dave.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1999242)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1999242)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1999242" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1999242)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1999242)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=d70886b2e8381f32849f533e7aaefd47&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Dave (guest)</span>, <span class="odate time_1395856860 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">26 Mar 2014 18:01</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-2016454">
+                      
+		<div class="post" id="post-2016454">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2016454)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2016454">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=605d76fb4404e712642e565db2b25c5d&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Martyn (guest)</span> <span class="odate time_1398099612 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">21 Apr 2014 17:00</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2016454">
+									
+
+<p>def on_init(self):<br />
+pygame.init()<br />
+self._display_surf = pygame.display.set_mode(self.size, pygame.HWSURFACE)<br />
+return self._display_surf</p>
+<p>def on_execute(self):<br />
+if self.on_init() == None:<br />
+self._running = False</p>
+<p>'The self._running = True' in on_init is completely redundant, as the class initialises it to True when the App object is instantiated in main anyway.</p>
+<p>The above makes far more sense. If self._display_surf does not work, it will set self._running to False and won't execute the While loop in on_execute.</p>
+<p>The reason on_init and init are not combined is probably for future code expansion. You might want to do other tasks via other methods before displaying the window. Change the window size, load sprites, etc.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+																					<a href="javascript:;" onclick="togglePostOptions(event,2016454)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2016454" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2016454)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2016454)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=605d76fb4404e712642e565db2b25c5d&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Martyn (guest)</span>, <span class="odate time_1398099612 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">21 Apr 2014 17:00</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+                      
+    <div class="post-container" id="fpc-2058176">
+                      
+		<div class="post" id="post-2058176">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2058176)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2058176">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=b1a80fbb470ca2ec3064e8b212c26d07&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Das (guest)</span> <span class="odate time_1403675203 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">25 Jun 2014 05:46</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2058176">
+									
+
+<p>I think rather than having</p>
+<p>if self.on_init() == None:<br />
+self._running = False</p>
+<p>something efficient would be</p>
+<p>try: self.on_init()<br />
+except: self._running = False</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2058176)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2058176)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2058176" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2058176)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2058176)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=b1a80fbb470ca2ec3064e8b212c26d07&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Das (guest)</span>, <span class="odate time_1403675203 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">25 Jun 2014 05:46</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-2096815">
+                      
+		<div class="post" id="post-2096815">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2096815)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2096815">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=c64c706d8a92ec94345cb3f7d9c73954&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Dash (guest)</span> <span class="odate time_1409018638 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">26 Aug 2014 02:03</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2096815">
+									
+
+<p>When I ran that program, it came up with a message like this:<br />
+Traceback (most recent call last):<br />
+File &quot;C:/Python27/For new programs for Ken/first pygame.py&quot;, line 1, in &lt;module&gt;<br />
+import pygame<br />
+File &quot;C:\Python27\lib\site-packages\pygame\<span style="text-decoration: underline;">init</span>.py&quot;, line 95, in &lt;module&gt;<br />
+from pygame.base import *<br />
+ImportError: DLL load failed: %1 is not a valid Win32 application.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2096815)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2096815)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2096815" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2096815)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2096815)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=c64c706d8a92ec94345cb3f7d9c73954&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Dash (guest)</span>, <span class="odate time_1409018638 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">26 Aug 2014 02:03</span>
+		</div>
+	</div>
+ 
+                
+                	
+
+
+        
+                      
+    <div class="post-container" id="fpc-4465422">
+                      
+		<div class="post" id="post-4465422">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,4465422)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-4465422">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=a62d95d7e46bff6c38288377c41cd7ec&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Sheldon (guest)</span> <span class="odate time_1578665737 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">10 Jan 2020 14:15</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-4465422">
+									
+
+<p>the same is happening with me. I want to learn pygame and nothing is helping right now. If someone can hep please suggest some tutorials.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,4465422)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,4465422)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-4465422" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,4465422)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,4465422)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=a62d95d7e46bff6c38288377c41cd7ec&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Sheldon (guest)</span>, <span class="odate time_1578665737 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">10 Jan 2020 14:15</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-6777075">
+                      
+		<div class="post" id="post-6777075">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,6777075)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-6777075">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=6d0ece2e08fcf747016e398b63d1b678&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Cherprang (guest)</span> <span class="odate time_1737179321 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">18 Jan 2025 05:48</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-6777075">
+									
+
+<p>This is error is due to version mismatch between Python and Pygame.</p>
+<p>Update to latest version of Python and Pygame and you should be good.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,6777075)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,6777075)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-6777075" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,6777075)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,6777075)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=6d0ece2e08fcf747016e398b63d1b678&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Cherprang (guest)</span>, <span class="odate time_1737179321 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">18 Jan 2025 05:48</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+            </div>
+ 
+
+
+<div class="pager"><span class="pager-no">page 1 of 2</span><span class="current">1</span><span class="target"><a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadPostsModule.listeners.updateList(2)">2</a></span><span class="target"><a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadPostsModule.listeners.updateList(2)">next &raquo;</a></span></div>
+</div>
+
+        <a href="javascript:;" id="new-post-button" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.newPost(event,null)"
+      style="display:  block ; margin-bottom:1em"
+    >Add a New Comment</a>
+
+ 
+
+<div style="display:none" id="post-options-template">
+	<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.showPermalink(event,'%POST_ID%')" class="btn btn-default btn-small btn-sm">Permanent Link</a>
+			<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.editPost(event,'%POST_ID%')" class="btn btn-default btn-small btn-sm">Edit</a>
+			<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.deletePost(event,'%POST_ID%')" class="btn btn-danger btn-small btn-sm">Delete</a>
+</div>
+	
+			</div>
+	
+	
+	
+</div>
+                    </div>
+
+                            
+            <!-- wikidot_bottom_300x250 -->
+<div id="wad-tier3-below-content" class="wd-adunit wd-ad-np wd-adunit-below_content"></div>
+<script>
+window['nitroAds'].createAd('wad-tier3-below-content', {
+  "refreshLimit": 10,
+  "refreshTime": 83,
+  "renderVisibleOnly": false,
+  "refreshVisibleOnly": true,
+  "sizes": [ [ 300, 250 ] ],
+  "report": {
+    "enabled": true,
+    "wording": "Report Ad",
+    "position": "bottom-right"
+  }
+  });
+</script>
+        
+    
+
+                            
+            <!-- mobile bottom 320x50 -->
+<script>
+
+$j( function(){
+
+    if(isUAMobile && screen.width < 400 && screen.height > 600) {
+        var $o = $j('<div id="wad-tier3-mobile-anchor" class="wd-adunit wd-ad-np wd-adunit-mobile_anchor"></div>');
+        $j('body').append($o);
+        $j('body').css('margin-bottom', '200px');
+
+        var res = function(){
+            $o = $j('#wad-tier3-mobile-anchor');
+            if($o.length > 0){
+                $o.show();
+                var $w = $j(window);
+                var scale = $w.width() / 320;
+                $o.css('transform', 'scale('+scale+')');
+            } else {
+                $o.hide();
+            }
+        }
+
+        res();
+        setInterval(res, 1000);
+
+        window['nitroAds'].createAd('wad-tier3-mobile-anchor', {
+          "refreshLimit": 1,
+          "refreshTime": 90,
+          "renderVisibleOnly": false,
+          "refreshVisibleOnly": true,
+          "format": "display",
+          "sizes": [ [ 320, 50 ] ],
+          "report": {
+            "enabled": true,
+            "wording": "Report Ad",
+            "position": "bottom-right"
+          }
+                  });
+    }
+});
+</script>
+        
+    
+
+                    
+
+
+
+                    
+                        <div class="page-tags">
+                            <span>
+                                <a href="/system:page-tags/tag/basic#pages">basic</a><a href="/system:page-tags/tag/game#pages">game</a><a href="/system:page-tags/tag/games#pages">games</a><a href="/system:page-tags/tag/loop#pages">loop</a><a href="/system:page-tags/tag/programming#pages">programming</a><a href="/system:page-tags/tag/pygame#pages">pygame</a><a href="/system:page-tags/tag/tutorial#pages">tutorial</a>
+                            </span>
+                        </div>
+                    
+
+                    <div id="page-info-break"></div>
+                    
+                        <div id="page-options-container">
+                            <div id="page-info">page revision: 36, last edited: <span class="odate time_1332837719 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%20%28%25O%20ago%29">27 Mar 2012 08:41</span></div>
+            <div id="page-options-bottom"  class="page-options-bottom">
+            <a href="javascript:;" class="btn btn-default" id="edit-button">Edit</a>
+<a href="javascript:;" class="btn btn-default" id="tags-button">Tags</a>
+
+<a href="javascript:;" class="btn btn-default" id="history-button">History</a>
+<a href="javascript:;" class="btn btn-default" id="files-button">Files</a>
+<a href="javascript:;" class="btn btn-default" id="print-button">Print</a>
+<a href="javascript:;" class="btn btn-default" id="site-tools-button">Site tools</a>
+<a href="javascript:;" class="btn btn-default" id="more-options-button">+&nbsp;Options</a> 
+</div>
+<div id="page-options-bottom-2" class="page-options-bottom form-actions" style="display:none">
+    <a href="javascript:;" class="btn btn-default" id="edit-sections-button">Edit Sections</a>
+    <a href="javascript:;" class="btn btn-default" id="edit-append-button">Append</a>
+    <a href="javascript:;" class="btn btn-default" id="edit-meta-button">Edit Meta</a>
+    <a href="javascript:;" class="btn btn-default" id="watchers-button">Watchers</a> 
+    <a href="javascript:;" class="btn btn-default" id="backlinks-button">Backlinks</a> 
+    <a href="javascript:;" class="btn btn-default" id="view-source-button">Page Source</a> 
+    <a href="javascript:;" class="btn btn-default" id="parent-page-button">Parent</a> 
+    <a href="javascript:;" class="btn btn-default" id="page-block-button">Lock Page</a>    
+    <a href="javascript:;" class="btn btn-default" id="rename-move-button">Rename</a> 
+    <a href="javascript:;" class="btn btn-default" id="delete-button">Delete</a> 
+</div>
+<div id="page-options-area-bottom">
+</div>
+
+                        </div>
+                    
+                    <div id="action-area" style="display: none;"></div>
+                </div>
+            </div>
+            
+            
+            
+            <div id="footer" style="display: block; visibility: visible;">
+                <div class="options" style="display: block; visibility: visible;">
+    <a href="http://www.wikidot.com/doc" id="wikidot-help-button">Help</a>
+    &nbsp;|
+    <a href="http://www.wikidot.com/legal:terms-of-service" id="wikidot-tos-button">Terms of Service</a>
+    &nbsp;|
+    <a href="http://www.wikidot.com/legal:privacy-policy" id="wikidot-privacy-button">Privacy</a>
+    &nbsp;|
+    <a href="javascript:;" id="bug-report-button" onclick="WIKIDOT.page.listeners.pageBugReport(event)">Report a bug</a>
+    &nbsp;|
+    <a href="javascript:;" id="abuse-report-button" onclick="WIKIDOT.page.listeners.flagPageObjectionable(event)">Flag as objectionable</a>
+</div>
+Powered by <a href="http://www.wikidot.com">Wikidot.com</a> 
+            </div>
+            
+            
+            
+
+
+
+            <div id="extrac-div-1"><span></span></div><div id="extrac-div-2"><span></span></div><div id="extrac-div-3"><span></span></div>
+            
+            
+            
+            
+                <div id="footer-bar">
+  <div>
+     </div>
+  <h2>Other interesting sites</h2>
+  
+  <div class="units">
+              <div class="unit">
+          <div class="inner">
+            <a target="_blank" class="image" href="http://mildrooms-wiki.wikidot.com">
+              <img class="thumbnail" alt="" src="http://thumbnails.wdfiles.com/thumbnail/site/mildrooms-wiki.wikidot.com/80.jpg"/>
+            </a>
+            <h3><a target="_blank" href="http://mildrooms-wiki.wikidot.com">The Mildrooms</a></h3>
+            <div class="desc">          
+              温和与适宜
+            </div>
+          </div>
+        </div>
+              <div class="unit">
+          <div class="inner">
+            <a target="_blank" class="image" href="http://managerzonemexico.wikidot.com">
+              <img class="thumbnail" alt="" src="http://thumbnails.wdfiles.com/thumbnail/site/managerzonemexico.wikidot.com/80.jpg"/>
+            </a>
+            <h3><a target="_blank" href="http://managerzonemexico.wikidot.com">La Wiki de ManagerZone México</a></h3>
+            <div class="desc">          
+              
+            </div>
+          </div>
+        </div>
+              <div class="unit">
+          <div class="inner">
+            <a target="_blank" class="image" href="http://psychwikipart2.wikidot.com">
+              <img class="thumbnail" alt="" src="http://thumbnails.wdfiles.com/thumbnail/site/psychwikipart2.wikidot.com/80.jpg"/>
+            </a>
+            <h3><a target="_blank" href="http://psychwikipart2.wikidot.com">Psych Wiki 2023-2024</a></h3>
+            <div class="desc">          
+              
+            </div>
+          </div>
+        </div>
+              <div class="unit">
+          <div class="inner">
+            <a target="_blank" class="image" href="http://id-backrooms-sandbox.wikidot.com">
+              <img class="thumbnail" alt="" src="http://thumbnails.wdfiles.com/thumbnail/site/id-backrooms-sandbox.wikidot.com/80.jpg"/>
+            </a>
+            <h3><a target="_blank" href="http://id-backrooms-sandbox.wikidot.com">Kotak Pasir TBID</a></h3>
+            <div class="desc">          
+              Hayo ngapain lihat ke sini?
+            </div>
+          </div>
+        </div>
+        </div>
+  </div>
+
+            
+        </div>
+        
+    </div>
+<!-- These extra divs/spans may be used as catch-alls to add extra imagery. -->
+<div id="extra-div-1"><span></span></div><div id="extra-div-2"><span></span></div><div id="extra-div-3"><span></span></div>
+<div id="extra-div-4"><span></span></div><div id="extra-div-5"><span></span></div><div id="extra-div-6"><span></span></div>
+</div>
+
+
+
+
+</div>
+<div id="dummy-ondomready-block" style="display: none;" ></div>
+    <!-- Google Analytics load -->
+    <script type="text/javascript">
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+
+
+
+<div id="page-options-bottom-tips" style="display: none;">
+    <div id="edit-button-hovertip">
+        Click here to edit contents of this page.    </div>
+</div>
+<div id="page-options-bottom-2-tips"  style="display: none;">
+    <div id="edit-sections-button-hovertip">
+        Click here to toggle editing of individual sections of the page (if possible).         Watch headings for an &quot;edit&quot; link when available.    </div>
+    <div id="edit-append-button-hovertip">
+        Append content without editing the whole page source.    </div>
+    <div id="history-button-hovertip">
+        Check out how this page has evolved in the past.    </div>
+    <div id="discuss-button-hovertip">
+        If you want to discuss contents of this page - this is the easiest way to do it.    </div>
+    <div id="files-button-hovertip">
+        View and manage file attachments for this page.    </div>
+    <div id="site-tools-button-hovertip">
+        A few useful tools to manage this Site.    </div>
+    <div id="backlinks-button-hovertip">
+        See pages that link to and include this page.    </div>
+    <div id="rename-move-button-hovertip">
+        Change the name (also URL address, possibly the category) of the page.    </div>
+    <div id="view-source-button-hovertip">
+        View wiki source for this page without editing.    </div>
+    <div id="parent-page-button-hovertip">  
+        View/set parent page (used for creating breadcrumbs and structured layout).    </div>
+            <div id="abuse-report-button-hovertip">
+            Notify administrators if there is objectionable content in this page.        </div>
+        <div id="bug-report-button-hovertip">
+            Something does not work as expected? Find out what you can do.        </div>
+        <div id="wikidot-help-button-hovertip">
+            General Wikidot.com documentation and help section.        </div>
+        <div id="wikidot-tos-button-hovertip">
+            Wikidot.com Terms of Service - what you can, what you should not etc.        </div>
+        <div id="wikidot-privacy-button-hovertip">
+            Wikidot.com Privacy Policy.          
+        </div>
+    </div>
+</body>
+</html>

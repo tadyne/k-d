@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-7-functions" />
+<meta name="description" content="Functions with the Python language.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (7): Functions</span></h2>
+	</div>
+
+<p>It is now time to organize/refactor our code! When you begin, this is a strange process since the final code does the same as before. However, refactoring is the only way to create a code easy to maintain and expand.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>Define a function</h2>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-6-random/">previous programs</a>, we used existing functions like <code>print()</code> or <code>input()</code>. We can also create our own functions using the <code>def</code> statement:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">printHello</span><span class="hljs-params">()</span>:</span>
+    print(<span class="hljs-string">"Hello!"</span>)</code></pre>
+<p>The syntax is:</p>
+<pre><code>def &lt;function name&gt;(&lt;arguments&gt;):
+    &lt;function body&gt;</code></pre>
+<p>We can choose a function name as for variable names, as long as the name is not already used. The arguments are the parameters the function can use; in the <code>printHello()</code> example there are no arguments. The function body is a usual Python code block defined using indentation.</p>
+<h2>Call a function</h2>
+<p>To call a function, use its name and parentheses, as we did before with functions like <code>print()</code>:</p>
+<pre class="hljs"><code>printHello()</code></pre>
+<p>If you run this program (with the function definition before!), it executes the code inside the function body, and prints the message.</p>
+<h2>Organize/refactor the game</h2>
+<p>In the previous posts, we created the small game "guess the number". I propose now to refactor this game using functions to organize it better.</p>
+<p>Note that in software design, people talk about "code refactoring" to name the process of restructuring an existing code. The aim is to improve the code presentation but not its behavior. It is hard to prove in a few words why refactoring is essential in software design. It is the sum of thousands of little reasons that motivate it, each one of these being the result of personal experiences. So, if you don't understand why, please trust the many programmers that bled on unstructured code and hear them telling you how much this process matters!</p>
+<p>A first refactoring we can do is embed the game into a single function:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">runGame</span><span class="hljs-params">()</span>:</span>
+    magicNumber = random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+    guessCount = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        word = input(<span class="hljs-string">"What is the magic number? "</span>)
+        <span class="hljs-keyword">if</span> word == <span class="hljs-string">"quit"</span>:
+            <span class="hljs-keyword">break</span>
+
+        <span class="hljs-keyword">try</span>:
+            playerNumber = int(word)
+        <span class="hljs-keyword">except</span> ValueError:
+            print(<span class="hljs-string">"Please type a number without decimals!"</span>)
+            <span class="hljs-keyword">continue</span>
+
+        guessCount += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">if</span> playerNumber == magicNumber:
+            print(<span class="hljs-string">"This is correct! You win!"</span>)
+            print(<span class="hljs-string">"You guessed the magic number in {} guesses."</span>.format(guessCount))
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">elif</span> magicNumber &lt; playerNumber:
+            print(<span class="hljs-string">"The magic number is lower"</span>)
+        <span class="hljs-keyword">elif</span> magicNumber &gt; playerNumber:
+            print(<span class="hljs-string">"The magic number is higher"</span>)
+
+        print(<span class="hljs-string">"This is not the magic number. Try again!"</span>)
+
+</code></pre>
+<p>Thanks to this refactoring, we can run the game calling the <code>runGame()</code> function. That means that if we want to create a menu to start new games, the code is easier to read. For instance:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> random
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">runGame</span><span class="hljs-params">()</span>:</span>
+    ... the game code ...
+
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    print(<span class="hljs-string">"Game menu"</span>)
+    print(<span class="hljs-string">"1) Start a new game"</span>)
+    print(<span class="hljs-string">"2) Quit"</span>)
+
+    choice = input(<span class="hljs-string">"Enter your choice:"</span>)
+    <span class="hljs-keyword">if</span> choice == <span class="hljs-string">"1"</span>:
+        runGame()
+    <span class="hljs-keyword">elif</span> choice == <span class="hljs-string">"2"</span>:
+        <span class="hljs-keyword">break</span></code></pre>
+<p>The game menu is very easy to understand, even for a developer that never saw it: the choice "1" runs the game, and the choice "2" leaves it. Note that I choose function names that describe as much as possible the task. For instance, for the <code>runGame()</code> we can't be more explicit: we ask this function to <em>run</em> the <em>game</em>!</p>
+<h2>More refactoring</h2>
+<p>I propose now to continue the refactoring with the creation of a function <code>askPlayer()</code> for the management of the player input:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">askPlayer</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        word = input(<span class="hljs-string">"What is the magic number? "</span>)
+        <span class="hljs-keyword">if</span> word == <span class="hljs-string">"quit"</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+
+        <span class="hljs-keyword">try</span>:
+            playerNumber = int(word)
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">except</span> ValueError:
+            print(<span class="hljs-string">"Please type a number without decimals!"</span>)
+            <span class="hljs-keyword">continue</span>
+
+    <span class="hljs-keyword">return</span> playerNumber</code></pre>
+<p>The main purpose of this function is to get a number from the player, and handles cases like bad numbers and quit the game. I copied and pasted all the code related to this task, put it in a <code>while</code> loop. We repeat the input until the player enters a number or "quit". </p>
+<h2>The return statement</h2>
+<p>At the end of this function, there is a <code>return</code> statement. It returns the value of the <code>playerNumber</code> variable. We need to use this statement because Python defines variables inside function blocks. For instance, <code>playerNumber</code> in <code>askPlayer()</code> only exists in this function. If you try to access it in another function, it does not work, even if you create a variable with the same name.</p>
+<p>For instance, if you update the <code>runGame()</code> function to use the <code>askPlayer()</code> function in the following way:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">runGame</span><span class="hljs-params">()</span>:</span>
+    magicNumber = random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+    guessCount = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        askPlayer()
+        <span class="hljs-keyword">if</span> playerNumber <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+            <span class="hljs-keyword">break</span>        
+        ...                    </code></pre>
+<p>Spyder tells you that <code>playerNumber</code> is undefined. If you run the program, Python raises an exception.</p>
+<p>The right way to use the function is to copy the value returned by <code>askPlayer()</code> into a variable of <code>runGame()</code>:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">runGame</span><span class="hljs-params">()</span>:</span>
+    magicNumber = random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+    guessCount = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        playerNumber = askPlayer()
+        <span class="hljs-keyword">if</span> playerNumber <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+            <span class="hljs-keyword">break</span>        
+        ...                    </code></pre>
+<p>With this code, the value of <code>playerNumber</code> of <code>askPlayer()</code> is copied into the value of <code>playerNumber</code> of <code>runGame()</code>.</p>
+<p>In the <code>askPlayer()</code> function, if the player enters "quit", the function returns <code>None</code>. First, note that the <code>return</code>statement stops the function. No more code lines of the function are executed after this statement. About <code>None</code>, it is a special Python symbol that means "nothing" or "empty". I use it rather than "quit" because I want to be able to change the way the player can stop the game without having to change the way <code>askPlayer()</code> works. </p>
+<h2>Function documentation</h2>
+<p>The creation of <code>askPlayer()</code> makes the code easier to read, but to even more ease its use, I highly recommend to add some documentation using Python <em>docstrings</em>. Documentation saves you a lot of time in large projects, where it is hard to remember the inputs and outputs of all functions your team created:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">askPlayer</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">"""
+    Ask player to enter a number
+
+    Output:
+      * playerNumber: the number entered by the player, or None if the player wants to stop the game
+    """</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        ...</code></pre>
+<p>Python docstrings is a large comment starting right after the <code>def</code> statement. It is very close to the markdown language, you can use it to layout your documentation.</p>
+<p>The most important things are:</p>
+<ul>
+<li>A general description at the beginning. Here it is "Ask player to enter a number"</li>
+<li>Description of each input as a list. In this example, there is no input.</li>
+<li>Description of each output as a list. In this example, there is a single output <code>playerNumber</code>.</li>
+</ul>
+<p>In Spyder, you can see the documentation of a function (if any). Put the cursor on a function name, and then hit <strong>Ctrl+I</strong>. In the top right part of the interface, the documentation appears (if it does not, select the "Help" tab):</p>
+<figure><img alt="Spyder function documentation" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-7-functions/1127646ee7-1621704758/07_spyder_help.png" width="30%"></figure>
+<h2>Final code</h2>
+<pre class="hljs"><code><span class="hljs-comment"># Import the random package</span>
+<span class="hljs-keyword">import</span> random
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">askPlayer</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">"""
+    Ask player to enter a number
+
+    Output:
+      * playerNumber: the number entered by the player, or None if the player wants to stop the game
+    """</span>
+
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        <span class="hljs-comment"># Player input</span>
+        word = input(<span class="hljs-string">"What is the magic number? "</span>)
+        <span class="hljs-comment"># Quit if the player types "quit"</span>
+        <span class="hljs-keyword">if</span> word == <span class="hljs-string">"quit"</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+
+        <span class="hljs-comment"># Int casting with exception handling</span>
+        <span class="hljs-keyword">try</span>:
+            playerNumber = int(word)
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">except</span> ValueError:
+            print(<span class="hljs-string">"Please type a number without decimals!"</span>)
+            <span class="hljs-keyword">continue</span>
+
+    <span class="hljs-keyword">return</span> playerNumber
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">runGame</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Generate a random Magic number</span>
+    magicNumber = random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+    <span class="hljs-comment"># An integer to count the guesses</span>
+    guessCount = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        playerNumber = askPlayer()
+        <span class="hljs-keyword">if</span> playerNumber <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+            <span class="hljs-keyword">break</span>        
+        <span class="hljs-comment"># Increase the number of guesses</span>
+        guessCount += <span class="hljs-number">1</span>
+
+        <span class="hljs-comment"># Cases</span>
+        <span class="hljs-keyword">if</span> playerNumber == magicNumber:
+            print(<span class="hljs-string">"This is correct! You win!"</span>)
+            print(<span class="hljs-string">"You guessed the magic number in {} guesses."</span>.format(guessCount))
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">elif</span> magicNumber &lt; playerNumber:
+            print(<span class="hljs-string">"The magic number is lower"</span>)
+        <span class="hljs-keyword">elif</span> magicNumber &gt; playerNumber:
+            print(<span class="hljs-string">"The magic number is higher"</span>)
+
+        <span class="hljs-comment"># Wrong number, continue </span>
+        print(<span class="hljs-string">"This is not the magic number. Try again!"</span>)
+
+
+runGame()</code></pre>
+<p>I started the refactoring in this post, but we can do much more, especially using the Game Loop pattern I present in the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-8-game-loop-pattern/">next post</a>.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-11-class" />
+<meta name="description" content="Object oriented programming (class) with the Python language.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (11): Class</span></h2>
+	</div>
+
+<p>I propose to introduce Python classes to implement the Game Loop pattern. Using these tools, I show how to refactor the code in the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-10-keyboard/">previous post</a> to get a more robust and readable program.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>Create a class with Python</h2>
+<p>In this post, I introduce the basics of classes in Python. I can't present everything if I don't want to lose you, so this is not exhaustive. There are also some approximations I'll correct in the following posts.</p>
+<p>In Python, you can create a class using the following syntax:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span><span class="hljs-params">()</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,value)</span>:</span>
+        self.value = value
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">incValue</span><span class="hljs-params">(self)</span>:</span>
+        self.value += <span class="hljs-number">1</span></code></pre>
+<p>The name of this class is <code>MyClass</code>. You can choose any available name as usual. Note that a lot of programmers start class names with capital letters.</p>
+<p>This class has two methods: <code>__init__()</code> and <code>incValue()</code>. Methods are like functions, except that they are defined in a class.</p>
+<p>The first argument of a method is always a reference to a class instance, and most Python programmers name it <code>self</code>. A class instance is an object of a class: it contains all the attributes and methods of the class.</p>
+<p>The body of methods is like that of functions: the following code block defined by the indentation contains all the lines of the method.</p>
+<h2>Constructor and attributes</h2>
+<p>The method <code>__init__()</code> is a special method called the constructor. Python calls it when you create a new class instance. As we saw before, we can create a class instance by using the class name as a function:</p>
+<pre class="hljs"><code>myClass = MyClass(<span class="hljs-number">10</span>)</code></pre>
+<p>Note that there is only one argument to this call: it is as if we are ignoring the <code>self</code> argument of the <code>__init__()</code> method (or constructor).</p>
+<p>Inside the <code>__init__()</code> method, we create an attribute <code>value</code> using the dot operator:</p>
+<pre class="hljs"><code>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,value)</span>:</span>
+        self.value = value</code></pre>
+<p>The expression <code>self.value = value</code> creates the attribute with an initial value copied from <code>value</code>. Note that, since Python is a dynamic language, you can create an attribute in any method of a class, and also outside the class. However, I don't recommend it! Please code as if it was impossible until you get a strong knowledge of Python. Only create attributes in the constructor.</p>
+<p>Once an attribute exists, you can access it easily using the dot operator:</p>
+<pre class="hljs"><code>myClass = MyClass(<span class="hljs-number">10</span>)
+print(myClass.value)</code></pre>
+<p>This program displays "10" in the console.</p>
+<h2>Method call</h2>
+<p>To call a class method, you need a reference to a class instance, and then use the dot operator:</p>
+<pre class="hljs"><code>myClass = MyClass(<span class="hljs-number">10</span>)
+myClass.incValue()
+print(myClass.value)</code></pre>
+<p>This program displays "11" in the console.</p>
+<p>Note that, as for the constructor, we ignore the first argument <code>self</code>. The class instance before the dot defines this value. There is a function call equivalent of a method call, for the method <code>incValue()</code> it is:</p>
+<pre class="hljs"><code>MyClass.incValue(myClass)</code></pre>
+<p>We can see the use of the first argument that sets <code>self</code> to <code>myClass</code>. A method call is finally a syntax improvement that eases coding and reading (as well as other nice properties, but this is another story!).</p>
+<h2>Game Loop pattern</h2>
+<p>Using a class, we can get a better implementation of the Game Loop pattern:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Game</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        ... Initialization ...
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">processInput</span><span class="hljs-params">(self)</span>:</span>
+        ... Handle user input ...
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self)</span>:</span>
+        ... Update game state ...
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self)</span>:</span>
+        ... Render game state ...
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>    
+        ... Main loop ...</code></pre>
+<p>The class contains all the methods related to the pattern. Furthermore, we no more need to add many arguments to these methods since all data is in the class attributes.</p>
+<p>Let's now see the implementation of all these methods, which use the same code as in the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-10-keyboard/">previous post</a>, but organized differently.</p>
+<h2>The <code>__init__()</code> method</h2>
+<p>The <code>__init__()</code> method contains all the code at the beginning of the previous program, except that data is put in the class attributes:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+    pygame.init()
+    self.window = pygame.display.set_mode((<span class="hljs-number">640</span>,<span class="hljs-number">480</span>))
+    pygame.display.set_caption(<span class="hljs-string">"Discover Python &amp; Patterns"</span>)
+    pygame.display.set_icon(pygame.image.load(<span class="hljs-string">"icon.png"</span>))
+    self.clock = pygame.time.Clock()
+    self.x = <span class="hljs-number">120</span>
+    self.y = <span class="hljs-number">120</span>
+    self.running = <span class="hljs-literal">True</span></code></pre>
+<p>For instance, the window handle is in the <code>window</code> attribute thanks to the expression <code>self.window = pygame.display.set_mode((640,480))</code>.</p>
+<p>It means that, if we type <code>self.window</code> in any method of this class, then we get the value of the <code>window</code> attribute.</p>
+<h2>The processInput() method</h2>
+<p>The <code>processInput()</code> method contains the <code>for</code> loop that processes the Pygame events:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">processInput</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+        <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+            self.running = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">elif</span> event.type == pygame.KEYDOWN:
+            <span class="hljs-keyword">if</span> event.key == pygame.K_ESCAPE:
+                self.running = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT:
+                self.x += <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT:
+                self.x -= <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN:
+                self.y += <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_UP:
+                self.y -= <span class="hljs-number">8</span></code></pre>
+<p>It is as before, except that we set or update class attributes. For instance, <code>x += 8</code> becomes <code>self.x += 8</code>.</p>
+<h2>The update() method</h2>
+<p>In the Game Loop pattern, the <code>update()</code> method should change the game state. In our case, this data is made of the <code>x</code> and <code>y</code> attributes. However, we already update them in the <code>processInput()</code>. As a result, there is nothing to do during the update. In Python, to tell that there is nothing to do, you can use the <code>pass</code> keyword:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">pass</span></code></pre>
+<p>This implementation of the Game Loop pattern is not good. I didn't change the previous code, except for the use of the class attributes. It would have been too complex to do everything at the same time. I'll show in the next post how to get a better implementation of the Game Loop pattern.</p>
+<h2>The render() method</h2>
+<p>The <code>render()</code> method uses the data from the game state (<code>x</code> and <code>y</code> attributes) to display the current state of the game:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self)</span>:</span>
+    self.window.fill((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+    pygame.draw.rect(self.window,(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>),(self.x,self.y,<span class="hljs-number">400</span>,<span class="hljs-number">240</span>))
+    pygame.display.update()  </code></pre>
+<p>As in the previous methods, I just replaced the global variables with attributes, like <code>window</code> that becomes <code>self.window</code>.</p>
+<h2>The run() method</h2>
+<p>The <code>run()</code> method contains the main loop, and calls the other methods:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>    
+    <span class="hljs-keyword">while</span> self.running:
+        self.processInput()
+        self.update()
+        self.render()        
+        self.clock.tick(<span class="hljs-number">60</span>)</code></pre>
+<p>We call a method with the dot operator. For instance, <code>self.update()</code> calls the method <code>update()</code> using the class instance referenced by <code>self</code>.</p>
+<p>Each game step (input, update, and render) is run 60 times per second (line <code>self.clock.tick(60)</code>). It is the simplest case, but we could change that in this method. For instance, we could only render half of the frames on slow computers. That way, the game still runs the same on every computer (slow and fast ones), and we don't have to change anything in the input processing and game state update. It also means that, if we want to run the game on a server with no display, we only need to remove the call to the <code>render()</code> method.</p>
+<h2>Create and run the game</h2>
+<p>Finally, to run and close the game, we only need the following lines:</p>
+<pre class="hljs"><code>game = Game()
+game.run()
+pygame.quit()</code></pre>
+<p>Line 1 creates a new instance of the <code>Game</code> class. It is the <code>Game</code> class used as if it was a function. The <code>__init__()</code> method has only one argument (<code>self</code>), so there are no arguments in this call.</p>
+<p>Line 2 calls the <code>run()</code> method of the <code>game</code> instance.</p>
+<p>Line 3 calls the <code>quit()</code> function of the <code>pygame</code> package to close all Pygame content.</p>
+<h2>Complete program</h2>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> pygame
+
+os.environ[<span class="hljs-string">'SDL_VIDEO_CENTERED'</span>] = <span class="hljs-string">'1'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Game</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        pygame.init()
+        self.window = pygame.display.set_mode((<span class="hljs-number">640</span>,<span class="hljs-number">480</span>))
+        pygame.display.set_caption(<span class="hljs-string">"Discover Python &amp; Patterns - https://www.patternsgameprog.com"</span>)
+        pygame.display.set_icon(pygame.image.load(<span class="hljs-string">"icon.png"</span>))
+        self.clock = pygame.time.Clock()
+        self.x = <span class="hljs-number">120</span>
+        self.y = <span class="hljs-number">120</span>
+        self.running = <span class="hljs-literal">True</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">processInput</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+                self.running = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">elif</span> event.type == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_ESCAPE:
+                    self.running = <span class="hljs-literal">False</span>
+                    <span class="hljs-keyword">break</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT:
+                    self.x += <span class="hljs-number">8</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT:
+                    self.x -= <span class="hljs-number">8</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN:
+                    self.y += <span class="hljs-number">8</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_UP:
+                    self.y -= <span class="hljs-number">8</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self)</span>:</span>
+        self.window.fill((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+        pygame.draw.rect(self.window,(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>),(self.x,self.y,<span class="hljs-number">400</span>,<span class="hljs-number">240</span>))
+        pygame.display.update()    
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>    
+        <span class="hljs-keyword">while</span> self.running:
+            self.processInput()
+            self.update()
+            self.render()        
+            self.clock.tick(<span class="hljs-number">60</span>)
+
+game = Game()
+game.run()</code></pre>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-12-command-pattern/">next post</a>, I'll show you a better implementation of the Game Loop pattern using the Command pattern.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

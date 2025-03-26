@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-1" />
+<meta name="description" content="Discover the Python language and the basics of Design Patterns with game programming">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (1): Start</span></h2>
+	</div>
+
+<p>In this series, I propose to discover Python and design patterns. The Python language is today one of the best language to discover programming. At the same time, I will also introduce design patterns, a collection of programming recipes that give many good ideas when creating programs. In this first post, we see the Spyder IDE and the print() function.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em></p>
+<h2>Spyder IDE</h2>
+<p>Before starting anything we need a development environment. There are many possibilities with Python, I propose here one of the most popular: <a href="https://www.anaconda.com">Anaconda</a> with <a href="https://www.spyder-ide.org/">Spyder</a>. Anaconda is a tool that contains Python with many libraries and applications. The default package has a lot of them, including Spyder. Later, it is easy to add/remove/upgrade these libraries and applications. Spyder is an IDE dedicated to Python, its use is simple and easy.</p>
+<p>To get Anaconda, download the Python 3 distribution <a href="https://www.anaconda.com/distribution/">here</a>. Run the installer, and be patient... Installation takes a while. At the end of the installation, you can check the boxes if this anaconda will be the main Python env you will use. Otherwise, don't touch anything, you can easily run programs from Spyder without these options. Then, if you are using Windows, search "Spyder" in the start menu, and you should see something like this:</p>
+<figure><img alt="Discover Python and Patterns: Spyder IDE" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-1/299a36453e-1621703661/spyder.png" width="90%"></figure>
+<p>The left part is the current Python program:</p>
+<pre class="hljs"><code><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-string">"""
+Spyder Editor
+
+This is a temporary script
+"""</span></code></pre>
+<p>These lines are only comments, they don't do anything if you run it. The first line starting with a '#' is a single line comment, and the following ones are multi-lines comments, starting and ending with a triple double quote.</p>
+<p>The upper right part shows some help - there is other tabs we'll see later.</p>
+<p>The lower right part shows the console - this is where messages are printed.</p>
+<h2>Create your first Python program</h2>
+<p>Let's create now a new program from the menu <strong>File / New File... </strong>A new tab appears in the top left part, with already some content: this is also comments, they will not lead to any action. Type print("You win !") right after, and you should get something like:</p>
+<pre class="hljs"><code><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-string">"""
+Created on Wed Oct  2 21:49:54 2019
+
+@author: phylyp
+"""</span>
+
+print(<span class="hljs-string">"You win !"</span>)</code></pre>
+<p>Save it from the menu <strong>File / Save</strong>, for instance with the file name "win.py". Your interface should look like the following one:</p>
+<figure><img alt="Discover Python and Patterns: Spyder first program" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-1/2c7774b144-1621704039/spyder02.png" width="90%"></figure>
+<p>This first program is a really easy game: nothing to do you always win :) </p>
+<h2>Run your first Python program</h2>
+<p>To run this program, click the play icon in the top bar:</p>
+<figure><img alt="Python Spyder run" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-1/e5f7c064e9-1621704039/spyder_run.png" width="165"></figure>
+<p>You should see the following dialog. Check "Remove all variables before execution", it'll prevent unexpected errors later:</p>
+<figure><img alt="run properties" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-1/a1e7667b9d-1621704039/spyder_run_conf_2.png" width="364"></figure>
+<p>Then, in the console in the bottom right part, you should see the following new lines:</p>
+<pre><code>In [1]: runfile('C:/dev/win.py', wdir='C:/dev')
+You win !
+
+In [2]:
+</code></pre>
+<p>Your Spyder interface should look like this one:</p>
+<figure><img alt="Discover Python and Patterns: run first program" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-1/abb6cd3a4d-1621704249/spyder03.png" width="90%"></figure>
+<p>The first line <code>In [1]: runfile('C:/dev/win.py', wdir='C:/dev')</code> is a command Spyder typed itself to run the python program "C:\dev\win.py" in the directory "C:\dev" (Spyder uses slash '/' instead of '\', it works the same). Do not worry about this line.</p>
+<h2>Print function</h2>
+<p>The second line <code>You win !</code> is the result of our command <code>print("You win !")</code>. This command is a <em>function call</em>. You can recognize a function call thanks to a name followed by an open parenthesis. For instance, the following command:</p>
+<pre class="hljs"><code>print()</code></pre>
+<p>calls the print function. </p>
+<p>Inside the parenthesis, we can add items called <em>arguments</em>. In our example, we have a single argument "You win !". The double quotes mean that this is string content, that should not be interpreted by Python. Otherwise, if you type print(You win !), the interpreter will try to execute You win !, but it has no meaning in Python.</p>
+<p>Functions can also be called with several arguments using commas, for instance with the print function we could type:</p>
+<pre class="hljs"><code>print(<span class="hljs-string">"You"</span>,<span class="hljs-string">"Win"</span>,<span class="hljs-string">"!"</span>)</code></pre>
+<p>It actually print the same message, since arguments of the print function are separated by spaces. For instance, if you run:</p>
+<pre class="hljs"><code>print(<span class="hljs-string">"Wo"</span>,<span class="hljs-string">"rd"</span>)</code></pre>
+<p>It will print (a space is printed between "Wo" and "rd"):</p>
+<pre><code>Wo rd</code></pre>
+<h2>Syntax errors</h2>
+<p>Python, as for all programming languages, has strict syntax rules. If you make mistakes in your program, it will be impossible to run it. For instance, if you forget the last parenthesis in the print() line:</p>
+<pre class="hljs"><code>print(<span class="hljs-string">"You win !"</span></code></pre>
+<p>Spyder will show you that there is an error in this line with an exclamation mark left to the line. If you leave your cursor on this icon, you'll get some help:</p>
+<figure><img alt="Spyder error" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-1/fe7b415ec1-1621704684/spyder_syntax_error.png" width="40%"></figure>
+<p>If you run this line, you will see a long error message in the console (bottom right part of Spyder):</p>
+<figure><img alt="console error" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-1/8595e3c102-1621704684/spyder_error_console.png" width="40%"></figure>
+<p>It tells you that there is a syntax error in your program (here "C:\dev\win.py") at line 8. The messages before this line show the <em>execution stack</em>, this is the history of all function calls that led to this result.</p>
+<p>To run the program again, just add the missing parenthesis.</p>
+<p>This first post is not very exciting, but basics have to be presented in order to better present the following topics. In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-2-basic-interaction/">next post</a>, we'll see first interactions with the player.</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

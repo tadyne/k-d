@@ -1,0 +1,1283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>Event handling - PyGame Tutorials</title>
+    
+    
+    
+    <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--javascript/init.combined.js"></script>
+    <script  type="text/javascript">
+        var URL_HOST = 'www.wikidot.com';
+        var URL_DOMAIN = 'wikidot.com';
+        var USE_SSL =  true ;
+        var URL_STATIC = 'http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327';
+        // global request information
+        
+        var WIKIREQUEST = {};
+        WIKIREQUEST.info = {};
+        
+        WIKIREQUEST.info.domain = "pygametutorials.wikidot.com";
+        WIKIREQUEST.info.siteId = 107183;
+        WIKIREQUEST.info.siteUnixName = "pygametutorials";
+        WIKIREQUEST.info.categoryId = 592142;
+        WIKIREQUEST.info.themeId = 1;
+        WIKIREQUEST.info.requestPageName = "tutorials-three";
+        OZONE.request.timestamp = 1743017676;
+        OZONE.request.date = new Date();
+        WIKIREQUEST.info.lang = 'en';
+                WIKIREQUEST.info.pageUnixName = "tutorials-three";
+        WIKIREQUEST.info.pageId = 3384061;
+                        WIKIREQUEST.info.lang = "en";
+        OZONE.lang = "en";
+        var isUAMobile = !!/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    </script>
+    
+    
+
+
+    
+        <script  type="text/javascript">
+    
+        require.config({
+            baseUrl: URL_STATIC + '/common--javascript',
+            paths: {
+                'jquery.ui': 'jquery-ui.min',
+                'jquery.form': 'jquery.form'
+            }
+        });
+    
+    </script>
+    
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+            
+    
+    
+    
+    
+    <meta http-equiv="content-language" content="en"/>
+    <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--javascript/WIKIDOT.combined.js"></script>
+        
+    
+    <style type="text/css">
+body {
+  background-position: center 24px;
+}
+</style>
+<style type="text/css" id="internal-style">
+        
+        /* modules */
+@import url(http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/css/wiki/pagestagcloud/PagesTagCloudModule.css);
+
+
+        
+                
+        /* theme */
+                    @import url(http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--theme/base/css/style.css);
+                    @import url(http://themes.wdfiles.com/local--code/maple);
+            </style>
+    
+        
+        
+        
+    <link rel="shortcut icon" href="/local--favicon/favicon.gif"/>
+    <link rel="icon" type="image/gif" href="/local--favicon/favicon.gif"/>
+    
+            <link rel="apple-touch-icon" href="/common--images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/common--images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/common--images/apple-touch-icon-114x114.png" />
+        
+        
+            <link rel="alternate" type="application/wiki" title="Edit this page" href="javascript:WIKIDOT.page.listeners.editClick()"/>
+    
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-18234656-1']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        _gaq.push(['old._setAccount', 'UA-68540-5']);
+        _gaq.push(['old._setDomainName', 'none']);
+        _gaq.push(['old._setAllowLinker', true]);
+        _gaq.push(['old._trackPageview']);
+
+                _gaq.push(['userTracker._setAccount', 'UA-8410953-1']);
+        _gaq.push(['userTracker._trackPageview']);
+            </script>
+    
+    <script type="text/javascript">
+        window.google_analytics_uacct = 'UA-18234656-1';
+        window.google_analytics_domain_name = 'none';
+    </script>
+    
+        <link rel="manifest" href="/onesignal/manifest.json" />
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" acync=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+          OneSignal.init({
+            appId: null,
+          });
+        });
+    </script>
+        
+<script data-cfasync="false">window.nitroAds=window.nitroAds||{createAd:function(){return new Promise(e=>{window.nitroAds.queue.push(["createAd",arguments,e])})},addUserToken:function(){window.nitroAds.queue.push(["addUserToken",arguments])},queue:[]};</script>
+<script data-cfasync="false" async src="https://s.nitropay.com/ads-143.js"></script>
+<link rel="alternate" type="application/rss+xml" title="Comments for the page &quot;Event handling&quot;" href="/feed/page/comments-3384061.xml"/><script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/misc/NewPageHelperModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/forum/ForumCommentsModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/forum/ForumViewThreadModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/forum/ForumViewThreadPostsModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--modules/js/forum/sub/ForumNewPostFormModule.js"></script>
+</head>
+<body id="html-body">
+<div id="skrollr-body">
+<a name="page-top"></a>
+<div id="navi-bar">
+  <a class="logo" href="http://www.wikidot.com">
+    <span>Wikidot.com</span>
+  </a>
+  
+  <div class="new-site">
+    <form method="get" action="http://www.wikidot.com/new-site">
+      <input class="text empty" type="text" name="address" value="site-name"/>.wikidot.com
+    </form>
+  </div>
+  
+    <div class="share">
+    <span>Share on</span>
+    <a class="twitter" target="_blank" rel="nofollow" href="http://twitter.com/home?status=TITLE+URI"
+      title="Share on Twitter"
+    ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/twitter.png" alt="twitter"/></a>  
+    <a class="facebook" target="_blank" rel="nofollow" href="http://www.facebook.com/share.php?u=URI&amp;t=TITLE"
+      title="Share on Facebook"><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/facebook.gif" alt="Facebook"
+      /></a>  
+    <a class="delicious" target="_blank" rel="nofollow" href="http://delicious.com/save"
+      title="Share on Delicious"
+      ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/delicious.png" alt="Delicious"/></a>
+    <a class="digg" target="_blank" rel="nofollow" href="http://digg.com/submit?url=URI&amp;title=TITLE"
+      title="Post to Digg"
+      ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/digg.png" alt="Digg"/></a>
+    <a class="reddit" href="http://www.reddit.com/submit?url=URI" rel="nofollow" target="_blank"
+      title="Post to Reddit"
+      ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/reddit.png" alt="Reddit" border="0" /></a>
+    <a class="stumbleupon" href="http://www.stumbleupon.com/submit?url=URI" rel="nofollow" target="_blank"
+      title="Post to StumbleUpon"
+      ><img src="http://d3g0gp89917ko0.cloudfront.net/v--4b961b7cc327/common--images/social/stumble.png" alt="Reddit" border="0" /></a>
+  </div>
+    
+      <a class="join" href="javascript:;" onclick="WIKIDOT.page.listeners.join(event, 'unified')">Join this site</a>
+    
+      <div class="action-buttons">
+      <a href="javascript:;" onclick="WIKIDOT.page.listeners.editClick(event)"
+      title="Click here to edit contents of this page.">Edit</a>
+      <a href="javascript:;" onclick="WIKIDOT.page.listeners.historyClick(event)"
+      title="Check out how this page has evolved in the past.">History</a>
+      <a href="javascript:;" onclick="WIKIDOT.page.listeners.editTags(event)"
+      title="Edit tags for this page.">Tags</a>
+      <a href="javascript:;" onclick="WIKIDOT.page.listeners.viewSourceClick(event)"
+      title="View wiki source for this page without editing.">Source</a>
+    </div>
+    
+  <a class="random-site" href="/random-site.php"
+  title="Go to a random Wikidot site.">Explore &raquo;</a>
+  </div>
+<div id="navi-bar-shadow">&nbsp;</div>
+
+
+<script type="text/javascript">
+  //<![CDATA[
+  $j(function(){
+    var uri = window.location.href;
+    var title = document.title
+    
+    $j('#navi-bar .share a').each(function(){
+      $t = $j(this);
+      var u = $t.attr('href');
+      u = u.replace(/TITLE/, encodeURIComponent(title)).replace(/URI/, encodeURIComponent(uri));
+      $t.attr('href', u);
+    });
+    
+    $j('#navi-bar .share .facebook').click(function(e){
+      window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(uri)+'&t='+encodeURIComponent(title),'sharer','toolbar=0,status=0,width=626,height=436');
+      e.preventDefault();
+    });
+    $j('#navi-bar .share .delicious').click(function(e){
+      window.open('http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550');
+      e.preventDefault();
+    });
+  });
+  
+	$j('#navi-bar .new-site form').submit(function(e){
+	  e.preventDefault();
+	  var $i = $j('#navi-bar .new-site form input.text');
+	  if($i.hasClass('empty')){
+	    	var w = new OZONE.dialogs.ErrorDialog();
+  			w.content = "You need to enter a valid web address for your new wiki.";
+  			w.show();
+  			return;
+    }
+    var siteName = $i.attr('value');
+    siteName = siteName.replace(/^\s+/, '').replace(/\s+$/,'');
+		var p = {};
+		p.action = 'wiki/special/NewWikiWidgetAction';
+		p.event = 'newWiki';
+		p.siteName = siteName;
+		OZONE.ajax.requestModule(null, p, function(r){
+		  if(r.status == 'site_exists'){
+		    window.location.href = 'http://' + siteName + '.' + URL_DOMAIN;
+		    return;
+		  }
+		  if(!WIKIDOT.utils.handleError(r)) {return;}
+  		// seems fine.
+  		window.location.href='http://'+URL_HOST+'/new-site/address/'+r.unixName;
+		});
+	});
+	$j('#navi-bar .new-site form input.text').focus(function(){
+	  var $t = $j(this);
+	  if($t.hasClass('empty')){
+	    $t.removeClass('empty');
+	    $t.attr('value', '');
+	  }
+	});
+	//]]>
+</script>
+
+
+        
+            <!-- side slide skyscraper -->
+<div id="wad-tier3-side-slide" class="wd-adunit wd-ad-np wd-adunit-side_slide"></div>
+<script>
+$j( function(){
+var $c = $j('#container');
+var s = $j(window).width() - ($c.width()+$c.offset().left);
+var ri = s - 180;
+var $o = $j('#wad-tier3-side-slide');
+if( s > 200 ) {
+    $o.css('right', ri + 'px');
+    window['nitroAds'].createAd('wad-tier3-side-slide', {
+      "refreshLimit": 10,
+      "refreshTime": 85,
+      "renderVisibleOnly": false,
+      "refreshVisibleOnly": true,
+      "sizes": [ [ 160, 600 ] ],
+      "report": {
+        "enabled": true,
+        "wording": "Report Ad",
+        "position": "bottom-right"
+      }
+          });
+} else {
+    $o.remove();
+}
+});
+</script>
+        
+    
+
+
+<div id="container-wrap-wrap">
+    <div id="container-wrap">
+        <div id="container">
+            <div id="header">
+              <h1><a href="/"><span>PyGame Tutorials</span></a></h1>
+                
+                    <h2><span>Simple introduction to game programming</span></h2>
+                
+                
+                <!-- google_ad_section_start(weight=ignore) -->
+                
+                <div id="search-top-box" class="form-search">
+    <form id="search-top-box-form" action="dummy" class="input-append">
+        <input id="search-top-box-input" class="text empty search-query" type="text" size="15" name="query" value="Search this site" onfocus="if(YAHOO.util.Dom.hasClass(this, 'empty')){YAHOO.util.Dom.removeClass(this,'empty'); this.value='';}"/><input class="button btn" type="submit" name="search" value="Search"/>
+    </form>
+</div>
+                
+                
+                    <div id="top-bar">
+                        
+
+<ul>
+<li><a href="/start">Home</a></li>
+<li><a href="/news">News</a></li>
+<li><a href="/tutorials">Tutorials</a>
+<ul>
+<li><a href="/tutorials-basic">PyGame basics</a></li>
+<li><a href="/tutorials-two">PyGame drawing</a></li>
+<li><a href="/tutorials-three">PyGame events</a></li>
+<li><a href="/tutorials-four">More on drawing</a></li>
+<li><a href="http://bitbucket.org/przemoli/pygametutorial/overview" target="_blank">Source Code</a></li>
+</ul>
+</li>
+<li><a href="/forum:start">Forum</a></li>
+<li><a href="/contact">Contact</a></li>
+<li><a href="/license">License</a></li>
+<li><a href="/links">Links</a></li>
+<li>Admin
+<ul>
+<li><a href="/admin:manage">Site Manager</a></li>
+</ul>
+</li>
+</ul>
+
+                    </div>
+                
+                <div id="login-status"><a href="javascript:;" onclick="WIKIDOT.page.listeners.createAccount(event)" class="login-status-create-account btn">Create account</a> <span>or</span> <a href="javascript:;" onclick="WIKIDOT.page.listeners.loginClick(event)" class="login-status-sign-in btn btn-primary">Sign in</a> </div>
+                <div id="header-extra-div-1"><span></span></div><div id="header-extra-div-2"><span></span></div><div id="header-extra-div-3"><span></span></div>
+            </div>
+            
+            <div id="content-wrap">
+                
+                    <div id="side-bar">
+                        
+
+
+                        
+
+<h2 ><span>Page tags</span></h2>
+	<div class="pages-tag-cloud-box">
+									<a class="tag" href="/system:page-tags/tag/basic"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>basic</a>
+							<a class="tag" href="/system:page-tags/tag/book"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>book</a>
+							<a class="tag" href="/system:page-tags/tag/cloak"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>cloak</a>
+							<a class="tag" href="/system:page-tags/tag/collision"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>collision</a>
+							<a class="tag" href="/system:page-tags/tag/detection"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>detection</a>
+							<a class="tag" href="/system:page-tags/tag/display"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>display</a>
+							<a class="tag" href="/system:page-tags/tag/draw"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>draw</a>
+							<a class="tag" href="/system:page-tags/tag/errors"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>errors</a>
+							<a class="tag" href="/system:page-tags/tag/event"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>event</a>
+							<a class="tag" href="/system:page-tags/tag/forum"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>forum</a>
+							<a class="tag" href="/system:page-tags/tag/game"
+					style="font-size: 209%; color: rgb(93, 93, 157);"
+					>game</a>
+							<a class="tag" href="/system:page-tags/tag/games"
+					style="font-size: 209%; color: rgb(93, 93, 157);"
+					>games</a>
+							<a class="tag" href="/system:page-tags/tag/handling"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>handling</a>
+							<a class="tag" href="/system:page-tags/tag/image"
+					style="font-size: 136%; color: rgb(116, 116, 180);"
+					>image</a>
+							<a class="tag" href="/system:page-tags/tag/initialization"
+					style="font-size: 136%; color: rgb(116, 116, 180);"
+					>initialization</a>
+							<a class="tag" href="/system:page-tags/tag/instalation"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>instalation</a>
+							<a class="tag" href="/system:page-tags/tag/linux"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>linux</a>
+							<a class="tag" href="/system:page-tags/tag/loading"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>loading</a>
+							<a class="tag" href="/system:page-tags/tag/loop"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>loop</a>
+							<a class="tag" href="/system:page-tags/tag/news"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>news</a>
+							<a class="tag" href="/system:page-tags/tag/opengl"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>opengl</a>
+							<a class="tag" href="/system:page-tags/tag/painting"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>painting</a>
+							<a class="tag" href="/system:page-tags/tag/programming"
+					style="font-size: 264%; color: rgb(76, 76, 140);"
+					>programming</a>
+							<a class="tag" href="/system:page-tags/tag/pygame"
+					style="font-size: 300%; color: rgb(64, 64, 128);"
+					>pygame</a>
+							<a class="tag" href="/system:page-tags/tag/python"
+					style="font-size: 173%; color: rgb(105, 105, 169);"
+					>python</a>
+							<a class="tag" href="/system:page-tags/tag/queue"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>queue</a>
+							<a class="tag" href="/system:page-tags/tag/rect"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>rect</a>
+							<a class="tag" href="/system:page-tags/tag/saving"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>saving</a>
+							<a class="tag" href="/system:page-tags/tag/screen"
+					style="font-size: 118%; color: rgb(122, 122, 186);"
+					>screen</a>
+							<a class="tag" href="/system:page-tags/tag/setting"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>setting</a>
+							<a class="tag" href="/system:page-tags/tag/sprite"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>sprite</a>
+							<a class="tag" href="/system:page-tags/tag/surf"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>surf</a>
+							<a class="tag" href="/system:page-tags/tag/surface"
+					style="font-size: 136%; color: rgb(116, 116, 180);"
+					>surface</a>
+							<a class="tag" href="/system:page-tags/tag/time"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>time</a>
+							<a class="tag" href="/system:page-tags/tag/timer"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>timer</a>
+							<a class="tag" href="/system:page-tags/tag/transform"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>transform</a>
+							<a class="tag" href="/system:page-tags/tag/tutorial"
+					style="font-size: 173%; color: rgb(105, 105, 169);"
+					>tutorial</a>
+							<a class="tag" href="/system:page-tags/tag/tutorials"
+					style="font-size: 155%; color: rgb(111, 111, 175);"
+					>tutorials</a>
+							<a class="tag" href="/system:page-tags/tag/up"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>up</a>
+							<a class="tag" href="/system:page-tags/tag/window"
+					style="font-size: 100%; color: rgb(128, 128, 192);"
+					>window</a>
+						</div>
+	
+
+<h2 ><span>Recent pages</span></h2>
+<ul>
+<li><a href="/system:recent-changes">Recent changes</a></li>
+<li><a href="/system:list-all-pages">List all pages</a></li>
+<li><a href="/system:page-tags-list">Page Tags</a></li>
+</ul>
+<h2 ><span>Add a new page</span></h2>
+
+<div class="new-page-box" style="text-align: center; margin: 1em 0;">
+	<form action="dummy.html" method="get" onsubmit="WIKIDOT.modules.NewPageHelperModule.listeners.create(event);">
+		<input class="text" name="pageName" type="text" size="15" maxlength="128" style="margin: 1px"/>
+				<input type="submit" class="button" value="new page" style="margin: 1px;"/>
+																
+	</form>
+</div>
+
+<p style="text-align: center;"><span style="font-size:80%;"><a href="/nav:side">edit this panel</a></span></p>
+
+                        
+
+
+                    </div>
+                
+                
+                <!-- google_ad_section_end -->
+                
+                <div id="main-content">
+                    <div id="action-area-top"></div>
+                    
+                    
+                        <div id="page-title">
+                            Event handling
+                        </div>
+                    
+
+                    
+
+                            
+            <!-- wikidot_top_728x90 -->
+<div id="wad-tier3-above-content" class="wd-adunit wd-ad-np wd-adunit-above_content"></div>
+<script>
+window['nitroAds'].createAd('wad-tier3-above-content', {
+  "refreshLimit": 10,
+  "refreshTime": 94,
+  "renderVisibleOnly": false,
+  "refreshVisibleOnly": true,
+  "sizes": [ [ 728, 90 ] ],
+  "report": {
+    "enabled": true,
+    "wording": "Report Ad",
+    "position": "bottom-right"
+  }
+  });
+</script>
+        
+    
+
+
+                    <div id="page-content">
+                        
+
+<h2 id="toc0"><span>Event Handling</span></h2>
+<p>Events are fairly simple idea. We want our game to perform its tasks regardless of user input. Imagine game which force user to constantly move mouse in order to just work!<br />
+However it mean that user can interact at any given point with our game. When we are displaying main menu, when we are painting our next frame, or computing game logic.<br />
+In order to store user input for letter use, we will (or more precisely PyGame will) put them in containers which we will call Events. Each event store data specific to one type of event (like mouse button pressed, key down, etc), and for only one user generated input. So if user click on multiple keys, we will get multiple events. If user press 'B' multiple times, we will get multiple events, etc.</p>
+<p>To enable event handling in our games we will create one class, that have python functions for every type of events, and one which will call them depending on the type of event.</p>
+<h2 id="toc1"><span>Code</span></h2>
+<h3 id="toc2"><span>Save it as cevent.py.</span></h3>
+<div class="code">
+<div class="hl-main">
+<pre><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">pygame</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">locals</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> *
+ 
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">pygame</span><span class="hl-code">
+</span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">pygame</span><span class="hl-code">.</span><span class="hl-identifier">locals</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> *
+ 
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">CEvent</span><span class="hl-code">:
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">__init__</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_input_focus</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_input_blur</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_key_down</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_key_up</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_mouse_focus</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_mouse_blur</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_mouse_move</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_mouse_wheel</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_lbutton_up</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_lbutton_down</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_rbutton_up</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_rbutton_down</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_mbutton_up</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_mbutton_down</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_minimize</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_restore</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_resize</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">,</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_expose</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_exit</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_user</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">,</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_joy_axis</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">,</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_joybutton_up</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">,</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_joybutton_down</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">,</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_joy_hat</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">,</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_joy_ball</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">,</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">pass</span><span class="hl-code">
+    </span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_event</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+    </span><span class="hl-reserved">pass</span><span class="hl-code">
+ 
+</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">__name__</span><span class="hl-code"> == </span><span class="hl-quotes">&quot;</span><span class="hl-string">__main__</span><span class="hl-quotes">&quot;</span><span class="hl-code"> :
+    </span><span class="hl-identifier">event</span><span class="hl-code"> = </span><span class="hl-identifier">CEvent</span><span class="hl-brackets">()</span></pre></div>
+</div>
+<h3 id="toc3"><span>Explanation</span></h3>
+<p>I think code is self-explanatory. I will say only that routines on_joy_* will be introduced in distinct tutorial if there will be demand for it. All others will be introduced through out this tutorials.</p>
+<h2 id="toc4"><span>One to rule them all</span></h2>
+<p>So far we have lots of methods how to chain them all ? How to make one to rule them all ;) ?<br />
+Change on_event into following:</p>
+<div class="code">
+<div class="hl-main">
+<pre><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_event</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-code">, </span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">:
+        </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">QUIT</span><span class="hl-code">:
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_exit</span><span class="hl-brackets">()</span><span class="hl-code">
+ 
+        </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> &gt;= </span><span class="hl-identifier">USEREVENT</span><span class="hl-code">:
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_user</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+ 
+        </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">VIDEOEXPOSE</span><span class="hl-code">:
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_expose</span><span class="hl-brackets">()</span><span class="hl-code">
+ 
+        </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">VIDEORESIZE</span><span class="hl-code">:
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_resize</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+ 
+        </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">KEYUP</span><span class="hl-code">:
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_key_up</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+ 
+        </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">KEYDOWN</span><span class="hl-code">:
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_key_down</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+ 
+        </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">MOUSEMOTION</span><span class="hl-code">:
+            </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_mouse_move</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+ 
+        </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">MOUSEBUTTONUP</span><span class="hl-code">:
+            </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">button</span><span class="hl-code"> == </span><span class="hl-number">0</span><span class="hl-code">:
+                </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_lbutton_up</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+            </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">button</span><span class="hl-code"> == </span><span class="hl-number">1</span><span class="hl-code">:
+                </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_mbutton_up</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+            </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">button</span><span class="hl-code"> == </span><span class="hl-number">2</span><span class="hl-code">:
+                </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_rbutton_up</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+ 
+        </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">MOUSEBUTTONDOWN</span><span class="hl-code">:
+            </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">button</span><span class="hl-code"> == </span><span class="hl-number">0</span><span class="hl-code">:
+                </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_lbutton_down</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+            </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">button</span><span class="hl-code"> == </span><span class="hl-number">1</span><span class="hl-code">:
+                </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_mbutton_down</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+            </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">button</span><span class="hl-code"> == </span><span class="hl-number">2</span><span class="hl-code">:
+                </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_rbutton_down</span><span class="hl-brackets">(</span><span class="hl-identifier">event</span><span class="hl-brackets">)</span><span class="hl-code">
+ 
+        </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">type</span><span class="hl-code"> == </span><span class="hl-identifier">ACTIVEEVENT</span><span class="hl-code">:
+            </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code"> == </span><span class="hl-number">1</span><span class="hl-code">:
+                </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">gain</span><span class="hl-code">:
+                    </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_mouse_focus</span><span class="hl-brackets">()</span><span class="hl-code">
+                </span><span class="hl-reserved">else</span><span class="hl-code">:
+                    </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_mouse_blur</span><span class="hl-brackets">()</span><span class="hl-code">
+            </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code"> == </span><span class="hl-number">2</span><span class="hl-code">:
+                </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">gain</span><span class="hl-code">:
+                    </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_input_focus</span><span class="hl-brackets">()</span><span class="hl-code">
+                </span><span class="hl-reserved">else</span><span class="hl-code">:
+                    </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_input_blur</span><span class="hl-brackets">()</span><span class="hl-code">
+            </span><span class="hl-reserved">elif</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">state</span><span class="hl-code"> == </span><span class="hl-number">4</span><span class="hl-code">:
+                </span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">event</span><span class="hl-code">.</span><span class="hl-identifier">gain</span><span class="hl-code">:
+                    </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_restore</span><span class="hl-brackets">()</span><span class="hl-code">
+                </span><span class="hl-reserved">else</span><span class="hl-code">:
+                    </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">on_minimize</span><span class="hl-brackets">()</span></pre></div>
+</div>
+<h2 id="toc5"><span>Usage</span></h2>
+<p>Now that we have laid ground work, we can use it!</p>
+<p>CApp should inherit after CEvent, so all functions in CEvent are available in CApp.<br />
+Then we just need to change event handling functions we need to.</p>
+<p>Here is simple example which will use our new event handling code to handle exit event:</p>
+<div class="code">
+<div class="hl-main">
+<pre><span class="hl-comment">#add in import section</span><span class="hl-code">
+</span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">cevent</span><span class="hl-code">
+</span><span class="hl-comment"># change CApp into</span><span class="hl-code">
+</span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">CApp</span><span class="hl-brackets">(</span><span class="hl-identifier">cevent</span><span class="hl-code">.</span><span class="hl-identifier">CEvent</span><span class="hl-brackets">)</span><span class="hl-code">:
+</span><span class="hl-comment">#...</span><span class="hl-code">
+ 
+</span><span class="hl-comment">#... delete on_event(): !!!!!!!!!!</span><span class="hl-code">
+ 
+</span><span class="hl-comment">#add on_exit(self) to CApp:</span><span class="hl-code">
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">on_exit</span><span class="hl-brackets">(</span><span class="hl-identifier">self</span><span class="hl-brackets">)</span><span class="hl-code">:
+    </span><span class="hl-identifier">self</span><span class="hl-code">.</span><span class="hl-identifier">_running</span><span class="hl-code"> = </span><span class="hl-reserved">False</span></pre></div>
+</div>
+<p>Now our code is a bit tricky! Python will not find on_event in App, so it will use it's parent's class (CEvent) method on_event. But on_event will call on_exit from App class!<br />
+How CEvent can know about our on_exit() function in App class? I can not!</p>
+<p>How ever we have told python that App is inheriting after CEvent, so Python will do few things for us:</p>
+<ul>
+<li>will provide every method from CEvent as if they where App's own methods (just like with on_event)</li>
+<li>will make sure that methods defined in App will be preferred over CEvent methods (just like with on_exit)</li>
+</ul>
+<p>Professional programmers call this pattern &quot;Template method&quot;. Because if you look at what we have done, then you will realize that our on_event function is template, with places (like on_exit) that can be changed letter.</p>
+<h4 id="toc6"><span>Zipped Source Code:</span></h4>
+<p><a href="https://bitbucket.org/przemoli/pygametutorial/get/event1.0.zip" target="_blank">Full events example</a></p>
+<div class="comments-box">
+		
+	<div class="options" id="comments-options-hidden" style="display: none">
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumCommentsModule.listeners.showComments(event)">Show Comments</a> 
+	</div>
+		
+	<div id="thread-container" class="thread-container" style="margin-top: 1em">
+					
+
+
+<script type="text/javascript">
+	WIKIDOT.forumThreadId = 153782;
+</script>
+
+
+	<div class="options" id="comments-options-shown">
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumCommentsModule.listeners.hideComments(event)" class="btn btn-default btn-small btn-sm">Hide All Comments</a> 
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.unfoldAll(event)" class="btn btn-default btn-small btn-sm">Unfold All</a> 
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.foldAll(event)" class="btn btn-default btn-small btn-sm">Fold All</a>
+	</div>
+
+<div id="thread-container-posts" style="display: none">
+    
+
+
+
+	
+					
+      
+    <div class="post-container" id="fpc-1825911">
+                      
+		<div class="post" id="post-1825911">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1825911)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1825911">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=4e1b0d535c1a64301aa255cf1bad6ebe&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>marcel (guest)</span> <span class="odate time_1375484033 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">02 Aug 2013 22:53</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1825911">
+									
+
+<p>Hi! I found this article quite useful, so: thanks! However, there a two minor issues - nothing wild, but anyway:</p>
+<p>1. 'on_mouse_wheel' in CEvent.py is never called by any event dispatched by the method 'on_event'<br />
+2. in 'on_event' method: In the two cases 'event.type == MOUSEBUTTONUP' and ' &#8230; == MOUSEBUTTONDOWN' event.key should be 1 for left mouse button (not 0), 2 for middle and 3 for right (and not 1,2 respectively); this one confused me a while, when using your code.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1825911)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1825911)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1825911" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1825911)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1825911)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=4e1b0d535c1a64301aa255cf1bad6ebe&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>marcel (guest)</span>, <span class="odate time_1375484033 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">02 Aug 2013 22:53</span>
+		</div>
+	</div>
+ 
+                
+                	
+
+
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-1964293">
+                      
+		<div class="post" id="post-1964293">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,1964293)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-1964293">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=a7da9861d3ed9dc93dc3a7f2434f9351&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Dylan (guest)</span> <span class="odate time_1392164200 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">12 Feb 2014 00:16</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-1964293">
+									
+
+<p>This is a great tutorial. Really helped, thanks!</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,1964293)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,1964293)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-1964293" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,1964293)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,1964293)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=a7da9861d3ed9dc93dc3a7f2434f9351&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Dylan (guest)</span>, <span class="odate time_1392164200 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">12 Feb 2014 00:16</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-3571502">
+                      
+		<div class="post" id="post-3571502">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3571502)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3571502">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=50eaf0ba4833c6c88157fd63da62cb41&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Guest (guest)</span> <span class="odate time_1502820544 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">15 Aug 2017 18:09</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3571502">
+									
+
+<p>Good, thanks! Also see www.teachyourselfpython.com and inventwithpython</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,3571502)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,3571502)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3571502" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3571502)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3571502)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=50eaf0ba4833c6c88157fd63da62cb41&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Guest (guest)</span>, <span class="odate time_1502820544 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">15 Aug 2017 18:09</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-4764426">
+                      
+		<div class="post" id="post-4764426">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,4764426)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-4764426">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=0a6ace87cd7e73d12c67c626c80159ea&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Anjali (guest)</span> <span class="odate time_1598971210 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">01 Sep 2020 14:40</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-4764426">
+									
+
+<p>Nice one.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,4764426)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,4764426)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-4764426" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,4764426)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,4764426)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=0a6ace87cd7e73d12c67c626c80159ea&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Anjali (guest)</span>, <span class="odate time_1598971210 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">01 Sep 2020 14:40</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-4978339">
+                      
+		<div class="post" id="post-4978339">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,4978339)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-4978339">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=f5f4a9854c648ae938e2655323624286&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Jeff Silverman (guest)</span> <span class="odate time_1620935239 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">13 May 2021 19:47</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-4978339">
+									
+
+<p>The code is *not* self-explanatory! However, I will give an explanation and you are welcome to include it in a future revision.</p>
+<p>cevent.py defines a lot of subroutines that are only called, they don't actually do anything, they are just placeholders. If one of those subroutines is called (when one of those events happens) and that subroutine is not present, then the program will crash It is better that an event is ignored than a program crash.</p>
+<p>Any python program that imports cevent and then defines a method with the same name as a method in cenvent.py will use the method it defined. This is called &quot;overriding&quot;, as the subroutine for the event that your program used will override the the subroutine already defined in cevent.py.</p>
+<p>If you are testing your software and you want to make sure that every event is handled or there is an error, then replace &quot;pass&quot; in cevent.py with &quot;raise NotImplementedError(SOME EXPLANATION STRING HERE)&quot;. That will raise the NotImplementedError exception and create a nice traceback that you can follow to find out what the error was.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,4978339)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,4978339)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-4978339" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,4978339)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,4978339)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=f5f4a9854c648ae938e2655323624286&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Jeff Silverman (guest)</span>, <span class="odate time_1620935239 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">13 May 2021 19:47</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-6891286">
+                      
+		<div class="post" id="post-6891286">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,6891286)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-6891286">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=1894e297376cd3c45b654b833e043ae8&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Kazz (guest)</span> <span class="odate time_1742946180 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">25 Mar 2025 23:43</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-6891286">
+									
+
+<p>Now that we can use match case, should the &quot;One to rule them all&quot; section be converted from a elif nest to the former?</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,6891286)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,6891286)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-6891286" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,6891286)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,6891286)"></a> by <span class="printuser avatarhover"><a href="javascript:;"><img class="small" src="http://www.gravatar.com/avatar.php?gravatar_id=1894e297376cd3c45b654b833e043ae8&amp;default=http://www.wikidot.com/common--images/avatars/default/a16.png&amp;size=16" alt=""/></a>Kazz (guest)</span>, <span class="odate time_1742946180 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">25 Mar 2025 23:43</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+
+
+</div>
+
+        <a href="javascript:;" id="new-post-button" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.newPost(event,null)"
+      style="display:  block ; margin-bottom:1em"
+    >Add a New Comment</a>
+
+ 
+
+<div style="display:none" id="post-options-template">
+	<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.showPermalink(event,'%POST_ID%')" class="btn btn-default btn-small btn-sm">Permanent Link</a>
+			<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.editPost(event,'%POST_ID%')" class="btn btn-default btn-small btn-sm">Edit</a>
+			<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.deletePost(event,'%POST_ID%')" class="btn btn-danger btn-small btn-sm">Delete</a>
+</div>
+	
+			</div>
+	
+	
+	
+</div>
+                    </div>
+
+                            
+            <!-- wikidot_bottom_300x250 -->
+<div id="wad-tier3-below-content" class="wd-adunit wd-ad-np wd-adunit-below_content"></div>
+<script>
+window['nitroAds'].createAd('wad-tier3-below-content', {
+  "refreshLimit": 10,
+  "refreshTime": 83,
+  "renderVisibleOnly": false,
+  "refreshVisibleOnly": true,
+  "sizes": [ [ 300, 250 ] ],
+  "report": {
+    "enabled": true,
+    "wording": "Report Ad",
+    "position": "bottom-right"
+  }
+  });
+</script>
+        
+    
+
+                            
+            <!-- mobile bottom 320x50 -->
+<script>
+
+$j( function(){
+
+    if(isUAMobile && screen.width < 400 && screen.height > 600) {
+        var $o = $j('<div id="wad-tier3-mobile-anchor" class="wd-adunit wd-ad-np wd-adunit-mobile_anchor"></div>');
+        $j('body').append($o);
+        $j('body').css('margin-bottom', '200px');
+
+        var res = function(){
+            $o = $j('#wad-tier3-mobile-anchor');
+            if($o.length > 0){
+                $o.show();
+                var $w = $j(window);
+                var scale = $w.width() / 320;
+                $o.css('transform', 'scale('+scale+')');
+            } else {
+                $o.hide();
+            }
+        }
+
+        res();
+        setInterval(res, 1000);
+
+        window['nitroAds'].createAd('wad-tier3-mobile-anchor', {
+          "refreshLimit": 1,
+          "refreshTime": 90,
+          "renderVisibleOnly": false,
+          "refreshVisibleOnly": true,
+          "format": "display",
+          "sizes": [ [ 320, 50 ] ],
+          "report": {
+            "enabled": true,
+            "wording": "Report Ad",
+            "position": "bottom-right"
+          }
+                  });
+    }
+});
+</script>
+        
+    
+
+                    
+
+
+
+                    
+                        <div class="page-tags">
+                            <span>
+                                <a href="/system:page-tags/tag/event#pages">event</a><a href="/system:page-tags/tag/game#pages">game</a><a href="/system:page-tags/tag/games#pages">games</a><a href="/system:page-tags/tag/handling#pages">handling</a><a href="/system:page-tags/tag/programming#pages">programming</a><a href="/system:page-tags/tag/pygame#pages">pygame</a><a href="/system:page-tags/tag/python#pages">python</a><a href="/system:page-tags/tag/tutorial#pages">tutorial</a><a href="/system:page-tags/tag/tutorials#pages">tutorials</a>
+                            </span>
+                        </div>
+                    
+
+                    <div id="page-info-break"></div>
+                    
+                        <div id="page-options-container">
+                            <div id="page-info">page revision: 16, last edited: <span class="odate time_1331481211 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%20%28%25O%20ago%29">11 Mar 2012 15:53</span></div>
+            <div id="page-options-bottom"  class="page-options-bottom">
+            <a href="javascript:;" class="btn btn-default" id="edit-button">Edit</a>
+<a href="javascript:;" class="btn btn-default" id="tags-button">Tags</a>
+
+<a href="javascript:;" class="btn btn-default" id="history-button">History</a>
+<a href="javascript:;" class="btn btn-default" id="files-button">Files</a>
+<a href="javascript:;" class="btn btn-default" id="print-button">Print</a>
+<a href="javascript:;" class="btn btn-default" id="site-tools-button">Site tools</a>
+<a href="javascript:;" class="btn btn-default" id="more-options-button">+&nbsp;Options</a> 
+</div>
+<div id="page-options-bottom-2" class="page-options-bottom form-actions" style="display:none">
+    <a href="javascript:;" class="btn btn-default" id="edit-sections-button">Edit Sections</a>
+    <a href="javascript:;" class="btn btn-default" id="edit-append-button">Append</a>
+    <a href="javascript:;" class="btn btn-default" id="edit-meta-button">Edit Meta</a>
+    <a href="javascript:;" class="btn btn-default" id="watchers-button">Watchers</a> 
+    <a href="javascript:;" class="btn btn-default" id="backlinks-button">Backlinks</a> 
+    <a href="javascript:;" class="btn btn-default" id="view-source-button">Page Source</a> 
+    <a href="javascript:;" class="btn btn-default" id="parent-page-button">Parent</a> 
+    <a href="javascript:;" class="btn btn-default" id="page-block-button">Lock Page</a>    
+    <a href="javascript:;" class="btn btn-default" id="rename-move-button">Rename</a> 
+    <a href="javascript:;" class="btn btn-default" id="delete-button">Delete</a> 
+</div>
+<div id="page-options-area-bottom">
+</div>
+
+                        </div>
+                    
+                    <div id="action-area" style="display: none;"></div>
+                </div>
+            </div>
+            
+            
+            
+            <div id="footer" style="display: block; visibility: visible;">
+                <div class="options" style="display: block; visibility: visible;">
+    <a href="http://www.wikidot.com/doc" id="wikidot-help-button">Help</a>
+    &nbsp;|
+    <a href="http://www.wikidot.com/legal:terms-of-service" id="wikidot-tos-button">Terms of Service</a>
+    &nbsp;|
+    <a href="http://www.wikidot.com/legal:privacy-policy" id="wikidot-privacy-button">Privacy</a>
+    &nbsp;|
+    <a href="javascript:;" id="bug-report-button" onclick="WIKIDOT.page.listeners.pageBugReport(event)">Report a bug</a>
+    &nbsp;|
+    <a href="javascript:;" id="abuse-report-button" onclick="WIKIDOT.page.listeners.flagPageObjectionable(event)">Flag as objectionable</a>
+</div>
+Powered by <a href="http://www.wikidot.com">Wikidot.com</a> 
+            </div>
+            
+            
+            
+
+
+
+            <div id="extrac-div-1"><span></span></div><div id="extrac-div-2"><span></span></div><div id="extrac-div-3"><span></span></div>
+            
+            
+            
+            
+                <div id="footer-bar">
+  <div>
+     </div>
+  <h2>Other interesting sites</h2>
+  
+  <div class="units">
+              <div class="unit">
+          <div class="inner">
+            <a target="_blank" class="image" href="http://autoridaderpc-pt-br.wikidot.com">
+              <img class="thumbnail" alt="" src="http://thumbnails.wdfiles.com/thumbnail/site/autoridaderpc-pt-br.wikidot.com/80.jpg"/>
+            </a>
+            <h3><a target="_blank" href="http://autoridaderpc-pt-br.wikidot.com">Autoridade RPC</a></h3>
+            <div class="desc">          
+              Filial Lusófona
+            </div>
+          </div>
+        </div>
+              <div class="unit">
+          <div class="inner">
+            <a target="_blank" class="image" href="http://evilhat.wikidot.com">
+              <img class="thumbnail" alt="" src="http://thumbnails.wdfiles.com/thumbnail/site/evilhat.wikidot.com/80.jpg"/>
+            </a>
+            <h3><a target="_blank" href="http://evilhat.wikidot.com">Evil Hat Productions Wiki</a></h3>
+            <div class="desc">          
+              
+            </div>
+          </div>
+        </div>
+              <div class="unit">
+          <div class="inner">
+            <a target="_blank" class="image" href="http://nsb.wikidot.com">
+              <img class="thumbnail" alt="" src="http://thumbnails.wdfiles.com/thumbnail/site/nsb.wikidot.com/80.jpg"/>
+            </a>
+            <h3><a target="_blank" href="http://nsb.wikidot.com">Nsb Notes</a></h3>
+            <div class="desc">          
+              
+            </div>
+          </div>
+        </div>
+              <div class="unit">
+          <div class="inner">
+            <a target="_blank" class="image" href="http://livesupport.wikidot.com">
+              <img class="thumbnail" alt="" src="http://thumbnails.wdfiles.com/thumbnail/site/livesupport.wikidot.com/80.jpg"/>
+            </a>
+            <h3><a target="_blank" href="http://livesupport.wikidot.com">Wikidot Live Support</a></h3>
+            <div class="desc">          
+              
+            </div>
+          </div>
+        </div>
+        </div>
+  </div>
+
+            
+        </div>
+        
+    </div>
+<!-- These extra divs/spans may be used as catch-alls to add extra imagery. -->
+<div id="extra-div-1"><span></span></div><div id="extra-div-2"><span></span></div><div id="extra-div-3"><span></span></div>
+<div id="extra-div-4"><span></span></div><div id="extra-div-5"><span></span></div><div id="extra-div-6"><span></span></div>
+</div>
+
+
+
+
+</div>
+<div id="dummy-ondomready-block" style="display: none;" ></div>
+    <!-- Google Analytics load -->
+    <script type="text/javascript">
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+
+
+
+<div id="page-options-bottom-tips" style="display: none;">
+    <div id="edit-button-hovertip">
+        Click here to edit contents of this page.    </div>
+</div>
+<div id="page-options-bottom-2-tips"  style="display: none;">
+    <div id="edit-sections-button-hovertip">
+        Click here to toggle editing of individual sections of the page (if possible).         Watch headings for an &quot;edit&quot; link when available.    </div>
+    <div id="edit-append-button-hovertip">
+        Append content without editing the whole page source.    </div>
+    <div id="history-button-hovertip">
+        Check out how this page has evolved in the past.    </div>
+    <div id="discuss-button-hovertip">
+        If you want to discuss contents of this page - this is the easiest way to do it.    </div>
+    <div id="files-button-hovertip">
+        View and manage file attachments for this page.    </div>
+    <div id="site-tools-button-hovertip">
+        A few useful tools to manage this Site.    </div>
+    <div id="backlinks-button-hovertip">
+        See pages that link to and include this page.    </div>
+    <div id="rename-move-button-hovertip">
+        Change the name (also URL address, possibly the category) of the page.    </div>
+    <div id="view-source-button-hovertip">
+        View wiki source for this page without editing.    </div>
+    <div id="parent-page-button-hovertip">  
+        View/set parent page (used for creating breadcrumbs and structured layout).    </div>
+            <div id="abuse-report-button-hovertip">
+            Notify administrators if there is objectionable content in this page.        </div>
+        <div id="bug-report-button-hovertip">
+            Something does not work as expected? Find out what you can do.        </div>
+        <div id="wikidot-help-button-hovertip">
+            General Wikidot.com documentation and help section.        </div>
+        <div id="wikidot-tos-button-hovertip">
+            Wikidot.com Terms of Service - what you can, what you should not etc.        </div>
+        <div id="wikidot-privacy-button-hovertip">
+            Wikidot.com Privacy Policy.          
+        </div>
+    </div>
+</body>
+</html>

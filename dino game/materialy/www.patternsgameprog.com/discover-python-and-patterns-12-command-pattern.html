@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-12-command-pattern" />
+<meta name="description" content="The command pattern (basic version) with the Python language.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (12): Command pattern</span></h2>
+	</div>
+
+<p>The implementation of the Game Loop pattern in the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-11-class/">previous post</a> is not good: I propose to use the Command pattern to get a better one. This pattern allows separating input handling and game updating.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>The Command pattern</h2>
+<p>The main idea behind this pattern is to separate the origin of the modifications from their implementation. For instance, when the player presses an arrow key, the controlled character is not moved. We first memorize that the player wants to move the character in a direction. Then, in a second time, the character is moved according to what we memorized.</p>
+<p>It is quite a natural pattern. For instance, when you command a meal in a restaurant, the waiter notes your order on a piece of paper. Then, he goes to the kitchen and gives it to the cooker. The cooker is free to prepare the meals in the best order. For instance, if several customers are asking for the same meal, he can group the preparations.</p>
+<p>In software design, this is very similar. The customer is the user (or the player in games) asking for the execution of a task. These orders, or commands, are stored in variables. Then, the code lines that execute tasks read the commands and act accordingly.</p>
+<p>As for all patterns, there are many ways to implement it. For our game example, I'll use class attributes to store the commands. We could also use more advanced representation as a class for each kind of command.</p>
+<h2>Split user input processing and game state updating</h2>
+<p>Let's use the Command pattern to get a better Game Loop pattern.</p>
+<p>I first create two new attributes in the constructor to store the move direction the player is asking for:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+    ... the first lines are <span class="hljs-keyword">as</span> before ...
+
+    self.moveCommandX = <span class="hljs-number">0</span>
+    self.moveCommandY = <span class="hljs-number">0</span>  </code></pre>
+<p>Then, in the <code>processInput()</code> method, I initialize these two attributes with a zero value: it means that, by default, there is no movement. In the event processing loop, and more specifically in the processing of arrow keys, I no more update the <code>x</code> and <code>y</code> attributes (the location of my rectangle = my game state). I now store the shift I want to apply to this location:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">processInput</span><span class="hljs-params">(self)</span>:</span>
+    self.moveCommandX = <span class="hljs-number">0</span>
+    self.moveCommandY = <span class="hljs-number">0</span>        
+    <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+        <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+            self.running = <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">elif</span> event.type == pygame.KEYDOWN:
+            <span class="hljs-keyword">if</span> event.key == pygame.K_ESCAPE:
+                self.running = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT:
+                self.moveCommandX = <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT:
+                self.moveCommandX = <span class="hljs-number">-8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN:
+                self.moveCommandY = <span class="hljs-number">8</span>
+            <span class="hljs-keyword">elif</span> event.key == pygame.K_UP:
+                self.moveCommandY = <span class="hljs-number">-8</span></code></pre>
+<p>The <code>update()</code> method now has a content: it updates the location of the rectangle (<code>x</code> and <code>y</code> attributes) according to the values of the move command attributes:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self)</span>:</span>
+    self.x += self.moveCommandX
+    self.y += self.moveCommandY</code></pre>
+<h2>Why is it better?</h2>
+<p>If you run the program with these changes, it works as before. So you could ask yourself: why should I do this? I was working fine before!</p>
+<p>We are following a golden rule in software design: divide and conquer. It is impossible to solve complex problems directly, even for the most clever developer. There is always a level of complexity that becomes intractable. The solution is then to split a complex problem into simpler problems. If these sub-problems are still too complex, we split again. And we repeat, until getting problems simple enough to be solved.</p>
+<p>It is what the Game Loop pattern proposes to do for the very complex problem of game development. It splits it into three main sub-problems: input handling, game update, and rendering. For this to work, the splitting must be effective.</p>
+<p>In the previous implementation, we didn't separate input handling and game updating. Sooner or later, we would have faced too complex problems. Thanks to the improvement using the Command pattern, we are better protected from these future issues.</p>
+<p>If you are still not convinced, let's consider the case of controls. In our game example, we use the keyboard arrows. But what about using a gamepad, for instance? With the first implementation, we would have to duplicate the update of the <code>x</code> and <code>y</code> attributes for each control. In our example, this is very simple, but it is easy to imagine more complex cases where we have to deal with collisions and so on. With the new implementation, we only have to create commands for each control (an easy task), and only need a single implementation of the game updating (a more complex task).</p>
+<h2>The game state</h2>
+<p>Now that I've introduced the "divide and conquer" golden rule, we'll try to use it as much as possible. For instance, in our current implementation of the game, the game state and the user interface (=input handling and rendering) are mixed.</p>
+<p>I propose to create a new class <code>GameState</code> that handles the game state (storage and update):</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GameState</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.x = <span class="hljs-number">120</span>
+        self.y = <span class="hljs-number">120</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self,moveCommandX,moveCommandY)</span>:</span>
+        self.x += moveCommandX
+        self.y += moveCommandY</code></pre>
+<p>In the <code>__init__()</code> constructor, I create the <code>x</code> and <code>y</code> attributes.</p>
+<p>In the <code>update()</code> method, I update the coordinates using the move command values.</p>
+<p>In the constructor of my main class, I replace the creation of the <code>x</code> and <code>y</code> attributes:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+    ...
+    self.x = <span class="hljs-number">120</span>
+    self.y = <span class="hljs-number">120</span>
+    ...</code></pre>
+<p>with the creation of a new <code>GameState</code> instance:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+    ...
+    self.gameState = GameState()
+    ...</code></pre>
+<p>For the <code>update()</code> method, I call the <code>update()</code> method of the <code>GameState</code> class:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self)</span>:</span>
+    self.gameState.update(self.moveCommandX,self.moveCommandY)</code></pre>
+<p>And finally, in the <code>render()</code> method, I use the attributes in the game state instead of the ones in the main class. For instance, <code>self.x</code> becomes <code>self.gameState.x</code>.</p>
+<p>That way, all problems related to game data storage and updating is delegated to the <code>GameState</code> class. The main class no more has to worry about that, and it only has to know the name of the attributes and methods it can use.</p>
+<h2>Final code</h2>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-12-command-pattern/discover_python_and_patterns_12_command_pattern.zip">Download icon.png</a></p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> pygame
+
+os.environ[<span class="hljs-string">'SDL_VIDEO_CENTERED'</span>] = <span class="hljs-string">'1'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GameState</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.x = <span class="hljs-number">120</span>
+        self.y = <span class="hljs-number">120</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self,moveCommandX,moveCommandY)</span>:</span>
+        self.x += moveCommandX
+        self.y += moveCommandY
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserInterface</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        pygame.init()
+        self.window = pygame.display.set_mode((<span class="hljs-number">640</span>,<span class="hljs-number">480</span>))
+        pygame.display.set_caption(<span class="hljs-string">"Discover Python &amp; Patterns - https://www.patternsgameprog.com"</span>)
+        pygame.display.set_icon(pygame.image.load(<span class="hljs-string">"icon.png"</span>))
+        self.clock = pygame.time.Clock()
+        self.gameState = GameState()
+        self.running = <span class="hljs-literal">True</span>
+        self.moveCommandX = <span class="hljs-number">0</span>
+        self.moveCommandY = <span class="hljs-number">0</span>          
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">processInput</span><span class="hljs-params">(self)</span>:</span>
+        self.moveCommandX = <span class="hljs-number">0</span>
+        self.moveCommandY = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():
+            <span class="hljs-keyword">if</span> event.type == pygame.QUIT:
+                self.running = <span class="hljs-literal">False</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">elif</span> event.type == pygame.KEYDOWN:
+                <span class="hljs-keyword">if</span> event.key == pygame.K_ESCAPE:
+                    self.running = <span class="hljs-literal">False</span>
+                    <span class="hljs-keyword">break</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_RIGHT:
+                    self.moveCommandX = <span class="hljs-number">8</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_LEFT:
+                    self.moveCommandX = <span class="hljs-number">-8</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_DOWN:
+                    self.moveCommandY = <span class="hljs-number">8</span>
+                <span class="hljs-keyword">elif</span> event.key == pygame.K_UP:
+                    self.moveCommandY = <span class="hljs-number">-8</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self)</span>:</span>
+        self.gameState.update(self.moveCommandX,self.moveCommandY)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self)</span>:</span>
+        self.window.fill((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+        x = self.gameState.x
+        y = self.gameState.y
+        pygame.draw.rect(self.window,(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>),(x,y,<span class="hljs-number">400</span>,<span class="hljs-number">240</span>))
+        pygame.display.update()    
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">while</span> self.running:
+            self.processInput()
+            self.update()
+            self.render()
+            self.clock.tick(<span class="hljs-number">60</span>)
+
+userInterface = UserInterface()
+userInterface.run()
+
+pygame.quit()</code></pre>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-13-sprites/">next post</a>, we'll start to use sprites to render our game!</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

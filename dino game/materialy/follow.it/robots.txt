@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /all-news/
+Disallow: /category/
+Disallow: /*/temp/*
+
+Sitemap:https://follow.it/sitemap.xml

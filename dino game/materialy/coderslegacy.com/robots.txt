@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /download/
+Disallow: /wp-admin/
+Disallow: /feed/
+Disallow: */feed/
+Disallow: /1254144/
+Disallow: /254144,22537532734/
+Disallow: /detroitchicago/
+Disallow: /porpoiseant/
+Disallow: /beardeddragon/
+Disallow: /tardisrocinante/

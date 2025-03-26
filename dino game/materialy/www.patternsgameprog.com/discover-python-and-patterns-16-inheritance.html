@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-16-inheritance" />
+<meta name="description" content="Class inheritance with the Python language.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (16): Inheritance</span></h2>
+	</div>
+
+<p>In this post, I present the basics of class inheritance, to represent our units (the tank and the canon tower) more efficiently.</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em> </p>
+<h2>Class</h2>
+<p>A class allows us to "bundle" data in attributes and processing in methods. For instance, let's create a class that stores two integers and a has a single method that returns their sum:</p>
+<figure><img alt="Sum class" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-16-inheritance/a1345859cf-1621709656/16_class.png" width="161"></figure>
+<p>We can implement this in the following way:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sum</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,x,y)</span>:</span>
+        self.x = x
+        self.y = y
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.x + self.y</code></pre>
+<p>Let's also create a second class that stores two integers and compute their product. The graphical representation is the same, except for the name of the class:</p>
+<figure><img alt="Product class" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-16-inheritance/2a06ec0aba-1621709656/16_class2.png" width="152"></figure>
+<p>The implementation is also almost the same, except for the body of the <code>compute()</code> method:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,x,y)</span>:</span>
+        self.x = x
+        self.y = y
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.x * self.y</code></pre>
+<p>To create this second class, we had to copy half of the first class. In this example, there are few lines, but it many cases, there is a lot of common parts.</p>
+<h2>Class inheritance</h2>
+<p>Class inheritance allows gathering the shared code in a base class, and then to create specific implementations in child classes. For instance, for the case of computation classes:</p>
+<figure><img alt="Class inheritance" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-16-inheritance/5e0aaf640b-1621709656/16_inheritance.png" width="404"></figure>
+<p>Using Python, we can implement it in the following way:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Computation</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,x,y)</span>:</span>
+        self.x = x
+        self.y = y
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sum</span><span class="hljs-params">(Computation)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.x + self.y
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span><span class="hljs-params">(Computation)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.x * self.y</code></pre>
+<p>As you can see, the creation of a new computation class (like <code>Sum</code> or <code>Product</code>) is quick and easy. We first create a class with a base class, with the following syntax:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChildClass</span><span class="hljs-params">(BaseClass)</span>:</span>
+    ... <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">body</span> ...</span></code></pre>
+<p>Then, we only need to implement specific methods. Note that it also works for the constructor (the <code>__init__()</code>method), which means that we can add new attributes in the child classes.</p>
+<h2>Method call</h2>
+<p>The cherry on the cake of class inheritance is that we can call a method in the base class without worrying about its implementation:</p>
+<pre class="hljs"><code>computations = [ Sum(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>), Product(<span class="hljs-number">4</span>,<span class="hljs-number">5</span>) ]
+<span class="hljs-keyword">for</span> computation <span class="hljs-keyword">in</span> computations:
+    print(computation.compute())</code></pre>
+<p>In this example, the <code>for</code> loop in lines 2-3 only needs to know the <code>Computation</code> class, and more specifically, that this class has a <code>compute()</code> method.</p>
+<p>You can add or remove new instances in the <code>computations</code>list, including new child classes of <code>Computation</code>, lines 2-3 do not need to be updated. Without class inheritance, we would have to add much more code and have to update this code for every new computation class. I hope that you see the incredible time-saving!</p>
+<h2>Game units</h2>
+<p>Now I propose to use this class inheritance to represent our units better:</p>
+<figure><img alt="Pygame class inheritance" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-16-inheritance/a7593ca774-1621709656/16_units.png" width="473"></figure>
+<p>The <code>Unit</code> base class creates attributes: a reference to the game state (to access information like the world size), the location of the unit and the tile in the tileset (for rendering):</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Unit</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,state,position,tile)</span>:</span>
+        self.state = state
+        self.position = position
+        self.tile = tile
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">move</span><span class="hljs-params">(self,moveVector)</span>:</span>
+        <span class="hljs-keyword">raise</span> NotImplementedError()</code></pre>
+<p>The <code>move()</code> method raises a <code>NotImplementedError</code> exception. So, if we forget to implement this method in a child class, we will know it.</p>
+<p>The <code>Tank</code> child class implements the <code>move()</code> method. This implementation is very similar to what we were doing in the <code>GameState</code> class:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tank</span><span class="hljs-params">(Unit)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">move</span><span class="hljs-params">(self,moveVector)</span>:</span>
+        newPos = self.position + moveVector
+
+        <span class="hljs-keyword">if</span> newPos.x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> newPos.x &gt;= self.state.worldSize.x \
+        <span class="hljs-keyword">or</span> newPos.y &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> newPos.y &gt;= self.state.worldSize.y:
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-keyword">for</span> unit <span class="hljs-keyword">in</span> self.state.units:
+            <span class="hljs-keyword">if</span> newPos == unit.position:
+                <span class="hljs-keyword">return</span>
+
+        self.position = newPos </code></pre>
+<p>Lines 5-7: the size of the world can be accessed using the <code>state</code> attribute.</p>
+<p>Lines 9-11: we still avoid any new location with a unit. This part is now more generic since it handles any units, like another tank player of new enemy type.</p>
+<p>The <code>Tower</code> child class also implements the <code>move()</code> method, but does nothing since towers can't move:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tower</span><span class="hljs-params">(Unit)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">move</span><span class="hljs-params">(self,moveVector)</span>:</span>
+        <span class="hljs-keyword">pass</span></code></pre>
+<h2>GameState class</h2>
+<p>The <code>GameState</code> class needs to be a bit updated:</p>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GameState</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.worldSize = Vector2(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>)
+        self.units = [
+            Tank(self,Vector2(<span class="hljs-number">5</span>,<span class="hljs-number">4</span>),Vector2(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)),
+            Tower(self,Vector2(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>),Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)),
+            Tower(self,Vector2(<span class="hljs-number">10</span>,<span class="hljs-number">5</span>),Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>))
+        ]
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self,moveTankCommand)</span>:</span>
+        <span class="hljs-keyword">for</span> unit <span class="hljs-keyword">in</span> self.units:
+            unit.move(moveTankCommand)</code></pre>
+<p>The constructor creates instances of units instead of 2D vectors (lines 4-8). It is more generic since we could add another kind of unit with more specific properties.</p>
+<p>The <code>update()</code> method calls the <code>move()</code> method of each unit (lines 11-12). If there is only one tank in the <code>units</code> list, it will be the only one to be moved by the player. Try to add a second one at a different initial location in the <code>units</code>list, and see the two tanks moving when you press the arrow keys. You can also try to add many tanks in the list and get a quite complex behavior with a simple code.</p>
+<p>Considering the Command pattern, the basic version I presented is not able to handle more complex controls (like two players controlling two different tanks). I need to introduce more concepts to show you a better solution. It will be the subject of a future post.</p>
+<h2>UserInterface class</h2>
+<p>The <code>UserInterface</code> class is also very similar, except for the <code>renderUnit()</code> method that replaces the previous <code>renderTower()</code>method:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">renderUnit</span><span class="hljs-params">(self,unit)</span>:</span>
+    <span class="hljs-comment"># Location on screen</span>
+    spritePoint = unit.position.elementwise()*self.cellSize
+
+    <span class="hljs-comment"># Unit texture</span>
+    texturePoint = unit.tile.elementwise()*self.cellSize
+    textureRect = Rect(int(texturePoint.x), int(texturePoint.y), int(self.cellSize.x),int(self.cellSize.y))
+    self.window.blit(self.unitsTexture,spritePoint,textureRect)
+
+    <span class="hljs-comment"># Weapon texure</span>
+    texturePoint = Vector2(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>).elementwise()*self.cellSize
+    textureRect = Rect(int(texturePoint.x), int(texturePoint.y), int(self.cellSize.x),int(self.cellSize.y))
+    self.window.blit(self.unitsTexture,spritePoint,textureRect)    
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">render</span><span class="hljs-params">(self)</span>:</span>
+    self.window.fill((<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
+
+    <span class="hljs-comment"># Towers</span>
+    <span class="hljs-keyword">for</span> unit <span class="hljs-keyword">in</span> self.gameState.units:
+        self.renderUnit(unit)
+
+    pygame.display.update()    </code></pre>
+<p>We now have a single rendering block. Each case is rendering in a specific location (<code>unit.position</code>) and a specific tile (<code>unit.tile</code>).</p>
+<p>Note that we could also use class inheritance to specialize the rendering of each unit.</p>
+<h2>Final program</h2>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-16-inheritance/discover_python_patterns_16_inheritance.zip">Download code &amp; assets</a></p>
+<p>In the <a href="https://www.patternsgameprog.com/discover-python-and-patterns-17-2d-arrays">next post</a>, we'll see how to add a background using 2D arrays!</p>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

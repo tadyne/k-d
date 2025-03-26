@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: Pygame &#8211; creating a scrolling background	</title>
+	<atom:link href="https://coderslegacy.com/python/pygame-scrolling-background/feed/" rel="self" type="application/rss+xml" />
+	<link>https://coderslegacy.com/python/pygame-scrolling-background/</link>
+	<description>Imparting knowledge to the Future</description>
+	<lastBuildDate>Wed, 09 Oct 2024 01:01:23 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: lily		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-5008</link>
+
+		<dc:creator><![CDATA[lily]]></dc:creator>
+		<pubDate>Wed, 09 Oct 2024 01:01:23 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-5008</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;https://coderslegacy.com/python/pygame-scrolling-background/#comment-1495&quot;&gt;Anon&lt;/a&gt;.
+
+you are amazing thank you]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="https://coderslegacy.com/python/pygame-scrolling-background/#comment-1495">Anon</a>.</p>
+<p>you are amazing thank you</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Tom		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-1558</link>
+
+		<dc:creator><![CDATA[Tom]]></dc:creator>
+		<pubDate>Thu, 09 Feb 2023 13:52:32 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-1558</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;https://coderslegacy.com/python/pygame-scrolling-background/#comment-946&quot;&gt;Jay Bruckshaw&lt;/a&gt;.
+
+this is because the speed is not being taken into consideration during the stitching of the backgrounds. This will fix the issue
+
+&lt;pre class=&quot;ql-syntax&quot; spellcheck=&quot;false&quot;&gt;def update(self):
+&#160; &#160; &#160; &#160; self.bgX1 -= self.moving_speed
+&#160; &#160; &#160; &#160; self.bgX2 -= self.moving_speed
+&#160; &#160; &#160; &#160; if self.bgX1 &#060;= -self.rectBGimg.width + self.moving_speed:
+&#160; &#160; &#160; &#160;     self.bgX1 = self.rectBGimg.width
+&#160; &#160; &#160; &#160; if self.bgX2 &#060;= -self.rectBGimg.width + self.moving_speed:
+&#160; &#160; &#160; &#160; &#160; &#160; self.bgX2 = self.rectBGimg.width
+&lt;/pre&gt;]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="https://coderslegacy.com/python/pygame-scrolling-background/#comment-946">Jay Bruckshaw</a>.</p>
+<p>this is because the speed is not being taken into consideration during the stitching of the backgrounds. This will fix the issue</p>
+<pre class="ql-syntax" spellcheck="false">def update(self):
+&nbsp; &nbsp; &nbsp; &nbsp; self.bgX1 -= self.moving_speed
+&nbsp; &nbsp; &nbsp; &nbsp; self.bgX2 -= self.moving_speed
+&nbsp; &nbsp; &nbsp; &nbsp; if self.bgX1 &lt;= -self.rectBGimg.width + self.moving_speed:
+&nbsp; &nbsp; &nbsp; &nbsp;     self.bgX1 = self.rectBGimg.width
+&nbsp; &nbsp; &nbsp; &nbsp; if self.bgX2 &lt;= -self.rectBGimg.width + self.moving_speed:
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; self.bgX2 = self.rectBGimg.width
+</pre>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Anon		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-1495</link>
+
+		<dc:creator><![CDATA[Anon]]></dc:creator>
+		<pubDate>Mon, 19 Dec 2022 02:29:19 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-1495</guid>
+
+					<description><![CDATA[To everyone trying to make the background move down, here&#039;s the deal:
+
+&lt;pre class=&quot;ql-syntax&quot; spellcheck=&quot;false&quot;&gt;def update(self):
+    self.bgY2 += self.moving_speed
+    self.bgY1 += self.moving_speed
+    if self.bgY2 &#062;= self.rectBGimg.height:
+        self.bgY2 = -self.rectBGimg.height
+    if self.bgY1 &#062;= self.rectBGimg.height:
+        self.bgY1 = -self.rectBGimg.height
+&lt;/pre&gt;]]></description>
+			<content:encoded><![CDATA[<p>To everyone trying to make the background move down, here&#8217;s the deal:</p>
+<pre class="ql-syntax" spellcheck="false">def update(self):
+    self.bgY2 += self.moving_speed
+    self.bgY1 += self.moving_speed
+    if self.bgY2 &gt;= self.rectBGimg.height:
+        self.bgY2 = -self.rectBGimg.height
+    if self.bgY1 &gt;= self.rectBGimg.height:
+        self.bgY1 = -self.rectBGimg.height
+</pre>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Vlad		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-1286</link>
+
+		<dc:creator><![CDATA[Vlad]]></dc:creator>
+		<pubDate>Wed, 11 May 2022 03:32:55 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-1286</guid>
+
+					<description><![CDATA[Cool project. All works. A thing that road goes wrong way is quite appropriate, because its a mini test for ourselves to make it go another direction =). Thanks!
+PS 	Isn&#039;t line 50 &lt;code&gt;self&lt;/code&gt;&lt;code&gt;.rect.top &lt;/code&gt;&lt;code&gt;&lt;strong&gt;=&lt;/strong&gt;&lt;/code&gt;&lt;span&gt; &lt;/span&gt;&lt;code&gt;0&lt;/code&gt; a redundant, 
+		because we define the same &quot;y&quot;=0 in a line 51 as the last tuple digit?]]></description>
+			<content:encoded><![CDATA[<p>Cool project. All works. A thing that road goes wrong way is quite appropriate, because its a mini test for ourselves to make it go another direction =). Thanks!<br />
+PS 	Isn&#8217;t line 50 <code>self</code><code>.rect.top </code><code><strong>=</strong></code><span> </span><code>0</code> a redundant,<br />
+		because we define the same &#8220;y&#8221;=0 in a line 51 as the last tuple digit?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Siddiqi		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-976</link>
+
+		<dc:creator><![CDATA[Siddiqi]]></dc:creator>
+		<pubDate>Mon, 20 Sep 2021 17:15:36 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-976</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;https://coderslegacy.com/python/pygame-scrolling-background/#comment-974&quot;&gt;dot&lt;/a&gt;.
+
+I updated the tutorial a bit. Added a download link with the code and materials. Plus fixed a slight issue with the Street graphic. If it doesn&#039;t show up (due to caching) let me know, and i&#039;ll have it refreshed.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="https://coderslegacy.com/python/pygame-scrolling-background/#comment-974">dot</a>.</p>
+<p>I updated the tutorial a bit. Added a download link with the code and materials. Plus fixed a slight issue with the Street graphic. If it doesn&#8217;t show up (due to caching) let me know, and i&#8217;ll have it refreshed.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: dot		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-974</link>
+
+		<dc:creator><![CDATA[dot]]></dc:creator>
+		<pubDate>Sun, 19 Sep 2021 20:35:07 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-974</guid>
+
+					<description><![CDATA[Yes I also have those gap, seems like the background isn&#039;t totally overlapping here. Though, besides the path of the assets, I didn&#039;t changer anything into the code... Don&#039;t see what causes that ! 
+
+Also, the background should indeed go the other way around I think ^^ Changing its way is easy enough, but then it stops cycling, screen glitches, and that I didn&#039;t manage to fix... =/ 
+
+Fun mini-project though, thanks !]]></description>
+			<content:encoded><![CDATA[<p>Yes I also have those gap, seems like the background isn&#8217;t totally overlapping here. Though, besides the path of the assets, I didn&#8217;t changer anything into the code&#8230; Don&#8217;t see what causes that ! </p>
+<p>Also, the background should indeed go the other way around I think ^^ Changing its way is easy enough, but then it stops cycling, screen glitches, and that I didn&#8217;t manage to fix&#8230; =/ </p>
+<p>Fun mini-project though, thanks !</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Siddiqi		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-950</link>
+
+		<dc:creator><![CDATA[Siddiqi]]></dc:creator>
+		<pubDate>Fri, 03 Sep 2021 05:08:38 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-950</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;https://coderslegacy.com/python/pygame-scrolling-background/#comment-946&quot;&gt;Jay Bruckshaw&lt;/a&gt;.
+
+That sounds weird. Have you tried running the code exactly as is? It&#039;s working for me.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="https://coderslegacy.com/python/pygame-scrolling-background/#comment-946">Jay Bruckshaw</a>.</p>
+<p>That sounds weird. Have you tried running the code exactly as is? It&#8217;s working for me.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Jay Bruckshaw		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-946</link>
+
+		<dc:creator><![CDATA[Jay Bruckshaw]]></dc:creator>
+		<pubDate>Thu, 02 Sep 2021 10:48:09 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-946</guid>
+
+					<description><![CDATA[As my background scrolls, there tends to be a gap where it skips a chunk of the background? So for example I have a road scrolling horizontally with white dashes through the middle. But every full scroll of the image it scrolls the road without the white lines, so it alternates between with white lines and without?]]></description>
+			<content:encoded><![CDATA[<p>As my background scrolls, there tends to be a gap where it skips a chunk of the background? So for example I have a road scrolling horizontally with white dashes through the middle. But every full scroll of the image it scrolls the road without the white lines, so it alternates between with white lines and without?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Siddiqi		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-873</link>
+
+		<dc:creator><![CDATA[Siddiqi]]></dc:creator>
+		<pubDate>Wed, 23 Jun 2021 14:21:03 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-873</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;https://coderslegacy.com/python/pygame-scrolling-background/#comment-872&quot;&gt;Craig&lt;/a&gt;.
+
+If you want it to go the other way, you just need to make a few minor adjustments to the above code. Concepts remains the same after all.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="https://coderslegacy.com/python/pygame-scrolling-background/#comment-872">Craig</a>.</p>
+<p>If you want it to go the other way, you just need to make a few minor adjustments to the above code. Concepts remains the same after all.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Craig		</title>
+		<link>https://coderslegacy.com/python/pygame-scrolling-background/#comment-872</link>
+
+		<dc:creator><![CDATA[Craig]]></dc:creator>
+		<pubDate>Wed, 23 Jun 2021 14:14:27 +0000</pubDate>
+		<guid isPermaLink="false">https://coderslegacy.com/?page_id=2922#comment-872</guid>
+
+					<description><![CDATA[Great example, but its moving the wrong way]]></description>
+			<content:encoded><![CDATA[<p>Great example, but its moving the wrong way</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

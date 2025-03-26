@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://www.patternsgameprog.com/discover-python-and-patterns-29-software-architecture" />
+<meta name="description" content="Software architecture of a simple 2D game.">
+<meta name="author" content="Philippe-Henri Gosselin">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="icon" href="assets/img/favicon.ico">
+<title>Design Patterns and Video Games</title>
+<link href="https://www.patternsgameprog.com/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/mediumish.css" rel="stylesheet">
+<link href="https://www.patternsgameprog.com/assets/css/darcula.css" rel="stylesheet">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150349446-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150349446-1');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB1HVSF9XH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB1HVSF9XH');
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="container">
+	<a class="navbar-brand" href="https://www.patternsgameprog.com">
+	Design Patterns and Video Games
+	</a>
+	
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/series">Series</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/more">More</a>
+			</li>
+						<li class="nav-item">
+			<a class="nav-link" href="https://www.patternsgameprog.com/about">About</a>
+			</li>
+									
+		</ul>
+	</div>
+</div>
+</nav>
+<!-- End Nav
+================================================== -->
+
+
+
+<div class="container">
+	<div class="mainheading">
+		<img class="featured-image img-fluid" src="https://www.patternsgameprog.com/assets/img/header.png" alt="Design Patterns and Video Games">
+	</div>
+<!-- End Site Title
+================================================== -->
+
+	<div class="section-title">
+		<h2><span>Discover Python and Patterns (29): Software Architecture</span></h2>
+	</div>
+
+<p>In this post, I describe the organization of the tank game code. It is not the best design one could create, there are many flaws, but there are many good ideas you can use for your projects!</p>
+<p><em>This post is part of the <a href="https://www.patternsgameprog.com/series/discover-python-and-patterns/">Discover Python and Patterns series</a></em></p>
+<h2>Python language and software design</h2>
+<p>The first purpose of this series is to discover the Python language. We have only seen a small part of this programming language; it contains many other features. Anyway, we have seen enough to create a small game :)</p>
+<p>Considering this subset of the Python language, if you are a beginner, it should be a bit fuzzy. I hope that you understand some basics like creating a variable and assigning a value to it. For other features, maybe it looks magic and works for unknown reasons.</p>
+<p>You should not worry about this. Learn programming, and especially syntax, take time and can't be acquired after reading a single tutorial. Even if someone was telling you every syntax rules of a programming language, it is impossible to memorize all of them in a row.</p>
+<p>To learn a programming language, it is easy: practice. Try to create small programs, read tutorials, and after a while, you will master the language.</p>
+<p>For software design, which I want to emphasize in this post, it is different. There is not a lot of rules, and anyone can quickly memorize them. However, understand these rules and develop an intuition around them is much more difficult. Practicing also helps, but in the first place, we need to get a deep understanding. If one day you have the feeling that software design is always doing the same, it means that you are in a good way :)</p>
+<h2>The big picture</h2>
+<p>Let's see how I organized the tank game:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/6c419cfbdb-1621710975/29_diag_5.png" width="208"></figure>
+<p>There are five main components:</p>
+<ul>
+<li><code>state</code>: it contains the game state, in other words, all the data required to represent any possible state of the game. For instance, units, bullets, world items, etc.</li>
+<li><code>command</code>: it contains the game rules. These rules allow us to update the game state in some way. More specifically, it includes the command classes that, once applied, change the content of the game state according to parameters. Note that it does not tell what changes to trigger.</li>
+<li><code>layer</code>: it contains the rendering procedures. There are several layer classes, each one dedicated to a specific case, like rendering a background or animating bullets. Note that it does not tell what to render; someone else must combine these layers to create a scene.</li>
+<li><code>mode</code>: it contains the different modes or sub-games of the game. One of the modes is the main game, and others are cases like a menu, a map, an inventory, etc. It uses the other components to create and combine objects that form sub-games.</li>
+<li><code>ui</code>: it is the final component that contains all game modes and manages them.</li>
+</ul>
+<h2>Dependencies</h2>
+<h3>The less dependencies, the better the design</h3>
+<p>On the diagram, you can see arrows. They represent dependencies. For instance, the <code>command</code> component depends on the <code>state</code> component (the arrow points <code>state</code>), and the <code>state</code> component does not depend on the <code>command</code> component. These arrows allow us to have a quick view of component dependencies.</p>
+<p>As I told you many times in this series, software designers don't like dependencies and especially circular dependencies. The more dependencies there are, the more difficult it is to split parts of a program. For a thousand reasons which I started to present in this series, the more we divide our code into independent components, the easier it is to maintain and expand it.</p>
+<p>A software designer nightmare could look like this:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/3a76140847-1621710975/29_diag_5b.png" width="319"></figure>
+<p>Most components depend on all the others. If we have to change something in one component, there is a high chance that we have to update all other components. In a small program, we can handle this, but on a large one, it is a tough problem.</p>
+<h3>Dependencies tree</h3>
+<p>On the proposed architecture, dependencies form a kind of tree:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/0df1a3e9d8-1621710975/29_diag_5-1.png" width="226"></figure>
+<p>The <code>state</code> component is the root of this tree. It does not depend on another component. You can delete everything else, it still works.</p>
+<p>Then, the <code>command</code> and <code>layer</code> components are the first branches of this tree. They are independent: we can create one without the other. In both cases, we must use the <code>state</code> component; otherwise, they can't work.</p>
+<p>The <code>mode</code> component depends on the <code>command</code> and <code>layer</code> components: if one is missing, we can't use it. Since these two dependencies depend on <code>state</code>, it means that <code>mode</code> also depends on <code>state</code>. We don't draw an arrow between <code>mode</code> and <code>state</code>because we can easily see it: just follow the direction of arrows from <code>mode</code> to <code>state</code>.</p>
+<p>The <code>ui</code> component depends on the <code>mode</code> component, and consequently, on all the components of this architecture.</p>
+<h3>A flaw!</h3>
+<p>The code I proposed in the previous post does not respect these good dependencies. If you have a look at the <code>LoadLevelCommand</code> class, you can see that it needs an instance of <code>GameMode</code>.</p>
+<p>As a result, the diagram of this code is:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/3700c723f5-1621710976/29_diag_5c.png" width="215"></figure>
+<p>There is a circular dependency between <code>command</code> and <code>mode</code>. It is not good!</p>
+<p>Note that I left this design error for several reasons. Firstly, solving it leads to more complexity in the final design, which is maybe already too complicated for beginners (I hope not!). Secondly, it shows you a true case of bad design, which is always good to see in practice rather than only in theory. And finally, it is a good exercise: try to find a solution! Note that if you only find why it is an issue, and what should be in which place, you mostly solved the problem.</p>
+<h2>The state component</h2>
+<p>Let's begin the detailed description of this design with the core of our program: the game state component. It can "live" alone, and exists without any other component:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/473a7b5a86-1621710976/29_diag_1.png" width="49"></figure>
+<p>The classes inside this component are the following ones:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/31deffac41-1621710976/29_state-1024x504.png" width="768"></figure>
+<p>The <code>GameState</code> class is the main data container. It contains several lists of items. For simple ones, like the ground tile, we can use existing classes, like <code>Vector2</code> in Pygame.</p>
+<p>For more complicated items, we created a small class hierarchy with <code>GameItem</code> as the base class, and <code>Unit</code> and <code>Bullet</code> as child classes.</p>
+<p>Finally, the <code>GameState</code> follows the Observer pattern and can contain references to observers as child classes of <code>GameStateObserver</code>.</p>
+<h2>Python modules</h2>
+<p>In the previous post, all code is in a single file. It is relevant when presenting small programs, but become problematic with large ones.</p>
+<p>A common solution consists of splitting the code into several files with one file per class. Furthermore, we put all classes from the same component (or module or package) in the same directory.</p>
+<p>For the <code>state</code> component, all files are the following ones, and we put them in a "state" directory:</p>
+<figure><img alt="Tank game files" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/a19bf976bb-1621710976/29_state_files.png" width="222"></figure>
+<p>Note: in Spyder you can see files and folder with the "File Explorer" (Menu <strong>View / Panes / File Explorer</strong>).</p>
+<p>In this screenshot, you can see two unexpected items: the <code>__pycache__</code> folder and the <code>__init__.py</code> Python file.</p>
+<p>The <code>__pycache__</code> folder is created by Python to speed up compilation and execution. It is automatic, don't pay attention to this folder (if you delete it, Python will recreate it).</p>
+<p>The <code>__init__.py</code> is a new file I added with the following content:</p>
+<pre class="hljs"><code><span class="hljs-keyword">from</span> .Bullet <span class="hljs-keyword">import</span> Bullet
+<span class="hljs-keyword">from</span> .GameState <span class="hljs-keyword">import</span> GameState
+<span class="hljs-keyword">from</span> .GameStateObserver <span class="hljs-keyword">import</span> GameStateObserver
+<span class="hljs-keyword">from</span> .Unit <span class="hljs-keyword">import</span> Unit</code></pre>
+<p>The first purpose of this file is to tell Python that this folder is a module. A module is a set of features that we can import from other modules.</p>
+<p>The second purpose of this file is to add code that helps the use of this module. In our case, I declared the relevant classes to ease its import from outside.</p>
+<p>For instance, to import the <code>GameState</code> class without this trick, a user has to type:</p>
+<pre class="hljs"><code><span class="hljs-comment"># In a file outside the state folder</span>
+<span class="hljs-keyword">from</span> state.GameState <span class="hljs-keyword">import</span> GameState</code></pre>
+<p>Thanks to the following line in the <code>__init__.py</code> file of the "state" folder:</p>
+<pre class="hljs"><code><span class="hljs-comment"># In the "__init__.py" of the "state" folder</span>
+<span class="hljs-keyword">from</span> .GameState <span class="hljs-keyword">import</span> GameState</code></pre>
+<p>A user only has to type:</p>
+<pre class="hljs"><code><span class="hljs-comment"># In a file outside the state folder</span>
+<span class="hljs-keyword">from</span> state <span class="hljs-keyword">import</span> GameState</code></pre>
+<p>It also prevents other problems I don't describe here. As a rule of thumb, you should always create this file with such declarations. It will ease the management of your program.</p>
+<p>Perhaps you wonder why there is a dot <code>.</code> in these declarations. It tells Python to search in the current directory rather than searching from the root of the program. Otherwise, you must put the full file "path", for instance <code>from state.GameState import GameState</code>. It is handy if you move the classes (usually in sub-sub-folders) when the program grows.</p>
+<h2>The layer module</h2>
+<p>Now that we have seen Python modules, we can talk about the <code>layer</code> module. In other languages, people talk about packages.</p>
+<p>The <code>layer</code> module only depends on the <code>state</code> package:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/514176c124-1621710976/29_diag_2.png" width="58"></figure>
+<p>The classes inside this component are the following ones:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/2e5176ff5f-1621710976/29_layer-1024x648.png" width="768"></figure>
+<p>There is a class hierarchy, with <code>GameStateObserver</code> the main base class, <code>Layer</code> the intermediate base class, and all other ones the child classes.</p>
+<p>Consequently, all classes depend on the <code>GameStateObserver</code> which is a class inside the <code>state</code> module, so the <code>layer</code> module depends on <code>state</code> module.</p>
+<p>However, only the classes <code>ArrayLayer</code>, <code>BulletsLayer</code> and <code>UnitsLayer</code> depends on many classes of the <code>state</code> module, which I represented by a mini package. We can quickly see that we must pay attention to these classes when the <code>state</code> components are updated. For the others, we can ignore it.</p>
+<p>I also split the code into several files and put then in a "layer" folder:</p>
+<figure><img alt="Tank game files" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/72afe55e6d-1621710976/29_layer_files.png" width="204"></figure>
+<h2>The command module</h2>
+<p>The <code>command</code> module depends on the <code>state</code> package... and on the <code>mode</code> package:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/e2ff01bca1-1621710976/29_diag_3.png" width="239"></figure>
+<p>As presented earlier, it is a flaw in our design. We can better see why in the class diagram:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/cad39e5007-1621710976/29_command-1024x805.png" width="750"></figure>
+<p>It is also a class hierarchy, whose base class is <code>Command</code>. To represent the dependencies of all child classes to components of the <code>state</code> module, I added a mini <code>state</code> package.</p>
+<p>We can see that <code>command</code> depends on <code>mode</code> because of the <code>LoadLevelCommand</code> class, which needs a reference to a <code>GameMode</code> class.</p>
+<p>Load a level is an in-between procedure. It updates the game state, as for any command. It also updates the rendering layers of the main game mode. If we have to run the game updates on a server with no screen nor controls, it will not work!</p>
+<p>Since only commands should change the game state on the one hand, and should not depend on rendering, on the other hand, we can't put this procedure in any current module without changes.</p>
+<p>Try to find a solution: you can create new commands, or new modules, or reuse patterns we saw, like the Observer pattern.</p>
+<h2>The mode module</h2>
+<p>This module depends on all the previous modules:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/d4bfcabda2-1621710976/29_diag_4.png" width="196"></figure>
+<p>The classes inside this component are the following ones:</p>
+<figure><img alt="Tank game software architecture" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/a9fc3d49cb-1621710977/29_mode-1024x571.png" width="768"></figure>
+<p>It is also a class hierarchy with the Observer pattern.</p>
+<p>We can see that only the <code>PlayGameMode</code> depends on the other modules. It means that we can modify the menu and messages without worrying about the changes in the main game components.</p>
+<h2>Final code</h2>
+<p><a href="https://www.patternsgameprog.com/discover-python-and-patterns-29-software-architecture/discover_python_and_patterns_29_software_architecture.zip">Download code and assets</a></p>
+<p>A final <code>main.py</code> contains the <code>UserInterface</code> class, and an <code>assets</code> folder contains all assets:</p>
+<figure><img alt="Tank game files" class="centered-image img-fluid" src="https://www.patternsgameprog.com/media/pages/discover-python-and-patterns-29-software-architecture/b099005974-1621710979/29_files.png" width="244"></figure>
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2020-2023 https://www.patternsgameprog.com
+		</p>
+		<p class="pull-right">
+			<a href="https://twitter.com/umlgameprog?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @umlgameprog</a></script>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://www.patternsgameprog.com/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://www.patternsgameprog.com/assets/js/bootstrap.min.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://www.patternsgameprog.com/assets/js/mediumish.js"></script>
+</body>
+</html>

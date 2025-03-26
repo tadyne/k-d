@@ -1,0 +1,2058 @@
+"use strict";
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+var TopNavBar = {
+  defaultHeight: '88px',
+  mainNavHeightPx: 56,
+  secondaryNavHeightPx: 32,
+  fullHeight: '100vh',
+  element: document.getElementById('top-nav-bar'),
+  // searchFromBox: false,
+  // fullScreenNav: false,
+  // fullScreenSearchResults: false,
+  parentLayoutNotifier: null,
+  parentRedirectNotifier: null,
+  inIframe: null,
+  location: null,
+  env: null,
+  loggedIn: null,
+  configured: false,
+  hasNetworkSecondaryNav: false,
+  mobileNavScrollInterval: null,
+  _w3sBaseUrl: 'https://www.w3schools.com',
+  _profileBaseUrl: 'https://profile.w3schools.com',
+  _dashboardBaseUrl: 'https://pathfinder.w3schools.com',
+  _spacesBaseUrl: 'https://spaces.w3schools.com',
+  _myLearningBaseUrl: 'https://my-learning.w3schools.com',
+  _myLearningApiBaseUrl: 'https://myl-api.w3schools.com',
+  _billingBaseUrl: 'https://billing.w3schools.com',
+  altProfileBaseUrl: 'https://www.w3profile.com',
+  pathfinderApiBaseUrl: 'https://api.kai.w3sapi.com/pathfinder',
+  profilePictureUrl: null,
+  _debug: null,
+  cachedUserData: null,
+  dropdownVisible: false
+};
+window.TopNavBar = TopNavBar;
+TopNavBar._menuSectionsInTab = {
+  'tutorials': ['tutorials_html_css_links_list', 'tutorials_data_analytics_links_list_desktop', 'tutorials_web_building_links_list_desktop', 'tutorials_javascript_links_list', 'tutorials_backend_links_list'],
+  'exercises': ['exercises_html_css_links_list', 'exercises_data_analytics_links_list_desktop', 'exercises_javascript_links_list', 'exercises_backend_links_list'],
+  'certified': ['certified_html_css_links_list', 'certified_data_analytics_links_list_desktop', 'certified_programs_links_list_desktop', 'certified_javascript_links_list', 'certified_backend_links_list']
+};
+TopNavBar._findInnerElements = function (parentElement, queryStr, callback) {
+  var output = [];
+  var hasCallback = typeof callback !== 'undefined';
+  var elements = parentElement.querySelectorAll(queryStr);
+  for (var index = 0; index < elements.length; index++) {
+    output.push(elements[index]);
+    if (hasCallback) {
+      callback(elements[index], index);
+    }
+  }
+  return output;
+};
+TopNavBar._getInnerElement = function (parentElement, queryStr) {
+  var elms = TopNavBar._findInnerElements(parentElement, queryStr);
+  if (elms.length) {
+    return elms[0];
+  }
+  return undefined;
+};
+TopNavBar._loopArray = function (arr, callback) {
+  for (var index = 0; index < arr.length; index++) {
+    callback(arr[index], index);
+  }
+};
+TopNavBar._loopObj = function (obj, callback) {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      callback(obj[key], key);
+    }
+  }
+};
+TopNavBar._inIframe = function () {
+  if (TopNavBar.inIframe !== null) {
+    return TopNavBar.inIframe;
+  }
+  try {
+    TopNavBar.inIframe = window.self !== window.top;
+  } catch (e) {
+    TopNavBar.inIframe = true;
+  }
+  return TopNavBar.inIframe;
+};
+TopNavBar._isDebugMode = function () {
+  if (TopNavBar._debug !== null) {
+    return TopNavBar._debug;
+  }
+  if (localStorage.getItem('TopNavBar.debug') === 'true') {
+    TopNavBar._debug = true;
+  } else {
+    TopNavBar._debug = false;
+  }
+  return TopNavBar._debug;
+};
+TopNavBar._logDebug = function (message, data) {
+  if (!TopNavBar._isDebugMode()) {
+    return;
+  }
+  if (typeof data === 'undefined') {
+    console.log('TopNavBar -> ' + message);
+  } else {
+    console.log('TopNavBar -> ' + message, data);
+  }
+};
+TopNavBar._logWarning = function (message, data) {
+  if (typeof data === 'undefined') {
+    console.warn('TopNavBar -> ' + message);
+  } else {
+    console.warn('TopNavBar -> ' + message, data);
+  }
+};
+TopNavBar.isExpanded = function () {
+  var navs = ['#nav_tutorials', '#nav_exercises', '#nav_certified', '#nav_services'
+
+  // '.tnb-mobile-nav',
+  ];
+  for (var i = 0; i < navs.length; i++) {
+    var element = TopNavBar.element.querySelector(navs[i]);
+    if (element && element.style.display !== 'none' && element.style.display !== '') {
+      return true;
+    }
+  }
+  if (TopNavBar.element.querySelector('.tnb-mobile-nav').classList.contains('tnb-active')) {
+    return true;
+  }
+  return TopNavBar.googleSearchResultsShown();
+};
+TopNavBar._sendParentInitMessage = function () {
+  window.parent.postMessage({
+    'action': 'INIT',
+    'expanded': false,
+    'initHeight': TopNavBar.defaultHeight,
+    // legacy
+    'fullHeight': TopNavBar.fullHeight,
+    'mainNavHeightPx': TopNavBar.mainNavHeightPx,
+    'secondaryNavHeightPx': TopNavBar.secondaryNavHeightPx
+  }, '*');
+};
+TopNavBar._applyNoUpsellUiTweaks = function () {
+  // action can't be reverted
+
+  TopNavBar._findInnerElements(TopNavBar.element, '.tnb-paid-service', function (paidServiceElm) {
+    paidServiceElm.remove();
+  });
+  TopNavBar._findInnerElements(TopNavBar.element, '.tnb-upgrade', function (upgradeElm) {
+    upgradeElm.classList.add('w3-hide');
+  });
+};
+TopNavBar.postInitConfig = function (prs) {
+  TopNavBar._logDebug('postInitConfig');
+  // return;
+
+  // can be checked to avoid configuring twice
+  TopNavBar.configured = true;
+  if (typeof prs.sendParentInitMessage !== 'undefined' && prs.sendParentInitMessage === true) {
+    // optional prop required in billing setup
+    TopNavBar._sendParentInitMessage();
+  }
+  TopNavBar.env = prs.env;
+  TopNavBar.location = prs.location; // location required fields: href, hostname, pathname
+
+  TopNavBar.hasNetworkSecondaryNav = TopNavBar.env === 'network' && !TopNavBar.lite;
+  if (!TopNavBar.hasNetworkSecondaryNav) {
+    // check if child element #secondary-top-nav-bar exists
+    if (TopNavBar.element.querySelector('#secondary-top-nav-bar')) {
+      TopNavBar.hasNetworkSecondaryNav = true;
+    }
+  }
+  if (TopNavBar.hasNetworkSecondaryNav) {
+    SecondaryTopNavBar.postInitConfig(prs);
+  }
+
+  // execution order priority: high
+  TopNavBar._applyUserSessionUiTweaks({
+    loggedIn: prs.loggedIn,
+    subscriptionPlan: prs.subscriptionPlan
+  });
+
+  // execution order priority: mid
+  if (TopNavBar.env === 'network') {
+    Util.patchAuthLinks({
+      loggedIn: prs.loggedIn,
+      currentUrl: TopNavBar.location.href
+    });
+  } else {
+    Util.patchAuthLinks({
+      loggedIn: prs.loggedIn
+    });
+  }
+  var featureFlags = prs.featureFlags;
+  if (typeof featureFlags === 'undefined') {
+    featureFlags = {
+      'noUpsell': false
+    };
+  }
+
+  // execution order priority: low
+  if (featureFlags.noUpsell) {
+    TopNavBar._applyNoUpsellUiTweaks();
+  }
+};
+TopNavBar._createChevronButton = function () {
+  var chevronButton = document.createElement('button');
+  chevronButton.className = 'tnb-profile-chevron-btn';
+  chevronButton.setAttribute('aria-label', 'Toggle profile menu');
+  chevronButton.setAttribute('title', 'Open profile menu');
+  var chevronSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  chevronSvg.setAttribute('viewBox', '0 0 16 16');
+  chevronSvg.setAttribute('width', '14');
+  chevronSvg.setAttribute('height', '14');
+  chevronSvg.setAttribute('fill', 'currentColor');
+  chevronSvg.classList.add('profile-chevron');
+  var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  g.setAttribute('fill-rule', 'evenodd');
+  g.setAttribute('transform', 'translate(-448 -544)');
+  var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('fill-rule', 'nonzero');
+  path.setAttribute('d', 'M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z');
+  g.appendChild(path);
+  chevronSvg.appendChild(g);
+  chevronButton.appendChild(chevronSvg);
+  chevronButton.addEventListener('click', function (event) {
+    event.stopPropagation();
+    TopNavBar.handleProfileClick(event);
+  });
+  return chevronButton;
+};
+TopNavBar.renderProfilePicture = function (profilePictureUrl, cache) {
+  if (typeof cache === 'undefined') {
+    cache = true;
+  }
+  if (cache) {
+    try {
+      localStorage.setItem('profilePicture', encodeURIComponent(UserSession.getSessionId() + '|' + profilePictureUrl));
+    } catch (exc) {
+      console.error('renderProfilePicture -> cache -> error: ', {
+        'profilePictureUrl': profilePictureUrl,
+        'exc': exc
+      });
+    }
+  }
+  var userProfilePictureElm = TopNavBar._getInnerElement(TopNavBar.element, '.user-profile-picture');
+
+  // already set -> update
+  if (userProfilePictureElm) {
+    TopNavBar.profilePictureUrl = profilePictureUrl;
+    userProfilePictureElm.style.backgroundImage = "url('" + profilePictureUrl + "')";
+    return;
+  }
+  var userProfileBtnElm = TopNavBar._getInnerElement(TopNavBar.element, '.user-profile-btn');
+  if (!userProfileBtnElm) {
+    return;
+  }
+  TopNavBar.profilePictureUrl = profilePictureUrl;
+  var existingProgress = userProfileBtnElm.querySelector('.user-progress');
+  var existingProgressStar = userProfileBtnElm.querySelector('.user-progress-star');
+  var existingProgressPoint = userProfileBtnElm.querySelector('.user-progress-point');
+  var existingChevron = userProfileBtnElm.querySelector('.tnb-profile-chevron-btn');
+  var userProfilePictureWrapper = document.createElement('div');
+  userProfilePictureWrapper.className = 'user-profile-picture-wrapper';
+  userProfilePictureWrapper.style.display = 'flex';
+  userProfilePictureWrapper.style.alignItems = 'center';
+  var userProfilePicture = document.createElement('div');
+  userProfilePicture.className = 'user-profile-picture';
+  userProfilePicture.style.backgroundImage = "url('" + profilePictureUrl + "')";
+  userProfilePictureWrapper.appendChild(userProfilePicture);
+  if (existingProgress) {
+    userProfileBtnElm.insertBefore(userProfilePictureWrapper, existingProgress);
+  } else if (existingProgressStar) {
+    userProfileBtnElm.insertBefore(userProfilePictureWrapper, existingProgressStar);
+  } else if (existingProgressPoint) {
+    userProfileBtnElm.insertBefore(userProfilePictureWrapper, existingProgressPoint);
+  } else {
+    userProfileBtnElm.appendChild(userProfilePictureWrapper);
+  }
+  if (!existingChevron) {
+    var chevronButton = TopNavBar._createChevronButton();
+    userProfileBtnElm.appendChild(chevronButton);
+  }
+  userProfileBtnElm.classList.add('user-authenticated');
+};
+TopNavBar._applyUserSessionUiTweaks = function (prs) {
+  TopNavBar._logDebug('_applyUserSessionUiTweaks -> prs: ', prs);
+  var loggedIn = prs.loggedIn;
+  var subscriptionPlan = prs.subscriptionPlan;
+  var initialLoggedInState = TopNavBar.loggedIn;
+  var loggedInStateChanged = TopNavBar.loggedIn !== loggedIn;
+  TopNavBar.loggedIn = loggedIn;
+  TopNavBar._logDebug('_applyUserSessionUiTweaks -> state: ', {
+    'loggedIn': loggedIn,
+    'initialLoggedInState': initialLoggedInState,
+    'loggedInStateChanged': loggedInStateChanged,
+    'subscriptionPlan': subscriptionPlan
+  });
+  if (loggedIn) {
+    TopNavBar._findInnerElements(document, '.user-authenticated', function (elm) {
+      elm.classList.remove('w3-hide');
+    });
+    TopNavBar._findInnerElements(document, '.user-anonymous', function (elm) {
+      elm.classList.add('w3-hide');
+    });
+    var userProfileBtnElm = TopNavBar._getInnerElement(TopNavBar.element, '.user-profile-btn');
+    if (userProfileBtnElm && !userProfileBtnElm.querySelector('.tnb-profile-chevron-btn')) {
+      userProfileBtnElm.appendChild(TopNavBar._createChevronButton());
+      userProfileBtnElm.addEventListener('click', function (event) {
+        if (!event.target.closest('.tnb-profile-chevron-btn')) {
+          TopNavBar.handleProfileClick(event);
+        }
+      });
+    }
+    if (subscriptionPlan === 'diamond') {
+      TopNavBar._findInnerElements(TopNavBar.element, '.tnb-upgrade', function (elm) {
+        elm.classList.add('w3-hide');
+      });
+    } else {
+      TopNavBar._findInnerElements(TopNavBar.element, '.tnb-upgrade', function (elm) {
+        elm.classList.remove('w3-hide');
+      });
+    }
+    try {
+      var cachedProfilePictureKeyValEncoded = localStorage.getItem('profilePicture');
+      TopNavBar._logDebug('_applyUserSessionUiTweaks -> profile picture -> cachedProfilePictureKeyValEncoded: ', {
+        'cachedProfilePictureKeyValEncoded': cachedProfilePictureKeyValEncoded
+      });
+      if (cachedProfilePictureKeyVal !== null) {
+        var cachedProfilePictureKeyVal = decodeURIComponent(cachedProfilePictureKeyValEncoded);
+        var userSessionId = UserSession.getSessionId();
+        TopNavBar._logDebug('_applyUserSessionUiTweaks -> profile picture -> cachedProfilePictureKeyVal: ', {
+          'cachedProfilePictureKeyVal': cachedProfilePictureKeyVal,
+          'userSessionId': userSessionId
+        });
+        if (cachedProfilePictureKeyVal.indexOf(userSessionId + '|') === 0) {
+          // Extract profile picture URL from the cached value
+          var profilePictureUrl = cachedProfilePictureKeyVal.split('|', 2)[1];
+          TopNavBar._logDebug('_applyUserSessionUiTweaks -> profile picture -> profilePictureUrl: ', {
+            'profilePictureUrl': profilePictureUrl
+          });
+          TopNavBar.profilePictureUrl = profilePictureUrl;
+          TopNavBar.renderProfilePicture(profilePictureUrl, false);
+        }
+      }
+    } catch (exc) {
+      console.error('_applyUserSessionUiTweaks -> profile picture -> error: ', {
+        'exc': exc
+      });
+    }
+    if (TopNavBar.profilePictureUrl === null) {
+      TopNavBar.profilePictureUrl = ''; // flag that fetch was initialized
+    }
+    TopNavBar.prefetchUserData();
+  } else {
+    // anonymous
+    TopNavBar._findInnerElements(document, '.user-authenticated', function (elm) {
+      elm.classList.add('w3-hide');
+    });
+    TopNavBar._findInnerElements(document, '.user-anonymous', function (elm) {
+      elm.classList.remove('w3-hide');
+    });
+    TopNavBar._findInnerElements(TopNavBar.element, '.tnb-upgrade', function (elm) {
+      elm.classList.add('w3-hide');
+    });
+  }
+};
+TopNavBar.prefetchUserData = function () {
+  if (!TopNavBar.cachedUserData) {
+    TopNavBar._myLearningStateLookup().then(function (mylStateLookupRes) {
+      TopNavBar._logDebug('prefetchUserData -> mylStateLookupRes: ', mylStateLookupRes);
+      return TopNavBar.fetchUserData(mylStateLookupRes.data);
+    }).then(function (userData) {
+      TopNavBar._logDebug('prefetchUserData -> userData: ', userData);
+    })["catch"](function (error) {
+      TopNavBar._logWarning('prefetchUserData -> error: ', error);
+    });
+  }
+};
+TopNavBar.init = function () {
+  TopNavBar._logDebug('init');
+  TopNavBar.location = window.location;
+
+  // execution order priority: high
+  TopNavBar.initUserPreferredTheme();
+
+  // Add resize handler for profile dropdown
+  window.addEventListener('resize', function () {
+    if (TopNavBar.dropdownVisible) {
+      TopNavBar.hideProfileDropdown();
+    }
+  });
+  document.addEventListener('click', function (event) {
+    if (TopNavBar.dropdownVisible) {
+      var profileBtn = document.querySelector('.user-profile-btn');
+      if (!profileBtn) return;
+      if (TopNavBar.env === 'network' || TopNavBar._inIframe()) {
+        if (!profileBtn.contains(event.target)) {
+          TopNavBar.hideProfileDropdown();
+          return;
+        }
+      }
+      var dropdownElm = document.getElementById('tnb-profile-dropdown');
+      if (!dropdownElm) return;
+      if (event.target.id === 'tnb-profile-dropdown-bottom-spacer' || !(dropdownElm.contains(event.target) || profileBtn.contains(event.target))) {
+        TopNavBar.hideProfileDropdown();
+      }
+    }
+  });
+
+  // blind lookup
+  var uicCookieData = UserSession.getUicCookie();
+  var loggedIn = uicCookieData !== null;
+  var subscriptionPlan = 'free';
+  if (loggedIn) {
+    subscriptionPlan = uicCookieData.plan || 'free';
+  }
+  TopNavBar.loggedIn = loggedIn;
+  TopNavBar._logDebug('init -> data: ', {
+    'uicCookieData': uicCookieData,
+    'loggedIn': loggedIn,
+    'subscriptionPlan': subscriptionPlan
+  });
+  Util.patchAuthLinks({
+    loggedIn: loggedIn
+  });
+
+  // execution order priority: high
+  TopNavBar._applyUserSessionUiTweaks({
+    loggedIn: loggedIn,
+    subscriptionPlan: subscriptionPlan
+  });
+  var iframedTopNavBar = TopNavBar._inIframe();
+
+  // execution order priority: high
+  if (iframedTopNavBar) {
+    TopNavBar._iframeInit();
+  }
+
+  // execution order priority: low
+  TopNavBar._attachMenuSortLogic();
+
+  // execution order priority: low
+  TopNavBar._attachNavEscapeListeners();
+  if (iframedTopNavBar) {
+    var explicitCurrentUrl = Util.getUrlQueryParam('currentUrl');
+    TopNavBar._logDebug('init -> explicitCurrentUrl: ', {
+      explicitCurrentUrl: explicitCurrentUrl
+    });
+    if (explicitCurrentUrl) {
+      TopNavBar.postInitConfig({
+        env: 'network',
+        location: Util.getUrlParsed(explicitCurrentUrl),
+        loggedIn: loggedIn,
+        subscriptionPlan: subscriptionPlan
+      });
+    }
+  } else {
+    TopNavBar.postInitConfig({
+      env: 'classic',
+      location: window.location,
+      loggedIn: loggedIn,
+      subscriptionPlan: subscriptionPlan
+    });
+  }
+};
+TopNavBar._callFunc = function (funcName, funcArgs) {
+  if (funcName.indexOf('_') === 0) {
+    // private function/method
+    TopNavBar._logWarning('Function call forbidden -> funcName, funcArgs: ', {
+      'funcName': funcName,
+      'funcArgs': funcArgs
+    });
+    return false;
+  }
+  if (typeof TopNavBar[funcName] !== 'function') {
+    TopNavBar._logWarning("Function doesn't exist -> funcName, funcArgs: ", {
+      'funcName': funcName,
+      'funcArgs': funcArgs
+    });
+    return false;
+  }
+  if (typeof funcArgs !== 'undefined') {
+    return TopNavBar[funcName].apply(null, funcArgs);
+  } else {
+    return TopNavBar[funcName]();
+  }
+};
+TopNavBar._iframeInit = function () {
+  window.addEventListener('message', function (message) {
+    TopNavBar._logDebug('message: ', message);
+    var whitelistedOrigins = ['https://profile.w3schools.com', 'https://pathfinder.w3schools.com', 'https://my-learning.w3schools.com', 'https://spaces.w3schools.com', 'https://billing.w3schools.com', 'https://campus.w3schools.com'];
+    if (!whitelistedOrigins.includes(message.origin)) {
+      return;
+    }
+    var action = '';
+    var data = null;
+    if (typeof message.data.type !== 'undefined') {
+      action = message.data.type;
+      data = message.data.value;
+    } else if (typeof message.data.action !== 'undefined') {
+      action = message.data.action;
+      data = message.data.data;
+    }
+    TopNavBar._logDebug('message -> action, data: ', {
+      action: action,
+      data: data
+    });
+    if (action === 'CONFIG') {
+      TopNavBar.postInitConfig(data);
+    } else if (action === 'CALL_FUNCTION') {
+      TopNavBar._callFunc(data.funcName, data.funcArgs);
+    } else if (action === 'TOGGLE_PROFILE_DROPDOWN') {
+      if (TopNavBar.dropdownVisible) {
+        TopNavBar.hideProfileDropdown();
+      } else {
+        TopNavBar.showProfileDropdown();
+      }
+    }
+  });
+  TopNavBar._sendParentInitMessage();
+  TopNavBar.element.addEventListener('click', function (event) {
+    TopNavBar.notifyParentAboutLayout('on click', event);
+  });
+  TopNavBar.element.addEventListener('keyup', function (event) {
+    TopNavBar.notifyParentAboutLayout('on keyup', event);
+  });
+  TopNavBar.element.addEventListener('resize', function (event) {
+    TopNavBar.notifyParentAboutLayout('on resize', event);
+  });
+};
+TopNavBar.notifyParentAboutLayout = function (context, event) {
+  if (!TopNavBar._inIframe()) {
+    return;
+  }
+  TopNavBar._logDebug('notifyParentAboutLayout -> context, event: ', {
+    'context': context,
+    'event': event
+  });
+  clearTimeout(TopNavBar.parentLayoutNotifier);
+  TopNavBar.parentLayoutNotifier = setTimeout(function () {
+    var expanded = TopNavBar.isExpanded();
+    window.parent.postMessage({
+      'context': context,
+      'action': 'LAYOUT',
+      'expanded': expanded,
+      'iframeHeight': expanded ? TopNavBar.fullHeight : TopNavBar.defaultHeight,
+      // legacy
+      'placeholderHeight': TopNavBar.defaultHeight,
+      // legacy
+      'fullHeight': TopNavBar.fullHeight,
+      'mainNavHeightPx': TopNavBar.mainNavHeightPx,
+      'secondaryNavHeightPx': TopNavBar.secondaryNavHeightPx
+    }, '*');
+  }, 100);
+};
+TopNavBar.notifyParentAboutRedirect = function (context, redirectUrl) {
+  if (!TopNavBar._inIframe()) {
+    return;
+  }
+  TopNavBar._logDebug('notifyParentAboutRedirect -> context, redirectUrl: ', {
+    'context': context,
+    'redirectUrl': redirectUrl
+  });
+  clearTimeout(TopNavBar.parentRedirectNotifier);
+  TopNavBar.parentRedirectNotifier = setTimeout(function () {
+    window.parent.postMessage({
+      'context': context,
+      'action': 'REDIRECT',
+      'url': redirectUrl
+    }, '*');
+  }, 100);
+};
+TopNavBar._attachNavEscapeListeners = function () {
+  var navIds = ['tutorials', 'exercises', 'certified', 'services'];
+  TopNavBar._loopArray(navIds, function (navId) {
+    document.getElementById('nav_' + navId).addEventListener('keydown', function (event) {
+      if (event.code === 'Escape') {
+        TopNavBar.closeNavItem(navId);
+      }
+    });
+  });
+};
+
+// < Google Search
+
+TopNavBar.googleSearchInit = function () {
+  TopNavBar._logDebug('googleSearchInit');
+  var gSearchScriptElm = document.getElementById('gSearch');
+  if (gSearchScriptElm == null) {
+    var cx = uic_r_y();
+    var gSearchScriptElmToInject = document.createElement('script');
+    gSearchScriptElmToInject.id = 'gSearch';
+    gSearchScriptElmToInject.type = 'text/javascript';
+    gSearchScriptElmToInject.async = true;
+    gSearchScriptElmToInject.src = 'https://www.google.com/cse/cse.js?cx=' + cx;
+    var firstScriptElm = document.getElementsByTagName('script')[0];
+    firstScriptElm.parentNode.insertBefore(gSearchScriptElmToInject, firstScriptElm);
+  }
+  TopNavBar.googleSearchFocusInput();
+};
+TopNavBar.googleSearchFocusInput = function () {
+  TopNavBar._logDebug('googleSearchFocusInput');
+  document.getElementById('tnb-google-search-input').focus();
+};
+TopNavBar.googleSearchResultsShown = function () {
+  var googleSearchResults = TopNavBar.element.querySelector('.gsc-results-wrapper-overlay.gsc-results-wrapper-visible');
+  return !!googleSearchResults;
+};
+TopNavBar.googleSearchResultsShownCallback = function (callback) {
+  if (TopNavBar.googleSearchResultsShown()) {
+    return callback();
+  }
+  var lookupAttempts = 512; // ~ 1 minute
+
+  var lookupInterval = setInterval(function () {
+    if (TopNavBar.googleSearchResultsShown()) {
+      clearInterval(lookupInterval);
+      return callback();
+    }
+    lookupAttempts--;
+    if (!lookupAttempts) {
+      console.error('TopNavBar -> googleSearchResultsShownCallback -> timeout');
+      return clearInterval(lookupInterval);
+    }
+  }, 100);
+};
+TopNavBar._googleSearchPatchResultLinks = function () {
+  TopNavBar._findInnerElements(document.getElementById('googleSearch'), '.gsc-results a', function (linkElm) {
+    linkElm.setAttribute('target', '_blank');
+  });
+};
+TopNavBar.googleSearchShowMobileContainer = function () {
+  document.getElementById('tnb-google-search-container').classList.add('tnb-mobile-active');
+};
+TopNavBar.googleSearchHideMobileContainer = function () {
+  document.getElementById('tnb-google-search-container').classList.remove('tnb-mobile-active');
+};
+TopNavBar._getElementPos = function (elm) {
+  var rect = elm.getBoundingClientRect();
+  return {
+    'left': rect.left + window.scrollX,
+    'top': rect.top + window.scrollY
+  };
+};
+TopNavBar._iframeProxyFloatingComponent = function (context, id, action, prs) {
+  if (!(TopNavBar.env === 'network' || TopNavBar._inIframe())) {
+    return;
+  }
+  if (typeof prs === 'undefined') {
+    prs = {};
+  }
+  var floatingComponent = prs;
+  floatingComponent.id = id;
+  floatingComponent.action = action;
+  window.parent.postMessage({
+    'context': context,
+    'action': 'PROXY_FLOATING_COMPONENT',
+    'floatingComponent': floatingComponent
+  }, '*');
+};
+TopNavBar.mountSearchSuggestionsLogic = function () {
+  var searchSuggestionsElm = document.getElementById('tnb-search-suggestions');
+  if (!searchSuggestionsElm) {
+    return;
+  }
+  var searchEntireW3schoolsBtn = searchSuggestionsElm.querySelector('#search-entire-w3schools-btn');
+  if (searchEntireW3schoolsBtn) {
+    searchEntireW3schoolsBtn.addEventListener('click', TopNavBar.googleSearchSubmit);
+  }
+};
+TopNavBar.unmountSearchSuggestionsLogic = function () {
+  var searchSuggestionsElm = document.getElementById('tnb-search-suggestions');
+  if (!searchSuggestionsElm) {
+    return;
+  }
+  var searchEntireW3schoolsBtn = searchSuggestionsElm.querySelector('#search-entire-w3schools-btn');
+  if (searchEntireW3schoolsBtn) {
+    searchEntireW3schoolsBtn.removeEventListener('click', TopNavBar.googleSearchSubmit);
+  }
+};
+TopNavBar.handleRedirect = function (context, redirectUrl) {
+  TopNavBar._logDebug('handleRedirect -> context: redirectUrl: ', {
+    'context': context,
+    'redirectUrl': redirectUrl
+  });
+  if (redirectUrl.indexOf('http') !== 0) {
+    if (redirectUrl.indexOf('/') !== 0) {
+      redirectUrl = '/' + redirectUrl;
+    }
+    redirectUrl = window.location.protocol + '//' + window.location.hostname + redirectUrl;
+    TopNavBar._logDebug('handleRedirect -> patched redirectUrl: ', redirectUrl);
+  }
+  if (TopNavBar.env === 'network' || TopNavBar._inIframe()) {
+    TopNavBar.notifyParentAboutRedirect(context, redirectUrl);
+  } else {
+    window.location.href = redirectUrl;
+  }
+};
+TopNavBar.searchWithSuggestions = function (inp) {
+  var searchSuggestionsElm,
+    val,
+    i,
+    l,
+    resultIndexes = [],
+    resultTexts = [],
+    html = '',
+    classAtt = '',
+    pos1,
+    posNext,
+    cc,
+    c0,
+    c1,
+    c2,
+    stillgo,
+    needle,
+    dd;
+  val = inp.value.trim().toUpperCase();
+  if (val == '') {
+    TopNavBar.closeSearchSuggestions();
+    return false;
+  }
+  TopNavBar.unmountSearchSuggestionsLogic();
+  searchSuggestionsElm = document.getElementById('tnb-search-suggestions');
+  // searchSuggestionsElm.innerHTML = '';
+  // searchSuggestionsElm.style.display = 'none';
+
+  for (i = 0; i < array_search_suggestions.length; i++) {
+    if (array_search_suggestions[i][3]) {
+      stillgo = false;
+      needle = array_search_suggestions[i][3];
+      if (!Array.isArray(needle)) needle = [needle];
+      for (var y in needle) {
+        if (val.indexOf(needle[y].toUpperCase()) > -1) stillgo = true;
+      }
+      if (stillgo == false) continue;
+    }
+    if (array_search_suggestions[i][0].toUpperCase().substr(0, val.length) == val || array_search_suggestions[i][2].toUpperCase().substr(0, val.length) == val) {
+      if (resultTexts.indexOf(array_search_suggestions[i][2]) == -1) {
+        resultIndexes.push(i);
+        resultTexts.push(array_search_suggestions[i][2]);
+        if (resultIndexes.length > 5) break;
+      }
+    }
+  }
+  for (i = 0; i < array_search_suggestions.length; i++) {
+    if (array_search_suggestions[i][3]) {
+      stillgo = false;
+      needle = array_search_suggestions[i][3];
+      if (!Array.isArray(needle)) needle = [needle];
+      for (var _y in needle) {
+        if (val.indexOf(needle[_y].toUpperCase()) > -1) stillgo = true;
+      }
+      if (stillgo == false) continue;
+    }
+    if (resultIndexes.indexOf(i) == -1 && (array_search_suggestions[i][0].toUpperCase().indexOf(val) > -1 || array_search_suggestions[i][2].toUpperCase().indexOf(val) > -1)) {
+      if (resultTexts.indexOf(array_search_suggestions[i][2]) == -1) {
+        resultIndexes.push(i);
+        resultTexts.push(array_search_suggestions[i][2]);
+        if (resultIndexes.length > 5) break;
+      }
+    }
+  }
+  for (i = 0; i < resultIndexes.length; i++) {
+    cc = array_search_suggestions[resultIndexes[i]][2];
+    pos1 = cc.toUpperCase().indexOf(val);
+    dd = '';
+    while (pos1 > -1) {
+      c0 = cc.substr(0, pos1);
+      c1 = '<span class="span_search">' + cc.substr(pos1, val.length) + '</span>';
+      c2 = cc.substr(pos1 + val.length);
+      dd += c0 + c1;
+      posNext = c2.toUpperCase().indexOf(val);
+      if (posNext > -1) {
+        cc = c2;
+        pos1 = posNext;
+      } else {
+        cc = dd + c2;
+        pos1 = -1;
+      }
+    }
+    classAtt = '';
+    if (html == '') classAtt = ' search_active';
+    html += '<a class="search_item search-suggestion-link' + classAtt + '" href="' + array_search_suggestions[resultIndexes[i]][1] + '">' + cc + '</a>';
+  }
+  classAtt = '';
+  if (html == '') classAtt = ' search_active';
+  html += '<button class="search_item' + classAtt + '" id="search-entire-w3schools-btn" style="border-top:1px solid #ddd;">Search W3Schools</button>';
+  searchSuggestionsElm.innerHTML = html;
+  if (TopNavBar.env === 'network' || TopNavBar._inIframe()) {
+    searchSuggestionsElm.style.opacity = '0';
+  }
+  searchSuggestionsElm.style.display = 'block';
+  var dispos = document.getElementById('tnb-google-search-container');
+  if (dispos) {
+    searchSuggestionsElm.style.left = dispos.getBoundingClientRect().left + 'px';
+  }
+  TopNavBar.mountSearchSuggestionsLogic();
+  TopNavBar._iframeProxyFloatingComponent('TopNavBar.searchWithSuggestions', 'tnb-search-suggestions', 'UPSERT', {
+    'tagName': searchSuggestionsElm.tagName.toLowerCase(),
+    'class': searchSuggestionsElm.getAttribute('class'),
+    'innerHtml': html,
+    'styles': {
+      'display': 'block'
+    },
+    'mountFuncName': 'mountSearchSuggestionsLogic',
+    'unmountFuncName': 'unmountSearchSuggestionsLogic'
+    // 'pos': TopNavBar._getElementPos(searchSuggestionsElm)
+  });
+};
+TopNavBar.searchFieldLostFocus = function (event) {
+  window.setTimeout(function () {
+    TopNavBar.closeSearchSuggestions();
+  }, 500);
+};
+TopNavBar.googleSearchAttachKeyPressHandler = function (event) {
+  var x,
+    n,
+    nn,
+    i,
+    cc = 0,
+    dd;
+  var keycode = event.keyCode;
+  if (keycode === 38 || keycode === 40) {
+    //up || down
+    //x = TopNavBar.element.getElementsByClassName("search_item");
+    x = document.getElementsByClassName('search_item');
+    for (i = 0; i < x.length; i++) {
+      if (x[i].className.indexOf('search_active') > -1) {
+        x[i].className = 'search_item';
+        n = i;
+        break;
+      }
+    }
+    if (keycode === 38) {
+      nn = n - 1;
+      if (nn < 0) nn = 0;
+    }
+    if (keycode === 40) {
+      nn = n + 1;
+      if (nn >= x.length) nn = nn - 1;
+    }
+    x[nn].className = 'search_item search_active';
+  }
+  if (keycode === 13) {
+    //enter
+    event.preventDefault();
+    //x = TopNavBar.element.getElementsByClassName("search_item");
+    x = document.getElementsByClassName('search_item');
+    if (x.length === 0) {
+      cc = 1;
+    }
+    for (i = 0; i < x.length; i++) {
+      if (x[i].className.indexOf('search_active') > -1) {
+        n = x[i].getAttribute('href');
+        // if (n.indexOf("#search-entire-w3schools") > -1) {
+        if (x[i].getAttribute('id') === 'search-entire-w3schools-btn') {
+          cc = 1;
+        }
+        break;
+      }
+    }
+    if (cc === 1) {
+      TopNavBar.googleSearchSubmit();
+      TopNavBar.closeSearchSuggestions();
+    } else {
+      if (n !== null) {
+        TopNavBar.handleRedirect('TopNavBar.googleSearchAttachKeyPressHandler', n);
+      }
+    }
+  }
+};
+TopNavBar.googleSearchInitializedCallback = function (callback) {
+  if ((typeof google === "undefined" ? "undefined" : _typeof(google)) == 'object') {
+    return callback();
+  }
+  var lookupAttempts = 512; // ~ 1 minute
+
+  var lookupInterval = setInterval(function () {
+    if ((typeof google === "undefined" ? "undefined" : _typeof(google)) == 'object') {
+      clearInterval(lookupInterval);
+      return callback();
+    }
+    lookupAttempts--;
+    if (!lookupAttempts) {
+      console.error('TopNavBar -> googleSearchInitializedCallback -> timeour');
+      return clearInterval(lookupInterval);
+    }
+  }, 100);
+};
+TopNavBar.googleSearchGetInputValue = function () {
+  return document.getElementById('tnb-google-search-input').value;
+};
+TopNavBar.googleSearchSubmit = function () {
+  TopNavBar._logDebug('googleSearchSubmit');
+  TopNavBar.googleSearchInit();
+  if (!TopNavBar.googleSearchGetInputValue()) {
+    TopNavBar._logDebug('googleSearchSubmit -> empty input');
+    return;
+  }
+  TopNavBar.googleSearchInitializedCallback(TopNavBar.googleSearchExecute);
+};
+TopNavBar.googleSearchExecute = function () {
+  var googleSearchInputValue = TopNavBar.googleSearchGetInputValue();
+  var googleSearchExecuteRes = google.search.cse.element.getElement('standard0').execute(googleSearchInputValue);
+  TopNavBar._logDebug('googleSearchExecute -> googleSearchInputValue, googleSearchExecuteRes: ', {
+    'googleSearchInputValue': googleSearchInputValue,
+    'googleSearchExecuteRes': googleSearchExecuteRes
+  });
+  TopNavBar.googleSearchResultsShownCallback(function () {
+    TopNavBar._googleSearchPatchResultLinks();
+    if (TopNavBar._inIframe()) {
+      TopNavBar.notifyParentAboutLayout('on google search results', {
+        'inputValue': googleSearchInputValue
+      });
+    }
+  });
+};
+
+// > Google Search
+
+TopNavBar.openMenu = function () {
+  var accordionNavElm = TopNavBar.element.querySelector('.tnb-mobile-nav');
+  var accordionNavBtnElm = TopNavBar.element.querySelector('.tnb-menu-btn');
+  if (accordionNavElm.classList.contains('tnb-active')) {
+    accordionNavElm.classList.remove('tnb-active');
+    accordionNavBtnElm.getElementsByTagName('i')[0].style.display = 'inline';
+    accordionNavBtnElm.getElementsByTagName('i')[1].style.display = 'none';
+    TopNavBar.closeAllNavItems();
+    TopNavBar.closeMenu();
+  } else {
+    accordionNavElm.classList.add('tnb-active');
+    accordionNavBtnElm.getElementsByTagName('i')[0].style.display = 'none';
+    accordionNavBtnElm.getElementsByTagName('i')[1].style.display = 'inline';
+  }
+  TopNavBar.notifyParentAboutLayout('on menu open (toggle)');
+};
+TopNavBar.closeMenu = function () {
+  TopNavBar.element.querySelector('.tnb-mobile-nav').classList.remove('tnb-active');
+  var accordionNavBtnElm = TopNavBar.element.querySelector('.tnb-menu-btn');
+  accordionNavBtnElm.getElementsByTagName('i')[0].style.display = 'inline';
+  accordionNavBtnElm.getElementsByTagName('i')[1].style.display = 'none';
+  TopNavBar.notifyParentAboutLayout('on menu close');
+};
+TopNavBar._closeMobileNav = function (sectionWrapperElm) {
+  sectionWrapperElm.classList.remove('tnb-active');
+  sectionWrapperElm.querySelector('.tnb-mobile-nav-section-body').innerHTML = '';
+  var sectionToggleBtnElm = sectionWrapperElm.querySelector('.tnb-mobile-nav-section-toggle-btn');
+  sectionToggleBtnElm.classList.remove('tnb-active');
+  var sectionToggleBtnIconElm = sectionToggleBtnElm.querySelector('.tnb-icon');
+  sectionToggleBtnIconElm.classList.remove('fa-caret-up');
+  sectionToggleBtnIconElm.classList.add('fa-caret-down');
+};
+TopNavBar._openMobileNav = function (sectionWrapperElm, sectionId) {
+  var sectionBodyElm = sectionWrapperElm.querySelector('.tnb-mobile-nav-section-body');
+  sectionBodyElm.innerHTML = TopNavBar.element.querySelector('#nav_' + sectionId).innerHTML;
+  var sectionFilterInputElm = sectionBodyElm.querySelector('.filter-input');
+  if (sectionFilterInputElm) {
+    sectionFilterInputElm.removeAttribute('oninput');
+    sectionFilterInputElm.addEventListener('input', function (event) {
+      TopNavBar.filter(event, 'sectionxs_' + sectionId);
+    });
+  }
+  var sectionFilterClearBtnElm = sectionBodyElm.querySelector('.filter-clear-btn');
+  if (sectionFilterClearBtnElm) {
+    sectionFilterClearBtnElm.removeAttribute('onclick');
+    sectionFilterClearBtnElm.addEventListener('click', function (event) {
+      TopNavBar.clearFilter(event, 'sectionxs_' + sectionId);
+    });
+  }
+  var sectionToggleBtnElm = sectionWrapperElm.querySelector('.tnb-mobile-nav-section-toggle-btn');
+  sectionToggleBtnElm.classList.add('tnb-active');
+  var sectionToggleBtnIconElm = sectionToggleBtnElm.querySelector('.tnb-icon');
+  sectionToggleBtnIconElm.classList.remove('fa-caret-down');
+  sectionToggleBtnIconElm.classList.add('fa-caret-up');
+  sectionWrapperElm.classList.add('tnb-active');
+  setTimeout(function () {
+    TopNavBar._scrollMobileNav(sectionWrapperElm);
+  }, 50);
+};
+TopNavBar._scrollMobileNav = function (targetElm, smoothScroll, scrollTopValue) {
+  clearInterval(TopNavBar.mobileNavScrollInterval);
+  var scrollElm = TopNavBar.element.querySelector('#tnb-mobile-nav');
+  var scrollElmOffset = scrollElm.getBoundingClientRect();
+  var targetElmOffset = targetElm.getBoundingClientRect();
+  TopNavBar._logDebug('_scrollMobileNav: ', {
+    'scrollElm': scrollElm,
+    'scrollElm.scrollTop': scrollElm.scrollTop,
+    'scrollElmOffset': scrollElmOffset,
+    'targetElmOffset': targetElmOffset,
+    'scrollTopValue': scrollTopValue
+  });
+  if (typeof smoothScroll === 'undefined') {
+    smoothScroll = true;
+  }
+  if (typeof scrollTopValue === 'undefined') {
+    scrollTopValue = targetElmOffset.top + scrollElm.scrollTop - scrollElmOffset.top - 1;
+  }
+  TopNavBar._logDebug('_scrollMobileNav -> scrollTopValue: ', scrollTopValue);
+  TopNavBar._logDebug('_scrollMobileNav -> scrollElm.scrollTop: ', scrollElm.scrollTop);
+  TopNavBar._logDebug('_scrollMobileNav -> scrollTopValue - scrollElm.scrollTop: ', scrollTopValue - scrollElm.scrollTop);
+  if (scrollTopValue === scrollElm.scrollTop) {
+    return;
+  }
+  if (!smoothScroll) {
+    scrollElm.scrollTop = scrollTopValue;
+    return;
+  }
+  var scrollIntervalDelay = 2;
+  var scrollAmount = 0;
+  var scrollAmountPerIntervalTick = 0;
+  if (scrollElm.scrollTop < scrollTopValue) {
+    scrollAmount = scrollTopValue - scrollElm.scrollTop;
+    scrollAmountPerIntervalTick = scrollAmount / 50 + 10;
+    TopNavBar._logDebug('_scrollMobileNav -> scrollAmount (add): ', scrollAmount);
+    TopNavBar._logDebug('_scrollMobileNav -> scrollAmountPerIntervalTick (add): ', scrollAmountPerIntervalTick);
+    TopNavBar.mobileNavScrollInterval = setInterval(function () {
+      scrollElm.scrollTop += scrollAmountPerIntervalTick;
+      if (scrollElm.scrollTop >= scrollTopValue) {
+        scrollElm.scrollTop = scrollTopValue;
+        clearInterval(TopNavBar.mobileNavScrollInterval);
+      }
+    }, scrollIntervalDelay);
+  } else {
+    scrollAmount = scrollElm.scrollTop - scrollTopValue;
+    scrollAmountPerIntervalTick = scrollAmount / 50 + 10;
+    TopNavBar._logDebug('_scrollMobileNav -> scrollAmount (sub): ', scrollAmount);
+    TopNavBar._logDebug('_scrollMobileNav -> scrollAmountPerIntervalTick (sub): ', scrollAmountPerIntervalTick);
+    TopNavBar.mobileNavScrollInterval = setInterval(function () {
+      scrollElm.scrollTop -= scrollAmountPerIntervalTick;
+      if (scrollElm.scrollTop <= scrollTopValue) {
+        scrollElm.scrollTop = scrollTopValue;
+        clearInterval(TopNavBar.mobileNavScrollInterval);
+      }
+    }, scrollIntervalDelay);
+  }
+};
+TopNavBar.toggleMobileNav = function (event, sectionId) {
+  var sectionToggleBtnElm = event.target.classList.contains('w3-button') ? event.target : event.target.parentElement;
+  var sectionWrapperElm = sectionToggleBtnElm.parentElement;
+  if (sectionWrapperElm.classList.contains('tnb-active')) {
+    // close current section
+    TopNavBar._closeMobileNav(sectionWrapperElm);
+    setTimeout(function () {
+      // TopNavBar._scrollMobileNav(sectionWrapperElm, false, 0);
+      TopNavBar._scrollMobileNav(sectionWrapperElm, true, 0);
+    }, 50);
+  } else {
+    // open section
+    // check/close other open sections
+    TopNavBar._findInnerElements(TopNavBar.element, '.tnb-mobile-nav-section.tnb-active', function (sectionWrapperElm) {
+      TopNavBar._closeMobileNav(sectionWrapperElm);
+    });
+    TopNavBar._openMobileNav(sectionWrapperElm, sectionId);
+  }
+};
+TopNavBar.openNavItem = function (navId) {
+  if (TopNavBar.element.querySelector('#nav_' + navId).style.display === 'block') {
+    TopNavBar.closeNavItem(navId);
+    TopNavBar.element.classList.remove('full-screen');
+  } else {
+    TopNavBar.closeAllNavItems();
+    TopNavBar.element.classList.add('full-screen');
+    TopNavBar.element.querySelector('#nav_' + navId).style.display = 'block';
+    TopNavBar.element.querySelector('#nav_' + navId).focus();
+    if (TopNavBar.element.querySelector('#navbtn_' + navId)) {
+      TopNavBar.element.querySelector('#navbtn_' + navId).getElementsByTagName('i')[0].style.display = 'none';
+      TopNavBar.element.querySelector('#navbtn_' + navId).getElementsByTagName('i')[1].style.display = 'inline';
+      TopNavBar.element.querySelector('#navbtn_' + navId).classList.add('mystyle');
+    }
+    TopNavBar.notifyParentAboutLayout('on nav item open', {
+      'navId': navId
+    });
+  }
+};
+TopNavBar.closeNavItem = function (navId) {
+  var navItemElm = TopNavBar.element.querySelector('#nav_' + navId);
+  if (!navItemElm) {
+    return;
+  }
+  navItemElm.style.display = 'none';
+  TopNavBar.element.classList.remove('full-screen');
+  if (navId !== 'services') {
+    try {
+      var inputAltEvent = new Event('input', {
+        'bubbles': true,
+        'cancelable': true
+      });
+      navItemElm.querySelector('input').value = '';
+      navItemElm.querySelector('input').dispatchEvent(inputAltEvent);
+    } catch (exc) {
+      console.error(exc);
+    }
+  }
+  if (TopNavBar.element.querySelector('#navbtn_' + navId)) {
+    TopNavBar.element.querySelector('#navbtn_' + navId).getElementsByTagName('i')[0].style.display = 'inline';
+    TopNavBar.element.querySelector('#navbtn_' + navId).getElementsByTagName('i')[1].style.display = 'none';
+    TopNavBar.element.querySelector('#navbtn_' + navId).classList.remove('mystyle');
+  }
+  TopNavBar.notifyParentAboutLayout('on nav item close', {
+    'navId': navId
+  });
+};
+TopNavBar.closeSearchSuggestions = function () {
+  TopNavBar.unmountSearchSuggestionsLogic();
+  var searchSuggestionsElm = document.getElementById('tnb-search-suggestions');
+  searchSuggestionsElm.style.display = 'none';
+  searchSuggestionsElm.innerHTML = '';
+  TopNavBar._iframeProxyFloatingComponent('TopNavBar.closeSearchSuggestions', 'tnb-search-suggestions', 'REMOVE', {
+    // 'mountFuncName': 'mountSearchSuggestionsLogic',
+    'unmountFuncName': 'unmountSearchSuggestionsLogic'
+  });
+};
+
+// < menu filter
+TopNavBar.allMenuItemsInCategoryAreHidden = function (menu, category) {
+  var elements = menu.querySelectorAll("[data-category=\"".concat(category, "\"]"));
+  for (var i = 0; i < elements.length; i++) {
+    if (!elements[i].classList.contains('d-none')) {
+      return false;
+    }
+  }
+  return true;
+};
+TopNavBar.clearFilter = function (event, sectionId) {
+  var filterInnerWrapperElm = event.target.classList.contains('filter-clear-btn') ? event.target.parentElement : event.target.parentElement.parentElement;
+  var filterInputElm = filterInnerWrapperElm.querySelector('.filter-input');
+  // console.log('filterInputElm: ', filterInputElm);
+
+  if (filterInputElm) {
+    filterInputElm.value = '';
+  }
+  TopNavBar.filter(event, sectionId, '');
+};
+TopNavBar._filterServices = function (event, sectionId, filterValue) {
+  // TopNavBar._logDebug('filterValue: ', filterValue);
+
+  var sectionElm = TopNavBar.element.querySelector('#' + sectionId);
+  var serviceboxesElm = sectionElm.querySelector('.serviceboxes');
+  var noMatchElm = serviceboxesElm.querySelector('#no-match');
+  if (noMatchElm) {
+    noMatchElm.remove();
+  }
+  if (!filterValue) {
+    TopNavBar._findInnerElements(serviceboxesElm, '.servicebox', function (elm) {
+      elm.style.display = 'block';
+    });
+  } else {
+    var matchFound = false;
+    TopNavBar._findInnerElements(serviceboxesElm, '.servicebox', function (elm) {
+      // TopNavBar._logDebug('elm.textContent: ', elm.textContent);
+      if (elm.textContent.toLowerCase().indexOf(filterValue) !== -1) {
+        elm.style.display = 'block';
+        matchFound = true;
+      } else {
+        elm.style.display = 'none';
+      }
+    });
+    if (!matchFound) {
+      var noMatchMessage = document.createElement('div');
+      noMatchMessage.id = 'no-match';
+      noMatchMessage.textContent = 'No matches found';
+      noMatchMessage.style.marginTop = '25px';
+      noMatchMessage.style.textAlign = 'center';
+      serviceboxesElm.appendChild(noMatchMessage);
+    }
+  }
+};
+TopNavBar.filter = function (event, sectionId, altValue) {
+  var filterValue = typeof altValue !== 'undefined' ? altValue : event.target.value.toLowerCase();
+  if (sectionId === 'nav_services' || sectionId === 'sectionxs_services') {
+    return TopNavBar._filterServices(event, sectionId, filterValue);
+  }
+  var sectionElm = TopNavBar.element.querySelector('#' + sectionId);
+  var noMatchElm = sectionElm.querySelector('#no-match');
+  if (noMatchElm) {
+    noMatchElm.remove();
+  }
+  if (sectionId !== 'nav_tutorials' && sectionId !== 'sectionxs_tutorials') {
+    TopNavBar._findInnerElements(sectionElm, '.black-box-container', function (elm) {
+      elm.style.display = 'block';
+    });
+  }
+  var uniqueCategoriesDeduplicator = {};
+  TopNavBar._findInnerElements(sectionElm, '[data-category]', function (elm) {
+    uniqueCategoriesDeduplicator[elm.getAttribute('data-category')] = true;
+  });
+  var uniqueCategories = Object.keys(uniqueCategoriesDeduplicator);
+  TopNavBar._findInnerElements(sectionElm, '[data-name]', function (elm) {
+    var dataName = elm.getAttribute('data-name');
+    if (!dataName.includes(filterValue)) {
+      elm.classList.remove('d-block');
+      elm.classList.add('d-none');
+    } else {
+      elm.classList.remove('d-none');
+      elm.classList.add('d-block');
+    }
+  });
+  var emptyCategories = [];
+  uniqueCategories.forEach(function (category) {
+    var allHidden = TopNavBar.allMenuItemsInCategoryAreHidden(sectionElm, category);
+    if (allHidden) {
+      emptyCategories.push(category);
+    }
+
+    // hide section heading element if all inner items are hidden
+    TopNavBar._findInnerElements(sectionElm, "[data-heading=\"".concat(category, "_title\"]"), function (headingElm) {
+      if (allHidden) {
+        headingElm.classList.add('d-none');
+      } else {
+        headingElm.classList.remove('d-none');
+      }
+    });
+  });
+
+  // Checks if all categories are empty, if true displays a message "No match found..."
+  if (emptyCategories.length === uniqueCategories.length) {
+    var noMatchMessage = document.createElement('div');
+    noMatchMessage.id = 'no-match';
+    noMatchMessage.textContent = 'No matches found';
+    noMatchMessage.style.marginTop = '25px';
+    noMatchMessage.style.textAlign = 'center';
+    sectionElm.querySelector('.w3-content').appendChild(noMatchMessage);
+    if (sectionId !== 'nav_tutorials' && sectionId !== 'sectionxs_tutorials') {
+      TopNavBar._findInnerElements(sectionElm, '.black-box-container', function (elm) {
+        elm.style.display = 'none';
+      });
+    }
+  }
+};
+
+// > menu filter
+TopNavBar.sortMenu = function (sectionId, type) {
+  var section = TopNavBar.element.querySelector('#nav_' + sectionId);
+  var linkLists = TopNavBar._menuSectionsInTab[sectionId].map(function (listId) {
+    return section.querySelector("#".concat(listId));
+  });
+  if (type.toLowerCase() === 'alphabetically') {
+    linkLists.forEach(function (list) {
+      var divsArray = TopNavBar._findInnerElements(list, 'div');
+
+      // Sort the child divs.
+      divsArray.sort(function (a, b) {
+        var aText = a.querySelector('a').innerText;
+        var bText = b.querySelector('a').innerText;
+        return aText.toLowerCase().localeCompare(bText.toLowerCase());
+      });
+
+      // Append each sorted div back into the parent.
+      divsArray.forEach(function (div) {
+        list.appendChild(div);
+      });
+    });
+  } else {
+    linkLists.forEach(function (section) {
+      var divsArray = TopNavBar._findInnerElements(section, 'div');
+      // Sort based on original index.
+      divsArray.sort(function (a, b) {
+        return a.dataset.originalIndex - b.dataset.originalIndex;
+      });
+      // Append each sorted div back into the parent.
+      divsArray.forEach(function (div) {
+        section.appendChild(div);
+      });
+    });
+  }
+};
+TopNavBar.closeAllNavItems = function () {
+  TopNavBar.closeNavItem('tutorials');
+  TopNavBar.closeNavItem('exercises');
+  TopNavBar.closeNavItem('certified');
+  TopNavBar.closeNavItem('services');
+  TopNavBar.element.classList.remove('full-screen');
+  TopNavBar.closeSearchSuggestions();
+};
+TopNavBar.initUserPreferredTheme = function () {
+  TopNavBar.toggleUserPreferredTheme(true);
+};
+TopNavBar.toggleUserPreferredTheme = function (init) {
+  if (typeof init === 'undefined') {
+    init = false;
+  }
+
+  // var codeTheme = localStorage.getItem('preferredmode');
+  var pageTheme = localStorage.getItem('preferredpagemode');
+  if (!init) {
+    if (pageTheme == 'dark') {
+      pageTheme = 'light';
+    } else {
+      pageTheme = 'dark';
+    }
+  }
+  var bodyClassName = document.body.className.replace('darktheme', '').replace('darkpagetheme', '').replace('  ', ' ');
+  if (pageTheme == 'dark') {
+    bodyClassName += ' darktheme';
+    bodyClassName += ' darkpagetheme';
+  }
+  document.body.className = bodyClassName;
+  localStorage.setItem('preferredmode', pageTheme);
+  localStorage.setItem('preferredpagemode', pageTheme);
+};
+
+// generic one
+TopNavBar.mouseHandler = function (event, elm, closingOrExtra) {
+  TopNavBar._logDebug('mouseHandler -> args: ', arguments);
+  if (typeof closingOrExtra === 'undefined') {
+    closingOrExtra = false;
+  }
+  var icon = elm.querySelector('i');
+  if (event.type === 'keydown') {
+    if (event.code !== 'Enter') return;
+    if (event.code === 'Enter') {
+      if (elm.id.includes('close-nav-x')) {
+        TopNavBar.closeNavItem(closingOrExtra); // closingOrExtra in this case is 'tutorials' | 'exercises' | 'certified' | 'services'
+        return;
+      }
+      var modalonEnter = elm.nextElementSibling;
+      icon.className = modalonEnter.style.display === 'block' ? 'fa fa-caret-down filter-caret' : 'fa fa-caret-up filter-caret';
+      modalonEnter.style.display = modalonEnter.style.display === 'block' ? 'none' : 'block';
+    } else {
+      event.preventDefault();
+    }
+  } else if (elm.id.includes('close-nav-x')) {
+    TopNavBar.closeNavItem(closingOrExtra); // closingOrExtra in this case is 'tutorials' | 'exercises' | 'certified' | 'services'
+  } else {
+    var modalonKeydown = elm.querySelector('.filter-modal-container');
+    icon.className = closingOrExtra ? 'fa fa-caret-down filter-caret' : 'fa fa-caret-up filter-caret';
+    modalonKeydown.style.display = closingOrExtra ? 'none' : 'block';
+  }
+};
+TopNavBar._attachMenuSortLogic = function () {
+  TopNavBar._logDebug('_attachMenuSortLogic');
+
+  // used for restoring original sort order
+  var storeOriginalSortIndexes = function storeOriginalSortIndexes() {
+    var menus = [];
+    TopNavBar._loopObj(TopNavBar._menuSectionsInTab, function (tabListIds, tabId) {
+      menus.push(tabListIds.map(function (listId) {
+        return TopNavBar.element.querySelector("#nav_".concat(tabId)).querySelector("#".concat(listId));
+      }));
+    });
+    menus.forEach(function (lists) {
+      lists.forEach(function (list) {
+        TopNavBar._findInnerElements(list, 'div', function (divElm, divElmIndex) {
+          divElm.dataset.originalIndex = divElmIndex;
+        });
+      });
+    });
+  };
+  storeOriginalSortIndexes();
+  var attachSortBtnEventListeners = function attachSortBtnEventListeners(sortBtnElm) {
+    sortBtnElm.addEventListener('mouseenter', function (event) {
+      TopNavBar.mouseHandler(event, sortBtnElm, false);
+    });
+    sortBtnElm.addEventListener('mouseleave', function (event) {
+      TopNavBar.mouseHandler(event, sortBtnElm, true);
+    });
+    sortBtnElm.addEventListener('focusout', function (event) {
+      var isClickInside = sortBtnElm.contains(event.relatedTarget);
+      if (!isClickInside) {
+        sortBtnElm.querySelector('.filter-modal-container').style.display = 'none';
+      }
+    });
+  };
+  var enabledSortNavs = ['tutorials', 'exercises', 'certified'];
+  TopNavBar._loopArray(enabledSortNavs, function (sortNav) {
+    var sortBtnElm = TopNavBar.element.querySelector('#' + sortNav + '-sort-btn');
+    if (sortBtnElm) {
+      attachSortBtnEventListeners(sortBtnElm);
+      var sortFilterContainer = sortBtnElm.querySelector('.filter-modal');
+      TopNavBar._logDebug('sortNav, sortFilterContainer: ', {
+        sortNav: sortNav,
+        sortFilterContainer: sortFilterContainer
+      });
+      if (sortFilterContainer) {
+        TopNavBar._findInnerElements(sortFilterContainer, 'button', function (buttonElm) {
+          buttonElm.addEventListener('click', function (event) {
+            TopNavBar._logDebug('sortNav click: ', {
+              sortNav: sortNav,
+              eventTarget: event.target
+            });
+            var sortBy = event.target.innerText;
+            TopNavBar.element.querySelector("#".concat(sortNav, "-active-sorting")).textContent = sortBy;
+            var sortByBtn = sortFilterContainer.querySelector("#".concat(sortNav, "-").concat(sortBy.toLowerCase()));
+            sortFilterContainer.querySelector('.w3-button.active').classList.remove('active');
+            sortByBtn.classList.add('active');
+            TopNavBar.sortMenu(sortNav, sortBy);
+          });
+        });
+      }
+    }
+  });
+};
+TopNavBar._tweakElement = function (prs) {
+  TopNavBar.logDebug('_tweakElement -> prs: ', prs);
+  if (typeof prs === 'undefined') {
+    TopNavBar.logError('_tweakElement -> prs is undefined');
+    return;
+  }
+  if (typeof prs.selector === 'undefined') {
+    TopNavBar.logError('_tweakElement -> prs.selector is undefined');
+    return;
+  }
+  var wrapperElm = TopNavBar.element;
+  if (typeof prs.wrapper !== 'undefined') {
+    if (prs.wrapper === 'SecondaryNav') {
+      if (TopNavBar.hasNetworkSecondaryNav) {
+        wrapperElm = TopNavBar.element.querySelector('#secondary-top-nav-bar');
+      } else {
+        wrapperElm = document.getElementById('subtopnav');
+      }
+    }
+  }
+  var elm = wrapperElm.querySelector(prs.selector);
+  if (!elm) {
+    TopNavBar.logError('_tweakElement -> element not found: ', {
+      'selector': prs.selector
+    });
+    return;
+  }
+  if (typeof prs.addClass !== 'undefined') {
+    elm.classList.add(prs.addClass);
+  } else if (typeof prs.addClasses !== 'undefined') {
+    TopNavBar._loopArray(prs.addClasses, function (className) {
+      elm.classList.add(className);
+    });
+  }
+  if (typeof prs.removeClass !== 'undefined') {
+    elm.classList.remove(prs.addClass);
+  } else if (typeof prs.removeClasses !== 'undefined') {
+    TopNavBar._loopArray(prs.removeClasses, function (className) {
+      elm.classList.remove(className);
+    });
+  }
+  if (typeof prs.setAttributes !== 'undefined') {
+    TopNavBar._loopObj(prs.setAttributes, function (value, key) {
+      elm.setAttribute(key, value);
+    });
+  }
+  if (typeof prs.removeAttributes !== 'undefined') {
+    TopNavBar._loopArray(prs.removeAttributes, function (attrName) {
+      elm.removeAttribute(attrName);
+    });
+  }
+  if (typeof prs.setStyles !== 'undefined') {
+    TopNavBar._loopObj(prs.setStyles, function (value, key) {
+      elm.style[key] = value;
+    });
+  }
+  if (typeof prs.removeStyles !== 'undefined') {
+    TopNavBar._loopArray(prs.removeStyles, function (styleName) {
+      elm.style.removeProperty(styleName);
+    });
+  }
+  if (typeof prs.setText !== 'undefined') {
+    elm.textContent = prs.setText;
+  }
+  if (typeof prs.setHtml !== 'undefined') {
+    elm.innerHTML = prs.setHtml;
+  }
+  if (typeof prs.remove !== 'undefined' && prs.remove) {
+    elm.remove();
+  }
+};
+TopNavBar.iframeTweakElements = function (prs) {
+  TopNavBar.logDebug('iframeTweakElements -> prs: ', prs);
+  if (!TopNavBar.inIframe) {
+    TopNavBar.logError('iframeTweakElements -> not in iframe');
+    return;
+  }
+  if (Array.isArray(prs)) {
+    TopNavBar._loopArray(prs, function (elmPrs) {
+      TopNavBar._tweakElement(elmPrs);
+    });
+  } else {
+    TopNavBar._tweakElement(prs);
+  }
+};
+TopNavBar.tutorialPaths = ['html', 'css', 'bootstrap', 'bootstrap3', 'bootstrap4', 'bootstrap5', 'w3css', 'sass', 'colors', 'icons', 'graphics', 'charsets', 'ai', 'gen_ai', 'python', 'dsa', 'datascience', 'python', 'statistics', 'excel', 'googlesheets', 'js', 'react', 'jquery', 'vue', 'angular', 'js', 'appml', 'w3js', 'python', 'sql', 'mysql', 'php', 'java', 'c', 'cpp', 'cs', 'r', 'kotlin', 'go', 'django', 'postgresql', 'typescript', 'asp', 'nodejs', 'git', 'mongodb', 'xml'];
+TopNavBar._encryptData = function (data) {
+  // Simple XOR encryption with a fixed key
+  var key = 'w3s_k3y_2024';
+  var encrypted = '';
+  for (var i = 0; i < data.length; i++) {
+    encrypted += String.fromCharCode(data.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+  }
+  return btoa(encrypted);
+};
+TopNavBar._decryptData = function (encryptedData) {
+  try {
+    var key = 'w3s_k3y_2024';
+    var data = atob(encryptedData);
+    var decrypted = '';
+    for (var i = 0; i < data.length; i++) {
+      decrypted += String.fromCharCode(data.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+    }
+    return decrypted;
+  } catch (e) {
+    console.error('Failed to decrypt tutorial data');
+    return null;
+  }
+};
+TopNavBar.setLastVisitedTutorial = function (tutorialData) {
+  try {
+    if (TopNavBar.env === 'network' || TopNavBar._inIframe()) {
+      return; // cache can be set only from classic
+    }
+    if (!tutorialData || _typeof(tutorialData) !== 'object') {
+      throw new Error('Invalid tutorial data');
+    }
+    var requiredFields = ['topicName', 'lessonName', 'lessonRelPath', 'progress'];
+    for (var _i = 0, _requiredFields = requiredFields; _i < _requiredFields.length; _i++) {
+      var field = _requiredFields[_i];
+      if (typeof tutorialData[field] === 'string' && !tutorialData[field].trim()) {
+        throw new Error("Missing or invalid ".concat(field));
+      }
+    }
+
+    // tutorialData.lessonRelPath = tutorialData.lessonRelPath.replace(/[^a-zA-Z0-9/_.-]/g, '');
+
+    // if (
+    //   !(TopNavBar.env === 'network' || TopNavBar._inIframe()) &&
+    //   TopNavBar.tutorialPaths.includes(window.location.pathname.split('/')[1])
+    // ) {
+    var now = new Date();
+    var expiryDate = new Date(now.setMonth(now.getMonth() + 1));
+    var cookieData = TopNavBar._encryptData(JSON.stringify(_objectSpread(_objectSpread({}, tutorialData), {}, {
+      timestamp: Date.now()
+    })));
+    document.cookie = "__up1_w3s2025_1=".concat(cookieData, "; expires=").concat(expiryDate.toUTCString(), "; path=/; domain=.w3schools.com; SameSite=Strict").concat(window.location.protocol === 'https:' ? '; Secure' : '');
+    TopNavBar._logDebug('Cookie written:', {
+      topicName: tutorialData.topicName,
+      lessonName: tutorialData.lessonName,
+      lessonRelPath: tutorialData.lessonRelPath,
+      progress: tutorialData.progress,
+      expires: expiryDate.toUTCString()
+    });
+    // }
+  } catch (e) {
+    console.error('Failed to set tutorial cookie:', e);
+  }
+};
+TopNavBar.getLastVisitedTutorial = function () {
+  try {
+    /*
+    if (TopNavBar.env === 'network' || TopNavBar._inIframe()) {
+      return null;
+    }
+    */
+
+    var cookies = document.cookie.split(';');
+    var tutorialCookie = cookies.find(function (c) {
+      return c.trim().startsWith('__up1_w3s2025_1=');
+    });
+    if (!tutorialCookie) {
+      TopNavBar._logDebug('No tutorial cookie found');
+      return null;
+    }
+    var encryptedData = tutorialCookie.split('=')[1];
+    var decryptedData = TopNavBar._decryptData(encryptedData);
+    if (!decryptedData) {
+      TopNavBar._logDebug('Failed to decrypt cookie data');
+      return null;
+    }
+    var tutorialData = JSON.parse(decryptedData);
+    var requiredFields = ['topicName', 'lessonName', 'lessonRelPath', 'progress', 'timestamp'];
+    for (var _i2 = 0, _requiredFields2 = requiredFields; _i2 < _requiredFields2.length; _i2++) {
+      var field = _requiredFields2[_i2];
+      if (!tutorialData[field]) {
+        return null;
+      }
+    }
+
+    // Check if cookie is expired (1 month)
+    if (Date.now() - tutorialData.timestamp > 30 * 24 * 60 * 60 * 1000) {
+      return null;
+    }
+
+    // Sanitize path before returning
+    // tutorialData.lessonRelPath = tutorialData.lessonRelPath.replace(/[^a-zA-Z0-9/_.-]/g, '');
+
+    var result = {
+      topicName: tutorialData.topicName,
+      // lessonName: tutorialData.lessonName.replace(/^[-\s]+|[-\s]+$/g, '') || 'HOME',
+      lessonName: tutorialData.lessonName,
+      lessonRelPath: tutorialData.lessonRelPath,
+      progress: tutorialData.progress,
+      lessonsScore: 0,
+      // TODO: cleanup
+      lessonsTotal: 1 // TODO: cleanup
+    };
+    TopNavBar._logDebug('Cookie read:', _objectSpread(_objectSpread({}, result), {}, {
+      timestamp: tutorialData.timestamp,
+      age: Math.round((Date.now() - tutorialData.timestamp) / (1000 * 60 * 60 * 24)) + ' days'
+    }));
+    return result;
+  } catch (e) {
+    console.error('Failed to read tutorial cookie:', e);
+    return null;
+  }
+};
+TopNavBar._myLearningStateLookup = function () {
+  return new Promise(function (resolve) {
+    if (TopNavBar._inIframe()) {
+      resolve({
+        error: {
+          code: 'IFRAMED',
+          description: 'Iframed'
+        },
+        data: null
+      });
+    }
+    if (typeof MyLearning === 'undefined') {
+      resolve({
+        error: {
+          code: 'ENV_NOT_FOUND',
+          description: 'Env not found'
+        },
+        data: null
+      });
+    }
+    Util.objFieldOnSetCallback({
+      scopeRef: MyLearning,
+      fieldName: 'stateFetched',
+      callback: function callback(res) {
+        resolve({
+          error: res.error,
+          data: MyLearning
+        });
+      }
+    });
+  });
+};
+TopNavBar._extractCurrentProgressFromMyLearningState = function (mylState) {
+  if (mylState.pageType !== 'lesson') {
+    return null;
+  }
+  var _mylState$lessonFullN = mylState.lessonFullName.split(/\s*-\s*/),
+    _mylState$lessonFullN2 = _slicedToArray(_mylState$lessonFullN, 3),
+    topicName = _mylState$lessonFullN2[0],
+    chapterName = _mylState$lessonFullN2[1],
+    lessonName = _mylState$lessonFullN2[2];
+  var output = {
+    topicName: topicName,
+    lessonName: lessonName,
+    lessonRelPath: window.location.pathname.substring(1),
+    // remove leading slash
+    progress: Math.min(Math.round(mylState.pages_read_count / mylState.total_pages_count * 100), 100)
+  };
+  TopNavBar._logDebug('_extractCurrentProgressFromMyLearningState -> output: ', output);
+  return output;
+};
+TopNavBar.fetchUserData = function (mylState) {
+  return new Promise(function (resolve) {
+    if (TopNavBar.cachedUserData) {
+      TopNavBar._logDebug('fetchUserData -> cached: ', TopNavBar.cachedUserData);
+      return resolve(TopNavBar.cachedUserData);
+    }
+    Promise.all([new Promise(function (resolveProfile) {
+      Util.fetch({
+        context: 'TopNavBar -> fetchUserData -> profile',
+        method: 'GET',
+        url: TopNavBar.pathfinderApiBaseUrl + '/profile-api/profile/basic-lite?fields=personal',
+        prepareResponseData: true,
+        withUserSession: true,
+        handleUserSessionRefresh: false,
+        handleUserSessionRedirection: false,
+        callback: function callback(reqRes) {
+          var _reqRes$data;
+          if (reqRes.error.code === '0' && (_reqRes$data = reqRes.data) !== null && _reqRes$data !== void 0 && _reqRes$data.personal) {
+            var _reqRes$data$personal = reqRes.data.personal,
+              firstName = _reqRes$data$personal.firstName,
+              lastName = _reqRes$data$personal.lastName,
+              profilePicture = _reqRes$data$personal.profilePicture;
+            resolveProfile({
+              fullName: "".concat(firstName, " ").concat(lastName).trim(),
+              firstName: firstName,
+              lastName: lastName
+            });
+            if (profilePicture) {
+              TopNavBar.renderProfilePicture(TopNavBar.altProfileBaseUrl + '/' + profilePicture);
+            }
+          } else {
+            console.error('Error fetching profile data:', reqRes);
+            resolveProfile(null);
+            TopNavBar._logWarning('TopNavBar -> _applyUserSessionUiTweaks -> profile picture -> reqRes: ', reqRes);
+          }
+        }
+      });
+    }), new Promise(function (resolveProgress) {
+      Util.fetch({
+        context: 'TopNavBar -> fetchUserData -> progress',
+        method: 'GET',
+        url: "".concat(TopNavBar._myLearningApiBaseUrl, "/api/user/state?lite=true"),
+        prepareResponseData: true,
+        withUserSession: true,
+        handleUserSessionRefresh: false,
+        handleUserSessionRedirection: false,
+        callback: function callback(reqRes) {
+          if (reqRes.error.code === '0' && reqRes.data) {
+            resolveProgress(reqRes.data);
+          } else {
+            console.error('Error fetching progress data:', reqRes);
+            resolveProgress(null);
+          }
+        }
+      });
+    })]).then(function (_ref) {
+      var _ref2 = _slicedToArray(_ref, 2),
+        profileData = _ref2[0],
+        progressData = _ref2[1];
+      TopNavBar._logDebug('fetchUserData -> profileData, progressData', {
+        profileData: profileData,
+        progressData: progressData
+      });
+      if (!profileData) {
+        resolve(null);
+        return;
+      }
+      if (typeof mylState !== 'undefined' && mylState !== null) {
+        var _currentProgress = TopNavBar._extractCurrentProgressFromMyLearningState(mylState);
+        if (_currentProgress !== null) {
+          // Set cookie for current tutorial
+          TopNavBar.setLastVisitedTutorial(_currentProgress);
+        } else {
+          _currentProgress = TopNavBar.getLastVisitedTutorial();
+        }
+        TopNavBar.cachedUserData = _objectSpread(_objectSpread({}, profileData), {}, {
+          currentProgress: _currentProgress
+        });
+        resolve(TopNavBar.cachedUserData);
+        return;
+      }
+      var currentTopic = null;
+      var mostRecentTopic = null;
+      var mostRecentTime = 0;
+
+      // Try to get last visited from cookie first
+      currentTopic = TopNavBar.getLastVisitedTutorial();
+      if (progressData !== null && progressData !== void 0 && progressData.topics) {
+        var shouldShowCurrentTopic = TopNavBar.tutorialPaths.includes(window.location.pathname.split('/')[1]);
+        var currentPath = shouldShowCurrentTopic ? window.location.pathname.split('/')[1] : null;
+
+        // Only override cookie if we're on a tutorial page and not in network/iframe
+        if (shouldShowCurrentTopic && currentPath && !(TopNavBar.env === 'network' || TopNavBar._inIframe())) {
+          var _document$querySelect;
+          var tutorialTitle = document.title.replace(' Tutorial', '').replace(' | W3Schools', '') || ((_document$querySelect = document.querySelector('h1')) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.textContent) || currentPath.toUpperCase();
+          var defaultTopic = {
+            topicName: tutorialTitle.split(' ')[0],
+            lessonName: tutorialTitle.split(' ').slice(1).join(' ').replace(/^[-\s]+|[-\s]+$/g, '') || 'HOME',
+            lessonRelPath: window.location.pathname.substring(1),
+            lessonsScore: 0,
+            lessonsTotal: 1
+          };
+          currentTopic = defaultTopic;
+
+          // Set cookie for current tutorial
+          TopNavBar.setLastVisitedTutorial({
+            topicName: defaultTopic.topicName,
+            lessonName: defaultTopic.lessonName,
+            lessonRelPath: defaultTopic.lessonRelPath,
+            progress: 0
+          });
+          Object.entries(progressData.topics).forEach(function (_ref3) {
+            var _ref4 = _slicedToArray(_ref3, 2),
+              uuid = _ref4[0],
+              topic = _ref4[1];
+            if (topic.lessonRelPath && topic.lessonRelPath.startsWith(currentPath + '/')) {
+              currentTopic = _objectSpread(_objectSpread({}, topic), {}, {
+                topicName: defaultTopic.topicName,
+                lessonName: defaultTopic.lessonName
+              });
+            }
+          });
+        }
+
+        // If we have a cookie topic, try to find matching progress
+        if (currentTopic) {
+          var cookieTopicPath = currentTopic.lessonRelPath.split('/')[0];
+          var foundProgress = false;
+          Object.entries(progressData.topics).forEach(function (_ref5) {
+            var _ref6 = _slicedToArray(_ref5, 2),
+              uuid = _ref6[0],
+              topic = _ref6[1];
+            if (topic.lessonRelPath && topic.lessonRelPath.startsWith(cookieTopicPath + '/')) {
+              // Keep cookie's topic/lesson names but get progress data
+              currentTopic = _objectSpread(_objectSpread({}, topic), {}, {
+                topicName: currentTopic.topicName,
+                lessonName: currentTopic.lessonName,
+                lessonRelPath: currentTopic.lessonRelPath
+              });
+              foundProgress = true;
+              return;
+            }
+          });
+          if (!foundProgress) {
+            // Keep cookie data but with default progress values
+            currentTopic = _objectSpread(_objectSpread({}, currentTopic), {}, {
+              lessonsScore: 0,
+              lessonsTotal: 1
+            });
+          }
+        } else if (mostRecentTopic) {
+          // No cookie, fall back to most recent topic's data
+          var pathParts = mostRecentTopic.lessonRelPath.split('/');
+          var topicPath = pathParts[0];
+          var topicName = topicPath.charAt(0).toUpperCase() + topicPath.slice(1);
+          var lessonName = pathParts.slice(1).join('/').replace(/-/g, ' ').replace('.php', '').replace(/^[-\s]+|[-\s]+$/g, '') || 'HOME';
+          currentTopic = _objectSpread(_objectSpread({}, mostRecentTopic), {}, {
+            topicName: topicName,
+            lessonName: lessonName
+          });
+        }
+
+        // Find most recent topic
+        Object.entries(progressData.topics).forEach(function (_ref7) {
+          var _ref8 = _slicedToArray(_ref7, 2),
+            uuid = _ref8[0],
+            topic = _ref8[1];
+          var interactionTime = Math.max(topic.lessonInteractionUts || 0, topic.exerciseInteractionUts || 0, topic.quizInteractionUts || 0);
+          if (interactionTime > mostRecentTime) {
+            mostRecentTime = interactionTime;
+            mostRecentTopic = topic;
+          }
+        });
+      }
+      var progressTopic = currentTopic || mostRecentTopic;
+      var currentProgress = progressTopic ? {
+        topicName: progressTopic.topicName,
+        lessonName: progressTopic.lessonName.replace(/^[-\s]+|[-\s]+$/g, '').replace(/^to\s+/i, ''),
+        lessonRelPath: progressTopic.lessonRelPath,
+        progress: Math.round((progressTopic.lessonsScore || 0) / progressTopic.lessonsTotal * 100)
+      } : null;
+      TopNavBar.cachedUserData = _objectSpread(_objectSpread({}, profileData), {}, {
+        currentProgress: currentProgress
+      });
+      resolve(TopNavBar.cachedUserData);
+    });
+  });
+};
+TopNavBar.handleProfileClick = function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+  if (TopNavBar.dropdownVisible) {
+    TopNavBar.hideProfileDropdown();
+  } else {
+    TopNavBar.showProfileDropdown();
+  }
+};
+TopNavBar.showProfileDropdown = /*#__PURE__*/function () {
+  var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(force) {
+    var _UserSession$getUicCo, _userData$currentProg;
+    var chevronBtn, chevron, mylStateLookupRes, userData, userName, subscriptionPlan, badgeClass, badgeText, lastActivityOnSamePage, dropdownContent, rightSection, dropdownElm, relElmRect, gapRight, dropdownRect, gapLeft;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          if (typeof force === 'undefined') {
+            force = false;
+          }
+          if (!(TopNavBar.dropdownVisible && !force)) {
+            _context.next = 3;
+            break;
+          }
+          return _context.abrupt("return");
+        case 3:
+          TopNavBar.dropdownVisible = true;
+
+          // Update chevron rotation
+          chevronBtn = document.querySelector('.tnb-profile-chevron-btn');
+          if (chevronBtn) {
+            chevronBtn.classList.add('active');
+          }
+          chevron = document.querySelector('.profile-chevron');
+          if (chevron) {
+            chevron.setAttribute('class', 'fa fa-caret-up profile-chevron');
+          }
+          _context.next = 10;
+          return TopNavBar._myLearningStateLookup();
+        case 10:
+          mylStateLookupRes = _context.sent;
+          TopNavBar._logDebug('showProfileDropdown -> mylStateLookupRes: ', mylStateLookupRes);
+          _context.next = 14;
+          return TopNavBar.fetchUserData(mylStateLookupRes.data);
+        case 14:
+          userData = _context.sent;
+          TopNavBar._logDebug('showProfileDropdown -> userData: ', userData);
+          userName = userData ? userData.fullName : 'User';
+          subscriptionPlan = ((_UserSession$getUicCo = UserSession.getUicCookie()) === null || _UserSession$getUicCo === void 0 ? void 0 : _UserSession$getUicCo.plan) || 'free';
+          badgeClass = subscriptionPlan === 'free' ? 'access-badge-purple' : 'access-badge-green';
+          badgeText = subscriptionPlan === 'free' ? 'UPGRADE TO PLUS' : subscriptionPlan.toUpperCase() + ' PLAN';
+          lastActivityOnSamePage = !(TopNavBar.env === 'network' || TopNavBar._inIframe()) && (userData === null || userData === void 0 || (_userData$currentProg = userData.currentProgress) === null || _userData$currentProg === void 0 ? void 0 : _userData$currentProg.lessonRelPath) === window.location.pathname.substring(1);
+          dropdownContent = "\n    <div class=\"inner-wrapper\">\n      <div class=\"user-header\">\n        <div class=\"user-info\">\n          <div class=\"user-name\">".concat(userName, "</div>\n          <a href=\"").concat(TopNavBar._profileBaseUrl, "/profile\" class=\"open-profile\" style=\"font-size: 12px; font-weight: 300 !important;\">\n            Edit profile \n            <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n              <path d=\"M6 12L10 8L6 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n            </svg>\n          </a>\n        </div>\n        ").concat(subscriptionPlan === 'free' ? "<a href=\"".concat(TopNavBar._w3sBaseUrl, "/plus/index.php\" target=\"_blank\" class=\"access-badge ").concat(badgeClass, "\">").concat(badgeText, "</a>") : "<div class=\"access-badge ".concat(badgeClass, "\">").concat(badgeText, "</div>"), "\n      </div>\n\n      ").concat(userData !== null && userData !== void 0 && userData.currentProgress && userData.currentProgress.topicName && userData.currentProgress.lessonName ? "\n        <div class=\"current-progress\">\n          <div class=\"course-info\">\n            <div class=\"course-type\">".concat(userData.currentProgress.topicName, " \u2022 Tutorial</div>\n\n            <div class=\"progress-wrapper\">\n              <div class=\"progress-label\">").concat(userData.currentProgress.progress, "% Completed</div>\n              <div class=\"progress-bar\">\n                <div class=\"progress\" style=\"width: ").concat(userData.currentProgress.progress, "%\"></div>\n              </div>\n            </div>\n\n            ").concat(lastActivityOnSamePage ? "\n              <div class=\"last-activity\">\n                <div class=\"label\">Current Page:</div>\n                <div class=\"lesson-name\">".concat(userData.currentProgress.lessonName, "</div>\n              </div>\n            ") : "\n              <div class=\"last-activity\">\n                <div class=\"label-wrapper\">\n                  <div class=\"label\">Last Activity:</div>\n                  <a href=\"".concat(TopNavBar._w3sBaseUrl, "/").concat(userData.currentProgress.lessonRelPath, "\" class=\"resume-link\">\n                    Resume \n                    <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                      <path d=\"M6 3L12 8L6 13V3Z\" fill=\"#04AA6D\"/>\n                    </svg>\n                  </a>\n                </div>\n                <div class=\"lesson-name\">").concat(userData.currentProgress.lessonName, "</div>\n              </div>\n            "), "\n          </div>\n        </div>\n      ") : '', "\n      <div class=\"-nav-menu\">\n        <a href=\"").concat(TopNavBar._dashboardBaseUrl, "\">\n          <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\">\n            <circle cx=\"12\" cy=\"12\" r=\"10\"/>\n            <polyline points=\"12 6 12 12 16 14\"/>\n          </svg>\n          Dashboard\n        </a>\n        <a href=\"").concat(TopNavBar._dashboardBaseUrl, "/tutorials\">\n          <svg fill=\"currentColor\" viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1\"/>\n          </svg>\n          Tutorials\n        </a>\n        <a href=\"").concat(TopNavBar._dashboardBaseUrl, "/learning-paths\">\n        <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0\"/>\n            <path d=\"M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4z\"/>\n            <path d=\"M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5\"/>\n          </svg>\n          Learning Paths\n        </a>\n        <a href=\"").concat(TopNavBar._dashboardBaseUrl, "/courses\">\n          <svg fill=\"currentColor\" stroke=\"currentColor\" viewBox=\"0 0 1024 1024\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M990.848 696.304V438.16l16.096-8.496c10.464-5.44 17.055-16.225 17.183-28.032.128-11.777-6.256-22.689-16.592-28.368l-481.44-257.6c-9.631-5.28-21.28-5.249-30.976.095l-478.8 257.92C6.126 379.36-.177 390.143-.113 401.84s6.496 22.4 16.817 27.97l210.384 111.983c-2.64 4.656-4.272 9.968-4.272 15.696v270.784c0 9.12 3.905 17.84 10.72 23.904 6.945 6.16 73.441 60.096 276.753 60.096 202.592 0 270.88-50.976 278-56.784 7.44-6.064 11.744-15.152 11.744-24.784V552.976c0-4.496-.944-8.768-2.608-12.64l129.424-68.369V696.48c-18.976 11.104-31.84 31.472-31.84 55.024 0 35.344 28.656 64 64 64s64-28.656 64-64c0-23.697-13.04-44.145-32.16-55.2zM736.031 812.368c-25.152 12.096-91.712 35.904-225.744 35.904-134.88 0-199.936-25.344-223.472-37.536V573.6l207.808 110.624a31.896 31.896 0 0 0 15.184 3.84 31.675 31.675 0 0 0 14.816-3.664l211.408-111.664v239.632zM510.063 619.81l-411.6-218.561 412.32-220.976 413.6 220.336z\"/>\n          </svg>\n          Courses\n        </a>\n        <a href=\"").concat(TopNavBar._spacesBaseUrl, "\">\n          <svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M8 11C8 10.8674 8.05268 10.7402 8.14645 10.6464C8.24021 10.5527 8.36739 10.5 8.5 10.5H11.5C11.6326 10.5 11.7598 10.5527 11.8536 10.6464C11.9473 10.7402 12 10.8674 12 11C12 11.1326 11.9473 11.2598 11.8536 11.3536C11.7598 11.4473 11.6326 11.5 11.5 11.5H8.5C8.36739 11.5 8.24021 11.4473 8.14645 11.3536C8.05268 11.2598 8 11.1326 8 11ZM5.854 6.146C5.80751 6.09951 5.75232 6.06264 5.69158 6.03748C5.63084 6.01232 5.56574 5.99937 5.5 5.99937C5.43426 5.99937 5.36916 6.01232 5.30842 6.03748C5.24768 6.06264 5.19249 6.09951 5.146 6.146C5.09951 6.19249 5.06264 6.24768 5.03748 6.30842C5.01232 6.36916 4.99937 6.43426 4.99937 6.5C4.99937 6.56574 5.01232 6.63084 5.03748 6.69158C5.06264 6.75232 5.09951 6.80751 5.146 6.854L6.793 8.5L5.146 10.146C5.09951 10.1925 5.06264 10.2477 5.03748 10.3084C5.01232 10.3692 4.99937 10.4343 4.99937 10.5C4.99937 10.5657 5.01232 10.6308 5.03748 10.6916C5.06264 10.7523 5.09951 10.8075 5.146 10.854C5.23989 10.9479 5.36722 11.0006 5.5 11.0006C5.56574 11.0006 5.63084 10.9877 5.69158 10.9625C5.75232 10.9374 5.80751 10.9005 5.854 10.854L7.854 8.854C7.90056 8.80755 7.93751 8.75238 7.96271 8.69163C7.98792 8.63089 8.00089 8.56577 8.00089 8.5C8.00089 8.43423 7.98792 8.36911 7.96271 8.30837C7.93751 8.24762 7.90056 8.19245 7.854 8.146L5.854 6.146Z\" fill=\"currentColor\"/>\n            <path d=\"M4 3C3.46957 3 2.96086 3.21071 2.58579 3.58579C2.21071 3.96086 2 4.46957 2 5V15C2 15.5304 2.21071 16.0391 2.58579 16.4142C2.96086 16.7893 3.46957 17 4 17H16C16.5304 17 17.0391 16.7893 17.4142 16.4142C17.7893 16.0391 18 15.5304 18 15V5C18 4.46957 17.7893 3.96086 17.4142 3.58579C17.0391 3.21071 16.5304 3 16 3H4ZM16 4C16.2652 4 16.5196 4.10536 16.7071 4.29289C16.8946 4.48043 17 4.73478 17 5V15C17 15.2652 16.8946 15.5196 16.7071 15.7071C16.5196 15.8946 16.2652 16 16 16H4C3.73478 16 3.48043 15.8946 3.29289 15.7071C3.10536 15.5196 3 15.2652 3 15V5C3 4.73478 3.10536 4.48043 3.29289 4.29289C3.48043 4.10536 3.73478 4 4 4H16Z\" fill=\"currentColor\"/>\n          </svg>\n          Spaces\n        </a>\n        <a href=\"").concat(TopNavBar._myLearningBaseUrl, "/certificates\">\n        <svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M126,136a6,6,0,0,1-6,6H72a6,6,0,0,1,0-12h48A6,6,0,0,1,126,136Zm-6-38H72a6,6,0,0,0,0,12h48a6,6,0,0,0,0-12Zm110,62.62V224a6,6,0,0,1-9,5.21l-25-14.3-25,14.3a6,6,0,0,1-9-5.21V198H40a14,14,0,0,1-14-14V56A14,14,0,0,1,40,42H216a14,14,0,0,1,14,14V87.38a49.91,49.91,0,0,1,0,73.24ZM196,86a38,38,0,1,0,38,38A38,38,0,0,0,196,86ZM162,186V160.62a50,50,0,0,1,56-81.51V56a2,2,0,0,0-2-2H40a2,2,0,0,0-2,2V184a2,2,0,0,0,2,2Zm56-17.11a49.91,49.91,0,0,1-44,0v44.77l19-10.87a6,6,0,0,1,6,0l19,10.87Z\"/>\n        </svg>\n          Certificates\n        </a>\n        <div class=\"profile-menu-divider\"></div>\n        <a href=\"").concat(TopNavBar._billingBaseUrl, "/account\">\n          <svg width=\"20\" height=\"20\" viewBox=\"0 0 512 512\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"28\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M262.29 192.31a64 64 0 1 0 57.4 57.4 64.13 64.13 0 0 0-57.4-57.4zM416.39 256a154.34 154.34 0 0 1-1.53 20.79l45.21 35.46a10.81 10.81 0 0 1 2.45 13.75l-42.77 74a10.81 10.81 0 0 1-13.14 4.59l-44.9-18.08a16.11 16.11 0 0 0-15.17 1.75A164.48 164.48 0 0 1 325 400.8a15.94 15.94 0 0 0-8.82 12.14l-6.73 47.89a11.08 11.08 0 0 1-10.68 9.17h-85.54a11.11 11.11 0 0 1-10.69-8.87l-6.72-47.82a16.07 16.07 0 0 0-9-12.22 155.3 155.3 0 0 1-21.46-12.57 16 16 0 0 0-15.11-1.71l-44.89 18.07a10.81 10.81 0 0 1-13.14-4.58l-42.77-74a10.8 10.8 0 0 1 2.45-13.75l38.21-30a16.05 16.05 0 0 0 6-14.08c-.36-4.17-.58-8.33-.58-12.5s.21-8.27.58-12.35a16 16 0 0 0-6.07-13.94l-38.19-30A10.81 10.81 0 0 1 49.48 186l42.77-74a10.81 10.81 0 0 1 13.14-4.59l44.9 18.08a16.11 16.11 0 0 0 15.17-1.75A164.48 164.48 0 0 1 187 111.2a15.94 15.94 0 0 0 8.82-12.14l6.73-47.89A11.08 11.08 0 0 1 213.23 42h85.54a11.11 11.11 0 0 1 10.69 8.87l6.72 47.82a16.07 16.07 0 0 0 9 12.22 155.3 155.3 0 0 1 21.46 12.57 16 16 0 0 0 15.11 1.71l44.89-18.07a10.81 10.81 0 0 1 13.14 4.58l42.77 74a10.8 10.8 0 0 1-2.45 13.75l-38.21 30a16.05 16.05 0 0 0-6.05 14.08c.33 4.14.55 8.3.55 12.47z\"/>\n          </svg>\n          Billing\n        </a>\n        <div class=\"profile-menu-divider\"></div>\n        <a href=\"").concat(TopNavBar._profileBaseUrl, "/logout\" class=\"logout\">\n        <svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M7.42857 2H14.2857C15.2325 2 16 2.79594 16 3.77778V16.2222C16 17.2041 15.2325 18 14.2857 18H7.42857M4 10L7.42857 6.44444M4 10L7.42857 13.5556M4 10H12.5714\" stroke=\"#DB1B1B\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n        </svg>\n          Log out\n        </a>\n      </div>\n    </div>\n    <div id=\"tnb-profile-dropdown-bottom-spacer\" style=\"height: ").concat(TopNavBar.mainNavHeightPx, "px;\"></div>\n  ");
+          if (TopNavBar.env === 'network' || TopNavBar._inIframe()) {
+            TopNavBar.notifyParentAboutLayout('on profile dropdown show', {
+              expanded: true,
+              height: TopNavBar.fullHeight
+            });
+            TopNavBar._iframeProxyFloatingComponent('TopNavBar.showProfileDropdown', 'tnb-profile-dropdown', 'UPSERT', {
+              tagName: 'div',
+              id: 'tnb-profile-dropdown',
+              "class": 'tnb-profile-dropdown',
+              innerHtml: dropdownContent,
+              mountFuncName: 'mountProfileDropdownLogic',
+              unmountFuncName: 'unmountProfileDropdownLogic',
+              styles: {
+                display: 'block',
+                fontWeight: 600
+              }
+            });
+          } else {
+            rightSection = document.querySelector('.tnb-right-section');
+            dropdownElm = document.getElementById('tnb-profile-dropdown');
+            if (!dropdownElm) {
+              dropdownElm = document.createElement('div');
+              dropdownElm.id = 'tnb-profile-dropdown';
+              dropdownElm.className = 'tnb-profile-dropdown';
+              rightSection.appendChild(dropdownElm); // Changed from profileBtn to rightSection
+            }
+            dropdownElm.innerHTML = dropdownContent;
+            dropdownElm.style.display = 'block';
+
+            // Position dropdown relative to tnb-right-section
+            if (rightSection) {
+              relElmRect = rightSection.getBoundingClientRect();
+              gapRight = window.innerWidth - relElmRect.right;
+              dropdownElm.style.right = (gapRight < 20 ? 0 : gapRight) + 'px';
+              dropdownElm.style.left = 'auto';
+              // Allow CSS to enforce max-width: 100%
+
+              // Force layout update
+              dropdownRect = dropdownElm.getBoundingClientRect();
+              gapLeft = dropdownRect.left; // var gapRight = window.innerWidth - dropdownRect.right;
+              // If gap between right side is smaller than gap from left side
+              // and also smaller than 20px then force push to right.
+              if (gapRight < gapLeft && gapRight < 20) {
+                dropdownElm.style.right = '0px';
+                dropdownElm.style.left = 'auto';
+              } else if (dropdownRect.left < 0 && dropdownRect.right > window.innerWidth) {
+                // Dropdown overflows both left and right:
+                // Force it to span the full viewport.
+                dropdownElm.style.left = '0px';
+                dropdownElm.style.right = '0px';
+                dropdownElm.style.width = '100%';
+              } else if (dropdownRect.left < 0) {
+                // Overflows on left side: align left edge with viewport
+                dropdownElm.style.left = '0px';
+                dropdownElm.style.right = 'auto';
+              } else if (dropdownRect.right > window.innerWidth) {
+                // Overflows on right side: align right edge with viewport
+                dropdownElm.style.right = '0px';
+                dropdownElm.style.left = 'auto';
+              }
+            }
+          }
+        case 23:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return function (_x) {
+    return _ref9.apply(this, arguments);
+  };
+}();
+TopNavBar.hideProfileDropdown = function () {
+  if (TopNavBar.dropdownVisible === false) {
+    return;
+  }
+  TopNavBar.dropdownVisible = false;
+
+  // Update chevron rotation
+  var chevronBtn = document.querySelector('.tnb-profile-chevron-btn');
+  if (chevronBtn) {
+    chevronBtn.classList.remove('active');
+  }
+  var chevron = document.querySelector('.profile-chevron');
+  if (chevron) {
+    chevron.setAttribute('class', 'fa fa-caret-down profile-chevron');
+  }
+  if (TopNavBar.env === 'network' || TopNavBar._inIframe()) {
+    TopNavBar._iframeProxyFloatingComponent('TopNavBar.hideProfileDropdown', 'tnb-profile-dropdown', 'REMOVE', {
+      unmountFuncName: 'unmountProfileDropdownLogic'
+    });
+
+    // TopNavBar.notifyParentAboutLayout('on profile dropdown hide', {
+    //   expanded: false
+    // });
+  } else {
+    var dropdownElm = document.getElementById('tnb-profile-dropdown');
+    if (dropdownElm) {
+      dropdownElm.style.display = 'none';
+    }
+  }
+};
+TopNavBar.mountProfileDropdownLogic = function () {
+  var dropdownElm = document.getElementById('tnb-profile-dropdown');
+  if (!dropdownElm) {
+    return;
+  }
+  var handleLogoutClick = function handleLogoutClick(event) {
+    event.preventDefault();
+    TopNavBar.handleRedirect('TopNavBar.mountProfileDropdownLogic', this.href);
+  };
+  var handleLinkClick = function handleLinkClick(event) {
+    event.preventDefault();
+    TopNavBar.handleRedirect('TopNavBar.mountProfileDropdownLogic', this.href);
+  };
+  var logoutBtn = dropdownElm.querySelector('.logout');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', handleLogoutClick.bind(logoutBtn));
+    logoutBtn._boundClickHandler = handleLogoutClick;
+  }
+  var links = dropdownElm.querySelectorAll('a:not(.logout)');
+  links.forEach(function (link) {
+    link.addEventListener('click', handleLinkClick.bind(link));
+    link._boundClickHandler = handleLinkClick;
+  });
+};
+TopNavBar.unmountProfileDropdownLogic = function () {
+  var dropdownElm = document.getElementById('tnb-profile-dropdown');
+  if (!dropdownElm) {
+    return;
+  }
+  var logoutBtn = dropdownElm.querySelector('.logout');
+  if (logoutBtn && logoutBtn._boundClickHandler) {
+    logoutBtn.removeEventListener('click', logoutBtn._boundClickHandler.bind(logoutBtn));
+    delete logoutBtn._boundClickHandler;
+  }
+  var links = dropdownElm.querySelectorAll('a:not(.logout)');
+  links.forEach(function (link) {
+    if (link._boundClickHandler) {
+      link.removeEventListener('click', link._boundClickHandler.bind(link));
+      delete link._boundClickHandler;
+    }
+  });
+};
+
+// < legacy mapping
+window.w3_open = TopNavBar.openMenu;
+window.w3_close = TopNavBar.closeMenu;
+window.w3_open_nav = TopNavBar.openNavItem;
+window.w3_close_nav = TopNavBar.closeNavItem;
+window.w3_close_all_topnav = TopNavBar.closeAllNavItems;
+window.open_search = TopNavBar.googleSearchFocusInput;
+window.gSearch = TopNavBar.googleSearchInit;
+// > legacy mapping
+
+TopNavBar.init();
