@@ -1,3 +1,0 @@
-Sitemap: http://mildrooms-wiki.wikidot.com/sitemap.xml
-User-agent: voltron
-Disallow: /

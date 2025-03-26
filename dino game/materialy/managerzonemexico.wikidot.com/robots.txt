@@ -1,3 +1,0 @@
-Sitemap: http://managerzonemexico.wikidot.com/sitemap.xml
-User-agent: voltron
-Disallow: /

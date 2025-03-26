@@ -1,9 +1,0 @@
-User-agent: msnbot
-Crawl-delay: 20
-
-User-agent: Slurp
-Crawl-delay: 20
-
-User-agent: *
-Crawl-delay: 20
-

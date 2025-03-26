@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /pub/doc
-Disallow: /pub
-Disallow: /store/checkout
-Disallow: /store/customer
-Disallow: /store/payment
-Disallow: /store/fulfillment
-Crawl-delay: 5
