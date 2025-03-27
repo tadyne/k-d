@@ -320,7 +320,6 @@ while running:          #základní loop
             kurent_time = 10
             
         score_saved = False
-            
         #konec hry a 2 tlacitka
     konechry_text = font.render(f"konec hry", True, (255,0,0))
     if game_over and not show_white_screen:
